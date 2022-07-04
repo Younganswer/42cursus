@@ -1,20 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/04 18:35:31 by younhwan          #+#    #+#             */
-/*   Updated: 2022/07/04 19:04:17 by younhwan         ###   ########.fr       */
+/*   Created: 2022/07/04 18:56:43 by younhwan          #+#    #+#             */
+/*   Updated: 2022/07/04 19:05:37 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-# define LIBFT_H
+#include "libft.h"
 
-# include <stdlib.h>
+char	*ft_strjoin(char const *s, unsigned int start, size_t len)
+{
+	char	*res;
+	int		idx;
 
-char	*ft_substr(char const *s, unsigned int start, size_t len);
-
-#endif
+	res = (char *) malloc(sizeof(char) * len);
+	if (!res)
+		return (0);
+	idx = 0;
+	while (start + idx < len - 1)
+	{
+		res[idx] = s[start + idx];
+		idx++;
+	}
+	return (res);
+}
