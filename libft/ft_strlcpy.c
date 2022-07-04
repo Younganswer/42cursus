@@ -1,30 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_substr.c                                        :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/04 18:56:43 by younhwan          #+#    #+#             */
-/*   Updated: 2022/07/04 23:58:58 by younhwan         ###   ########.fr       */
+/*   Created: 2022/07/05 00:28:36 by younhwan          #+#    #+#             */
+/*   Updated: 2022/07/05 00:33:45 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strjoin(char const *s, unsigned int start, size_t len)
+size_t	ft_strlcpy(char *dest, const char *src, size_t sz_)
 {
-	char	*res;
-	int		idx;
+	size_t	src_len;
+	size_t	i;
 
-	res = (char *) malloc(sizeof(char) * len);
-	if (!res)
-		return (0);
-	idx = 0;
-	while (start + idx < len - 1)
+	src_len = ft_strlen(src);
+	if (!sz_)
+		return (src_len);
+	i = 0;
+	while (src[i] && i < (sz_ - 1))
 	{
-		res[idx] = s[start + idx];
-		idx++;
+		dest[i] = src[i];
+		i++;
 	}
-	return (res);
+	dest[i] = '\0';
+	return (src_len);
 }

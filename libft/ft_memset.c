@@ -1,30 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_substr.c                                        :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/04 18:56:43 by younhwan          #+#    #+#             */
-/*   Updated: 2022/07/04 23:58:58 by younhwan         ###   ########.fr       */
+/*   Created: 2022/07/05 00:02:22 by younhwan          #+#    #+#             */
+/*   Updated: 2022/07/05 00:04:05 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strjoin(char const *s, unsigned int start, size_t len)
+void	*ft_memset(void *dest, int c, size_t n)
 {
-	char	*res;
-	int		idx;
+	unsigned char	*tmp;
+	unsigned char	src;
+	size_t			i;
 
-	res = (char *) malloc(sizeof(char) * len);
-	if (!res)
-		return (0);
-	idx = 0;
-	while (start + idx < len - 1)
-	{
-		res[idx] = s[start + idx];
-		idx++;
-	}
-	return (res);
+	tmp = dest;
+	src = c;
+	i = 0;
+	while (i++ < n)
+		*tmp++ = src;
+	return (dest);
 }

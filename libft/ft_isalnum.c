@@ -1,30 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_substr.c                                        :+:      :+:    :+:   */
+/*   ft_isalnum.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/04 18:56:43 by younhwan          #+#    #+#             */
-/*   Updated: 2022/07/04 23:58:58 by younhwan         ###   ########.fr       */
+/*   Created: 2022/07/04 23:46:40 by younhwan          #+#    #+#             */
+/*   Updated: 2022/07/04 23:59:27 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strjoin(char const *s, unsigned int start, size_t len)
+int	isalnum(char c)
 {
-	char	*res;
-	int		idx;
-
-	res = (char *) malloc(sizeof(char) * len);
-	if (!res)
-		return (0);
-	idx = 0;
-	while (start + idx < len - 1)
-	{
-		res[idx] = s[start + idx];
-		idx++;
-	}
-	return (res);
+	if (isalpha(c) || isdigit(c))
+		return (1);
+	return (0);
 }
