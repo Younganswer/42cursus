@@ -1,31 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   ft_toupper.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/05 00:28:36 by younhwan          #+#    #+#             */
-/*   Updated: 2022/07/06 00:11:27 by younhwan         ###   ########.fr       */
+/*   Created: 2022/07/06 00:14:13 by younhwan          #+#    #+#             */
+/*   Updated: 2022/07/06 00:16:44 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlcpy(char *dest, const char *src, size_t sz_)
-{
-	size_t	src_len;
-	size_t	i;
+int			ft_toupper(int c);
+static int	ft_islower(int c);
 
-	src_len = ft_strlen(src);
-	if (!sz_)
-		return (src_len);
-	i = 0;
-	while (src[i] && i < (sz_ - 1))
-	{
-		dest[i] = src[i];
-		i++;
-	}
-	dest[i] = '\0';
-	return (src_len);
+int	ft_toupper(int c)
+{
+	if (ft_islower(c))
+		return (c - 32);
+	return (c);
+}
+
+static int	ft_islower(int c)
+{
+	return (97 <= c && c <= 122);
 }
