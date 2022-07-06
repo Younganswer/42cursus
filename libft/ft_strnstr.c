@@ -1,33 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strrchr.c                                       :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/06 16:33:08 by younhwan          #+#    #+#             */
-/*   Updated: 2022/07/06 19:34:53 by younhwan         ###   ########.fr       */
+/*   Created: 2022/07/06 18:27:05 by younhwan          #+#    #+#             */
+/*   Updated: 2022/07/06 19:28:23 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strrchr(const char *s, int c)
+char	*ft_strnstr(const char *s, const char *target, size_t n)
 {
-	char	target;
-	char	*res;
+	size_t	s_len;
+	size_t	target_len;
+	size_t	i;
 
-	target = (char) c;
-	res = 0;
-	while (*s)
+	if (!(*target))
+		return ((char *) s);
+	s_len = ft_strlen(s);
+	target_len = ft_strlen(target);
+	if (s_len < target_len || n < target_len)
+		return (0);
+	i = 0;
+	while (i + n <= s_len)
 	{
-		if (*s == target)
-			res = s;
+		if (!ft_memcmp(s, target, target_len))
+			return ((char *) s);
 		s++;
 	}
-	if (*s == target)
-		res = s;
-	if (res)
-		return (res);
 	return (0);
 }
