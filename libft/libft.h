@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 18:35:31 by younhwan          #+#    #+#             */
-/*   Updated: 2022/07/06 19:59:57 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/07/06 20:16:16 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,8 @@ void	*ft_memchr(const void *s, int c, size_t n);
 int		ft_memcmp(const void *s1, const void *s2, size_t n);
 char	*ft_strnstr(const char *s, const char *target, size_t n);
 int		ft_atoi(const char *str);
+void	*ft_calloc(size_t count, size_t sz_);
+char	*ft_strdup(const char *str);
 
 // Part 2 - Additional functions
 char	*ft_substr(char const *s, unsigned int start, size_t len);
