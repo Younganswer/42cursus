@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 00:04:44 by younhwan          #+#    #+#             */
-/*   Updated: 2022/07/06 00:07:24 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/07/06 17:27:14 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,16 +16,15 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
 	unsigned char	*us1;
 	unsigned char	*us2;
-	size_t			i;
 
 	us1 = (unsigned char *) s1;
 	us2 = (unsigned char *) s2;
-	i = 0;
-	while (i < n)
+	while (n--)
 	{
-		if (us1[i] != us2[i] || !us1[i] || !us2[i])
-			return (us1[i] - us2[i]);
-		i++;
+		if (*us1 - *us2 || !(*us1) || !(*us2))
+			return (*us1 - *us2);
+		us1++;
+		us2++;
 	}
 	return (0);
 }

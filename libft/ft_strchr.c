@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 00:19:53 by younhwan          #+#    #+#             */
-/*   Updated: 2022/07/06 00:26:54 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/07/06 16:39:27 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,17 @@
 char	*ft_strchr(const char *s, int c)
 {
 	char	target;
-	int		i;
+	char	*tmp;
 
 	target = (char) c;
-	i = 0;
-	while (s[i])
+	tmp = (char *) s;
+	while (*tmp)
 	{
-		if (s[i] == target)
-			return (&s[i]);
-		i++;
+		if (*tmp == target)
+			return (tmp);
+		tmp++;
 	}
-	if (s[i] == target)
-		return (&s[i]);
+	if (*tmp == target)
+		return (tmp);
 	return (0);
 }

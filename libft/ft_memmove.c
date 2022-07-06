@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/05 00:11:23 by younhwan          #+#    #+#             */
-/*   Updated: 2022/07/06 00:11:43 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/07/06 17:15:18 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,10 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 	}
 	else
 	{
-		dest_tmp = (unsigned char *) dest + (n - 1);
-		src_tmp = (unsigned char *) src + (n - 1);
+		dest_tmp = (unsigned char *) dest + n;
+		src_tmp = (unsigned char *) src + n;
 		while (n--)
-			*dest_tmp-- = *src_tmp--;
+			*--dest_tmp = *--src_tmp;
 	}
 	return (dest);
 }
