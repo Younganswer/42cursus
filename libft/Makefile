@@ -6,7 +6,7 @@
 #    By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/08 16:03:07 by younhwan          #+#    #+#              #
-#    Updated: 2022/07/08 16:16:35 by younhwan         ###   ########.fr        #
+#    Updated: 2022/07/08 16:25:44 by younhwan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,6 +23,12 @@ INCS_DIR = .
 SOURCES = ${wildcard ${SRCS_DIR}/*.c}
 OBJECTS = ${SOURCES:${SRCS_DIR}/%.c=${OBJS_DIR}/%.o}
 
+${OBJECTS}: ${OBJS_DIR}/%.o: ${SRCS_DIR}/%.c
+	${CC} ${CFLAGS} -c $< -o $@ -I INCS_DIR
+
+${NAME}: ${OBJECTS}
+	${AR} ${NAME} ${OBJECTS}
+
 all: ${NAME}
 
 clean:
@@ -33,10 +39,4 @@ fclean: clean
 
 re: fclean all
 
-${NAME}: ${OBJECTS}
-	${AR} ${NAME} ${OBJECTS}
-
-${OBJECTS}: ${OBJS_DIR}/%.o: ${SRCS_DIR}/%.c
-	${CC} ${CFLAGS} -c $< -o $@ -I INCS_DIR
-
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re ${NAME}
