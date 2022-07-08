@@ -1,58 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/07 18:38:27 by younhwan          #+#    #+#             */
-/*   Updated: 2022/07/08 15:44:41 by younhwan         ###   ########.fr       */
+/*   Created: 2022/07/08 15:36:39 by younhwan          #+#    #+#             */
+/*   Updated: 2022/07/08 15:39:09 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char			*ft_itoa(int n);
-static size_t	get_num_len(long nbr);
-
-char	*ft_itoa(int n)
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	char	*res;
-	long	nbr;
-	size_t	len;
+	char			*res;
+	unsigned int	len;
+	unsigned int	i;
 
-	nbr = n;
-	len = 0;
-	if (nbr < 0)
-	{
-		nbr *= -1;
-		len++;
-	}
-	len += get_num_len(nbr);
+	if (!s || !f)
+		return (0);
+	len = ft_strlen(s);
 	res = (char *) malloc(sizeof(char) * (len + 1));
 	if (!res)
 		return (0);
-	res += len;
-	*res-- = '\0';
-	while (nbr)
+	i = 0;
+	while (s[i])
 	{
-		*res-- = nbr % 10;
-		nbr /= 10;
+		res[i] = f(i, s[i]);
+		i++;
 	}
-	if (n < 0)
-		*res-- = '-';
+	res[i] = '\0';
 	return (res);
-}
-
-static size_t	get_num_len(long nbr)
-{
-	size_t	len;
-
-	len = 0;
-	while (nbr)
-	{
-		len++;
-		nbr /= 10;
-	}
-	return (len);
 }
