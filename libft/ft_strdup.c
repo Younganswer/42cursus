@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 20:16:27 by younhwan          #+#    #+#             */
-/*   Updated: 2022/07/07 18:35:19 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/07/08 16:20:22 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ char	*ft_strdup(const char *str)
 {
 	char	*res;
 	size_t	len;
-	size_t	i;
 
 	len = ft_strlen(str);
 	res = (char *) malloc(sizeof(char) * (len + 1));

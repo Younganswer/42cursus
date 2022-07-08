@@ -6,13 +6,13 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 23:45:54 by younhwan          #+#    #+#             */
-/*   Updated: 2022/07/04 23:58:46 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/07/08 16:17:55 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	isdigit(char c)
+int	ft_isdigit(char c)
 {
 	if ('0' <= c && c <= '9')
 		return (1);

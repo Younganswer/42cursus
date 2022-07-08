@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 00:19:53 by younhwan          #+#    #+#             */
-/*   Updated: 2022/07/06 19:35:52 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/07/08 16:19:45 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,10 @@ char	*ft_strchr(const char *s, int c)
 	while (*s)
 	{
 		if (*s == target)
-			return (s);
+			return ((char *) s);
 		s++;
 	}
 	if (*s == target)
-		return (s);
+		return ((char *) s);
 	return (0);
 }

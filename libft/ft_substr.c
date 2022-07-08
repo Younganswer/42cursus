@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 18:00:00 by younhwan          #+#    #+#             */
-/*   Updated: 2022/07/07 18:09:19 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/07/08 16:20:57 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
 	char	*res;
-	size_t	i;
 
 	res = (char *) malloc(sizeof(char) * len);
 	if (!res)

@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 18:16:25 by younhwan          #+#    #+#             */
-/*   Updated: 2022/07/07 18:37:42 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/07/08 16:18:32 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ static size_t	cnt_words(char const *s, char c)
 	size_t	i;
 
 	cnt = 0;
+	i = 0;
 	while (s[i])
 	{
 		while (s[i] && s[i] == c)
