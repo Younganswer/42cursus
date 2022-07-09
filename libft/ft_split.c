@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 18:16:25 by younhwan          #+#    #+#             */
-/*   Updated: 2022/07/08 16:18:32 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/07/09 01:53:04 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,11 @@ char	**ft_split(char const *s, char c)
 
 	words_len = cnt_words(s, c);
 	res = (char **) malloc(sizeof(char *) * (words_len + 1));
-	if (!res)
+	if (!res || !s)
 		return (0);
 	words_idx = 0;
 	s_idx = 0;
-	while (words_idx < words_len)
+	while (s[s_idx] && words_idx < words_len)
 	{
 		while (s[s_idx] && s[s_idx] == c)
 			s_idx++;
