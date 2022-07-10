@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/10 00:17:17 by younhwan          #+#    #+#             */
-/*   Updated: 2022/07/10 00:21:20 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/07/10 11:16:24 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,9 @@ void	ft_lstclear(t_list **lst, void (*del)(void *))
 	while (tmp)
 	{
 		to_del = tmp;
-		ft_lstdelone(to_del, del);
 		tmp = tmp->next;
+		ft_lstdelone(to_del, del);
 	}
-	free(lst);
-	lst = 0;
+	*lst = 0;
 	return ;
 }
