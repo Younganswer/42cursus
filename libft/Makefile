@@ -6,7 +6,7 @@
 #    By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/08 16:03:07 by younhwan          #+#    #+#              #
-#    Updated: 2022/07/10 01:49:00 by younhwan         ###   ########.fr        #
+#    Updated: 2022/07/10 11:14:06 by younhwan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,10 +15,6 @@ CFLAGS = -Wall -Wextra -Werror
 
 AR = ar rcs
 NAME = libft.a
-
-SRCS_DIR = .
-OBJS_DIR = .
-INCS_DIR = .
 
 ESSENTIAL_SOURCE =  ft_atoi.c \
 					ft_bzero.c \
@@ -29,7 +25,6 @@ ESSENTIAL_SOURCE =  ft_atoi.c \
 					ft_isdigit.c \
 					ft_isprint.c \
 					ft_itoa.c \
-					ft_lstsize.c \
 					ft_memchr.c \
 					ft_memcmp.c \
 					ft_memcpy.c \
@@ -64,14 +59,16 @@ BONUS_SOURCES = 	ft_lstadd_back.c \
 					ft_lstlast.c \
 					ft_lstmap.c \
 					ft_lstnew.c \
+					ft_lstsize.c \
 
-ESSETIAL_OBJECTS = ${ESSENTIAL_SOURCE:${SRCS_DIR}/%.c=${OBJS_DIR}/%.o}
-BONUS_OBJECTS = ${BONUS_SOURCES:${SRCS_DIR}/%.c=${OBJS_DIR}/%.o}
 
-${ESSETIAL_OBJECTS}: ${OBJS_DIR}/%.o: ${SRCS_DIR}/%.c
-	${CC} ${CFLAGS} -c $< -o $@ -I INCS_DIR
+ESSENTIAL_OBJECTS = ${ESSENTIAL_SOURCE:%.c=%.o}
+BONUS_OBJECTS = ${BONUS_SOURCES:%.c=%.o}
 
-${NAME}: ${ESSETIAL_OBJECTS}
+${ESSENTIAL_OBJECTS}: ${ESSENTIAL_SOURCE}
+	${CC} ${CFLAGS} -c $< -o $@ -I .
+
+${NAME}: ${ESSENTIAL_OBJECTS}
 	${AR} $@ $^
 
 bonus: ${BONUS_OBJECTS}
@@ -80,7 +77,7 @@ bonus: ${BONUS_OBJECTS}
 all: ${NAME}
 
 clean:
-	rm -f ${ESSETIAL_OBJECTS}
+	rm -f ${ESSENTIAL_OBJECTS} ${BONUS_OBJECTS}
 
 fclean: clean
 	rm -f ${NAME}
