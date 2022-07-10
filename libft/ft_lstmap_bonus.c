@@ -1,25 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstiter.c                                       :+:      :+:    :+:   */
+/*   ft_lstmap_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/10 00:22:48 by younhwan          #+#    #+#             */
-/*   Updated: 2022/07/10 11:13:09 by younhwan         ###   ########.fr       */
+/*   Created: 2022/07/10 00:25:04 by younhwan          #+#    #+#             */
+/*   Updated: 2022/07/10 23:16:18 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include "libft_bonus.h"
 
-void	ft_lstiter(t_list *lst, void (*f)(void *))
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
+	t_list	*res;
+	t_list	*tmp;
+
 	if (!lst || !f)
-		return ;
+		return (0);
+	res = 0;
 	while (lst)
 	{
-		f(lst->content);
+		tmp = ft_lstnew(f(lst->content));
+		if (!tmp)
+		{
+			ft_lstclear(&res, del);
+			return (0);
+		}
+		ft_lstadd_back(&res, tmp);
+		tmp = tmp->next;
 		lst = lst->next;
 	}
-	return ;
+	return (res);
 }

@@ -1,36 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstmap.c                                        :+:      :+:    :+:   */
+/*   ft_lstsize_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/10 00:25:04 by younhwan          #+#    #+#             */
-/*   Updated: 2022/07/10 00:29:53 by younhwan         ###   ########.fr       */
+/*   Created: 2022/07/10 00:09:36 by younhwan          #+#    #+#             */
+/*   Updated: 2022/07/10 23:16:25 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include "libft_bonus.h"
 
-t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
+int	ft_lstsize(t_list *lst)
 {
-	t_list	*res;
-	t_list	*tmp;
+	int	size;
 
-	if (!lst || !f)
-		return (0);
-	res = 0;
+	size = 0;
 	while (lst)
 	{
-		tmp = ft_lstnew(f(lst->content));
-		if (!tmp)
-		{
-			ft_lstclear(&res, del);
-			return (0);
-		}
-		ft_lstadd_back(&res, tmp);
-		tmp = tmp->next;
 		lst = lst->next;
+		size++;
 	}
-	return (res);
+	return (size);
 }
