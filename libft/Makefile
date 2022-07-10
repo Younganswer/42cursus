@@ -6,17 +6,18 @@
 #    By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/08 16:03:07 by younhwan          #+#    #+#              #
-#    Updated: 2022/07/10 11:14:06 by younhwan         ###   ########.fr        #
+#    Updated: 2022/07/10 19:06:47 by younhwan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
-
 AR = ar rcs
+RM = rm -f
+
 NAME = libft.a
 
-ESSENTIAL_SOURCE =  ft_atoi.c \
+MANDATORY_SOURCE =  ft_atoi.c \
 					ft_bzero.c \
 					ft_calloc.c \
 					ft_isalnum.c \
@@ -49,7 +50,7 @@ ESSENTIAL_SOURCE =  ft_atoi.c \
 					ft_strtrim.c \
 					ft_substr.c \
 					ft_tolower.c \
-					ft_toupper.c \
+					ft_toupper.c
 
 BONUS_SOURCES = 	ft_lstadd_back.c \
 					ft_lstadd_front.c \
@@ -59,16 +60,15 @@ BONUS_SOURCES = 	ft_lstadd_back.c \
 					ft_lstlast.c \
 					ft_lstmap.c \
 					ft_lstnew.c \
-					ft_lstsize.c \
+					ft_lstsize.c
 
-
-ESSENTIAL_OBJECTS = ${ESSENTIAL_SOURCE:%.c=%.o}
+MANDATORY_OBJECTS = ${MANDATORY_SOURCE:%.c=%.o}
 BONUS_OBJECTS = ${BONUS_SOURCES:%.c=%.o}
 
-${ESSENTIAL_OBJECTS}: ${ESSENTIAL_SOURCE}
+.c.o:
 	${CC} ${CFLAGS} -c $< -o $@ -I .
 
-${NAME}: ${ESSENTIAL_OBJECTS}
+${NAME}: ${MANDATORY_OBJECTS}
 	${AR} $@ $^
 
 bonus: ${BONUS_OBJECTS}
@@ -77,10 +77,10 @@ bonus: ${BONUS_OBJECTS}
 all: ${NAME}
 
 clean:
-	rm -f ${ESSENTIAL_OBJECTS} ${BONUS_OBJECTS}
+	${RM} ${MANDATORY_OBJECTS} ${BONUS_OBJECTS}
 
 fclean: clean
-	rm -f ${NAME}
+	${RM} ${NAME}
 
 re: fclean all
 
