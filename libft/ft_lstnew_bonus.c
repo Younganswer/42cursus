@@ -6,12 +6,11 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/10 00:02:56 by younhwan          #+#    #+#             */
-/*   Updated: 2022/07/10 23:16:21 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/07/11 00:21:37 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include "libft_bonus.h"
 
 t_list	*ft_lstnew(void *content)
 {

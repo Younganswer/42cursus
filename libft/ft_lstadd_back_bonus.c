@@ -6,12 +6,11 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/10 00:11:47 by younhwan          #+#    #+#             */
-/*   Updated: 2022/07/10 23:15:48 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/07/11 00:21:41 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include "libft_bonus.h"
 
 void	ft_lstadd_back(t_list **lst, t_list *new)
 {
