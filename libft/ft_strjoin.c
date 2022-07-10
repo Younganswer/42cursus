@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_substr.c                                        :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 18:56:43 by younhwan          #+#    #+#             */
-/*   Updated: 2022/07/06 17:33:18 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/07/10 21:10:00 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,5 +31,6 @@ char	*ft_strjoin(const char *s1, const char *s2)
 		return (0);
 	ft_memcpy(res, s1, len_s1);
 	ft_memcpy(res + len_s1, s2, len_s2);
+	res[len_s1 + len_s2] = '\0';
 	return (res);
 }
