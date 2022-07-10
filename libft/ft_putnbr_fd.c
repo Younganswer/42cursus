@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 15:56:05 by younhwan          #+#    #+#             */
-/*   Updated: 2022/07/08 15:59:01 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/07/10 22:04:56 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	ft_putnbr_fd(int n, int fd)
 		ft_putchar_fd('-', fd);
 		num *= -1;
 	}
-	if (10 < num)
+	if (10 <= num)
 		ft_putnbr_fd(num / 10, fd);
 	ft_putchar_fd('0' + (num % 10), fd);
 	return ;

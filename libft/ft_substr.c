@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 18:00:00 by younhwan          #+#    #+#             */
-/*   Updated: 2022/07/10 21:11:01 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/07/10 21:27:00 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,15 @@
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
 	char	*res;
+	size_t	s_len;
 
 	if (!s)
 		return (0);
-	if ((unsigned int) ft_strlen(s) < start)
+	s_len = (size_t) ft_strlen(s);
+	if ((unsigned int) s_len < start)
 		return (ft_strdup(""));
+	if (s_len - start < len)
+		len = s_len - start;
 	res = (char *) malloc(sizeof(char) * (len + 1));
 	if (!res)
 		return (0);

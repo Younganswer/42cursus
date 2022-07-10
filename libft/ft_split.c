@@ -6,23 +6,23 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 18:16:25 by younhwan          #+#    #+#             */
-/*   Updated: 2022/07/09 01:53:04 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/07/10 22:03:28 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
 char			**ft_split(char const *s, char c);
+static char		*get_word(char const *s, char c, size_t *s_idx);
 static size_t	cnt_words(char const *s, char c);
 static size_t	cnt_word_len(char const *s, char c);
-static char		*ft_strndup(const char *str, size_t n);
+static char		**force_quit(char **res);
 
 char	**ft_split(char const *s, char c)
 {
 	char	**res;
 	size_t	words_len;
 	size_t	words_idx;
-	size_t	word_len;
 	size_t	s_idx;
 
 	words_len = cnt_words(s, c);
@@ -36,13 +36,25 @@ char	**ft_split(char const *s, char c)
 		while (s[s_idx] && s[s_idx] == c)
 			s_idx++;
 		if (s[s_idx])
-		{
-			word_len = cnt_word_len(&s[s_idx], c);
-			res[words_idx++] = ft_strndup(&s[s_idx], word_len);
-			s_idx += word_len;
-		}
+			res[words_idx++] = get_word(s, c, &s_idx);
+		if (!res[words_idx - 1])
+			return (force_quit(res));
 	}
 	res[words_idx] = 0;
+	return (res);
+}
+
+static char	*get_word(char const *s, char c, size_t *s_idx)
+{
+	char	*res;
+	size_t	word_len;
+
+	word_len = cnt_word_len(&s[*s_idx], c);
+	res = (char *) malloc(sizeof(char) * (word_len + 1));
+	if (!res)
+		return (0);
+	ft_strlcpy(res, &s[*s_idx], word_len + 1);
+	*s_idx += word_len;
 	return (res);
 }
 
@@ -57,7 +69,8 @@ static size_t	cnt_words(char const *s, char c)
 	{
 		while (s[i] && s[i] == c)
 			i++;
-		cnt++;
+		if (s[i])
+			cnt++;
 		while (s[i] && s[i] != c)
 			i++;
 	}
@@ -74,13 +87,13 @@ static size_t	cnt_word_len(char const *s, char c)
 	return (len);
 }
 
-static char	*ft_strndup(const char *str, size_t n)
+static char	**force_quit(char **res)
 {
-	char	*res;
+	size_t	i;
 
-	res = (char *) malloc(sizeof(char) * (n + 1));
-	if (!res)
-		return (0);
-	ft_strlcpy(res, str, n + 1);
-	return (res);
+	i = 0;
+	while (res[i])
+		free(res[i++]);
+	free(res);
+	return (0);
 }
