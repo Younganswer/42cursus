@@ -6,13 +6,13 @@
 #    By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/08 16:03:07 by younhwan          #+#    #+#              #
-#    Updated: 2022/07/11 14:51:03 by younhwan         ###   ########.fr        #
+#    Updated: 2022/07/11 17:10:46 by younhwan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libft.a
 
-CC = gcc
+CC = cc
 CFLAGS = -Wall -Wextra -Werror
 AR = ar rcs
 RM = rm -f
@@ -88,6 +88,8 @@ clean:
 fclean: clean
 	${RM} ${NAME}
 
-re: fclean all
+re:
+	make fclean
+	make all
 
 .PHONY: bonus all clean fclean re

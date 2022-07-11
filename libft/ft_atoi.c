@@ -6,20 +6,21 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 19:53:11 by younhwan          #+#    #+#             */
-/*   Updated: 2022/07/06 19:59:44 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/07/11 17:06:28 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include "limits.h"
 
 int			ft_atoi(const char *str);
 static int	ft_isspace(char c);
 
 int	ft_atoi(const char *str)
 {
-	long	nbr;
-	long	sign;
-	size_t	i;
+	unsigned long long	nbr;
+	int					sign;
+	size_t				i;
 
 	nbr = 0;
 	sign = 1;
@@ -34,14 +35,15 @@ int	ft_atoi(const char *str)
 	}
 	while (str[i] && ('0' <= str[i] && str[i] <= '9'))
 	{
-		nbr = 10 * nbr + sign * (str[i] - '0');
-		if (2147483647 < nbr)
+		nbr = 10 * nbr + (str[i] - '0');
+		// over, under flow 처리하기.
+		if (__LONG_LONG_MAX__ < nbr)
 			return (-1);
-		if (nbr < -2147483648)
+		if (sign == -1 && (unsigned long long) __LONG_LONG_MAX__ + 1 < nbr)
 			return (0);
 		i++;
 	}
-	return (nbr);
+	return ((int) nbr * sign);
 }
 
 static int	ft_isspace(char c)
