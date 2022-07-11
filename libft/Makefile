@@ -6,16 +6,16 @@
 #    By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/08 16:03:07 by younhwan          #+#    #+#              #
-#    Updated: 2022/07/11 13:32:39 by younhwan         ###   ########.fr        #
+#    Updated: 2022/07/11 14:21:20 by younhwan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
+
+NAME = libft.a
 
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 AR = ar rcs
 RM = rm -f
-
-NAME = libft.a
 
 MANDATORY_SOURCE =  ft_atoi.c \
 					ft_bzero.c \
@@ -65,14 +65,20 @@ BONUS_SOURCES = 	ft_lstadd_back.c \
 MANDATORY_OBJECTS = ${MANDATORY_SOURCE:%.c=%.o}
 BONUS_OBJECTS = ${BONUS_SOURCES:%.c=%.o}
 
+ifdef WITH_BONUS
+	OBJ_FILES = ${MANDATORY_OBJECTS} ${BONUS_OBJECTS}
+else
+	OBJ_FILES = ${MANDATORY_OBJECTS}
+endif
+
 .c.o:
 	${CC} ${CFLAGS} -c $< -o $@ -I .
 
-${NAME}: ${MANDATORY_OBJECTS}
+${NAME}: ${OBJ_FILES}
 	${AR} $@ $^
 
-bonus: all ${BONUS_OBJECTS}
-	${AR} ${NAME} ${BONUS_OBJECTS}
+bonus:
+	WITH_BONUS=1 make all
 
 all: ${NAME}
 
@@ -84,4 +90,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: bonus all clean fclean re ${NAME}
+.PHONY: bonus all clean fclean re
