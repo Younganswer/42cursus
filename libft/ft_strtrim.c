@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 18:10:22 by younhwan          #+#    #+#             */
-/*   Updated: 2022/07/09 13:44:46 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/07/11 13:46:08 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 		start++;
 	while (0 < end && ft_strchr(set, s1[end]))
 		end--;
-	if (end < start || (!end && ft_strchr(set, s1[end])))
+	if (!*s1 || end < start || (!end && ft_strchr(set, s1[end])))
 		return (ft_strdup(""));
 	res = (char *) malloc(sizeof(char) * (end - start + 2));
 	if (!res)

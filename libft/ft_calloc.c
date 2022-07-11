@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 20:12:28 by younhwan          #+#    #+#             */
-/*   Updated: 2022/07/06 20:15:44 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/07/11 13:41:15 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@ void	*ft_calloc(size_t count, size_t sz_)
 {
 	void	*res;
 
-	res = malloc(sizeof(sz_) * count);
+	res = malloc(sz_ * count);
 	if (!res)
 		return (0);
-	ft_bzero(res, (count * sz_));
+	ft_bzero(res, (sz_ * count));
 	return (res);
 }

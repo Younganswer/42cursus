@@ -6,13 +6,13 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 23:43:50 by younhwan          #+#    #+#             */
-/*   Updated: 2022/07/08 16:17:49 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/07/11 13:40:02 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_isalpha(char c)
+int	ft_isalpha(int c)
 {
 	if (('a' <= c && c <= 'z') || ('A' <= c && c <= 'Z'))
 		return (1);
