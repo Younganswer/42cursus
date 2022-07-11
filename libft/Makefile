@@ -6,7 +6,7 @@
 #    By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/08 16:03:07 by younhwan          #+#    #+#              #
-#    Updated: 2022/07/10 23:11:17 by younhwan         ###   ########.fr        #
+#    Updated: 2022/07/11 13:15:25 by younhwan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -71,8 +71,8 @@ BONUS_OBJECTS = ${BONUS_SOURCES:%.c=%.o}
 ${NAME}: ${MANDATORY_OBJECTS}
 	${AR} $@ $^
 
-bonus: ${BONUS_OBJECTS}
-	${AR} ${NAME} $^
+bonus: all ${BONUS_OBJECTS}
+	${AR} ${NAME} ${BONUS_OBJECTS}
 
 all: ${NAME}
 
