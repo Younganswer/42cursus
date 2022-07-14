@@ -6,32 +6,32 @@
 #    By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/08 16:03:07 by younhwan          #+#    #+#              #
-#    Updated: 2022/07/14 21:51:36 by younhwan         ###   ########.fr        #
+#    Updated: 2022/07/15 02:56:47 by younhwan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = ft_print.a
 
-LIBFT = libft
+LIBFT_DIR = libft
+LIBFT_NAME = libft.a
 
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
 AR = ar rcs
 RM = rm -f
 
-SRC_DIR = ./srcs
-OBJ_DIR = ./objs
 INC_DIR = ./includes
 
-MANDATORY_SOURCES =  
+MANDATORY_SRC_DIR = ./mandatory_srcs
+MANDATORY_OBJ_DIR = ./mandatory_objs
+BONUS_SRC_DIR = ./bonus_srcs
+BONUS_OBJ_DIR = ./bonus_objs
 
-BONUS_SOURCES = 
+MANDATORY_SOURCES = ${wildcard ${MANDATORY_SRC_DIR}/*.c}
+BONUS_SOURCES = ${wildcard ${bonus_srcs}/*.c}
 
-MANDATORY_SOURCES := ${MANDATORY_SOURCES:%.c=${SRC_DIR}/%.c}
-BONUS_SOURCES := ${BONUS_SOURCES:%.c=${SRC_DIR}/%.c}
-
-MANDATORY_OBJECTS = ${MANDATORY_SOURCES:${SRC_DIR}/%.c=${OBJ_DIR}/%.o}
-BONUS_OBJECTS = ${BONUS_SOURCES:${SRC_DIR}/%.c=${OBJ_DIR}/%.o}
+MANDATORY_OBJECTS = ${MANDATORY_SOURCES:${MANDATORY_SRC_DIR}/%.c=${MANDATORY_OBJ_DIR}/%.o}
+BONUS_OBJECTS = ${BONUS_SOURCES:${BONUS_SRC_DIR}/%.c=${BONUS_OBJ_DIR}/%.o}
 
 ifdef WITH_BONUS
 	OBJ_FILES = ${MANDATORY_OBJECTS} ${BONUS_OBJECTS}
@@ -39,27 +39,34 @@ else
 	OBJ_FILES = ${MANDATORY_OBJECTS}
 endif
 
-${OBJ_DIR}:
-	mkdir -p objs
+bonus: ${BONUS_OBJ_DIR}
+	WITH_BONUS=1 make all
 
-${OBJ_FILES}: ${OBJ_DIR}/%.o: ${SRC_DIR}/%.c | ${OBJ_DIR}
+${MANDATORY_OBJ_DIR}:
+	mkdir -p mandatory_objs
+
+${BONUS_OBJ_DIR}:
+	mkdir -p bonus_objs
+
+${OBJ_FILES}: ${OBJ_DIR}/%.o: ${SRC_DIR}/%.c | ${MANDATORY_OBJ_DIR}
 	${CC} ${CFLAGS} -c $< -o $@ -I ${INC_DIR}
 
 ${NAME}: ${OBJ_FILES}
+	make -C ${LIBFT_DIR}
+	cp ${LIBFT_DIR}/${LIBFT_NAME} .
+	mv ${LIBFT_NAME} ${NAME}
 	${AR} $@ $^
-
-bonus:
-	WITH_BONUS=1 make all
 
 all: ${NAME}
 
-#rmdir 고쳐야됨.
 clean:
-	${RM} ${MANDATORY_OBJECTS} ${BONUS_OBJECTS}
-	rmdir ${OBJ_DIR} 
+	rm -rf ${MANDATORY_OBJ_DIR}
+	rm -rf ${BONUS_OBJ_DIR}
+	make clean -C ${LIBFT_DIR} 
 
 fclean: clean
 	${RM} ${NAME}
+	${RM} ${LIBFT_DIR}/${LIBFT_NAME}
 
 re:
 	make fclean

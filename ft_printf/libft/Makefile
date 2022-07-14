@@ -6,7 +6,7 @@
 #    By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/08 16:03:07 by younhwan          #+#    #+#              #
-#    Updated: 2022/07/14 21:51:22 by younhwan         ###   ########.fr        #
+#    Updated: 2022/07/15 00:55:59 by younhwan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -78,23 +78,22 @@ else
 	OBJ_FILES = ${MANDATORY_OBJECTS}
 endif
 
-${OBJ_DIR}:
-	mkdir -p objs
-
-${OBJ_FILES}: ${OBJ_DIR}/%.o: ${SRC_DIR}/%.c | ${OBJ_DIR}
-	${CC} ${CFLAGS} -c $< -o $@ -I ${INC_DIR}
+bonus:
+	WITH_BONUS=1 make all
 
 ${NAME}: ${OBJ_FILES}
 	${AR} $@ $^
 
-bonus:
-	WITH_BONUS=1 make all
+${OBJ_FILES}: ${OBJ_DIR}/%.o: ${SRC_DIR}/%.c | ${OBJ_DIR}
+	${CC} ${CFLAGS} -c $< -o $@ -I ${INC_DIR}
+
+${OBJ_DIR}:
+	mkdir -p objs
 
 all: ${NAME}
 
-#rmdir 고쳐야됨.
 clean:
-	${RM} ${MANDATORY_OBJECTS} ${BONUS_OBJECTS}
+	rm -rf ${OBJ_DIR}
 
 fclean: clean
 	${RM} ${NAME}
