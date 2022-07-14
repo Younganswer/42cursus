@@ -6,7 +6,7 @@
 #    By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/08 16:03:07 by younhwan          #+#    #+#              #
-#    Updated: 2022/07/11 17:10:46 by younhwan         ###   ########.fr        #
+#    Updated: 2022/07/14 17:58:46 by younhwan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ CFLAGS = -Wall -Wextra -Werror
 AR = ar rcs
 RM = rm -f
 
-MANDATORY_SOURCE =  ft_atoi.c \
+MANDATORY_SOURCES =  ft_atoi.c \
 					ft_bzero.c \
 					ft_calloc.c \
 					ft_isalnum.c \
@@ -62,7 +62,7 @@ BONUS_SOURCES = 	ft_lstadd_back.c \
 					ft_lstnew.c \
 					ft_lstsize.c
 
-MANDATORY_OBJECTS = ${MANDATORY_SOURCE:%.c=%.o}
+MANDATORY_OBJECTS = ${MANDATORY_SOURCES:%.c=%.o}
 BONUS_OBJECTS = ${BONUS_SOURCES:%.c=%.o}
 
 ifdef WITH_BONUS
