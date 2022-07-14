@@ -6,7 +6,7 @@
 #    By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/08 16:03:07 by younhwan          #+#    #+#              #
-#    Updated: 2022/07/14 17:57:14 by younhwan         ###   ########.fr        #
+#    Updated: 2022/07/14 19:58:39 by younhwan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -81,7 +81,7 @@ endif
 ${OBJ_DIR}:
 	mkdir -p objs
 
-${OBJ_FILES}: ${OBJ_DIR}/%.o: ${SRC_DIR}/%.c
+${OBJ_FILES}: ${OBJ_DIR}/%.o: ${SRC_DIR}/%.c | ${OBJ_DIR}
 	${CC} ${CFLAGS} -c $< -o $@ -I ${INC_DIR}
 
 ${NAME}: ${OBJ_FILES}
@@ -90,11 +90,10 @@ ${NAME}: ${OBJ_FILES}
 bonus:
 	WITH_BONUS=1 make all
 
-all: ${NAME} | ${OBJ_DIR}
+all: ${NAME}
 
 clean:
 	${RM} ${MANDATORY_OBJECTS} ${BONUS_OBJECTS}
-	rmdir ${OBJ_DIR}
 
 fclean: clean
 	${RM} ${NAME}
