@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 18:16:25 by younhwan          #+#    #+#             */
-/*   Updated: 2022/07/14 12:36:33 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/07/14 15:32:10 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ char	**ft_split(char const *s, char c)
 		if (s[s_idx])
 			res[words_idx++] = get_word(s, c, &s_idx);
 		if (!res[words_idx - 1])
-			return (!force_quit(res));
+			return (force_quit(res));
 	}
 	res[words_idx] = 0;
 	return (res);
@@ -95,5 +95,5 @@ static char	**force_quit(char **res)
 	while (res[i])
 		free(res[i++]);
 	free(res);
-	return (1);
+	return (0);
 }
