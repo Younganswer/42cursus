@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 20:12:28 by younhwan          #+#    #+#             */
-/*   Updated: 2022/07/14 12:28:41 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/07/14 12:33:03 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,9 @@ void	*ft_calloc(size_t count, size_t sz_)
 
 static int	is_invalid_input(size_t count, size_t sz_)
 {
-	if (!count || !sz_)
-		return (1);
 	if (SIZE_MAX <= count || SIZE_MAX <= sz_)
 		return (1);
-	if (SIZE_MAX / sz_ <= count)
+	if (sz_ && SIZE_MAX / sz_ <= count)
 		return (1);
 	return (0);
 }
