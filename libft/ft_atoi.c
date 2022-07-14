@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 19:53:11 by younhwan          #+#    #+#             */
-/*   Updated: 2022/07/14 12:28:21 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/07/14 12:30:34 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	ft_atoi(const char *str)
 	while (str[i] && ('0' <= str[i] && str[i] <= '9'))
 	{
 		nbr = 10 * nbr + (str[i] - '0');
-		if (__LONG_LONG_MAX__ < nbr)
+		if ((unsigned long long) __LONG_LONG_MAX__ < nbr)
 			return (-1);
 		if (sign == -1 && (unsigned long long) __LONG_LONG_MAX__ + 1 < nbr)
 			return (0);
