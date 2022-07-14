@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 18:56:43 by younhwan          #+#    #+#             */
-/*   Updated: 2022/07/14 12:21:37 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/07/14 12:37:41 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,7 @@ char	*ft_strjoin(const char *s1, const char *s2)
 	res = (char *) malloc(sizeof(char) * (len_s1 + len_s2 + 1));
 	if (!res)
 		return (0);
-	ft_memcpy(res, s1, len_s1);
-	ft_memcpy(res + len_s1, s2, len_s2);
-	res[len_s1 + len_s2] = '\0';
+	ft_strlcpy(res, s1, len_s1 + 1);
+	ft_strlcat(res + len_s1, s2, len_s2 + 1);
 	return (res);
 }
