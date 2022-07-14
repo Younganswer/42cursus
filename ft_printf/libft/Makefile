@@ -6,7 +6,7 @@
 #    By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/08 16:03:07 by younhwan          #+#    #+#              #
-#    Updated: 2022/07/14 19:58:39 by younhwan         ###   ########.fr        #
+#    Updated: 2022/07/14 21:51:22 by younhwan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -92,6 +92,7 @@ bonus:
 
 all: ${NAME}
 
+#rmdir 고쳐야됨.
 clean:
 	${RM} ${MANDATORY_OBJECTS} ${BONUS_OBJECTS}
 
