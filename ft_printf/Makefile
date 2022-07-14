@@ -6,7 +6,7 @@
 #    By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/08 16:03:07 by younhwan          #+#    #+#              #
-#    Updated: 2022/07/15 02:56:47 by younhwan         ###   ########.fr        #
+#    Updated: 2022/07/15 03:03:38 by younhwan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,7 +48,7 @@ ${MANDATORY_OBJ_DIR}:
 ${BONUS_OBJ_DIR}:
 	mkdir -p bonus_objs
 
-${OBJ_FILES}: ${OBJ_DIR}/%.o: ${SRC_DIR}/%.c | ${MANDATORY_OBJ_DIR}
+${OBJ_FILES}: ${MANDATORY_OBJ_DIR}/%.o: ${MANDATORY_SRC_DIR}/%.c | ${MANDATORY_OBJ_DIR}
 	${CC} ${CFLAGS} -c $< -o $@ -I ${INC_DIR}
 
 ${NAME}: ${OBJ_FILES}
