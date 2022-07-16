@@ -6,7 +6,7 @@
 #    By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/08 16:03:07 by younhwan          #+#    #+#              #
-#    Updated: 2022/07/15 03:03:38 by younhwan         ###   ########.fr        #
+#    Updated: 2022/07/17 03:39:24 by younhwan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,19 +27,29 @@ MANDATORY_OBJ_DIR = ./mandatory_objs
 BONUS_SRC_DIR = ./bonus_srcs
 BONUS_OBJ_DIR = ./bonus_objs
 
-MANDATORY_SOURCES = ${wildcard ${MANDATORY_SRC_DIR}/*.c}
-BONUS_SOURCES = ${wildcard ${bonus_srcs}/*.c}
+MANDATORY_SOURCES = ft_print_char.c \
+					ft_print_hex.c \
+					ft_print_nbr.c \
+					ft_print_ptr.c \
+					ft_print_unsigned_int.c \
+					ft_printf.c
+BONUS_SOURCES = dummy.c
+
+MANDATORY_SOURCES := ${addprefix ${MANDATORY_SRC_DIR}/, ${MANDATORY_SOURCES}}
+BONUS_SOURCES := ${addprefix ${BONUS_SRC_DIR}/, ${BONUS_SOURCES}}
 
 MANDATORY_OBJECTS = ${MANDATORY_SOURCES:${MANDATORY_SRC_DIR}/%.c=${MANDATORY_OBJ_DIR}/%.o}
 BONUS_OBJECTS = ${BONUS_SOURCES:${BONUS_SRC_DIR}/%.c=${BONUS_OBJ_DIR}/%.o}
 
 ifdef WITH_BONUS
 	OBJ_FILES = ${MANDATORY_OBJECTS} ${BONUS_OBJECTS}
+	OBJ_DIRS = ${MANDATORY_OBJ_DIR} ${BONUS_OBJ_DIR}
 else
 	OBJ_FILES = ${MANDATORY_OBJECTS}
+	OBJ_DIRS = ${MANDATORY_OBJ_DIR}
 endif
 
-bonus: ${BONUS_OBJ_DIR}
+bonus:
 	WITH_BONUS=1 make all
 
 ${MANDATORY_OBJ_DIR}:
@@ -48,8 +58,8 @@ ${MANDATORY_OBJ_DIR}:
 ${BONUS_OBJ_DIR}:
 	mkdir -p bonus_objs
 
-${OBJ_FILES}: ${MANDATORY_OBJ_DIR}/%.o: ${MANDATORY_SRC_DIR}/%.c | ${MANDATORY_OBJ_DIR}
-	${CC} ${CFLAGS} -c $< -o $@ -I ${INC_DIR}
+${OBJ_FILES}: %.o: ${addsuffix .c,${subst obj,src,${%}}} | ${OBJ_DIRS}
+	${CC} ${CFLAGS} -c ${subst obj,src,${dir $@}}${patsubst %.o,%.c,${notdir $@}} -o $@ -I ${INC_DIR}
 
 ${NAME}: ${OBJ_FILES}
 	make -C ${LIBFT_DIR}
