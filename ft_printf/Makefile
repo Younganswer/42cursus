@@ -6,7 +6,7 @@
 #    By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/08 16:03:07 by younhwan          #+#    #+#              #
-#    Updated: 2022/07/17 03:39:24 by younhwan         ###   ########.fr        #
+#    Updated: 2022/07/17 03:43:08 by younhwan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -59,7 +59,7 @@ ${BONUS_OBJ_DIR}:
 	mkdir -p bonus_objs
 
 ${OBJ_FILES}: %.o: ${addsuffix .c,${subst obj,src,${%}}} | ${OBJ_DIRS}
-	${CC} ${CFLAGS} -c ${subst obj,src,${dir $@}}${patsubst %.o,%.c,${notdir $@}} -o $@ -I ${INC_DIR}
+	${CC} ${CFLAGS} -c ${patsubst %.o,%.c,${subst obj,src,$@}} -o $@ -I ${INC_DIR}
 
 ${NAME}: ${OBJ_FILES}
 	make -C ${LIBFT_DIR}
