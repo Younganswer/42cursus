@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/15 01:13:14 by younhwan          #+#    #+#             */
-/*   Updated: 2022/07/15 02:44:36 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/07/18 15:08:50 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ static int	ft_formats(va_list args, const char format)
 		printed += ft_print_nbr(va_arg(args, int));
 	else if (format == 'u')
 		printed += ft_print_unsigned_int(va_arg(args, unsigned int));
-	else if (format =='x' || format == 'X')
+	else if (format == 'x' || format == 'X')
 		printed += ft_print_hex(va_arg(args, unsigned int), format);
 	else if (format == '%')
 		printed += ft_print_char('%');

@@ -6,11 +6,11 @@
 #    By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/08 16:03:07 by younhwan          #+#    #+#              #
-#    Updated: 2022/07/17 03:43:08 by younhwan         ###   ########.fr        #
+#    Updated: 2022/07/18 14:57:38 by younhwan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = ft_print.a
+NAME = libftprintf.a
 
 LIBFT_DIR = libft
 LIBFT_NAME = libft.a
