@@ -6,14 +6,14 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/15 01:13:14 by younhwan          #+#    #+#             */
-/*   Updated: 2022/07/18 15:08:50 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/07/18 22:49:14 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
 int			ft_printf(const char *format, ...);
-static int	ft_formats(va_list args, const char format);
+static int	ft_formats(va_list *args, const char format);
 
 int	ft_printf(const char *str, ...)
 {
@@ -27,7 +27,7 @@ int	ft_printf(const char *str, ...)
 	while (str[i])
 	{
 		if (str[i] == '%')
-			printed += ft_formats(args, str[++i]);
+			printed += ft_formats(&args, str[++i]);
 		else
 			printed += ft_print_char(str[i]);
 		i++;
@@ -36,23 +36,23 @@ int	ft_printf(const char *str, ...)
 	return (printed);
 }
 
-static int	ft_formats(va_list args, const char format)
+static int	ft_formats(va_list *args, const char format)
 {
 	int	printed;
 
 	printed = 0;
 	if (format == 'c')
-		printed += ft_print_char(va_arg(args, int));
+		printed += ft_print_char(va_arg(*args, int));
 	else if (format == 's')
-		printed += ft_print_str(va_arg(args, char *));
+		printed += ft_print_str(va_arg(*args, char *));
 	else if (format == 'p')
-		printed += ft_print_ptr(va_arg(args, unsigned long long));
+		printed += ft_print_ptr(va_arg(*args, unsigned long long));
 	else if (format == 'd' || format == 'i')
-		printed += ft_print_nbr(va_arg(args, int));
+		printed += ft_print_nbr(va_arg(*args, int));
 	else if (format == 'u')
-		printed += ft_print_unsigned_int(va_arg(args, unsigned int));
+		printed += ft_print_unsigned_int(va_arg(*args, unsigned int));
 	else if (format == 'x' || format == 'X')
-		printed += ft_print_hex(va_arg(args, unsigned int), format);
+		printed += ft_print_hex(va_arg(*args, unsigned int), format);
 	else if (format == '%')
 		printed += ft_print_char('%');
 	return (printed);

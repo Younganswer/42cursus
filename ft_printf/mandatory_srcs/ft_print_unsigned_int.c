@@ -6,12 +6,11 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/15 02:24:08 by younhwan          #+#    #+#             */
-/*   Updated: 2022/07/18 15:11:51 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/07/18 22:51:28 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
-#include "../libft/includes/libft.h"
 
 int				ft_print_unsigned_int(unsigned int nbr);
 static size_t	ft_num_len(unsigned int nbr);
@@ -53,6 +52,8 @@ static char	*ft_uitoa(unsigned int nbr)
 	if (!ret)
 		return (0);
 	ret[len--] = '\0';
+	if (!nbr)
+		ret[len] = '0';
 	while (nbr)
 	{
 		ret[len--] = '0' + (nbr % 10);

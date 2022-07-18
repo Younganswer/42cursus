@@ -6,12 +6,11 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/15 02:06:55 by younhwan          #+#    #+#             */
-/*   Updated: 2022/07/15 02:22:06 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/07/18 15:46:31 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
-#include "../libft/includes/libft.h"
 
 int			ft_print_ptr(unsigned long long ptr);
 static int	ft_put_ptr(uintptr_t num);

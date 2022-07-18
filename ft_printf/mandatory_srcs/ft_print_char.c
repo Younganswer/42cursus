@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/15 01:50:54 by younhwan          #+#    #+#             */
-/*   Updated: 2022/07/18 15:08:13 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/07/18 22:49:01 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,6 @@
 
 int	ft_print_char(int c)
 {
-	ft_putchar_fd((unsigned char) c, 1);
+	ft_putchar_fd(c, 1);
 	return (1);
 }

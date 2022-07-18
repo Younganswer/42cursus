@@ -6,12 +6,11 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/15 02:36:05 by younhwan          #+#    #+#             */
-/*   Updated: 2022/07/15 02:42:06 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/07/18 15:46:13 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
-#include "../libft/includes/libft.h"
 
 int			ft_print_hex(unsigned int nbr, const char format);
 static int	ft_put_hex(unsigned int nbr, const char format);

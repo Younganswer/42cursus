@@ -6,7 +6,7 @@
 #    By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/08 16:03:07 by younhwan          #+#    #+#              #
-#    Updated: 2022/07/18 14:57:38 by younhwan         ###   ########.fr        #
+#    Updated: 2022/07/18 16:27:02 by younhwan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,6 +31,7 @@ MANDATORY_SOURCES = ft_print_char.c \
 					ft_print_hex.c \
 					ft_print_nbr.c \
 					ft_print_ptr.c \
+					ft_print_str.c \
 					ft_print_unsigned_int.c \
 					ft_printf.c
 BONUS_SOURCES = dummy.c
@@ -49,8 +50,10 @@ else
 	OBJ_DIRS = ${MANDATORY_OBJ_DIR}
 endif
 
-bonus:
-	WITH_BONUS=1 make all
+#bonus:
+#	WITH_BONUS=1 make all
+
+all: ${NAME}
 
 ${MANDATORY_OBJ_DIR}:
 	mkdir -p mandatory_objs
@@ -66,8 +69,6 @@ ${NAME}: ${OBJ_FILES}
 	cp ${LIBFT_DIR}/${LIBFT_NAME} .
 	mv ${LIBFT_NAME} ${NAME}
 	${AR} $@ $^
-
-all: ${NAME}
 
 clean:
 	rm -rf ${MANDATORY_OBJ_DIR}
