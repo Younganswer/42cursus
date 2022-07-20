@@ -6,7 +6,7 @@
 #    By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/08 16:03:07 by younhwan          #+#    #+#              #
-#    Updated: 2022/07/18 16:27:02 by younhwan         ###   ########.fr        #
+#    Updated: 2022/07/20 22:25:11 by younhwan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,7 +34,7 @@ MANDATORY_SOURCES = ft_print_char.c \
 					ft_print_str.c \
 					ft_print_unsigned_int.c \
 					ft_printf.c
-BONUS_SOURCES = dummy.c
+BONUS_SOURCES = 
 
 MANDATORY_SOURCES := ${addprefix ${MANDATORY_SRC_DIR}/, ${MANDATORY_SOURCES}}
 BONUS_SOURCES := ${addprefix ${BONUS_SRC_DIR}/, ${BONUS_SOURCES}}
