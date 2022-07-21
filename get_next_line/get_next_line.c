@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 20:34:17 by younhwan          #+#    #+#             */
-/*   Updated: 2022/07/22 00:57:28 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/07/22 00:58:56 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	ft_read_passed(int fd, char **passed)
 
 	buff = (char *) malloc(sizeof(char) * (BUFFER_SIZE + 1));
 	if (!buff)
-		return (0);
+		return ;
 	readBytes = 1;
 	while (!ft_strchr(*passed, '\n') && readBytes)
 	{
@@ -47,7 +47,7 @@ void	ft_read_passed(int fd, char **passed)
 		if (readBytes == -1)
 		{
 			free(buff);
-			return (0);
+			return ;
 		}
 		buff[readBytes] = '\0';
 		ft_strlcat(passed, buff);
@@ -75,7 +75,6 @@ void	ft_new_passed(char **passed)
 	char	*tmp;
 	size_t	passed_len;
 	size_t	i;
-	size_t	j;
 
 	passed_len = ft_strlen(*passed);
 	tmp = ft_strndup(*passed, passed_len);
@@ -91,7 +90,7 @@ void	ft_new_passed(char **passed)
 	*passed = (char *) malloc(sizeof(char) * (passed_len - i++ + 1));
 	if (!*passed)
 		return ;
-	ft_strncpy(passed, tmp + i, passed_len - i);
+	ft_strncpy(*passed, tmp + i, passed_len - i);
 	free(tmp);
 	return ;
 }
