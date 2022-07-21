@@ -6,7 +6,7 @@
 #    By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/08 16:03:07 by younhwan          #+#    #+#              #
-#    Updated: 2022/07/20 22:25:11 by younhwan         ###   ########.fr        #
+#    Updated: 2022/07/21 17:12:50 by younhwan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -83,4 +83,4 @@ re:
 	make fclean
 	make all
 
-.PHONY: bonus all clean fclean re
+.PHONY: all clean fclean re #bonus
