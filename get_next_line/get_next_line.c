@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 20:34:17 by younhwan          #+#    #+#             */
-/*   Updated: 2022/07/22 01:18:13 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/07/22 01:19:02 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ char	*get_next_line(int fd)
 	return (line);
 }
 
-void	ft_read_saved(int fd, char **saved)
+void	ft_read_file(int fd, char **saved)
 {
 	char	*buff;
 	int		read_bytes;
@@ -75,7 +75,7 @@ char	*ft_get_line(const char *saved)
 	return (ft_strndup(saved, len));
 }
 
-void	ft_new_saved(char **saved)
+void	ft_remove_line_from_saved(char **saved)
 {
 	char	*tmp;
 	size_t	saved_len;
