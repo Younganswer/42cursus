@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 23:58:38 by younhwan          #+#    #+#             */
-/*   Updated: 2022/07/22 00:55:16 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/07/22 01:17:50 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ char	*ft_strndup(const char *src, size_t n)
 	return (ret);
 }
 
-void 	ft_strncpy(char *dest, const char *src, size_t n)
+void	ft_strncpy(char *dest, const char *src, size_t n)
 {
 	size_t	i;
 

@@ -22,9 +22,9 @@
 # endif
 
 char	*get_next_line(int fd);
-void	ft_read_passed(int fd, char **passed);
-char	*ft_get_line(const char *passed);
-void	ft_new_passed(char **passed);
+void	ft_read_file(int fd, char **saved);
+char	*ft_get_line(const char *saved);
+void	ft_remove_line_from_saved(char **saved);
 char	*ft_strchr(const char *str, int c);
 void	ft_strlcat(char **dest, const char *src);
 char	*ft_strndup(const char *src, size_t n);
