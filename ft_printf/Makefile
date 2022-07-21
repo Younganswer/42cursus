@@ -6,7 +6,7 @@
 #    By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/08 16:03:07 by younhwan          #+#    #+#              #
-#    Updated: 2022/07/21 17:12:50 by younhwan         ###   ########.fr        #
+#    Updated: 2022/07/21 17:22:04 by younhwan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -72,7 +72,7 @@ ${NAME}: ${OBJ_FILES}
 
 clean:
 	rm -rf ${MANDATORY_OBJ_DIR}
-	rm -rf ${BONUS_OBJ_DIR}
+#	rm -rf ${BONUS_OBJ_DIR}
 	make clean -C ${LIBFT_DIR} 
 
 fclean: clean
