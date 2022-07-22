@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 20:34:17 by younhwan          #+#    #+#             */
-/*   Updated: 2022/07/22 15:26:26 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/07/22 19:50:31 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,10 +89,11 @@ void	ft_remove_line_from_saved(char **saved)
 	free(*saved);
 	if (!tmp[i])
 	{
+		free(tmp);
 		*saved = 0;
 		return ;
 	}
-	*saved = (char *) malloc(sizeof(char) * (saved_len - i + 1));
+	*saved = (char *) malloc(sizeof(char) * (saved_len - ++i + 1));
 	if (!*saved)
 		return ;
 	ft_strncpy(*saved, tmp + i, saved_len - i);

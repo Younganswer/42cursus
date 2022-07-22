@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 23:58:38 by younhwan          #+#    #+#             */
-/*   Updated: 2022/07/22 18:57:38 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/07/22 19:27:04 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,8 @@ void	ft_strlcat(char **dest, const char *src)
 	tmp_len = ft_strlen(*dest);
 	src_len = ft_strlen(src);
 	tmp = ft_strndup(*dest, tmp_len);
+	if (!tmp)
+		return ;
 	free(*dest);
 	*dest = (char *) malloc(sizeof(char) * (tmp_len + src_len + 1));
 	if (!*dest)
