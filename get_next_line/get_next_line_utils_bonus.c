@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/26 14:10:04 by younhwan          #+#    #+#             */
-/*   Updated: 2022/07/27 17:44:58 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/07/27 18:12:22 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,10 @@ t_node	*ft_insert_new_fd_to_fd_list(int fd, t_list *fd_list)
 	}
 	list_tmp->head = ft_init_node(fd);
 	if (!list_tmp->head)
+	{
+		free(list_tmp);
 		return (0);
+	}
 	return (list_tmp->head);
 }
 
