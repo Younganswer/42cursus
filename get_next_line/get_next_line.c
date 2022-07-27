@@ -5,98 +5,146 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/21 20:34:17 by younhwan          #+#    #+#             */
-/*   Updated: 2022/07/26 15:35:35 by younhwan         ###   ########.fr       */
+/*   Created: 2022/07/26 13:54:57 by younhwan          #+#    #+#             */
+/*   Updated: 2022/07/27 18:10:08 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
 char	*get_next_line(int fd);
-void	ft_read_file(int fd, char **saved);
-char	*ft_get_line(const char *saved);
-void	ft_remove_line_from_saved(char **saved);
+int		ft_read_fd(int fd, t_list *fd_list);
+char	*ft_get_line_from_fd_list(int fd, t_list *fd_list);
+void	ft_remove_line_from_fd_list(int fd, t_list *fd_list);
+char	*ft_destroy_fd_list(t_list *fd_list);
 
 char	*get_next_line(int fd)
 {
-	char		*line;
-	static char	*saved;
+	char			*line;
+	static t_list	*fd_list;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (0);
-	ft_read_file(fd, &saved);
-	if (!saved)
-		return (0);
-	line = ft_get_line(saved);
-	ft_remove_line_from_saved(&saved);
+	if (!fd_list)
+	{
+		fd_list = (t_list *) malloc(sizeof(t_list));
+		if (!fd_list)
+			return (0);
+		fd_list->head = 0;
+		fd_list->next = 0;
+	}
+	if (!ft_read_fd(fd, fd_list))
+		return (ft_destroy_fd_list(fd_list));
+	line = ft_get_line_from_fd_list(fd, fd_list);
+	ft_remove_line_from_fd_list(fd, fd_list);
+	if (!fd_list->head && !fd_list->next)
+	{
+		free(fd_list);
+		fd_list = 0;
+	}
 	return (line);
 }
 
-void	ft_read_file(int fd, char **saved)
+int	ft_read_fd(int fd, t_list *fd_list)
 {
-	char	*buff;
+	t_node	*tmp;
 	int		read_bytes;
 
-	buff = (char *) malloc(sizeof(char) * (BUFFER_SIZE + 1));
-	if (!buff)
-	{
-		*saved = 0;
-		return ;
-	}
+	tmp = ft_get_fd_last_node_from_fd_list(fd, fd_list);
 	read_bytes = 1;
-	while (!ft_strchr(*saved, '\n') && read_bytes)
+	while (read_bytes && (!tmp || (tmp && !ft_strchr(tmp->buff, '\n')
+				&& tmp->buff_sz == BUFFER_SIZE)))
 	{
-		read_bytes = read(fd, buff, BUFFER_SIZE);
-		if (read_bytes == -1)
+		if (tmp)
 		{
-			free(buff);
-			return ;
+			tmp->next = ft_init_node(fd);
+			tmp = tmp->next;
 		}
-		buff[read_bytes] = '\0';
-		ft_strlcat(saved, buff);
-		if (!*saved)
-			return ;
+		else
+			tmp = ft_insert_new_fd_to_fd_list(fd, fd_list);
+		if (!tmp)
+			return (0);
+		read_bytes = read(fd, tmp->buff, BUFFER_SIZE);
+		if (read_bytes == -1)
+			return (0);
+		tmp->buff[read_bytes] = '\0';
+		tmp->buff_sz = read_bytes;
 	}
-	free(buff);
-	return ;
+	return (1);
 }
 
-char	*ft_get_line(const char *saved)
+char	*ft_get_line_from_fd_list(int fd, t_list *fd_list)
 {
-	size_t	len;
+	char	*ret;
+	t_node	*tmp;
+	size_t	start;
 
-	len = 0;
-	if (!saved[len])
+	while (fd_list && fd_list->head->fd != fd)
+		fd_list = fd_list->next;
+	if (!fd_list)
 		return (0);
-	while (saved[len] && saved[len] != '\n')
-		len++;
-	if (saved[len] == '\n')
-		return (ft_strndup(saved, len + 1));
-	return (ft_strndup(saved, len));
+	tmp = fd_list->head;
+	start = tmp->cur_idx;
+	while (tmp->buff[tmp->cur_idx] && tmp->buff[tmp->cur_idx] != '\n')
+		tmp->cur_idx++;
+	if (tmp->buff[tmp->cur_idx] == '\n')
+		tmp->cur_idx++;
+	ret = ft_strndup(&tmp->buff[start], tmp->cur_idx - start);
+	if (!ret)
+		return (0);
+	return (ret);
 }
 
-void	ft_remove_line_from_saved(char **saved)
+void	ft_remove_line_from_fd_list(int fd, t_list *fd_list)
 {
-	char	*tmp;
-	size_t	saved_len;
-	size_t	i;
+	t_list	*list_prev;
+	t_list	*list_cur;
+	t_node	*to_del;
 
-	saved_len = ft_strlen(*saved);
-	tmp = ft_strndup(*saved, saved_len);
-	i = 0;
-	while (tmp[i] && tmp[i] != '\n')
-		i++;
-	free(*saved);
-	if (!tmp[i])
+	list_prev = fd_list;
+	list_cur = fd_list;
+	while (list_cur && list_cur->head->fd != fd)
 	{
-		free(tmp);
-		*saved = 0;
-		return ;
+		list_prev = list_cur;
+		list_cur = list_cur->next;
 	}
-	*saved = (char *) malloc(sizeof(char) * (saved_len - ++i + 1));
-	if (!*saved)
+	if (!list_cur || list_cur->head->buff[list_cur->head->cur_idx])
 		return ;
-	ft_strncpy(*saved, tmp + i, saved_len - i);
-	free(tmp);
+	to_del = list_cur->head;
+	list_cur->head = list_cur->head->next;
+	free(to_del->buff);
+	free(to_del);
+	if (list_cur != fd_list && !list_cur->head)
+	{
+		list_prev->next = list_cur->next;
+		free(list_cur);
+	}
 	return ;
+}
+
+char	*ft_destroy_fd_list(t_list *fd_list)
+{
+	t_list	*list_tmp;
+	t_list	*list_to_del;
+	t_node	*node_tmp;
+	t_node	*node_to_del;
+
+	if (!fd_list)
+		return (0);
+	list_tmp = fd_list;
+	while (list_tmp)
+	{
+		list_to_del = list_tmp;
+		list_tmp = list_tmp->next;
+		node_tmp = list_to_del->head;
+		while (node_tmp)
+		{
+			node_to_del = node_tmp;
+			node_tmp = node_tmp->next;
+			free(node_to_del->buff);
+			free(node_to_del);
+		}
+		free(list_to_del);
+	}
+	return (0);
 }

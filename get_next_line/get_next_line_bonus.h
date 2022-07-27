@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/26 13:46:41 by younhwan          #+#    #+#             */
-/*   Updated: 2022/07/26 15:35:33 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/07/27 17:41:17 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ typedef struct s_node
 	int				fd;
 	char			*buff;
 	size_t			buff_sz;
+	size_t			cur_idx;
 	struct s_node	*next;
 }	t_node;
 
@@ -40,10 +41,13 @@ char	*get_next_line(int fd);
 int		ft_read_fd(int fd, t_list *fd_list);
 char	*ft_get_line_from_fd_list(int fd, t_list *fd_list);
 void	ft_remove_line_from_fd_list(int fd, t_list *fd_list);
+char	*ft_destroy_fd_list(t_list *fd_list);
 
 // get_next_line_utils_bonus.c
-t_node	*ft_get_fd_node_from_fd_list(int fd, t_list *fd_list);
-int		ft_destroy_fd_list(t_list *fd_list);
+t_node	*ft_get_fd_last_node_from_fd_list(int fd, t_list *fd_list);
 t_node	*ft_insert_new_fd_to_fd_list(int fd, t_list *fd_list);
+t_node	*ft_init_node(int fd);
+char	*ft_strndup(const char *str, size_t n);
+char	*ft_strchr(const char *str, int c);
 
 #endif

@@ -6,67 +6,36 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/26 14:10:04 by younhwan          #+#    #+#             */
-/*   Updated: 2022/07/26 15:40:59 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/07/27 17:44:58 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line_bonus.h"
 
-t_node	*ft_get_fd_node_from_fd_list(int fd, t_list *fd_list);
-int		ft_destroy_fd_list(t_list *fd_list);
+t_node	*ft_get_fd_last_node_from_fd_list(int fd, t_list *fd_list);
 t_node	*ft_insert_new_fd_to_fd_list(int fd, t_list *fd_list);
+t_node	*ft_init_node(int fd);
+char	*ft_strndup(const char *str, size_t n);
+char	*ft_strchr(const char *str, int c);
 
-t_node	*ft_get_fd_node_from_fd_list(int fd, t_list *fd_list)
+t_node	*ft_get_fd_last_node_from_fd_list(int fd, t_list *fd_list)
 {
 	t_list	*list_tmp;
 	t_node	*node_tmp;
 
 	list_tmp = fd_list;
-	while (list_tmp)
+	while (list_tmp && list_tmp->head)
 	{
 		if (list_tmp->head->fd == fd)
 		{
 			node_tmp = list_tmp->head;
 			while (node_tmp->next)
 				node_tmp = node_tmp->next;
-			node_tmp->next = (t_node *) malloc(sizeof(t_node));
-			if (!node_tmp->next)
-				return (0);
-			node_tmp = node_tmp->next;
-			node_tmp->fd = fd;
-			node_tmp->next = 0;
 			return (node_tmp);
 		}
 		list_tmp = list_tmp->next;
 	}
 	return (0);
-}
-
-int	ft_destroy_fd_list(t_list *fd_list)
-{
-	t_list	*list_tmp;
-	t_list	*list_to_del;
-	t_node	*node_tmp;
-	t_node	*node_to_del;
-
-	if (!fd_list)
-		return (1);
-	list_tmp = fd_list;
-	while (list_tmp)
-	{
-		list_to_del = list_tmp;
-		list_tmp = list_tmp->next;
-		node_tmp = list_to_del->head;
-		while (node_tmp)
-		{
-			node_to_del = node_tmp;
-			node_tmp = node_tmp->next;
-			free(node_to_del->buff);
-			free(node_to_del);
-		}
-		free(list_to_del);
-	}
-	return (1);
 }
 
 t_node	*ft_insert_new_fd_to_fd_list(int fd, t_list *fd_list)
@@ -83,11 +52,64 @@ t_node	*ft_insert_new_fd_to_fd_list(int fd, t_list *fd_list)
 			return (0);
 		list_tmp = list_tmp->next;
 	}
-	list_tmp->head = (t_node *) malloc(sizeof(t_node));
+	list_tmp->head = ft_init_node(fd);
 	if (!list_tmp->head)
 		return (0);
-	list_tmp->head->fd = fd;
-	list_tmp->head->next = 0;
-	list_tmp->next = 0;
 	return (list_tmp->head);
+}
+
+t_node	*ft_init_node(int fd)
+{
+	t_node	*ret;
+
+	ret = (t_node *) malloc(sizeof(t_node));
+	if (!ret)
+		return (0);
+	ret->buff = (char *) malloc(sizeof(char) * (BUFFER_SIZE + 1));
+	if (!ret->buff)
+	{
+		free(ret);
+		return (0);
+	}
+	ret->fd = fd;
+	ret->buff_sz = BUFFER_SIZE;
+	ret->cur_idx = 0;
+	ret->next = 0;
+	return (ret);
+}
+
+char	*ft_strndup(const char *str, size_t n)
+{
+	char	*ret;
+	size_t	i;
+
+	ret = (char *) malloc(sizeof(char) * (n + 1));
+	if (!ret)
+		return (0);
+	i = 0;
+	while (i < n)
+	{
+		ret[i] = str[i];
+		i++;
+	}
+	ret[i] = '\0';
+	return (ret);
+}
+
+char	*ft_strchr(const char *str, int c)
+{
+	size_t	i;
+
+	if (!str)
+		return (0);
+	i = 0;
+	while (str[i])
+	{
+		if (str[i] == (char) c)
+			return ((char *) &str[i]);
+		i++;
+	}
+	if (str[i] == (char) c)
+		return ((char *) &str[i]);
+	return (0);
 }

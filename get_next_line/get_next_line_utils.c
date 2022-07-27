@@ -5,93 +5,111 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/21 23:58:38 by younhwan          #+#    #+#             */
-/*   Updated: 2022/07/22 19:27:04 by younhwan         ###   ########.fr       */
+/*   Created: 2022/07/26 14:10:04 by younhwan          #+#    #+#             */
+/*   Updated: 2022/07/27 18:10:02 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
+t_node	*ft_get_fd_last_node_from_fd_list(int fd, t_list *fd_list);
+t_node	*ft_insert_new_fd_to_fd_list(int fd, t_list *fd_list);
+t_node	*ft_init_node(int fd);
+char	*ft_strndup(const char *str, size_t n);
 char	*ft_strchr(const char *str, int c);
-void	ft_strlcat(char **dest, const char *src);
-char	*ft_strndup(const char *src, size_t n);
-void	ft_strncpy(char *dest, const char *src, size_t n);
-size_t	ft_strlen(const char *str);
+
+t_node	*ft_get_fd_last_node_from_fd_list(int fd, t_list *fd_list)
+{
+	t_list	*list_tmp;
+	t_node	*node_tmp;
+
+	list_tmp = fd_list;
+	while (list_tmp && list_tmp->head)
+	{
+		if (list_tmp->head->fd == fd)
+		{
+			node_tmp = list_tmp->head;
+			while (node_tmp->next)
+				node_tmp = node_tmp->next;
+			return (node_tmp);
+		}
+		list_tmp = list_tmp->next;
+	}
+	return (0);
+}
+
+t_node	*ft_insert_new_fd_to_fd_list(int fd, t_list *fd_list)
+{
+	t_list	*list_tmp;
+
+	list_tmp = fd_list;
+	while (list_tmp->next)
+		list_tmp = list_tmp->next;
+	if (list_tmp->head)
+	{
+		list_tmp->next = (t_list *) malloc(sizeof(t_list));
+		if (!list_tmp->next)
+			return (0);
+		list_tmp = list_tmp->next;
+	}
+	list_tmp->head = ft_init_node(fd);
+	if (!list_tmp->head)
+		return (0);
+	return (list_tmp->head);
+}
+
+t_node	*ft_init_node(int fd)
+{
+	t_node	*ret;
+
+	ret = (t_node *) malloc(sizeof(t_node));
+	if (!ret)
+		return (0);
+	ret->buff = (char *) malloc(sizeof(char) * (BUFFER_SIZE + 1));
+	if (!ret->buff)
+	{
+		free(ret);
+		return (0);
+	}
+	ret->fd = fd;
+	ret->buff_sz = BUFFER_SIZE;
+	ret->cur_idx = 0;
+	ret->next = 0;
+	return (ret);
+}
+
+char	*ft_strndup(const char *str, size_t n)
+{
+	char	*ret;
+	size_t	i;
+
+	ret = (char *) malloc(sizeof(char) * (n + 1));
+	if (!ret)
+		return (0);
+	i = 0;
+	while (i < n)
+	{
+		ret[i] = str[i];
+		i++;
+	}
+	ret[i] = '\0';
+	return (ret);
+}
 
 char	*ft_strchr(const char *str, int c)
 {
 	size_t	i;
-	size_t	str_len;
 
 	if (!str)
 		return (0);
 	i = 0;
-	str_len = ft_strlen(str);
-	while (i <= str_len)
+	while (str[i])
 	{
 		if (str[i] == (char) c)
 			return ((char *) &str[i]);
 		i++;
 	}
+	if (str[i] == (char) c)
+		return ((char *) &str[i]);
 	return (0);
-}
-
-void	ft_strlcat(char **dest, const char *src)
-{
-	char	*tmp;
-	size_t	tmp_len;
-	size_t	src_len;
-
-	if (!src)
-		return ;
-	tmp_len = ft_strlen(*dest);
-	src_len = ft_strlen(src);
-	tmp = ft_strndup(*dest, tmp_len);
-	if (!tmp)
-		return ;
-	free(*dest);
-	*dest = (char *) malloc(sizeof(char) * (tmp_len + src_len + 1));
-	if (!*dest)
-		return ;
-	ft_strncpy(*dest, tmp, tmp_len);
-	ft_strncpy(*dest + tmp_len, src, src_len);
-	free(tmp);
-	return ;
-}
-
-char	*ft_strndup(const char *src, size_t n)
-{
-	char	*ret;
-
-	ret = (char *) malloc(sizeof(char) * (n + 1));
-	if (!ret)
-		return (0);
-	ft_strncpy(ret, src, n);
-	return (ret);
-}
-
-void	ft_strncpy(char *dest, const char *src, size_t n)
-{
-	size_t	i;
-
-	i = 0;
-	while (i < n)
-	{
-		dest[i] = src[i];
-		i++;
-	}
-	dest[i] = '\0';
-	return ;
-}
-
-size_t	ft_strlen(const char *str)
-{
-	size_t	len;
-
-	if (!str)
-		return (0);
-	len = 0;
-	while (str[len])
-		len++;
-	return (len);
 }
