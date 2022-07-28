@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/26 13:54:57 by younhwan          #+#    #+#             */
-/*   Updated: 2022/07/28 00:21:21 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/07/28 15:32:38 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ char	*get_next_line(int fd)
 		return (0);
 	if (!fd_list)
 	{
-		fd_list = ft_init_list(fd);
+		fd_list = ft_get_list_by_fd(fd, fd_list);
 		if (!fd_list)
 			return (0);
 	}
@@ -52,23 +52,18 @@ int	ft_read_fd(int fd, t_list *fd_list)
 	int		read_bytes;
 
 	list_tmp = fd_list;
-	while (list_tmp->fd != fd && list_tmp->next)
+	while (list_tmp && list_tmp->fd != fd && list_tmp->next)
 		list_tmp = list_tmp->next;
 	if (list_tmp->fd != fd)
 	{
 		list_tmp->next = ft_init_list(fd);
-		if (!list_tmp->next)
-			return (0);
 		list_tmp = list_tmp->next;
 	}
 	read_bytes = 1;
-	while (read_bytes && (!list_tmp->tail || \
-			(list_tmp->tail && !ft_strchr(list_tmp->tail->buff, '\n'))))
+	while (ft_keep_reading(list_tmp->tail) && read_bytes)
 	{
 		node_tmp = ft_init_node();
-		if (!node_tmp)
-			return (0);
-		if (!ft_insert_node_to_fd_list(fd, node_tmp, fd_list))
+		if (!ft_insert_node_to_cur_list(fd, node_tmp, list_tmp))
 			return (0);
 		read_bytes = read(fd, node_tmp->buff, BUFFER_SIZE);
 		if (read_bytes == -1)

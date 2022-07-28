@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/26 13:46:41 by younhwan          #+#    #+#             */
-/*   Updated: 2022/07/28 00:16:21 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/07/28 15:32:53 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,8 @@ char	*ft_destroy_fd_list(t_list *fd_list);
 // get_next_line_utils_bonus.c
 t_list	*ft_init_list(int fd);
 t_node	*ft_init_node(void);
-int		ft_insert_node_to_fd_list(int fd, t_node *to_insert, t_list *fd_list);
+int		ft_insert_node_to_cur_list(int fd, t_node *to_insert, t_list *cur_list);
+int		ft_keep_reading(t_node *last_node);
 char	*ft_strndup(const char *str, size_t n);
-char	*ft_strchr(const char *str, int c);
 
 #endif
