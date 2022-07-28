@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/26 14:10:04 by younhwan          #+#    #+#             */
-/*   Updated: 2022/07/28 22:40:21 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/07/28 23:06:54 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ int	ft_keep_reading(t_list *cur_list)
 		return (1);
 	if (!tmp->buff[0])
 		return (0);
-	i = 0;
+	i = tmp->idx;
 	while (tmp->buff[i])
 	{
 		if (tmp->buff[i] == '\n')
