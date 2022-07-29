@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/26 13:54:57 by younhwan          #+#    #+#             */
-/*   Updated: 2022/07/29 14:15:17 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/07/29 15:45:15 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ char	*get_next_line(int fd)
 	static t_list	*fd_list;
 	t_list			*to_del;
 
-	if (fd < 0 || BUFFER_SIZE <= 0)
+	if (read(fd, 0, 0) < 0 || BUFFER_SIZE <= 0)
 		return (0);
 	if (!fd_list)
 	{

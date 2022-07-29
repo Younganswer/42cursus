@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_utils_bonus.c                        :+:      :+:    :+:   */
+/*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/26 14:10:04 by younhwan          #+#    #+#             */
-/*   Updated: 2022/07/29 14:20:39 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/07/29 15:44:48 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line_bonus.h"
+#include "get_next_line.h"
 
 t_list	*ft_get_fd_list(int fd, t_list *fd_list);
 t_node	*ft_insert_node_to_cur_list(t_list *cur_list);
@@ -50,12 +50,6 @@ t_node	*ft_insert_node_to_cur_list(t_list *cur_list)
 	ret = (t_node *) malloc(sizeof(t_node));
 	if (!ret)
 		return (0);
-	ret->buff = (char *) malloc(sizeof(char) * (BUFFER_SIZE + 1));
-	if (!ret->buff)
-	{
-		free(ret);
-		return (0);
-	}
 	ret->idx = 0;
 	ret->next = 0;
 	if (!cur_list->head && !cur_list->tail)
