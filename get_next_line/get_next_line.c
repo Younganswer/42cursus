@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/26 13:54:57 by younhwan          #+#    #+#             */
-/*   Updated: 2022/07/29 00:29:41 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/07/29 11:16:50 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,13 @@ char	*get_next_line(int fd);
 int		ft_read_fd(int fd, t_list *fd_list);
 char	*ft_get_line_from_fd_list(int fd, t_list **fd_list);
 int		ft_insert_node_to_cur_list(t_node *to_insert, t_list *cur_list);
-int		ft_remove_line_from_fd_list(t_list *cur_list, t_list **fd_list);
+int		ft_remove_line_from_fd_list(t_list **cur_list, t_list **fd_list);
 
 char	*get_next_line(int fd)
 {
 	char			*line;
 	static t_list	*fd_list;
+	t_list			*to_del;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (0);
@@ -32,9 +33,12 @@ char	*get_next_line(int fd)
 			return (0);
 	}
 	if (!ft_read_fd(fd, fd_list))
-		while (fd_list)
-			if (ft_remove_line_from_fd_list(fd_list, &fd_list))
-				return (0);
+	{
+		to_del = ft_get_fd_list(fd, fd_list);
+		while (to_del)
+			ft_remove_line_from_fd_list(&to_del, &fd_list);
+		return (0);
+	}
 	line = ft_get_line_from_fd_list(fd, &fd_list);
 	return (line);
 }
@@ -79,13 +83,13 @@ char	*ft_get_line_from_fd_list(int fd, t_list **fd_list)
 		if (node_tmp->buff[node_tmp->idx])
 			last_idx = ft_strlcat(&ret, node_tmp);
 		if (last_idx == SIZE_MAX)
-			while (*fd_list)
-				if (ft_remove_line_from_fd_list(*fd_list, fd_list))
+			while (list_tmp)
+				if (ft_remove_line_from_fd_list(&list_tmp, fd_list))
 					return (0);
 		if (!node_tmp->buff[node_tmp->idx])
 		{
 			node_tmp = node_tmp->next;
-			ft_remove_line_from_fd_list(list_tmp, fd_list);
+			ft_remove_line_from_fd_list(&list_tmp, fd_list);
 		}
 	}
 	return (ret);
@@ -106,27 +110,29 @@ int	ft_insert_node_to_cur_list(t_node *to_insert, t_list *cur_list)
 	return (1);
 }
 
-int	ft_remove_line_from_fd_list(t_list *cur_list, t_list **fd_list)
+int	ft_remove_line_from_fd_list(t_list **cur_list, t_list **fd_list)
 {
 	t_node	*node_to_del;
 	t_list	*list_prev;
 
-	node_to_del = cur_list->head;
-	cur_list->head = cur_list->head->next;
+	node_to_del = (*cur_list)->head;
+	(*cur_list)->head = (*cur_list)->head->next;
 	free(node_to_del->buff);
 	free(node_to_del);
-	if (cur_list->head)
+	if ((*cur_list)->head)
 		return (0);
-	if (cur_list == *fd_list)
+	if ((*cur_list) == (*fd_list))
 	{
 		*fd_list = (*fd_list)->next;
-		free(cur_list);
+		free(*cur_list);
+		(*cur_list) = 0;
 		return (1);
 	}
 	list_prev = *fd_list;
-	while (list_prev->next->fd != cur_list->fd)
+	while (list_prev->next->fd != (*cur_list)->fd)
 		list_prev = list_prev->next;
-	list_prev->next = cur_list->next;
-	free(cur_list);
-	return (0);
+	list_prev->next = (*cur_list)->next;
+	free((*cur_list));
+	(*cur_list) = 0;
+	return (1);
 }
