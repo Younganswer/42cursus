@@ -6,17 +6,17 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/26 14:10:04 by younhwan          #+#    #+#             */
-/*   Updated: 2022/07/28 23:06:54 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/07/29 14:19:10 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
 t_list	*ft_get_fd_list(int fd, t_list *fd_list);
-t_node	*ft_init_node(void);
-int		ft_keep_reading(t_list *cur_list);
+t_node	*ft_insert_node_to_cur_list(t_list *cur_list);
 size_t	ft_strlcat(char **dest, t_node *cur_node);
 size_t	ft_strncpy(char *dest, const char *src, size_t n);
+size_t	ft_strlen(const char *str);
 
 t_list	*ft_get_fd_list(int fd, t_list *fd_list)
 {
@@ -43,7 +43,7 @@ t_list	*ft_get_fd_list(int fd, t_list *fd_list)
 	return (ret);
 }
 
-t_node	*ft_init_node(void)
+t_node	*ft_insert_node_to_cur_list(t_list *cur_list)
 {
 	t_node	*ret;
 
@@ -58,29 +58,17 @@ t_node	*ft_init_node(void)
 	}
 	ret->idx = 0;
 	ret->next = 0;
-	return (ret);
-}
-
-int	ft_keep_reading(t_list *cur_list)
-{
-	t_node	*tmp;
-	size_t	i;
-
-	tmp = cur_list->tail;
-	if (!tmp)
-		return (1);
-	if (!tmp->buff)
-		return (1);
-	if (!tmp->buff[0])
-		return (0);
-	i = tmp->idx;
-	while (tmp->buff[i])
+	if (!cur_list->head && !cur_list->tail)
 	{
-		if (tmp->buff[i] == '\n')
-			return (0);
-		i++;
+		cur_list->head = ret;
+		cur_list->tail = ret;
 	}
-	return (1);
+	else
+	{
+		cur_list->tail->next = ret;
+		cur_list->tail = cur_list->tail->next;
+	}
+	return (ret);
 }
 
 size_t	ft_strlcat(char **dest, t_node *cur)
@@ -90,9 +78,7 @@ size_t	ft_strlcat(char **dest, t_node *cur)
 	size_t	s_len;
 	size_t	start;
 
-	d_len = 0;
-	while (*dest && (*dest)[d_len])
-		d_len++;
+	d_len = ft_strlen(*dest);
 	save = (char *) malloc(sizeof(char) * (d_len + 1));
 	if (!save)
 		return (SIZE_MAX);
@@ -108,7 +94,8 @@ size_t	ft_strlcat(char **dest, t_node *cur)
 		return (SIZE_MAX);
 	ft_strncpy(*dest, save, d_len);
 	free(save);
-	cur->idx += ft_strncpy(*dest + d_len, &cur->buff[start], s_len - start);
+	ft_strncpy(*dest + d_len, &cur->buff[start], s_len - start);
+	cur->idx += s_len - start;
 	return (d_len + s_len - start);
 }
 
@@ -126,4 +113,16 @@ size_t	ft_strncpy(char *dest, const char *src, size_t n)
 	}
 	dest[i] = '\0';
 	return (n);
+}
+
+size_t	ft_strlen(const char *str)
+{
+	size_t	len;
+
+	if (!str)
+		return (0);
+	len = 0;
+	while (str[len])
+		len++;
+	return (len);
 }

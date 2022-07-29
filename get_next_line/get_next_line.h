@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/26 13:46:41 by younhwan          #+#    #+#             */
-/*   Updated: 2022/07/29 11:09:25 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/07/29 14:13:25 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ typedef struct s_list
 char	*get_next_line(int fd);
 int		ft_read_fd(int fd, t_list *fd_list);
 char	*ft_get_line_from_fd_list(int fd, t_list **fd_list);
-int		ft_insert_node_to_cur_list(t_node *to_insert, t_list *cur_list);
+t_node	*ft_insert_node_to_cur_list(t_list *cur_list);
 int		ft_remove_line_from_fd_list(t_list **cur_list, t_list **fd_list);
 
 // get_next_line_utils_bonus.c

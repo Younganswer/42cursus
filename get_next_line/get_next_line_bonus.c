@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/26 13:54:57 by younhwan          #+#    #+#             */
-/*   Updated: 2022/07/29 11:21:22 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/07/29 14:20:27 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 char	*get_next_line(int fd);
 int		ft_read_fd(int fd, t_list *fd_list);
 char	*ft_get_line_from_fd_list(int fd, t_list **fd_list);
-int		ft_insert_node_to_cur_list(t_node *to_insert, t_list *cur_list);
 int		ft_remove_line_from_fd_list(t_list **cur_list, t_list **fd_list);
+int		ft_keep_reading(t_list *cur_list);
 
 char	*get_next_line(int fd)
 {
@@ -55,10 +55,9 @@ int	ft_read_fd(int fd, t_list *fd_list)
 	read_bytes = 1;
 	while (ft_keep_reading(list_tmp) && read_bytes)
 	{
-		node_tmp = ft_init_node();
+		node_tmp = ft_insert_node_to_cur_list(list_tmp);
 		if (!node_tmp)
 			return (0);
-		ft_insert_node_to_cur_list(node_tmp, list_tmp);
 		read_bytes = read(fd, node_tmp->buff, BUFFER_SIZE);
 		if (read_bytes == -1)
 			return (0);
@@ -95,21 +94,6 @@ char	*ft_get_line_from_fd_list(int fd, t_list **fd_list)
 	return (ret);
 }
 
-int	ft_insert_node_to_cur_list(t_node *to_insert, t_list *cur_list)
-{
-	if (!cur_list->head && !cur_list->tail)
-	{
-		cur_list->head = to_insert;
-		cur_list->tail = to_insert;
-	}
-	else
-	{
-		cur_list->tail->next = to_insert;
-		cur_list->tail = cur_list->tail->next;
-	}
-	return (1);
-}
-
 int	ft_remove_line_from_fd_list(t_list **cur_list, t_list **fd_list)
 {
 	t_node	*node_to_del;
@@ -134,5 +118,27 @@ int	ft_remove_line_from_fd_list(t_list **cur_list, t_list **fd_list)
 	list_prev->next = (*cur_list)->next;
 	free((*cur_list));
 	(*cur_list) = 0;
+	return (1);
+}
+
+int	ft_keep_reading(t_list *cur_list)
+{
+	t_node	*tmp;
+	size_t	i;
+
+	tmp = cur_list->tail;
+	if (!tmp)
+		return (1);
+	if (!tmp->buff)
+		return (1);
+	if (!tmp->buff[0])
+		return (0);
+	i = tmp->idx;
+	while (tmp->buff[i])
+	{
+		if (tmp->buff[i] == '\n')
+			return (0);
+		i++;
+	}
 	return (1);
 }
