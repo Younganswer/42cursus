@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/26 13:54:57 by younhwan          #+#    #+#             */
-/*   Updated: 2022/07/29 15:46:30 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/07/29 15:49:17 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,6 @@ int	ft_remove_line_from_fd_list(t_list **cur_list, t_list **fd_list)
 
 	node_to_del = (*cur_list)->head;
 	(*cur_list)->head = (*cur_list)->head->next;
-	free(node_to_del->buff);
 	free(node_to_del);
 	if ((*cur_list)->head)
 		return (0);
@@ -128,8 +127,6 @@ int	ft_keep_reading(t_list *cur_list)
 
 	tmp = cur_list->tail;
 	if (!tmp)
-		return (1);
-	if (!tmp->buff)
 		return (1);
 	if (!tmp->buff[0])
 		return (0);

@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/26 14:10:04 by younhwan          #+#    #+#             */
-/*   Updated: 2022/07/29 15:46:19 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/07/29 15:48:53 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ size_t	ft_strlcat(char **dest, t_node *cur)
 	ft_strncpy(save, *dest, d_len);
 	start = cur->idx;
 	s_len = cur->idx;
-	while (cur->buff && cur->buff[s_len] && cur->buff[s_len] != '\n')
+	while (cur->buff[s_len] && cur->buff[s_len] != '\n')
 		s_len++;
 	s_len += (cur->buff[s_len] == '\n');
 	free(*dest);
