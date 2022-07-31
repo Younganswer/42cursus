@@ -1,23 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/31 23:52:16 by younhwan          #+#    #+#             */
-/*   Updated: 2022/07/31 23:55:44 by younhwan         ###   ########.fr       */
+/*   Created: 2022/07/08 15:56:05 by younhwan          #+#    #+#             */
+/*   Updated: 2022/07/10 22:04:56 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-# define SO_LONG_H
+#include "libft.h"
 
-# include <stdlib.h>
-# include <string.h>
+void	ft_putnbr_fd(int n, int fd)
+{
+	long	num;
 
-# include "../mlx/mlx.h"
-# include "../lib/libft/includes/libft.h"
-# include "../lib/get_next_line/includes/get_next_line.h"
-
-#endif
+	num = (long) n;
+	if (num < 0)
+	{
+		ft_putchar_fd('-', fd);
+		num *= -1;
+	}
+	if (10 <= num)
+		ft_putnbr_fd(num / 10, fd);
+	ft_putchar_fd('0' + (num % 10), fd);
+	return ;
+}

@@ -1,23 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/31 23:52:16 by younhwan          #+#    #+#             */
-/*   Updated: 2022/07/31 23:55:44 by younhwan         ###   ########.fr       */
+/*   Created: 2022/07/06 00:19:53 by younhwan          #+#    #+#             */
+/*   Updated: 2022/07/08 16:19:45 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-# define SO_LONG_H
+#include "libft.h"
 
-# include <stdlib.h>
-# include <string.h>
+char	*ft_strchr(const char *s, int c)
+{
+	char	target;
 
-# include "../mlx/mlx.h"
-# include "../lib/libft/includes/libft.h"
-# include "../lib/get_next_line/includes/get_next_line.h"
-
-#endif
+	target = (char) c;
+	while (*s)
+	{
+		if (*s == target)
+			return ((char *) s);
+		s++;
+	}
+	if (*s == target)
+		return ((char *) s);
+	return (0);
+}

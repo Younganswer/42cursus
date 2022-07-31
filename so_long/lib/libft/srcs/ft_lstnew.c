@@ -1,23 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   ft_lstnew_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/31 23:52:16 by younhwan          #+#    #+#             */
-/*   Updated: 2022/07/31 23:55:44 by younhwan         ###   ########.fr       */
+/*   Created: 2022/07/10 00:02:56 by younhwan          #+#    #+#             */
+/*   Updated: 2022/07/11 00:21:37 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-# define SO_LONG_H
+#include "libft.h"
 
-# include <stdlib.h>
-# include <string.h>
+t_list	*ft_lstnew(void *content)
+{
+	t_list	*new;
 
-# include "../mlx/mlx.h"
-# include "../lib/libft/includes/libft.h"
-# include "../lib/get_next_line/includes/get_next_line.h"
-
-#endif
+	new = (t_list *) malloc(sizeof(t_list));
+	if (!new)
+		return (0);
+	new->content = content;
+	new->next = 0;
+	return (new);
+}

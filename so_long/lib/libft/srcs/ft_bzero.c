@@ -1,23 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/31 23:52:16 by younhwan          #+#    #+#             */
-/*   Updated: 2022/07/31 23:55:44 by younhwan         ###   ########.fr       */
+/*   Created: 2022/07/05 00:05:39 by younhwan          #+#    #+#             */
+/*   Updated: 2022/07/06 17:06:48 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-# define SO_LONG_H
+#include "libft.h"
 
-# include <stdlib.h>
-# include <string.h>
+void	ft_bzero(void *b, size_t n)
+{
+	unsigned char	*tmp;
 
-# include "../mlx/mlx.h"
-# include "../lib/libft/includes/libft.h"
-# include "../lib/get_next_line/includes/get_next_line.h"
-
-#endif
+	tmp = (unsigned char *) b;
+	while (n--)
+		*tmp++ = 0;
+	return ;
+}

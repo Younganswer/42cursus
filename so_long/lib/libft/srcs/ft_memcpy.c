@@ -1,23 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/31 23:52:16 by younhwan          #+#    #+#             */
-/*   Updated: 2022/07/31 23:55:44 by younhwan         ###   ########.fr       */
+/*   Created: 2022/07/05 00:07:18 by younhwan          #+#    #+#             */
+/*   Updated: 2022/07/11 17:04:57 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-# define SO_LONG_H
+#include "libft.h"
 
-# include <stdlib.h>
-# include <string.h>
+// C 컴파일러에서 mem는 unsigned char 자료형으로 다룬다.
+void	*ft_memcpy(void *dest, const void *src, size_t n)
+{
+	unsigned char	*dest_tmp;
+	unsigned char	*src_tmp;
 
-# include "../mlx/mlx.h"
-# include "../lib/libft/includes/libft.h"
-# include "../lib/get_next_line/includes/get_next_line.h"
-
-#endif
+	if (!dest && !src)
+		return (0);
+	dest_tmp = (unsigned char *) dest;
+	src_tmp = (unsigned char *) src;
+	while (n--)
+		*dest_tmp++ = *src_tmp++;
+	return (dest);
+}
