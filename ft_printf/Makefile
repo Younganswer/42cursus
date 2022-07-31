@@ -6,7 +6,7 @@
 #    By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/08 16:03:07 by younhwan          #+#    #+#              #
-#    Updated: 2022/07/21 17:22:04 by younhwan         ###   ########.fr        #
+#    Updated: 2022/08/01 00:17:15 by younhwan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,32 +22,34 @@ RM = rm -f
 
 INC_DIR = ./includes
 
-MANDATORY_SRC_DIR = ./mandatory_srcs
-MANDATORY_OBJ_DIR = ./mandatory_objs
-BONUS_SRC_DIR = ./bonus_srcs
-BONUS_OBJ_DIR = ./bonus_objs
+SRC_DIR = ./srcs
+OBJ_DIR = ./objs
 
-MANDATORY_SOURCES = ft_print_char.c \
-					ft_print_hex.c \
-					ft_print_nbr.c \
-					ft_print_ptr.c \
-					ft_print_str.c \
-					ft_print_unsigned_int.c \
-					ft_printf.c
-BONUS_SOURCES = 
+#SRC_BONUS_DIR = ./srcs_bonus
+#OBJ_BONUS_DIR = ./objs_bonus
 
-MANDATORY_SOURCES := ${addprefix ${MANDATORY_SRC_DIR}/, ${MANDATORY_SOURCES}}
-BONUS_SOURCES := ${addprefix ${BONUS_SRC_DIR}/, ${BONUS_SOURCES}}
+SRCS = 	ft_print_char.c \
+		ft_print_hex.c \
+		ft_print_nbr.c \
+		ft_print_ptr.c \
+		ft_print_str.c \
+		ft_print_unsigned_int.c \
+		ft_printf.c
 
-MANDATORY_OBJECTS = ${MANDATORY_SOURCES:${MANDATORY_SRC_DIR}/%.c=${MANDATORY_OBJ_DIR}/%.o}
-BONUS_OBJECTS = ${BONUS_SOURCES:${BONUS_SRC_DIR}/%.c=${BONUS_OBJ_DIR}/%.o}
+#SRC_BONUS = 
+
+SRCS := ${addprefix ${SRC_DIR}/, ${SRCS}}
+#SRC_BONUS := ${addprefix ${SRC_BONUS_DIR}/, ${SRC_BONUS}}
+
+OBJS = ${SRCS:${SRC_DIR}/%.c=${OBJ_DIR}/%.o}
+#OBJS_BONUS = ${SRC_BONUS:${SRC_BONUS_DIR}/%.c=${OBJ_BONUS_DIR}/%.o}
 
 ifdef WITH_BONUS
-	OBJ_FILES = ${MANDATORY_OBJECTS} ${BONUS_OBJECTS}
-	OBJ_DIRS = ${MANDATORY_OBJ_DIR} ${BONUS_OBJ_DIR}
+	OBJ_FILES = ${OBJS} ${OBJS_BONUS}
+	OBJ_DIRS = ${OBJ_DIR} ${OBJ_BONUS_DIR}
 else
-	OBJ_FILES = ${MANDATORY_OBJECTS}
-	OBJ_DIRS = ${MANDATORY_OBJ_DIR}
+	OBJ_FILES = ${OBJS}
+	OBJ_DIRS = ${OBJ_DIR}
 endif
 
 #bonus:
@@ -55,11 +57,11 @@ endif
 
 all: ${NAME}
 
-${MANDATORY_OBJ_DIR}:
-	mkdir -p mandatory_objs
+# ${OBJ_BONUS_DIR}:
+# 	mkdir -p objs_bonus
 
-${BONUS_OBJ_DIR}:
-	mkdir -p bonus_objs
+${OBJ_DIR}:
+	mkdir -p objs
 
 ${OBJ_FILES}: %.o: ${addsuffix .c,${subst obj,src,${%}}} | ${OBJ_DIRS}
 	${CC} ${CFLAGS} -c ${patsubst %.o,%.c,${subst obj,src,$@}} -o $@ -I ${INC_DIR}
@@ -71,9 +73,9 @@ ${NAME}: ${OBJ_FILES}
 	${AR} $@ $^
 
 clean:
-	rm -rf ${MANDATORY_OBJ_DIR}
-#	rm -rf ${BONUS_OBJ_DIR}
-	make clean -C ${LIBFT_DIR} 
+	make -C ${LIBFT_DIR} clean
+	rm -rf ${OBJ_DIR}
+#	rm -rf ${OBJ_BONUS_DIR}
 
 fclean: clean
 	${RM} ${NAME}
