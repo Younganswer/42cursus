@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 15:14:53 by younhwan          #+#    #+#             */
-/*   Updated: 2022/08/01 16:32:04 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/08/01 23:42:04 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,5 +26,7 @@ typedef struct s_coord
 	int	x;
 	int	y;
 }	t_coord;
+
+void	exit_with_error(const char *str);
 
 #endif

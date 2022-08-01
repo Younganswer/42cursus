@@ -1,29 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   map_is_not_valid.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/31 23:52:16 by younhwan          #+#    #+#             */
-/*   Updated: 2022/08/02 00:01:57 by younhwan         ###   ########.fr       */
+/*   Created: 2022/08/02 00:39:43 by younhwan          #+#    #+#             */
+/*   Updated: 2022/08/02 00:51:25 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-# define SO_LONG_H
+#include "../../includes/so_long.h"
 
-# include <fcntl.h>
+t_bool	map_is_not_valid(char **char_map);
 
-# include "../mlx/mlx.h"
-
-# include "../libs/ft_printf/includes/ft_printf.h"
-# include "../libs/ft_printf/libft/includes/libft.h"
-# include "../libs/get_next_line/includes/get_next_line.h"
-
-# include "tools.h"
-# include "player.h"
-# include "map.h"
-# include "game.h"
-
-#endif
+t_bool	map_is_not_valid(char **char_map)
+{
+	
+}

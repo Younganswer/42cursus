@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 16:17:28 by younhwan          #+#    #+#             */
-/*   Updated: 2022/08/01 17:06:40 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/08/02 00:27:11 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,9 +47,13 @@ typedef struct s_map
 
 // init_map.c
 t_bool	init_map(t_map *map, int argc, char **argv);
-t_bool	map_is_not_valid(int argc, char **argv);
-t_bool	read_map(char **char_map, char **argv);
+t_bool	file_is_not_valid(char *file);
 t_bool	parse_map(t_tile **tile_map, char **char_map);
 t_bool	init_img(t_tile_img *img);
+
+// read_map.c
+t_bool			read_map_file(char **char_map, char *file);
+static int		cnt_file_line(char *file);
+static t_bool	alloc_file(char **char_map, char *file);
 
 #endif

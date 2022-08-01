@@ -6,11 +6,13 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/31 23:42:32 by younhwan          #+#    #+#             */
-/*   Updated: 2022/08/01 15:08:03 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/08/02 00:18:48 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
+
+void	exit_with_error(const char *str);
 
 int main(int argc, char **argv)
 {
@@ -19,4 +21,11 @@ int main(int argc, char **argv)
 	if (argc != 2)
 		exit_with_error("Usage: ./so_long [MAP_FILE.ber]\n");
 	return (0);
+}
+
+void	exit_with_error(const char *str)
+{
+	ft_putstr_fd(str, 2);
+	exit(1);
+	return ;
 }
