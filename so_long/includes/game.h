@@ -1,30 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   game.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/31 23:52:16 by younhwan          #+#    #+#             */
-/*   Updated: 2022/08/01 16:17:26 by younhwan         ###   ########.fr       */
+/*   Created: 2022/08/01 15:08:30 by younhwan          #+#    #+#             */
+/*   Updated: 2022/08/01 16:57:13 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-# define SO_LONG_H
+#ifndef GAME_H
+# define GAME_H
 
-# include <stdlib.h>
-# include <string.h>
+typedef struct s_game
+{
+	void		*mlx;
+	void		*window;
+	t_coord		window_sz;
+	t_map		*map;
+	t_player	*player;
+}	t_game;
 
-# include "../mlx/mlx.h"
+t_bool	init_game(t_game *game, int argc, char **argv);
 
-# include "../libs/ft_printf/includes/ft_printf.h"
-# include "../libs/ft_printf/libft/includes/libft.h"
-# include "../libs/get_next_line/includes/get_next_line.h"
-
-# include "tools.h"
-# include "player.h"
-# include "map.h"
-# include "game.h"
+int		update_game(t_game *game);
+int		reset_game(t_game *game);
+int		end_game(t_game *game);
 
 #endif

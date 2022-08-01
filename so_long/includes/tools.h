@@ -1,30 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   tools.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/31 23:52:16 by younhwan          #+#    #+#             */
-/*   Updated: 2022/08/01 16:17:26 by younhwan         ###   ########.fr       */
+/*   Created: 2022/08/01 15:14:53 by younhwan          #+#    #+#             */
+/*   Updated: 2022/08/01 16:32:04 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-# define SO_LONG_H
+#ifndef TOOLS_H
+# define TOOLS_H
 
-# include <stdlib.h>
-# include <string.h>
+# define IMG_SIZE 64
 
-# include "../mlx/mlx.h"
+typedef enum e_bool
+{
+	FALSE = 0,
+	TRUE = 1
+}	t_bool;
 
-# include "../libs/ft_printf/includes/ft_printf.h"
-# include "../libs/ft_printf/libft/includes/libft.h"
-# include "../libs/get_next_line/includes/get_next_line.h"
-
-# include "tools.h"
-# include "player.h"
-# include "map.h"
-# include "game.h"
+typedef struct s_coord
+{
+	int	x;
+	int	y;
+}	t_coord;
 
 #endif
