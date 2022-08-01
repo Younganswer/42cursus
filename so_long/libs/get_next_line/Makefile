@@ -6,11 +6,11 @@
 #    By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/01 00:26:43 by younhwan          #+#    #+#              #
-#    Updated: 2022/08/01 00:37:31 by younhwan         ###   ########.fr        #
+#    Updated: 2022/08/01 14:15:38 by younhwan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = lib_get_next_line.a
+NAME = libgnl.a
 
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
