@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 16:17:28 by younhwan          #+#    #+#             */
-/*   Updated: 2022/08/02 13:44:53 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/08/02 13:50:12 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ t_bool	file_is_not_valid(char *file);
 t_bool	init_img(t_tile_img *img);
 
 // read_map.c
-t_bool			read_map_file(t_map *map, char *file);
+t_bool	read_map_file(t_map *map, char *file);
 
 // map_is_not_valid.c
 t_bool	map_is_not_valid(t_map *map);
