@@ -1,29 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_game.c                                        :+:      :+:    :+:   */
+/*   parse_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/01 16:19:11 by younhwan          #+#    #+#             */
-/*   Updated: 2022/08/02 12:50:34 by younhwan         ###   ########.fr       */
+/*   Created: 2022/08/02 12:59:09 by younhwan          #+#    #+#             */
+/*   Updated: 2022/08/02 13:00:40 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/so_long.h"
 
-t_bool	init_game(t_game *game, int argc, char **argv);
+t_bool	parse_map(t_tile **tile_map, char **char_map);
 
-t_bool	init_game(t_game *game, int argc, char **argv)
+t_bool	parse_map(t_tile **tile_map, char **char_map)
 {
-	if (!init_map(game->map, argc, argv))
-		return (FALSE);
-	if (!init_player(game->player, game->map))
-		return (FALSE);
-	game->mlx = mlx_init();
-	game->window = mlx_new_window(game->mlx,
-					game->window_sz.x,
-					game->window_sz.y,
-					"so_long");	
 	return (TRUE);
 }
