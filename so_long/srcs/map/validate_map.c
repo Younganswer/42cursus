@@ -1,24 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map_is_not_valid.c                                 :+:      :+:    :+:   */
+/*   validate_map.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/02 00:39:43 by younhwan          #+#    #+#             */
-/*   Updated: 2022/08/02 13:49:08 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/08/03 15:10:31 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/so_long.h"
 
-t_bool			map_is_not_valid(t_map *map);
+t_bool			validate_map(t_map *map);
 static t_bool	border_is_not_valid(t_map *map);
 static t_bool	init_chk_map(t_chk_map *chk_map);
 static t_bool	check_data(t_map *map, const char c, t_chk_map *chk_map);
 static t_bool	char_is_not_valid(const char c);
 
-t_bool	map_is_not_valid(t_map *map)
+t_bool	validate_map(t_map *map)
 {
 	int			x;
 	int			y;
@@ -39,11 +39,11 @@ t_bool	map_is_not_valid(t_map *map)
 		x++;
 	}
 	if (!chk_map->exit)
-		exit_with_error("Error: There must be a exit.\n");
+		exit_with_error("Error: There must be at lease one exit.\n");
 	if (!chk_map->player)
 		exit_with_error("Error: There must be a player.\n");
 	if (!chk_map->collects)
-		exit_with_error("Error: There must be at least a collect.\n");
+		exit_with_error("Error: There must be at least one collect.\n");
 	return (TRUE);
 }
 
@@ -78,8 +78,8 @@ static t_bool	border_is_not_valid(t_map *map)
 
 static t_bool	init_chk_map(t_chk_map *chk_map)
 {
-	chk_map->exit = FALSE;
 	chk_map->player = FALSE;
+	chk_map->exit = 0;
 	chk_map->collects = 0;
 	return (TRUE);
 }
@@ -88,13 +88,6 @@ static t_bool	check_data(t_map *map, const char c, t_chk_map *chk_map)
 {
 	if (char_is_not_valid(c))
 		exit_with_error("Error: Map character is not valid.\n");
-	if (c == 'E')
-	{
-		if (!chk_map->exit)
-			chk_map->exit = TRUE;
-		else
-			exit_with_error("Error: There must be only one exit.\n");
-	}
 	if (c == 'P')
 	{
 		if (!chk_map->player)
@@ -102,6 +95,8 @@ static t_bool	check_data(t_map *map, const char c, t_chk_map *chk_map)
 		else
 			exit_with_error("Error: There must be only one player.\n");
 	}
+	if (c == 'E')
+		chk_map->exit++;
 	if (c == 'C')
 		chk_map->collects++;
 	return (TRUE);
