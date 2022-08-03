@@ -6,7 +6,7 @@
 #    By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/08 16:03:07 by younhwan          #+#    #+#              #
-#    Updated: 2022/08/01 14:19:20 by younhwan         ###   ########.fr        #
+#    Updated: 2022/08/03 19:14:11 by younhwan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -82,7 +82,7 @@ clean:
 fclean: clean
 	make -C ${FT_PRINTF_DIR} fclean
 	make -C ${GNL_DIR} fclean
-	make -C ${MLX_DIR} fclean
+#	make -C ${MLX_DIR} fclean
 	${RM} ${NAME}
 #	${RM} ${NAME_BONUS}
 
