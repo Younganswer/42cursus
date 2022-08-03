@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 15:17:47 by younhwan          #+#    #+#             */
-/*   Updated: 2022/08/01 16:56:37 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/08/03 20:33:29 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,6 @@ typedef struct s_player
 	int		collects;
 }	t_player;
 
-t_bool	init_player(t_player *player, t_map *map);
+t_bool	init_player(t_game *game);
 
 #endif

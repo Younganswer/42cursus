@@ -6,44 +6,36 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/02 00:39:43 by younhwan          #+#    #+#             */
-/*   Updated: 2022/08/03 15:10:31 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/08/03 21:51:21 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/so_long.h"
 
-t_bool			validate_map(t_map *map);
+t_bool			validate_map(t_game *game);
 static t_bool	border_is_not_valid(t_map *map);
-static t_bool	init_chk_map(t_chk_map *chk_map);
-static t_bool	check_data(t_map *map, const char c, t_chk_map *chk_map);
+static t_bool	check(t_game *game, t_chk_map *chk_map);
+static t_bool	check_data(t_game *game, t_chk_map *chk_map, const char c);
 static t_bool	char_is_not_valid(const char c);
 
-t_bool	validate_map(t_map *map)
+t_bool	validate_map(t_game *game)
 {
 	int			x;
 	int			y;
 	t_chk_map	*chk_map;
 
-	if (border_is_not_valid(map))
-		exit_with_error("Error: Border is not valid.\n");
-	init_chk_map(chk_map);
-	x = 1;
-	while (x < map->size.x)
+	if (border_is_not_valid(game->map))
 	{
-		y = 1;
-		while (y < map->size.y)
-		{
-			check_data(map, map->char_map[x][y], chk_map);
-			y++;
-		}
-		x++;
+		free_all(game);
+		exit_with_error("Error: Border is not valid.\n");
 	}
-	if (!chk_map->exit)
-		exit_with_error("Error: There must be at lease one exit.\n");
-	if (!chk_map->player)
-		exit_with_error("Error: There must be a player.\n");
-	if (!chk_map->collects)
-		exit_with_error("Error: There must be at least one collect.\n");
+	check(game, chk_map);
+	if (!chk_map->exit || !chk_map->player || !chk_map->collects)
+	{
+		free(chk_map);
+		free_all(game);
+		exit_with_error("Error: Map is not valid.\n");
+	}
 	return (TRUE);
 }
 
@@ -60,45 +52,71 @@ static t_bool	border_is_not_valid(t_map *map)
 			y = 0;
 			while (y < map->size.y)
 			{
-				if (map->char_map[x][y] != '1')
+				if (map->saved[x][y] != '1')
 					return (TRUE);
 			}
 			y++;
 		}
 		else
 		{
-			if (map->char_map[x][0] != '1')
+			if (map->saved[x][0] != '1')
 				return (TRUE);
-			if (map->char_map[x][map->size.y - 1] != '1')
+			if (map->saved[x][map->size.y - 1] != '1')
 				return (TRUE);
 		}
 	}
 	return (FALSE);
 }
 
-static t_bool	init_chk_map(t_chk_map *chk_map)
+static t_bool	check(t_game *game, t_chk_map *chk_map)
 {
-	chk_map->player = FALSE;
-	chk_map->exit = 0;
+	int	i;
+	int	j;
+
+	chk_map = (t_chk_map *) malloc(sizeof(t_chk_map));
+	if (!chk_map)
+	{
+		free_all(game);
+		exit_with_error("Error: Fail to malloc at chk_map.\n");
+	}
 	chk_map->collects = 0;
+	chk_map->player = 0;
+	chk_map->exit = 0;
+	i = 0;
+	while (i < game->map->size.x)
+	{
+		j = 0;
+		while (j < game->map->size.y)
+			check_data(game, chk_map, game->map->saved[i][j++]);
+		i++;
+	}
 	return (TRUE);
 }
 
-static t_bool	check_data(t_map *map, const char c, t_chk_map *chk_map)
+static t_bool	check_data(t_game *game, t_chk_map *chk_map, const char c)
 {
 	if (char_is_not_valid(c))
+	{
+		free(chk_map);
+		free_all(game);
 		exit_with_error("Error: Map character is not valid.\n");
+	}
 	if (c == 'P')
 	{
 		if (!chk_map->player)
 			chk_map->player = TRUE;
 		else
+		{
+			free(chk_map);
+			free_all(game);
 			exit_with_error("Error: There must be only one player.\n");
+		}
 	}
 	if (c == 'E')
 		chk_map->exit++;
 	if (c == 'C')
 		chk_map->collects++;
+	game->collects = chk_map->collects;
 	return (TRUE);
 }
 
