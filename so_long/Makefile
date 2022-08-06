@@ -6,7 +6,7 @@
 #    By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/08 16:03:07 by younhwan          #+#    #+#              #
-#    Updated: 2022/08/03 19:14:11 by younhwan         ###   ########.fr        #
+#    Updated: 2022/08/06 21:42:15 by younhwan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ INCS_DIR = ./includes
 FT_PRINTF_DIR = ./libs/ft_printf
 GNL_DIR = ./libs/get_next_line
 
-LIBS =	./libs/ft_printf/libftprintf.a
+LIBS =	./libs/ft_printf/libftprintf.a\
 		./libs/get_next_line/libgnl.a
 
 MLX_DIR = ./mlx
@@ -35,7 +35,19 @@ OBJS_DIR = ./objs
 #SRC_BONUS_DIR = ./srcs_bonus
 #OBJS_BONUS_DIR = ./objs_bonus
 
-SRCS = 
+SRCS = 	main.c\
+		game/end_game.c\
+		game/init_game.c\
+		game/init_img.c\
+		game/key_pressed.c\
+		game/move_to.c\
+		game/render_game.c\
+		game/reset.c\
+		map/init_map.c\
+		map/read_map_file.c\
+		map/validate_file_name.c\
+		map/validate_map.c\
+		player/init_player.c
 #SRCS_BONUS = 
 
 SRCS := ${addprefix ${SRCS_DIR}/, ${SRCS}}
@@ -50,11 +62,14 @@ all: ${NAME}
 
 ${OBJS_DIR}:
 	mkdir -p objs
+	mkdir -p objs/game
+	mkdir -p objs/map
+	mkdir -p objs/player
 
 # ${OBJS_BONUS_DIR}:
 #	mkdir -p objs_bonus
 
-${OBJS}: %.o: ${addsuffix .c,${subst obj,src,${%}}} | ${OBJS_DIRS}
+${OBJS}: %.o: ${addsuffix .c,${subst obj,src,${%}}} | ${OBJS_DIR}
 	${CC} ${CFLAGS} -c ${patsubst %.o,%.c,${subst obj,src,$@}} -o $@ -I ${INCS_DIR}
 
 #${OBJS_BONUS}: %.o: ${addsuffix .c,${subst obj,src,${%}}} | ${OBJS_BONUS_DIRS}

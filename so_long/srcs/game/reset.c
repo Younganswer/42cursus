@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 21:16:55 by younhwan          #+#    #+#             */
-/*   Updated: 2022/08/03 21:56:33 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/08/06 21:48:00 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,5 @@ int	reset_game(t_game *game)
 			}
 		}
 	}
-	// draw_map(game);
 	return (0);
 }

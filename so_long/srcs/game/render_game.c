@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/06 21:27:03 by younhwan          #+#    #+#             */
-/*   Updated: 2022/08/06 21:36:19 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/08/06 21:47:46 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int				render_game(t_game *game);
 static t_bool	draw_image(t_game *game, int x, int y);
 
-int		render_game(t_game *game)
+int	render_game(t_game *game)
 {
 	int	x;
 	int	y;

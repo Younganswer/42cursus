@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/26 13:54:57 by younhwan          #+#    #+#             */
-/*   Updated: 2022/08/01 00:33:01 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/08/06 21:47:00 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ char	*ft_get_line_from_fd_list(int fd, t_list **fd_list)
 	while (node_tmp && (!ret || (ret && ret[last_idx - 1] != '\n')))
 	{
 		if (node_tmp->buff[node_tmp->idx])
-			last_idx = ft_strlcat(&ret, node_tmp);
+			last_idx = ft_strlcat_gnl_gnl(&ret, node_tmp);
 		if (last_idx == SIZE_MAX)
 			while (list_tmp)
 				if (ft_remove_line_from_fd_list(&list_tmp, fd_list))
