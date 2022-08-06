@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 23:54:35 by younhwan          #+#    #+#             */
-/*   Updated: 2022/08/06 22:14:28 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/08/07 00:35:05 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 t_bool			read_map_file(t_game *game, char *file);
 static t_bool	copy_to_board(t_game *game);
 static t_bool	malloc_file(t_game *game, char *file);
-static int		cnt_file_line(t_game *game, char *file);
+static int		cnt_file_lines(t_game *game, char *file);
+static t_bool	chk_fd_is_valid(t_game *game, int fd);
 
 t_bool	read_map_file(t_game *game, char *file)
 {
@@ -24,23 +25,27 @@ t_bool	read_map_file(t_game *game, char *file)
 
 	malloc_file(game, file);
 	fd = open(file, O_RDONLY);
-	if (read(fd, 0, 0) == -1)
-	{
-		free_all(game);
-		exit_with_error("Error: Fail to open file.\n");
-	}
+	chk_fd_is_valid(game, fd);
 	i = -1;
-	game->map->size.x = sizeof(game->map->saved) / sizeof(char *);
+	while (TRUE)
+		;
 	while (++i < game->map->size.x)
 	{
 		game->map->saved[i] = get_next_line(fd);
-		game->map->size.y = ft_strlen(game->map->saved[i]);
-		if (i && (size_t)game->map->size.y != ft_strlen(game->map->saved[i - 1]))
+		if (!game->map->saved[i])
 		{
 			free_all(game);
-			exit_with_error("Error: Map must be rectangular.\n");
+			exit_with_error("Error\nFail to malloc at saved.\n");
 		}
+		if (i && (size_t)game->map->size.y != \
+			ft_strlen(game->map->saved[i - 1]) - 1)
+		{
+			free_all(game);
+			exit_with_error("Error\nMap must be rectangular.\n");
+		}
+		game->map->size.y = ft_strlen(game->map->saved[i]) - 1;
 	}
+	copy_to_board(game);
 	close(fd);
 	return (TRUE);
 }
@@ -54,7 +59,7 @@ static t_bool	copy_to_board(t_game *game)
 	if (!game->map->board)
 	{
 		free_all(game);
-		exit_with_error("Error: Fail to malloc at board.\n");
+		exit_with_error("Error\nFail to malloc at board.\n");
 	}
 	i = -1;
 	while (++i < game->map->size.x)
@@ -65,7 +70,7 @@ static t_bool	copy_to_board(t_game *game)
 		if (!game->map->board[i])
 		{
 			free_all(game);
-			exit_with_error("Error: Fail to malloc at board.\n");
+			exit_with_error("Error\nFail to malloc at board.\n");
 		}
 		while (++j < game->map->size.y)
 			game->map->board[i][j] = game->map->saved[i][j];
@@ -77,18 +82,19 @@ static t_bool	malloc_file(t_game *game, char *file)
 {
 	int	lines;
 
-	lines = cnt_file_line(game, file);
-	game->map->saved = malloc(sizeof(char *) * lines);
+	lines = cnt_file_lines(game, file);
+	game->map->size.x = lines;
+	ft_printf("Lines: %d\n", lines);
+	game->map->saved = (char **) malloc(sizeof(char *) * lines);
 	if (!game->map->saved)
 	{
 		free_all(game);
-		exit_with_error("Error: Fail to malloc at saved.\n");
+		exit_with_error("Error\nFail to malloc at saved.\n");
 	}
-	copy_to_board(game);
 	return (TRUE);
 }
 
-static int	cnt_file_line(t_game *game, char *file)
+static int	cnt_file_lines(t_game *game, char *file)
 {
 	int		lines;
 	int		fd;
@@ -96,23 +102,31 @@ static int	cnt_file_line(t_game *game, char *file)
 	char	c;
 
 	fd = open(file, O_RDONLY);
-	if (read(fd, 0, 0) == -1)
-	{
-		free_all(game);
-		exit_with_error("Error: Fail to open file.\n");
-	}
+	chk_fd_is_valid(game, fd);
 	read_bytes = 1;
-	lines = 1;
+	lines = 0;
 	while (read_bytes)
 	{
 		read_bytes = read(fd, &c, 1);
-		if (read_bytes < 0)
+		if (read_bytes == -1)
 		{
 			free_all(game);
-			exit_with_error("Error: Fail to read file.\n");
+			exit_with_error("Error\nFail to read file.\n");
 		}
-		lines += (c == '\n');
+		ft_printf("%c", c);
+		if (c == '\n')
+			lines++;
 	}
 	close(fd);
 	return (lines);
+}
+
+static t_bool	chk_fd_is_valid(t_game *game, int fd)
+{
+	if (read(fd, 0, 0) == -1)
+	{
+		free_all(game);
+		exit_with_error("Error\nFail to open file.\n");
+	}
+	return (TRUE);
 }

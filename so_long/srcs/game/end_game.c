@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 19:23:20 by younhwan          #+#    #+#             */
-/*   Updated: 2022/08/06 22:02:05 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/08/06 23:35:55 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 int				end_game(t_game *game);
 t_bool			free_all(t_game *game);
-static t_bool	free_img(t_game *game);
-static t_bool	free_map(t_game *game);
+static t_bool	free_img(t_obj_img *img);
+static t_bool	free_map(t_map *map);
 
 int	end_game(t_game *game)
 {
@@ -28,49 +28,54 @@ t_bool	free_all(t_game *game)
 {
 	if (!game)
 		return (TRUE);
-	free_img(game);
-	free_map(game);
-	free(game->img);
-	free(game->map);
-	free(game->player);
+	free_img(game->img);
+	free_map(game->map);
+	if (game->player)
+		free(game->player);
 	free(game);
 	return (TRUE);
 }
 
-static t_bool	free_img(t_game *game)
+static t_bool	free_img(t_obj_img *img)
 {
-	if (!game->img)
+	if (!img)
 		return (TRUE);
-	free(game->img->road_img);
-	free(game->img->wall_img);
-	free(game->img->under_wall_img);
-	free(game->img->collects_img);
-	free(game->img->player_img);
-	free(game->img->exit_img);
-	free(game->img);
+	if (img->road_img)
+		free(img->road_img);
+	if (img->wall_img)
+		free(img->wall_img);
+	if (img->under_wall_img)
+		free(img->under_wall_img);
+	if (img->collects_img)
+		free(img->collects_img);
+	if (img->player_img)
+		free(img->player_img);
+	if (img->exit_img)
+		free(img->exit_img);
+	free(img);
 	return (TRUE);
 }
 
-static t_bool	free_map(t_game *game)
+static t_bool	free_map(t_map *map)
 {
 	int	i;
 
-	if (!game->map)
+	if (!map)
 		return (TRUE);
-	if (game->map->saved)
+	if (map->saved)
 	{
 		i = 0;
-		while (i < game->map->size.x)
-			free(game->map->saved[i++]);
-		free(game->map->saved);
+		while (i < map->size.x && map->saved[i])
+			free(map->saved[i++]);
+		free(map->saved);
 	}
-	if (game->map->board)
+	if (map->board)
 	{
 		i = 0;
-		while (i < game->map->size.x)
-			free(game->map->board[i++]);
-		free(game->map->board);
+		while (i < map->size.x && map->board[i])
+			free(map->board[i++]);
+		free(map->board);
 	}
-	free(game->map);
+	free(map);
 	return (TRUE);
 }

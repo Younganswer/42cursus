@@ -6,7 +6,7 @@
 #    By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/08 16:03:07 by younhwan          #+#    #+#              #
-#    Updated: 2022/08/06 23:08:59 by younhwan         ###   ########.fr        #
+#    Updated: 2022/08/06 23:36:30 by younhwan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -80,7 +80,7 @@ ${NAME}: ${OBJS}
 	make -C ${FT_PRINTF_DIR}
 	make -C ${GNL_DIR}
 	make -C ${MLX_DIR}
-	${CC} -o ${NAME} ${OBJS} ${LIBS} -I ${INCS_DIR} -L ${MLX_DIR} ${MLX_FLAS}
+	${CC} -g -o ${NAME} ${OBJS} ${LIBS} -I ${INCS_DIR} -L ${MLX_DIR} ${MLX_FLAS}
 	mv ${MLX_DIR}/${LIB_MLX} .
 
 #${NAME_BONUS}: ${OBJS_BONUS}

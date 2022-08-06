@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 18:31:55 by younhwan          #+#    #+#             */
-/*   Updated: 2022/08/06 22:16:53 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/08/06 23:32:06 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static t_bool	init_player_pos(t_game *game)
 {
 	int	i;
 	int	j;
-	
+
 	i = -1;
 	while (++i < game->map->size.x)
 	{

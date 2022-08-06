@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 16:55:15 by younhwan          #+#    #+#             */
-/*   Updated: 2022/08/06 22:12:25 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/08/07 00:12:35 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,16 @@ t_bool	init_map(t_game *game, char *file)
 	validate_file_name(game, file);
 	game->map = (t_map *) malloc(sizeof(t_map));
 	if (!game->map)
-		exit_with_error("Error: fail to malloc to map.\n");
+	{
+		free_all(game);
+		exit_with_error("Error: Fail to malloc to map.\n");
+	}
 	read_map_file(game, file);
-	validate_map(game);
+	if (game->map->size.x < 4 || game->map->size.y < 4)
+	{
+		free_all(game);
+		exit_with_error("Error: Map must be larger than 4x4.\n");
+	}
+	// validate_map(game);
 	return (TRUE);
 }
