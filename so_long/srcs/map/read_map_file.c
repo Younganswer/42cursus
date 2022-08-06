@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 23:54:35 by younhwan          #+#    #+#             */
-/*   Updated: 2022/08/07 00:35:05 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/08/07 01:05:27 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ static int	cnt_file_lines(t_game *game, char *file)
 	int		lines;
 	int		fd;
 	int		read_bytes;
-	char	c;
+	char	buff[1024];
 
 	fd = open(file, O_RDONLY);
 	chk_fd_is_valid(game, fd);
@@ -107,15 +107,15 @@ static int	cnt_file_lines(t_game *game, char *file)
 	lines = 0;
 	while (read_bytes)
 	{
-		read_bytes = read(fd, &c, 1);
+		read_bytes = read(fd, buff, 1024);
 		if (read_bytes == -1)
 		{
 			free_all(game);
 			exit_with_error("Error\nFail to read file.\n");
 		}
-		ft_printf("%c", c);
-		if (c == '\n')
-			lines++;
+		ft_printf("%s", buff);
+		// if (c == '\n')
+		// 	lines++;
 	}
 	close(fd);
 	return (lines);
