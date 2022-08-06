@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/02 00:39:43 by younhwan          #+#    #+#             */
-/*   Updated: 2022/08/03 21:51:21 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/08/06 22:14:55 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,9 @@ static t_bool	char_is_not_valid(const char c);
 
 t_bool	validate_map(t_game *game)
 {
-	int			x;
-	int			y;
 	t_chk_map	*chk_map;
 
+	chk_map = 0;
 	if (border_is_not_valid(game->map))
 	{
 		free_all(game);

@@ -6,12 +6,14 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 16:17:28 by younhwan          #+#    #+#             */
-/*   Updated: 2022/08/03 21:25:56 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/08/06 22:11:18 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MAP_H
 # define MAP_H
+
+# include "so_long.h"
 
 typedef struct s_chk_map
 {
@@ -20,15 +22,8 @@ typedef struct s_chk_map
 	int		collects;
 }	t_chk_map;
 
-typedef struct s_map
-{
-	t_coord		size;
-	char		**saved;
-	char		**board;
-}	t_map;
-
 // init_map.c
-t_bool	init_map(t_game *game, int argc, char **argv);
+t_bool	init_map(t_game *game, char *file);
 
 // validate_file_name.c
 t_bool	validate_file_name(t_game *game, char *file);

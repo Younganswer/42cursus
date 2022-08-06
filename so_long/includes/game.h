@@ -6,14 +6,14 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 15:08:30 by younhwan          #+#    #+#             */
-/*   Updated: 2022/08/06 20:05:50 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/08/06 22:11:57 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GAME_H
 # define GAME_H
 
-# define TILE_SIZE 64
+# include "so_long.h"
 
 typedef enum e_x_event_key
 {
@@ -32,29 +32,8 @@ typedef enum e_keycode
 	KEY_UP = 126
 }	t_keycode;
 
-typedef struct s_obj_img
-{
-	void	*road_img;
-	void	*wall_img;
-	void	*under_wall_img;
-	void	*collects_img;
-	void	*player_img;
-	void	*exit_img;
-}	t_obj_img;
-
-typedef struct s_game
-{
-	void		*mlx;
-	void		*window;
-	t_coord		window_sz;
-	t_obj_img	*img;
-	t_map		*map;
-	t_player	*player;
-	int			collects;
-}	t_game;
-
 // init_game.c
-t_bool	init_game(t_game *game, int argc, char **argv);
+t_bool	init_game(t_game *game, char *file);
 
 // init_img.c
 t_bool	init_img(t_game *game);
@@ -72,7 +51,7 @@ int		render_game(t_game *game);
 int		reset_game(t_game *game);
 
 // end_game.c
-void	end_game(t_game *game);
+int		end_game(t_game *game);
 t_bool	free_all(t_game *game);
 
 #endif

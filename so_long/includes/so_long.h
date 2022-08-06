@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/31 23:52:16 by younhwan          #+#    #+#             */
-/*   Updated: 2022/08/02 00:01:57 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/08/06 22:04:10 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,45 @@
 # include "../libs/get_next_line/includes/get_next_line.h"
 
 # include "tools.h"
-# include "player.h"
+
+typedef struct s_map
+{
+	t_coord		size;
+	char		**saved;
+	char		**board;
+}	t_map;
+
+typedef struct s_player
+{
+	t_coord	position;
+	int		moves;
+	int		collects;
+}	t_player;
+
+typedef struct s_obj_img
+{
+	void	*road_img;
+	void	*wall_img;
+	void	*under_wall_img;
+	void	*collects_img;
+	void	*player_img;
+	void	*exit_img;
+}	t_obj_img;
+
+typedef struct s_game
+{
+	void		*mlx;
+	void		*window;
+	t_coord		window_sz;
+	t_obj_img	*img;
+	t_coord		img_sz;
+	t_map		*map;
+	t_player	*player;
+	int			collects;
+}	t_game;
+
 # include "map.h"
+# include "player.h"
 # include "game.h"
 
 #endif

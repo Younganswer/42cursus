@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 23:54:35 by younhwan          #+#    #+#             */
-/*   Updated: 2022/08/03 21:32:31 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/08/06 22:14:28 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ t_bool	read_map_file(t_game *game, char *file)
 	int	fd;
 	int	i;
 
-	malloc_file(game->map->saved, file);
+	malloc_file(game, file);
 	fd = open(file, O_RDONLY);
 	if (read(fd, 0, 0) == -1)
 	{
@@ -35,7 +35,7 @@ t_bool	read_map_file(t_game *game, char *file)
 	{
 		game->map->saved[i] = get_next_line(fd);
 		game->map->size.y = ft_strlen(game->map->saved[i]);
-		if (i && game->map->size.y != ft_strlen(game->map->saved[i - 1]))
+		if (i && (size_t)game->map->size.y != ft_strlen(game->map->saved[i - 1]))
 		{
 			free_all(game);
 			exit_with_error("Error: Map must be rectangular.\n");
@@ -84,6 +84,7 @@ static t_bool	malloc_file(t_game *game, char *file)
 		free_all(game);
 		exit_with_error("Error: Fail to malloc at saved.\n");
 	}
+	copy_to_board(game);
 	return (TRUE);
 }
 

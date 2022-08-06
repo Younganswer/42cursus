@@ -6,14 +6,16 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 15:14:53 by younhwan          #+#    #+#             */
-/*   Updated: 2022/08/01 23:42:04 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/08/06 22:07:10 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef TOOLS_H
 # define TOOLS_H
 
-# define IMG_SIZE 64
+# include "so_long.h"
+
+# define TILE_SIZE 64
 
 typedef enum e_bool
 {

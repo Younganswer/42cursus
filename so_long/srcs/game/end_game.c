@@ -6,21 +6,22 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 19:23:20 by younhwan          #+#    #+#             */
-/*   Updated: 2022/08/03 21:32:08 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/08/06 22:02:05 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/so_long.h"
 
-void			end_game(t_game *game);
+int				end_game(t_game *game);
 t_bool			free_all(t_game *game);
 static t_bool	free_img(t_game *game);
 static t_bool	free_map(t_game *game);
 
-void	end_game(t_game *game)
+int	end_game(t_game *game)
 {
 	free_all(game);
 	exit(0);
+	return (1);
 }
 
 t_bool	free_all(t_game *game)
@@ -33,7 +34,7 @@ t_bool	free_all(t_game *game)
 	free(game->map);
 	free(game->player);
 	free(game);
-	return ;
+	return (TRUE);
 }
 
 static t_bool	free_img(t_game *game)

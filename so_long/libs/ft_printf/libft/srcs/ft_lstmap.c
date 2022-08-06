@@ -6,13 +6,14 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/10 00:25:04 by younhwan          #+#    #+#             */
-/*   Updated: 2022/08/06 21:45:19 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/08/06 22:22:55 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list_libft	*ft_lstmap(t_list_libft *lst, void *(*f)(void *), void (*del)(void *))
+t_list_libft	*ft_lstmap(t_list_libft *lst, \
+							void *(*f)(void *), void (*del)(void *))
 {
 	t_list_libft	*res;
 	t_list_libft	*tmp;

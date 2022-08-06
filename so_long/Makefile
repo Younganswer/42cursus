@@ -6,7 +6,7 @@
 #    By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/08 16:03:07 by younhwan          #+#    #+#              #
-#    Updated: 2022/08/06 21:42:15 by younhwan         ###   ########.fr        #
+#    Updated: 2022/08/06 23:08:59 by younhwan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,8 +27,9 @@ GNL_DIR = ./libs/get_next_line
 LIBS =	./libs/ft_printf/libftprintf.a\
 		./libs/get_next_line/libgnl.a
 
+LIB_MLX = libmlx.dylib
 MLX_DIR = ./mlx
-MLX_FLAS = -lmlx -framework OpenGL -framework Appkit
+MLX_FLAS = -lmlx -framework OpenGL -framework AppKit
 
 SRCS_DIR = ./srcs
 OBJS_DIR = ./objs
@@ -80,6 +81,7 @@ ${NAME}: ${OBJS}
 	make -C ${GNL_DIR}
 	make -C ${MLX_DIR}
 	${CC} -o ${NAME} ${OBJS} ${LIBS} -I ${INCS_DIR} -L ${MLX_DIR} ${MLX_FLAS}
+	mv ${MLX_DIR}/${LIB_MLX} .
 
 #${NAME_BONUS}: ${OBJS_BONUS}
 #	make -C ${FT_PRINTF_DIR}
@@ -98,7 +100,7 @@ fclean: clean
 	make -C ${FT_PRINTF_DIR} fclean
 	make -C ${GNL_DIR} fclean
 #	make -C ${MLX_DIR} fclean
-	${RM} ${NAME}
+	${RM} ${NAME} ${LIB_MLX}
 #	${RM} ${NAME_BONUS}
 
 re:
