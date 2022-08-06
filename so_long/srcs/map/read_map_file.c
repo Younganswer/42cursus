@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 23:54:35 by younhwan          #+#    #+#             */
-/*   Updated: 2022/08/07 01:05:27 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/08/07 01:12:39 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,6 @@ static t_bool	malloc_file(t_game *game, char *file)
 
 	lines = cnt_file_lines(game, file);
 	game->map->size.x = lines;
-	ft_printf("Lines: %d\n", lines);
 	game->map->saved = (char **) malloc(sizeof(char *) * lines);
 	if (!game->map->saved)
 	{
@@ -99,23 +98,23 @@ static int	cnt_file_lines(t_game *game, char *file)
 	int		lines;
 	int		fd;
 	int		read_bytes;
-	char	buff[1024];
+	char	c;
 
 	fd = open(file, O_RDONLY);
 	chk_fd_is_valid(game, fd);
-	read_bytes = 1;
 	lines = 0;
-	while (read_bytes)
+	while (TRUE)
 	{
-		read_bytes = read(fd, buff, 1024);
+		read_bytes = read(fd, &c, 1);
+		if (!read_bytes)
+			break ;
 		if (read_bytes == -1)
 		{
 			free_all(game);
 			exit_with_error("Error\nFail to read file.\n");
 		}
-		ft_printf("%s", buff);
-		// if (c == '\n')
-		// 	lines++;
+		if (c == '\n')
+			lines++;
 	}
 	close(fd);
 	return (lines);

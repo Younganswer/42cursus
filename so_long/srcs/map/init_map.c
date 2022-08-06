@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 16:55:15 by younhwan          #+#    #+#             */
-/*   Updated: 2022/08/07 00:12:35 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/08/07 01:12:15 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,6 @@ t_bool	init_map(t_game *game, char *file)
 		free_all(game);
 		exit_with_error("Error: Map must be larger than 4x4.\n");
 	}
-	// validate_map(game);
+	validate_map(game);
 	return (TRUE);
 }
