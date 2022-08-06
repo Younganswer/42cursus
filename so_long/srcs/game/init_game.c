@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 16:19:11 by younhwan          #+#    #+#             */
-/*   Updated: 2022/08/07 01:23:08 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/08/07 02:03:34 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ t_bool	init_game(t_game *game, char *file)
 	game_mlx_init(game);
 	game_window_init(game);
 	init_img(game);
-	mlx_hook(game->mlx, ON_DESTROY, 0, end_game, game);
+	mlx_hook(game->window, ON_DESTROY, 0, end_game, game);
 	return (TRUE);
 }
 

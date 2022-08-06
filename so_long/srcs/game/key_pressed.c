@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 21:13:15 by younhwan          #+#    #+#             */
-/*   Updated: 2022/08/03 21:54:52 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/08/07 02:20:19 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,6 @@ int	key_pressed(int key, t_game *game)
 	else
 		return (0);
 	if (moved)
-		ft_printf("Moves: %02d\n", ++game->player->moves);
+		ft_printf("Moves: %d\n", ++game->player->moves);
 	return (1);
 }

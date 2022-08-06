@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/02 00:39:43 by younhwan          #+#    #+#             */
-/*   Updated: 2022/08/06 22:14:55 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/08/07 01:52:54 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 t_bool			validate_map(t_game *game);
 static t_bool	border_is_not_valid(t_map *map);
-static t_bool	check(t_game *game, t_chk_map *chk_map);
+static t_bool	check(t_game *game, t_chk_map **chk_map);
 static t_bool	check_data(t_game *game, t_chk_map *chk_map, const char c);
 static t_bool	char_is_not_valid(const char c);
 
@@ -23,12 +23,17 @@ t_bool	validate_map(t_game *game)
 	t_chk_map	*chk_map;
 
 	chk_map = 0;
+	if (game->map->size.x < 4 || game->map->size.y < 4)
+	{
+		free_all(game);
+		exit_with_error("Error: Map must be larger than 4x4.\n");
+	}
 	if (border_is_not_valid(game->map))
 	{
 		free_all(game);
 		exit_with_error("Error: Border is not valid.\n");
 	}
-	check(game, chk_map);
+	check(game, &chk_map);
 	if (!chk_map->exit || !chk_map->player || !chk_map->collects)
 	{
 		free(chk_map);
@@ -43,18 +48,15 @@ static t_bool	border_is_not_valid(t_map *map)
 	int	x;
 	int	y;
 
-	x = 0;
-	while (x < map->size.x)
+	x = -1;
+	while (++x < map->size.x)
 	{
 		if (!x || x == map->size.x - 1)
 		{
-			y = 0;
-			while (y < map->size.y)
-			{
+			y = -1;
+			while (++y < map->size.y)
 				if (map->saved[x][y] != '1')
 					return (TRUE);
-			}
-			y++;
 		}
 		else
 		{
@@ -67,26 +69,29 @@ static t_bool	border_is_not_valid(t_map *map)
 	return (FALSE);
 }
 
-static t_bool	check(t_game *game, t_chk_map *chk_map)
+static t_bool	check(t_game *game, t_chk_map **chk_map)
 {
 	int	i;
 	int	j;
 
-	chk_map = (t_chk_map *) malloc(sizeof(t_chk_map));
-	if (!chk_map)
+	*chk_map = (t_chk_map *) malloc(sizeof(t_chk_map));
+	if (!(*chk_map))
 	{
 		free_all(game);
 		exit_with_error("Error: Fail to malloc at chk_map.\n");
 	}
-	chk_map->collects = 0;
-	chk_map->player = 0;
-	chk_map->exit = 0;
+	(*chk_map)->collects = 0;
+	(*chk_map)->player = 0;
+	(*chk_map)->exit = 0;
 	i = 0;
 	while (i < game->map->size.x)
 	{
 		j = 0;
 		while (j < game->map->size.y)
-			check_data(game, chk_map, game->map->saved[i][j++]);
+		{
+			check_data(game, *chk_map, game->map->saved[i][j]);
+			j++;
+		}
 		i++;
 	}
 	return (TRUE);
@@ -122,6 +127,6 @@ static t_bool	check_data(t_game *game, t_chk_map *chk_map, const char c)
 static t_bool	char_is_not_valid(const char c)
 {
 	if (c == '0' || c == '1' || c == 'C' || c == 'E' || c == 'P')
-		return (TRUE);
-	return (FALSE);
+		return (FALSE);
+	return (TRUE);
 }
