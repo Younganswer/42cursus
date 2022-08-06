@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 15:08:30 by younhwan          #+#    #+#             */
-/*   Updated: 2022/08/03 21:50:27 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/08/06 20:05:50 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,8 @@ int		key_pressed(int key, t_game *game);
 // move_to.c
 t_bool	move_to(t_game *game, int dx, int dy);
 
-int		update_game(t_game *game);
+// render_game.c
+int		render_game(t_game *game);
 
 // reset.c
 int		reset_game(t_game *game);
