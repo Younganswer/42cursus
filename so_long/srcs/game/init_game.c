@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 16:19:11 by younhwan          #+#    #+#             */
-/*   Updated: 2022/08/06 23:48:38 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/08/07 01:23:08 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,6 @@ t_bool	init_game(t_game *game, char *file)
 	if (!game)
 		exit_with_error("Error: Fail to malloc at game.\n");
 	init_map(game, file);
-	while (TRUE)
-		;
 	init_player(game);
 	game_mlx_init(game);
 	game_window_init(game);

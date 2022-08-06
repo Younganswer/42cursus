@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 23:54:35 by younhwan          #+#    #+#             */
-/*   Updated: 2022/08/07 01:12:39 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/08/07 01:23:02 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,6 @@ t_bool	read_map_file(t_game *game, char *file)
 	fd = open(file, O_RDONLY);
 	chk_fd_is_valid(game, fd);
 	i = -1;
-	while (TRUE)
-		;
 	while (++i < game->map->size.x)
 	{
 		game->map->saved[i] = get_next_line(fd);
