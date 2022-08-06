@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 15:08:30 by younhwan          #+#    #+#             */
-/*   Updated: 2022/08/06 22:11:57 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/08/07 02:24:54 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ typedef enum e_keycode
 }	t_keycode;
 
 // init_game.c
-t_bool	init_game(t_game *game, char *file);
+t_bool	init_game(t_game **game, char *file);
 
 // init_img.c
 t_bool	init_img(t_game *game);

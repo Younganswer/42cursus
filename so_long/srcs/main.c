@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/31 23:42:32 by younhwan          #+#    #+#             */
-/*   Updated: 2022/08/07 02:22:12 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/08/07 02:24:59 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,10 @@ int	main(int argc, char **argv)
 	game = 0;
 	if (argc != 2)
 		exit_with_error("Usage: ./so_long [MAP_FILE.ber]\n");
-	init_game(game, argv[1]);
-	// mlx_hook(game->window, ON_KEYDOWN, 0, key_pressed, game);
-	// mlx_loop_hook(game->mlx, render_game, game);
-	// mlx_loop(game->mlx);
+	init_game(&game, argv[1]);
+	mlx_hook(game->window, ON_KEYDOWN, 0, key_pressed, game);
+	mlx_loop_hook(game->mlx, render_game, game);
+	mlx_loop(game->mlx);
 	return (0);
 }
 

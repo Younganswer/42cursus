@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 21:43:21 by younhwan          #+#    #+#             */
-/*   Updated: 2022/08/07 02:08:37 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/08/07 02:25:50 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ t_bool	move_to(t_game *game, int dx, int dy)
 	}
 	else
 		return (FALSE);
-	exit_with_error("Hi.\n");
 	return (TRUE);
 }
 
