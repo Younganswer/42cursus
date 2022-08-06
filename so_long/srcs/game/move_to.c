@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 21:43:21 by younhwan          #+#    #+#             */
-/*   Updated: 2022/08/07 02:25:50 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/08/07 02:37:23 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ t_bool	move_to(t_game *game, int dx, int dy)
 	else if (game->map->board[next_x][next_y] == 'C')
 		move_to_collect(game, dx, dy);
 	else if (game->map->board[next_x][next_y] == 'E'\
-			&& !game->collects)
+			&& game->collects == game->player->collects)
 	{
 		move_to_exit(game, dx, dy);
 		end_game(game);
