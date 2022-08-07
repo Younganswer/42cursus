@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 18:43:27 by younhwan          #+#    #+#             */
-/*   Updated: 2022/08/07 02:00:18 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/08/08 00:47:33 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,17 @@
 
 t_bool			init_img(t_game *game);
 static t_bool	init_map_imgs(t_game *game);
-static t_bool	init_exit_imgs(t_game *game);
-static t_bool	init_player_imgs(t_game *game);
 
 t_bool	init_img(t_game *game)
 {
-	game->img = (t_obj_img *) malloc(sizeof(t_obj_img));
+	game->img = (t_objs_img *) malloc(sizeof(t_objs_img));
 	if (!game->img)
 	{
 		free_all(game);
 		exit_with_error("Error\nFail to malloc images.\n");
 	}
 	init_map_imgs(game);
+	init_collect_imgs(game);
 	init_exit_imgs(game);
 	init_player_imgs(game);
 	return (TRUE);
@@ -33,49 +32,16 @@ t_bool	init_img(t_game *game)
 
 static t_bool	init_map_imgs(t_game *game)
 {
-	game->img->road_img = mlx_xpm_file_to_image(\
-		game->mlx, "./assets/road.xpm", \
+	game->img->empty_img = mlx_xpm_file_to_image(\
+		game->mlx, "./assets/empty/empty.xpm", \
 			&game->img_sz.x, &game->img_sz.y);
 	game->img->wall_img = mlx_xpm_file_to_image(\
-		game->mlx, "./assets/trees.xpm", \
+		game->mlx, "./assets/wall/wall.xpm", \
 			&game->img_sz.x, &game->img_sz.y);
-	game->img->under_wall_img = mlx_xpm_file_to_image(\
-		game->mlx, "./assets/grass.xpm", \
-			&game->img_sz.x, &game->img_sz.y);
-	game->img->collects_img = mlx_xpm_file_to_image(\
-		game->mlx, "./assets/apple.xpm", \
-			&game->img_sz.x, &game->img_sz.y);
-	if (!game->img->road_img || !game->img->wall_img || \
-		!game->img->under_wall_img || !game->img->collects_img)
+	if (!game->img->empty_img || !game->img->wall_img)
 	{
 		free_all(game);
 		exit_with_error("Error: Fail to read map images.\n");
-	}
-	return (TRUE);
-}
-
-static t_bool	init_exit_imgs(t_game *game)
-{
-	game->img->exit_img = mlx_xpm_file_to_image(\
-		game->mlx, "./assets/door_close.xpm", \
-			&game->img_sz.x, &game->img_sz.y);
-	if (!game->img->exit_img)
-	{
-		free_all(game);
-		exit_with_error("Error: Fail to read exit images.\n");
-	}
-	return (TRUE);
-}
-
-static t_bool	init_player_imgs(t_game *game)
-{
-	game->img->player_img = mlx_xpm_file_to_image(\
-		game->mlx, "./assets/BryceSlime/idle/BryceIdle1.xpm", \
-			&game->img_sz.x, &game->img_sz.y);
-	if (!game->img->player_img)
-	{
-		free_all(game);
-		exit_with_error("Error: Fail to read player images.\n");
 	}
 	return (TRUE);
 }

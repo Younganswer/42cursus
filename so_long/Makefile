@@ -6,7 +6,7 @@
 #    By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/08 16:03:07 by younhwan          #+#    #+#              #
-#    Updated: 2022/08/06 23:36:30 by younhwan         ###   ########.fr        #
+#    Updated: 2022/08/08 00:47:17 by younhwan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,11 +39,12 @@ OBJS_DIR = ./objs
 SRCS = 	main.c\
 		game/end_game.c\
 		game/init_game.c\
-		game/init_img.c\
 		game/key_pressed.c\
 		game/move_to.c\
 		game/render_game.c\
 		game/reset.c\
+		img/init_img.c\
+		img/init_collect_imgs.c
 		map/init_map.c\
 		map/read_map_file.c\
 		map/validate_file_name.c\

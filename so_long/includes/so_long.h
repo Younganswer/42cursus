@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/31 23:52:16 by younhwan          #+#    #+#             */
-/*   Updated: 2022/08/06 22:04:10 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/08/08 00:48:09 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,22 +37,21 @@ typedef struct s_player
 	int		collects;
 }	t_player;
 
-typedef struct s_obj_img
+typedef struct s_objs_img
 {
-	void	*road_img;
+	void	*empty_img;
 	void	*wall_img;
-	void	*under_wall_img;
-	void	*collects_img;
-	void	*player_img;
-	void	*exit_img;
-}	t_obj_img;
+	void	*collect_imgs[8];
+	void	*player_imgs[32];
+	void	*exit_imgs[33];
+}	t_objs_img;
 
 typedef struct s_game
 {
 	void		*mlx;
 	void		*window;
 	t_coord		window_sz;
-	t_obj_img	*img;
+	t_objs_img	*img;
 	t_coord		img_sz;
 	t_map		*map;
 	t_player	*player;
@@ -61,6 +60,7 @@ typedef struct s_game
 
 # include "map.h"
 # include "player.h"
+# include "img.h"
 # include "game.h"
 
 #endif
