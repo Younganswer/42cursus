@@ -6,14 +6,14 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 23:54:35 by younhwan          #+#    #+#             */
-/*   Updated: 2022/08/07 01:45:41 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/08/07 21:56:26 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/so_long.h"
 
 t_bool			read_map_file(t_game *game, char *file);
-static t_bool	copy_to_board(t_game *game);
+static t_bool	set_map_width(t_game *game, int i);
 static t_bool	malloc_file(t_game *game, char *file);
 static int		cnt_file_lines(t_game *game, char *file);
 static t_bool	chk_fd_is_valid(t_game *game, int fd);
@@ -35,43 +35,36 @@ t_bool	read_map_file(t_game *game, char *file)
 			free_all(game);
 			exit_with_error("Error\nFail to malloc at saved.\n");
 		}
-		if (i && (size_t)game->map->size.y != \
-			ft_strlen(game->map->saved[i - 1]) - 1)
-		{
-			free_all(game);
-			exit_with_error("Error\nMap must be rectangular.\n");
-		}
-		game->map->size.y = ft_strlen(game->map->saved[i]) - 1;
+		set_map_width(game, i);
 	}
-	copy_to_board(game);
 	close(fd);
 	return (TRUE);
 }
 
-static t_bool	copy_to_board(t_game *game)
+static t_bool	set_map_width(t_game *game, int i)
 {
-	int	i;
-	int	j;
-
-	game->map->board = (char **) malloc(sizeof(char *) * (game->map->size.x));
-	if (!game->map->board)
+	if (!i)
+		game->map->size.y = ft_strlen(game->map->saved[i]) - 1;
+	else if (i == game->map->size.x - 1)
 	{
-		free_all(game);
-		exit_with_error("Error\nFail to malloc at board.\n");
-	}
-	i = -1;
-	while (++i < game->map->size.x)
-	{
-		j = -1;
-		game->map->board[i] = (char *) \
-			malloc(sizeof(char) * (game->map->size.y));
-		if (!game->map->board[i])
+		if ((size_t)game->map->size.y == ft_strlen(game->map->saved[i]) - 1 && \
+			game->map->saved[i][game->map->size.y] != '\n')
 		{
 			free_all(game);
-			exit_with_error("Error\nFail to malloc at board.\n");
+			exit_with_error("Error\nMap must be rectangular.\n");
 		}
-		while (++j < game->map->size.y)
-			game->map->board[i][j] = game->map->saved[i][j];
+		else if ((size_t)game->map->size.y == ft_strlen(game->map->saved[i]) && \
+			game->map->saved[i][game->map->size.y] == '\n')
+		{
+			free_all(game);
+			exit_with_error("Error\nMap must be rectangular.\n");
+		}
+	}
+	else if ((0 < i && i < game->map->size.x) && \
+		(size_t)game->map->size.y != ft_strlen(game->map->saved[i]) - 1)
+	{
+		free_all(game);
+		exit_with_error("Error\nMap must be rectangular.\n");
 	}
 	return (TRUE);
 }
@@ -100,7 +93,7 @@ static int	cnt_file_lines(t_game *game, char *file)
 
 	fd = open(file, O_RDONLY);
 	chk_fd_is_valid(game, fd);
-	lines = 0;
+	lines = 1;
 	while (TRUE)
 	{
 		read_bytes = read(fd, &c, 1);
@@ -114,6 +107,8 @@ static int	cnt_file_lines(t_game *game, char *file)
 		if (c == '\n')
 			lines++;
 	}
+	if (c == '\n')
+		lines--;
 	close(fd);
 	return (lines);
 }

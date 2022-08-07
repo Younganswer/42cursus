@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/02 00:39:43 by younhwan          #+#    #+#             */
-/*   Updated: 2022/08/07 01:52:54 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/08/07 21:04:47 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,10 @@ t_bool	validate_map(t_game *game)
 	t_chk_map	*chk_map;
 
 	chk_map = 0;
-	if (game->map->size.x < 4 || game->map->size.y < 4)
+	if (game->map->size.x * game->map->size.y < 15)
 	{
 		free_all(game);
-		exit_with_error("Error: Map must be larger than 4x4.\n");
+		exit_with_error("Error: Map must be larger than 3x5.\n");
 	}
 	if (border_is_not_valid(game->map))
 	{
