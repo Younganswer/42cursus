@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/06 21:27:03 by younhwan          #+#    #+#             */
-/*   Updated: 2022/08/07 02:34:00 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/08/08 01:21:59 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,28 +39,25 @@ static t_bool	draw_image(t_game *game, int x, int y)
 	if (game->map->board[x][y] == '1')
 	{
 		mlx_put_image_to_window(\
-			game->mlx, game->window, game->img->under_wall_img, \
-				y * TILE_SIZE, x * TILE_SIZE);
-		mlx_put_image_to_window(\
 			game->mlx, game->window, game->img->wall_img, \
 				y * TILE_SIZE, x * TILE_SIZE);
 	}
 	else
 	{
 		mlx_put_image_to_window(\
-			game->mlx, game->window, game->img->road_img, \
+			game->mlx, game->window, game->img->empty_img, \
 				y * TILE_SIZE, x * TILE_SIZE);
 		if (game->map->board[x][y] == 'C')
 			mlx_put_image_to_window(\
-				game->mlx, game->window, game->img->collects_img, \
+				game->mlx, game->window, game->img->collect_imgs[0], \
 					y * TILE_SIZE, x * TILE_SIZE);
 		else if (game->map->board[x][y] == 'P')
 			mlx_put_image_to_window(\
-				game->mlx, game->window, game->img->player_img, \
+				game->mlx, game->window, game->img->player_imgs[0], \
 					y * TILE_SIZE, x * TILE_SIZE);
 		else if (game->map->board[x][y] == 'E')
 			mlx_put_image_to_window(\
-				game->mlx, game->window, game->img->exit_img, \
+				game->mlx, game->window, game->img->exit_imgs[8], \
 					y * TILE_SIZE, x * TILE_SIZE);
 	}
 	return (TRUE);

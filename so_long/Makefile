@@ -6,7 +6,7 @@
 #    By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/08 16:03:07 by younhwan          #+#    #+#              #
-#    Updated: 2022/08/08 01:18:03 by younhwan         ###   ########.fr        #
+#    Updated: 2022/08/08 01:23:38 by younhwan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -71,6 +71,7 @@ all: ${NAME}
 ${OBJS_DIR}:
 	mkdir -p objs
 	mkdir -p objs/game
+	mkdir -p objs/img
 	mkdir -p objs/map
 	mkdir -p objs/player
 

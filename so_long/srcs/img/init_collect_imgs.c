@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/08 00:48:18 by younhwan          #+#    #+#             */
-/*   Updated: 2022/08/08 00:53:57 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/08/08 01:24:23 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ static t_bool	init_collect_imgs_04(t_game *game)
 	return (TRUE);
 }
 
-static t_bool	init_collect_imgs_04(t_game *game)
+static t_bool	init_collect_imgs_08(t_game *game)
 {
 	game->img->collect_imgs[4] = mlx_xpm_file_to_image(\
 		game->mlx, "./assets/coin/coin05.xpm", \

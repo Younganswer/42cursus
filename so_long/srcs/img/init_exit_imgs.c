@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/08 00:54:20 by younhwan          #+#    #+#             */
-/*   Updated: 2022/08/08 01:01:12 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/08/08 01:24:10 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ static t_bool	init_exit_img_04(t_game *game)
 	return (TRUE);
 }
 
-static t_bool	init_exit_img_04(t_game *game)
+static t_bool	init_exit_img_08(t_game *game)
 {
 	game->img->exit_imgs[4] = mlx_xpm_file_to_image(\
 		game->mlx, "./assets/exit/exit05.xpm", \
