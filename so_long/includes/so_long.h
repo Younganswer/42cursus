@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/31 23:52:16 by younhwan          #+#    #+#             */
-/*   Updated: 2022/08/08 00:48:09 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/08/08 01:06:10 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ typedef struct s_objs_img
 	void	*wall_img;
 	void	*collect_imgs[8];
 	void	*player_imgs[32];
-	void	*exit_imgs[33];
+	void	*exit_imgs[9];
 }	t_objs_img;
 
 typedef struct s_game

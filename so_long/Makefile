@@ -6,7 +6,7 @@
 #    By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/08 16:03:07 by younhwan          #+#    #+#              #
-#    Updated: 2022/08/08 00:47:17 by younhwan         ###   ########.fr        #
+#    Updated: 2022/08/08 01:18:03 by younhwan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,7 +44,13 @@ SRCS = 	main.c\
 		game/render_game.c\
 		game/reset.c\
 		img/init_img.c\
-		img/init_collect_imgs.c
+		img/init_exit_imgs.c\
+		img/init_collect_imgs.c\
+		img/init_player_imgs.c\
+		img/init_player_down_imgs.c\
+		img/init_player_left_imgs.c\
+		img/init_player_right_imgs.c\
+		img/init_player_up_imgs.c\
 		map/init_map.c\
 		map/read_map_file.c\
 		map/validate_file_name.c\
