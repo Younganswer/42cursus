@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 21:16:55 by younhwan          #+#    #+#             */
-/*   Updated: 2022/08/07 02:17:46 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/08/12 17:51:14 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ int	reset_game(t_game *game)
 				game->player->moves = 0;
 				game->player->position.x = i;
 				game->player->position.y = j;
+				game->player->direction.x = 0;
+				game->player->direction.y = 1;
 			}
 		}
 	}

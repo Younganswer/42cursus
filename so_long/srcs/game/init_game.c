@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 16:19:11 by younhwan          #+#    #+#             */
-/*   Updated: 2022/08/07 02:33:25 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/08/12 18:30:55 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,8 @@ static t_bool	game_window_init(t_game *game)
 {
 	game->img_sz.x = TILE_SIZE;
 	game->img_sz.y = TILE_SIZE;
-	game->window_sz.x = game->map->size.x * TILE_SIZE;
-	game->window_sz.y = game->map->size.y * TILE_SIZE;
+	game->window_sz.x = game->map->size.x * game->img_sz.x;
+	game->window_sz.y = game->map->size.y * game->img_sz.y;
 	game->window = mlx_new_window(\
 		game->mlx, game->window_sz.y, game->window_sz.x, "so_long");
 	if (!game->window)

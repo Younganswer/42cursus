@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/02 00:39:43 by younhwan          #+#    #+#             */
-/*   Updated: 2022/08/07 21:04:47 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/08/12 18:29:28 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,22 +23,23 @@ t_bool	validate_map(t_game *game)
 	t_chk_map	*chk_map;
 
 	chk_map = 0;
-	if (game->map->size.x * game->map->size.y < 15)
+	if (game->map->size.x < 3 || game->map->size.y < 3 || \
+		game->map->size.x * game->map->size.y < 15)
 	{
 		free_all(game);
-		exit_with_error("Error: Map must be larger than 3x5.\n");
+		exit_with_error("Error\nMap must be larger than 3x5.\n");
 	}
 	if (border_is_not_valid(game->map))
 	{
 		free_all(game);
-		exit_with_error("Error: Border is not valid.\n");
+		exit_with_error("Error\nBorder is not valid.\n");
 	}
 	check(game, &chk_map);
 	if (!chk_map->exit || !chk_map->player || !chk_map->collects)
 	{
 		free(chk_map);
 		free_all(game);
-		exit_with_error("Error: Map is not valid.\n");
+		exit_with_error("Error\nMap is not valid.\n");
 	}
 	return (TRUE);
 }
@@ -78,7 +79,7 @@ static t_bool	check(t_game *game, t_chk_map **chk_map)
 	if (!(*chk_map))
 	{
 		free_all(game);
-		exit_with_error("Error: Fail to malloc at chk_map.\n");
+		exit_with_error("Error\nFail to malloc at chk_map.\n");
 	}
 	(*chk_map)->collects = 0;
 	(*chk_map)->player = 0;
@@ -103,7 +104,7 @@ static t_bool	check_data(t_game *game, t_chk_map *chk_map, const char c)
 	{
 		free(chk_map);
 		free_all(game);
-		exit_with_error("Error: Map character is not valid.\n");
+		exit_with_error("Error\nMap character is not valid.\n");
 	}
 	if (c == 'P')
 	{
@@ -113,7 +114,7 @@ static t_bool	check_data(t_game *game, t_chk_map *chk_map, const char c)
 		{
 			free(chk_map);
 			free_all(game);
-			exit_with_error("Error: There must be only one player.\n");
+			exit_with_error("Error\nThere must be only one player.\n");
 		}
 	}
 	if (c == 'E')
@@ -126,7 +127,7 @@ static t_bool	check_data(t_game *game, t_chk_map *chk_map, const char c)
 
 static t_bool	char_is_not_valid(const char c)
 {
-	if (c == '0' || c == '1' || c == 'C' || c == 'E' || c == 'P')
+	if (c == '0' || c == '1' || c == 'C' || c == 'P' || c == 'G' || c == 'E')
 		return (FALSE);
 	return (TRUE);
 }

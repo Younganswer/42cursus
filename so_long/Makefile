@@ -6,7 +6,7 @@
 #    By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/08 16:03:07 by younhwan          #+#    #+#              #
-#    Updated: 2022/08/08 01:23:38 by younhwan         ###   ########.fr        #
+#    Updated: 2022/08/12 17:55:57 by younhwan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,6 +37,7 @@ OBJS_DIR = ./objs
 #OBJS_BONUS_DIR = ./objs_bonus
 
 SRCS = 	main.c\
+		game/draw_images.c\
 		game/end_game.c\
 		game/init_game.c\
 		game/key_pressed.c\

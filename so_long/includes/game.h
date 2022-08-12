@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 15:08:30 by younhwan          #+#    #+#             */
-/*   Updated: 2022/08/07 02:24:54 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/08/12 17:53:13 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,8 @@ t_bool	move_to(t_game *game, int dx, int dy);
 // render_game.c
 int		render_game(t_game *game);
 
+// draw_images.c
+t_bool	draw_images(t_game *game, int x, int y);
 // reset.c
 int		reset_game(t_game *game);
 

@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 18:31:55 by younhwan          #+#    #+#             */
-/*   Updated: 2022/08/06 23:32:06 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/08/12 18:30:05 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ t_bool	init_player(t_game *game)
 		free_all(game);
 		exit_with_error("Error: Fail to malloc at player.\n");
 	}
+	game->player->direction.x = 0;
+	game->player->direction.y = 0;
 	game->player->moves = 0;
 	game->player->collects = 0;
 	init_player_pos(game);

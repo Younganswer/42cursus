@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 15:14:53 by younhwan          #+#    #+#             */
-/*   Updated: 2022/08/06 22:07:10 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/08/12 17:25:04 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include "so_long.h"
 
-# define TILE_SIZE 64
+# define TILE_SIZE 32
 
 typedef enum e_bool
 {
