@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/02 00:39:43 by younhwan          #+#    #+#             */
-/*   Updated: 2022/08/12 23:25:57 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/08/13 00:26:05 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,8 @@ t_bool	validate_map(t_game *game)
 		free_all(game);
 		exit_with_error("Error\nMap is not valid.\n");
 	}
+	game->collects = chk_map->collects;
+	free(chk_map);
 	return (TRUE);
 }
 
@@ -82,8 +84,8 @@ static t_bool	check(t_game *game, t_chk_map **chk_map)
 		exit_with_error("Error\nFail to malloc at chk_map.\n");
 	}
 	(*chk_map)->collects = 0;
-	(*chk_map)->player = 0;
 	(*chk_map)->exit = 0;
+	(*chk_map)->player = FALSE;
 	i = 0;
 	while (i < game->map->size.x)
 	{
@@ -121,7 +123,6 @@ static t_bool	check_data(t_game *game, t_chk_map *chk_map, const char c)
 		chk_map->exit++;
 	if (c == 'C')
 		chk_map->collects++;
-	game->collects = chk_map->collects;
 	return (TRUE);
 }
 

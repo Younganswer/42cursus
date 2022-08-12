@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 16:19:11 by younhwan          #+#    #+#             */
-/*   Updated: 2022/08/12 23:27:27 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/08/13 01:15:54 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,9 @@ t_bool	init_game(t_game **game, char *file)
 	(*game) = (t_game *) malloc(sizeof(game));
 	if (!(*game))
 		exit_with_error("Error: Fail to malloc at game.\n");
+	(*game)->map = 0;
+	(*game)->player = 0;
+	(*game)->img = 0;
 	init_map(*game, file);
 	init_player(*game);
 	game_mlx_init(*game);

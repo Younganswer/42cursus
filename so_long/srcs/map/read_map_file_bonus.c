@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 23:54:35 by younhwan          #+#    #+#             */
-/*   Updated: 2022/08/12 23:25:44 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/08/13 01:20:27 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ t_bool	read_map_file(t_game *game, char *file)
 		if (!game->map->saved[i])
 		{
 			free_all(game);
+			if (!i)
+				exit_with_error("Error\nMap file is empty.\n");
 			exit_with_error("Error\nFail to malloc at saved.\n");
 		}
 		set_map_width(game, i);
@@ -48,19 +50,18 @@ static t_bool	set_map_width(t_game *game, int i)
 	else if (i == game->map->size.x - 1)
 	{
 		if ((size_t)game->map->size.y == ft_strlen(game->map->saved[i]) - 1 && \
-			game->map->saved[i][game->map->size.y] != '\n')
-		{
-			free_all(game);
-			exit_with_error("Error\nMap must be rectangular.\n");
-		}
-		else if ((size_t)game->map->size.y == ft_strlen(game->map->saved[i]) && \
 			game->map->saved[i][game->map->size.y] == '\n')
+			return (TRUE);
+		else if ((size_t)game->map->size.y == ft_strlen(game->map->saved[i]) && \
+			game->map->saved[i][game->map->size.y - 1] != '\n')
+			return (TRUE);
+		else
 		{
 			free_all(game);
 			exit_with_error("Error\nMap must be rectangular.\n");
 		}
 	}
-	else if ((0 < i && i < game->map->size.x) && \
+	else if ((0 < i && i < game->map->size.x - 1) && \
 		(size_t)game->map->size.y != ft_strlen(game->map->saved[i]) - 1)
 	{
 		free_all(game);
