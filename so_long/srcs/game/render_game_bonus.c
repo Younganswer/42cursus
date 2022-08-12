@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/06 21:27:03 by younhwan          #+#    #+#             */
-/*   Updated: 2022/08/12 23:43:58 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/08/13 01:26:25 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,12 +45,10 @@ static t_bool	draw_moves(t_game *game)
 	offset = 10 * ft_strlen(str);
 	if (game->player->collects < game->collects)
 		mlx_string_put(game->mlx, game->window, \
-			game->window_sz.y - 4 - offset, TILE_SIZE / 2, \
-				-1, str);
+			game->window_sz.y - 8 - offset, 18, -1, str);
 	else
 		mlx_string_put(game->mlx, game->window, \
-			game->window_sz.y - 4 - offset, TILE_SIZE / 2, \
-				15921152, str);
+			game->window_sz.y - 8 - offset, 18, 15921152, str);
 	free(str);
 	return (TRUE);
 }

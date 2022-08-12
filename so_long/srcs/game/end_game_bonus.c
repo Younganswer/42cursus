@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 19:23:20 by younhwan          #+#    #+#             */
-/*   Updated: 2022/08/13 01:14:51 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/08/13 01:24:45 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 int				end_game(t_game *game);
 t_bool			free_all(t_game *game);
-static t_bool	free_img(t_objs_img *img);
 static t_bool	free_map(t_map *map);
 
 int	end_game(t_game *game)
@@ -28,22 +27,10 @@ t_bool	free_all(t_game *game)
 {
 	if (!game)
 		return (TRUE);
-	free_img(game->img);
 	free_map(game->map);
+	free(game->img);
 	free(game->player);
 	free(game);
-	return (TRUE);
-}
-
-static t_bool	free_img(t_objs_img *img)
-{
-	if (!img)
-		return (TRUE);
-	free(img->collect_imgs);
-	free(img->exit_imgs);
-	free(img->player_imgs);
-	free(img->ghost_imgs);
-	free(img);
 	return (TRUE);
 }
 
