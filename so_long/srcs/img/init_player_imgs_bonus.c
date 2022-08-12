@@ -1,20 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   player.h                                           :+:      :+:    :+:   */
+/*   init_player_imgs_bonus.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/01 15:17:47 by younhwan          #+#    #+#             */
-/*   Updated: 2022/08/06 21:56:31 by younhwan         ###   ########.fr       */
+/*   Created: 2022/08/08 01:01:36 by younhwan          #+#    #+#             */
+/*   Updated: 2022/08/12 23:25:07 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PLAYER_H
-# define PLAYER_H
+#include "../../includes/so_long_bonus.h"
 
-# include "so_long.h"
+t_bool	init_player_imgs(t_game *game);
 
-t_bool	init_player(t_game *game);
-
-#endif
+t_bool	init_player_imgs(t_game *game)
+{
+	init_player_down_imgs(game);
+	init_player_left_imgs(game);
+	init_player_right_imgs(game);
+	init_player_up_imgs(game);
+	return (TRUE);
+}

@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   key_pressed.c                                      :+:      :+:    :+:   */
+/*   key_pressed_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 21:13:15 by younhwan          #+#    #+#             */
-/*   Updated: 2022/08/12 17:45:24 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/08/12 23:23:45 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/so_long.h"
+#include "../../includes/so_long_bonus.h"
 
 int	key_pressed(int key, t_game *game);
 

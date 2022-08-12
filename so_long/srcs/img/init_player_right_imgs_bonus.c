@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_player_right_imgs.c                           :+:      :+:    :+:   */
+/*   init_player_right_imgs_bonus.c                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/08 01:04:36 by younhwan          #+#    #+#             */
-/*   Updated: 2022/08/08 01:15:48 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/08/12 23:25:16 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/so_long.h"
+#include "../../includes/so_long_bonus.h"
 
 t_bool			init_player_right_imgs(t_game *game);
 static t_bool	init_player_right_imgs_12(t_game *game);

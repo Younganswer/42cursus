@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_collect_imgs.c                                :+:      :+:    :+:   */
+/*   init_collect_imgs_bonus.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/08 00:48:18 by younhwan          #+#    #+#             */
-/*   Updated: 2022/08/08 01:24:23 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/08/12 23:24:29 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/so_long.h"
+#include "../../includes/so_long_bonus.h"
 
 t_bool			init_collect_imgs(t_game *game);
 static t_bool	init_collect_imgs_04(t_game *game);

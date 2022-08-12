@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   move_to.c                                          :+:      :+:    :+:   */
+/*   move_to_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 21:43:21 by younhwan          #+#    #+#             */
-/*   Updated: 2022/08/12 17:49:53 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/08/12 23:23:54 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/so_long.h"
+#include "../../includes/so_long_bonus.h"
 
 t_bool			move_to(t_game *game, int dx, int dy);
 static t_bool	move_to_empty(t_game *game, int dx, int dy);
@@ -70,6 +70,10 @@ static t_bool	move_to_ghost(t_game *game, int dx, int dy)
 	game->player->position.x += dx;
 	game->player->position.y += dy;
 	game->map->board[game->player->position.x][game->player->position.y] = 'P';
+	// mlx_clear_window(game->mlx, game->window);
+	// mlx_put_image_to_window(\
+	// 	game->mlx, game->window, game->img->game_over_img, \
+	// 		0, 0);
 	end_game(game);
 	return (TRUE);
 }
@@ -80,6 +84,10 @@ static t_bool	move_to_exit(t_game *game, int dx, int dy)
 	game->player->position.x += dx;
 	game->player->position.y += dy;
 	game->map->board[game->player->position.x][game->player->position.y] = 'P';
+	// mlx_clear_window(game->mlx, game->window);
+	// mlx_put_image_to_window(\
+	// 	game->mlx, game->window, game->img->clear_img, \
+	// 		0, 0);
 	end_game(game);
 	return (TRUE);
 }

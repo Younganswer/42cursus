@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_exit_imgs.c                                   :+:      :+:    :+:   */
+/*   init_exit_imgs_bonus.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/08 00:54:20 by younhwan          #+#    #+#             */
-/*   Updated: 2022/08/08 01:24:10 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/08/12 23:24:36 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/so_long.h"
+#include "../../includes/so_long_bonus.h"
 
 t_bool			init_exit_imgs(t_game *game);
 static t_bool	init_closed_exit_img(t_game *game);

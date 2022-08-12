@@ -1,31 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   validate_file_name.c                               :+:      :+:    :+:   */
+/*   tools_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/03 14:28:28 by younhwan          #+#    #+#             */
-/*   Updated: 2022/08/06 23:51:09 by younhwan         ###   ########.fr       */
+/*   Created: 2022/08/01 15:14:53 by younhwan          #+#    #+#             */
+/*   Updated: 2022/08/12 23:30:08 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/so_long.h"
+#ifndef TOOLS_H
+# define TOOLS_H
 
-t_bool	validate_file_name(t_game *game, char *file)
+# include "so_long_bonus.h"
+
+# define TILE_SIZE 32
+
+typedef enum e_bool
 {
-	int	file_len;
+	FALSE = 0,
+	TRUE = 1
+}	t_bool;
 
-	file_len = ft_strlen(file);
-	if (file_len < 5)
-	{
-		free_all(game);
-		exit_with_error("Error: File name must be longer than 4 characters.\n");
-	}
-	if (ft_strncmp(file + (file_len - 4), ".ber", 4))
-	{
-		free_all(game);
-		exit_with_error("Error: File name must end with [.ber].\n");
-	}
-	return (TRUE);
-}
+typedef struct s_coord
+{
+	int	x;
+	int	y;
+}	t_coord;
+
+//	main_bonus.c
+void	exit_with_error(const char *str);
+
+#endif

@@ -1,24 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_player_imgs.c                                 :+:      :+:    :+:   */
+/*   validate_file_name_bonus.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/08 01:01:36 by younhwan          #+#    #+#             */
-/*   Updated: 2022/08/08 01:09:49 by younhwan         ###   ########.fr       */
+/*   Created: 2022/08/03 14:28:28 by younhwan          #+#    #+#             */
+/*   Updated: 2022/08/12 23:25:50 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/so_long.h"
+#include "../../includes/so_long_bonus.h"
 
-t_bool	init_player_imgs(t_game *game);
-
-t_bool	init_player_imgs(t_game *game)
+t_bool	validate_file_name(t_game *game, char *file)
 {
-	init_player_down_imgs(game);
-	init_player_left_imgs(game);
-	init_player_right_imgs(game);
-	init_player_up_imgs(game);
+	int	file_len;
+
+	file_len = ft_strlen(file);
+	if (file_len < 5)
+	{
+		free_all(game);
+		exit_with_error("Error: File name must be longer than 4 characters.\n");
+	}
+	if (ft_strncmp(file + (file_len - 4), ".ber", 4))
+	{
+		free_all(game);
+		exit_with_error("Error: File name must end with [.ber].\n");
+	}
 	return (TRUE);
 }

@@ -1,34 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   tools.h                                            :+:      :+:    :+:   */
+/*   map_bonus.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/01 15:14:53 by younhwan          #+#    #+#             */
-/*   Updated: 2022/08/12 17:25:04 by younhwan         ###   ########.fr       */
+/*   Created: 2022/08/01 16:17:28 by younhwan          #+#    #+#             */
+/*   Updated: 2022/08/12 23:29:21 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef TOOLS_H
-# define TOOLS_H
+#ifndef MAP_H
+# define MAP_H
 
-# include "so_long.h"
+# include "so_long_bonus.h"
 
-# define TILE_SIZE 32
-
-typedef enum e_bool
+typedef struct s_chk_map
 {
-	FALSE = 0,
-	TRUE = 1
-}	t_bool;
+	t_bool	player;
+	int		exit;
+	int		collects;
+}	t_chk_map;
 
-typedef struct s_coord
-{
-	int	x;
-	int	y;
-}	t_coord;
+// init_map_bonus.c
+t_bool	init_map(t_game *game, char *file);
 
-void	exit_with_error(const char *str);
+// validate_file_name_bonus.c
+t_bool	validate_file_name(t_game *game, char *file);
+
+// read_map_bonus.c
+t_bool	read_map_file(t_game *game, char *file);
+
+// validate_map_bonus.c
+t_bool	validate_map(t_game *game);
 
 #endif

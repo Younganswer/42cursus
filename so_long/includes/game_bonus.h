@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   game.h                                             :+:      :+:    :+:   */
+/*   game_bonus.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 15:08:30 by younhwan          #+#    #+#             */
-/*   Updated: 2022/08/12 17:53:13 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/08/12 23:26:33 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GAME_H
 # define GAME_H
 
-# include "so_long.h"
+# include "so_long_bonus.h"
 
 typedef enum e_x_event_key
 {
@@ -32,27 +32,28 @@ typedef enum e_keycode
 	KEY_UP = 126
 }	t_keycode;
 
-// init_game.c
+// init_game_bonus.c
 t_bool	init_game(t_game **game, char *file);
 
-// init_img.c
+// init_img_bonus.c
 t_bool	init_img(t_game *game);
 
-// key_pressed.c
+// key_pressed_bonus.c
 int		key_pressed(int key, t_game *game);
 
-// move_to.c
+// move_to_bonus.c
 t_bool	move_to(t_game *game, int dx, int dy);
 
-// render_game.c
+// render_game_bonus.c
 int		render_game(t_game *game);
 
-// draw_images.c
+// draw_images_bonus.c
 t_bool	draw_images(t_game *game, int x, int y);
-// reset.c
+
+// reset_bonus.c
 int		reset_game(t_game *game);
 
-// end_game.c
+// end_game_bonus.c
 int		end_game(t_game *game);
 t_bool	free_all(t_game *game);
 

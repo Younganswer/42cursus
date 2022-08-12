@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_player.c                                      :+:      :+:    :+:   */
+/*   init_player_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 18:31:55 by younhwan          #+#    #+#             */
-/*   Updated: 2022/08/12 18:30:05 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/08/12 23:26:15 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/so_long.h"
+#include "../../includes/so_long_bonus.h"
 
 t_bool			init_player(t_game *game);
 static t_bool	init_player_pos(t_game *game);
@@ -24,7 +24,7 @@ t_bool	init_player(t_game *game)
 		exit_with_error("Error: Fail to malloc at player.\n");
 	}
 	game->player->direction.x = 0;
-	game->player->direction.y = 0;
+	game->player->direction.y = 1;
 	game->player->moves = 0;
 	game->player->collects = 0;
 	init_player_pos(game);

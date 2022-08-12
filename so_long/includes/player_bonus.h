@@ -1,37 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map.h                                              :+:      :+:    :+:   */
+/*   player_bonus.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/01 16:17:28 by younhwan          #+#    #+#             */
-/*   Updated: 2022/08/12 18:25:06 by younhwan         ###   ########.fr       */
+/*   Created: 2022/08/01 15:17:47 by younhwan          #+#    #+#             */
+/*   Updated: 2022/08/12 23:29:29 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MAP_H
-# define MAP_H
+#ifndef PLAYER_H
+# define PLAYER_H
 
-# include "so_long.h"
+# include "so_long_bonus.h"
 
-typedef struct s_chk_map
-{
-	t_bool	player;
-	int		exit;
-	int		collects;
-}	t_chk_map;
-
-// init_map.c
-t_bool	init_map(t_game *game, char *file);
-
-// validate_file_name.c
-t_bool	validate_file_name(t_game *game, char *file);
-
-// read_map.c
-t_bool	read_map_file(t_game *game, char *file);
-
-// validate_map.c
-t_bool	validate_map(t_game *game);
+//	init_player_bonus.c
+t_bool	init_player(t_game *game);
 
 #endif
