@@ -6,11 +6,11 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/26 13:54:57 by younhwan          #+#    #+#             */
-/*   Updated: 2022/08/06 22:17:22 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/08/13 13:30:34 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/get_next_line.h"
+#include "get_next_line.h"
 
 char	*get_next_line(int fd);
 int		ft_read_fd(int fd, t_list *fd_list);
@@ -58,7 +58,7 @@ int	ft_read_fd(int fd, t_list *fd_list)
 		node_tmp = ft_insert_node_to_cur_list(list_tmp);
 		if (!node_tmp)
 			return (0);
-		read_bytes = read(fd, node_tmp->buff, BUFFER_SIZE);
+		read_bytes = read(fd, node_tmp->buff, BUFFER_SIZE - 1);
 		if (read_bytes == -1)
 			return (0);
 		node_tmp->buff[read_bytes] = '\0';

@@ -6,11 +6,11 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/26 14:10:04 by younhwan          #+#    #+#             */
-/*   Updated: 2022/08/06 22:24:05 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/08/13 13:26:09 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/get_next_line.h"
+#include "get_next_line.h"
 
 t_list	*ft_get_fd_list(int fd, t_list *fd_list);
 t_node	*ft_insert_node_to_cur_list(t_list *cur_list);
