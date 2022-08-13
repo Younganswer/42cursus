@@ -6,12 +6,12 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 16:17:28 by younhwan          #+#    #+#             */
-/*   Updated: 2022/08/12 23:29:21 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/08/13 14:18:27 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MAP_H
-# define MAP_H
+#ifndef MAP_BONUS_H
+# define MAP_BONUS_H
 
 # include "so_long_bonus.h"
 

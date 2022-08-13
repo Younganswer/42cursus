@@ -6,12 +6,12 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 15:08:30 by younhwan          #+#    #+#             */
-/*   Updated: 2022/08/12 23:26:33 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/08/13 14:18:44 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GAME_H
-# define GAME_H
+#ifndef GAME_BONUS_H
+# define GAME_BONUS_H
 
 # include "so_long_bonus.h"
 

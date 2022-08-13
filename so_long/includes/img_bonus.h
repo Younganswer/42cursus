@@ -6,12 +6,12 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/08 00:45:11 by younhwan          #+#    #+#             */
-/*   Updated: 2022/08/12 23:29:07 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/08/13 14:18:22 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef IMG_H
-# define IMG_H
+#ifndef IMG_BONUS_H
+# define IMG_BONUS_H
 
 # include "so_long_bonus.h"
 
