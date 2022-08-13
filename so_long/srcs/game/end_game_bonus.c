@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 19:23:20 by younhwan          #+#    #+#             */
-/*   Updated: 2022/08/13 01:24:45 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/08/13 13:10:12 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,14 +40,14 @@ static t_bool	free_map(t_map *map)
 
 	if (!map)
 		return (TRUE);
-	if (map->saved != 0)
+	if (map->saved)
 	{
 		i = 0;
 		while (i < map->size.x && map->saved[i])
 			free(map->saved[i++]);
 		free(map->saved);
 	}
-	if (map->board != 0)
+	if (map->board)
 	{
 		i = 0;
 		while (i < map->size.x && map->board[i])

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   draw_images.c                                      :+:      :+:    :+:   */
+/*   draw_images_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 17:29:59 by younhwan          #+#    #+#             */
-/*   Updated: 2022/08/12 23:23:18 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/08/13 12:49:12 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ t_bool	draw_images(t_game *game, int x, int y)
 {
 	static int	cur_frame;
 
-	cur_frame = (cur_frame + 1) % 4096;
+	cur_frame = (cur_frame + 1) % 6144;
 	if (game->map->board[x][y] == '1')
 	{
 		mlx_put_image_to_window(\
@@ -35,13 +35,13 @@ t_bool	draw_images(t_game *game, int x, int y)
 			game->mlx, game->window, game->img->empty_img, \
 				y * TILE_SIZE, x * TILE_SIZE);
 		if (game->map->board[x][y] == 'C')
-			draw_collects(game, x, y, cur_frame / 512);
+			draw_collects(game, x, y, cur_frame / 768);
 		else if (game->map->board[x][y] == 'P')
-			draw_player(game, x, y, cur_frame / 512);
+			draw_player(game, x, y, cur_frame / 768);
 		else if (game->map->board[x][y] == 'G')
-			draw_ghost(game, x, y, cur_frame / 512);
+			draw_ghost(game, x, y, cur_frame / 768);
 		else if (game->map->board[x][y] == 'E')
-			draw_exit(game, x, y, cur_frame / 512);
+			draw_exit(game, x, y, cur_frame / 768);
 	}
 	return (TRUE);
 }
