@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 17:29:59 by younhwan          #+#    #+#             */
-/*   Updated: 2022/08/13 12:49:12 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/08/14 21:52:06 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,9 @@ t_bool	draw_images(t_game *game, int x, int y)
 
 	cur_frame = (cur_frame + 1) % 6144;
 	if (game->map->board[x][y] == '1')
-	{
 		mlx_put_image_to_window(\
 			game->mlx, game->window, game->img->wall_img, \
 				y * TILE_SIZE, x * TILE_SIZE);
-	}
 	else
 	{
 		mlx_put_image_to_window(\
