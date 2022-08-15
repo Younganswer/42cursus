@@ -16,7 +16,8 @@ This project is a very small 2D game. It is built to make you work with textures
 <br/><br/>
 
 ## How to play
-+ The player's goal is to collect all collectibles present of the map then escape whit minimal movement.
+The player's goal is to collect all collectibles present of the map then escape whit minimal movement.
+
 | KEYBOARD | ACTION     |
 | -------- | ---------- |
 | `↑`      | Move up    |
