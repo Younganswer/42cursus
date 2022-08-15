@@ -1,4 +1,5 @@
 # so_long
+![so_long.gif](./so_long.gif)
 #### And thanks for all the fish!
 <br/><br/>
 
