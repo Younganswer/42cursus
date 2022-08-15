@@ -19,10 +19,19 @@
 
 Example
 ```
-char *str = "Hello World!\n";
-int str_len = ft_strlen(str);
-printf("%s\nlen: %d\n", str, str_len);
->> Hello World!
-   len: 13
+#include "libft.h"
+#include <stdio.h>
+
+int main(void) {
+	char *str = "Hello World!";
+	size_t str_len = ft_strlen(str);
+	printf("%s\nlen: %zu\n", str, str_len);
+	return (0);
+}
+
+
+>> ./main.out
+Hello World!
+len: 12
 >> 
 ```
