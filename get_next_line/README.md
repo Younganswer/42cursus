@@ -1,17 +1,14 @@
 # get_next_line
 #### Reading a line from a fd is way too tedious
-<br/>
-<br/>
+<br/><br/>
 
 ## Summary
 #### This project is about programming a function that returns a line read from a file descriptor.
-<br/>
-<br/>
+<br/><br/>
 
 ## Goals
 #### This project will not only allow you to add a very convenient function to your collection, but it will also allow you to learn a highly interesting new concept in C programming: static variables.
-<br/>
-<br/>
+<br/><br/>
 
 ## Usage (Bonus included)
 	$ [CC] [CFLAGS] [your_main.c] get_next_line.c get_next_line_utils.c -o main.out
