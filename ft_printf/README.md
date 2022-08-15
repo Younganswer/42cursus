@@ -23,5 +23,6 @@ Example
 ```
 ft_printf("Hello World!\nMy name is %s.\n", my_name);
 >> Hello World!
->> My name is younhwan.
+   My name is younhwan.
+>> 
 ```
