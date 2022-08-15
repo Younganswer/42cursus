@@ -4,7 +4,7 @@
 + The goal of this project is pretty straightfoward. You will recode printf(). You will mainly learn about using a variable number of arguments.
 + You will discover **variadic functions** in C.
 
-## Install
+## Install (Bonus excluded)
 	$ make
 
 ## Usage
