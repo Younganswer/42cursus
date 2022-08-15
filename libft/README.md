@@ -7,3 +7,22 @@
 
 나의 첫 라이브러리를 만드는 프로젝트.  
 앞으로 계속 쓰일 라이브러리인 만큼 최대한 신경써서 완벽히 만들어야 후에 문제가 발생하지 않을 수 있다.
+
+## Install
+	$ make
+
+## Usage
+	$ [CC] [CFLAGS] [your_main.c] libft.a -o main.out
++ Compile library file (libft.a) with your c files.
++ You need to include 'libft.h' header into your c or header files.
+<br/>
+
+Example
+```
+char *str = "Hello World!\n";
+int str_len = ft_strlen(str);
+printf("%s\nlen: %d\n", str, str_len);
+>> Hello World!
+   len: 13
+>> 
+```
