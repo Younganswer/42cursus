@@ -21,8 +21,17 @@ int ft_printf(const char *str, ...);
 
 Example
 ```
-ft_printf("Hello World!\nMy name is %s.\n", my_name);
->> Hello World!
-   My name is younhwan.
+#include "./includes/ft_printf.h"
+
+int main(void) {
+	char *my_name = "younhwan";
+	ft_printf("Hello World!\nMy name is %s.\n", my_name);
+	return (0);
+}
+
+
+>> ./main.out
+Hello World!
+My name is younhwan.
 >> 
 ```
