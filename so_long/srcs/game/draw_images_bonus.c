@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 17:29:59 by younhwan          #+#    #+#             */
-/*   Updated: 2022/08/14 21:52:06 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/08/17 22:59:03 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,12 @@ t_bool	draw_images(t_game *game, int x, int y)
 	cur_frame = (cur_frame + 1) % 6144;
 	if (game->map->board[x][y] == '1')
 		mlx_put_image_to_window(\
-			game->mlx, game->window, game->img->wall_img, \
+			game->mlx, game->window, game->img->wall, \
 				y * TILE_SIZE, x * TILE_SIZE);
 	else
 	{
 		mlx_put_image_to_window(\
-			game->mlx, game->window, game->img->empty_img, \
+			game->mlx, game->window, game->img->empty, \
 				y * TILE_SIZE, x * TILE_SIZE);
 		if (game->map->board[x][y] == 'C')
 			draw_collects(game, x, y, cur_frame / 768);
@@ -47,7 +47,7 @@ t_bool	draw_images(t_game *game, int x, int y)
 static t_bool	draw_collects(t_game *game, int x, int y, int cur_img)
 {
 	mlx_put_image_to_window(\
-		game->mlx, game->window, game->img->collect_imgs[cur_img], \
+		game->mlx, game->window, game->img->collect[cur_img], \
 			y * TILE_SIZE, x * TILE_SIZE);
 	return (TRUE);
 }
@@ -65,7 +65,7 @@ static t_bool	draw_player(t_game *game, int x, int y, int cur_img)
 		direction = 3;
 	mlx_put_image_to_window(\
 		game->mlx, game->window, \
-			game->img->player_imgs[8 * direction + cur_img], \
+			game->img->player[8 * direction + cur_img], \
 				y * TILE_SIZE, x * TILE_SIZE);
 	return (TRUE);
 }
@@ -73,7 +73,7 @@ static t_bool	draw_player(t_game *game, int x, int y, int cur_img)
 static t_bool	draw_ghost(t_game *game, int x, int y, int cur_img)
 {
 	mlx_put_image_to_window(\
-		game->mlx, game->window, game->img->ghost_imgs[cur_img], \
+		game->mlx, game->window, game->img->ghost[cur_img], \
 			y * TILE_SIZE, x * TILE_SIZE);
 	return (TRUE);
 }
@@ -83,12 +83,12 @@ static t_bool	draw_exit(t_game *game, int x, int y, int cur_img)
 	if (game->collects != game->player->collects)
 	{
 		mlx_put_image_to_window(\
-			game->mlx, game->window, game->img->exit_imgs[8], \
+			game->mlx, game->window, game->img->exit[8], \
 				y * TILE_SIZE, x * TILE_SIZE);
 		return (TRUE);
 	}
 	mlx_put_image_to_window(\
-		game->mlx, game->window, game->img->exit_imgs[cur_img], \
+		game->mlx, game->window, game->img->exit[cur_img], \
 			y * TILE_SIZE, x * TILE_SIZE);
 	return (TRUE);
 }

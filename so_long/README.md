@@ -19,12 +19,13 @@ This project is a very small 2D game. It is built to make you work with textures
 ## How to play
 The player's goal is to collect all collectibles present of the map then escape whit minimal movement.
 
-| KEYBOARD | ACTION     |
-| -------- | ---------- |
-| `↑`      | Move up    |
-| `↓`      | Move down  |
-| `←`      | Move left  |
-| `→`      | Move right |
-| `R`      | Reset game |
-| `ESC ⎋`  | Exit game  |
+| KEYBOARD   | ACTION     |
+| ---------- | ---------- |
+| `Return ⏎` | Start game |
+| `R`        | Reset game |
+| `ESC ⎋`    | Exit game  |
+| `↑`        | Move up    |
+| `↓`        | Move down  |
+| `←`        | Move left  |
+| `→`        | Move right |
 

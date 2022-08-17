@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 21:43:21 by younhwan          #+#    #+#             */
-/*   Updated: 2022/08/13 01:20:47 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/08/17 23:40:27 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ static t_bool	move_to_ghost(t_game *game, int dx, int dy)
 	game->player->position.x += dx;
 	game->player->position.y += dy;
 	game->map->board[game->player->position.x][game->player->position.y] = 'P';
-	end_game(game);
+	game->status = GAME_OVER;
 	return (TRUE);
 }
 
@@ -80,6 +80,6 @@ static t_bool	move_to_exit(t_game *game, int dx, int dy)
 	game->player->position.x += dx;
 	game->player->position.y += dy;
 	game->map->board[game->player->position.x][game->player->position.y] = 'P';
-	end_game(game);
+	game->status = GAME_CLEAR;
 	return (TRUE);
 }

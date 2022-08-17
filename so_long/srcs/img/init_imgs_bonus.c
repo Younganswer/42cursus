@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 18:43:27 by younhwan          #+#    #+#             */
-/*   Updated: 2022/08/13 01:18:12 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/08/17 23:55:19 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,6 @@ t_bool	init_imgs(t_game *game)
 		free_all(game);
 		exit_with_error("Error\nFail to malloc images.\n");
 	}
-	game->message_sz.x = 96;
-	game->message_sz.x = 32;
 	init_map_imgs(game);
 	init_collect_imgs(game);
 	init_ghost_imgs(game);
@@ -37,13 +35,13 @@ t_bool	init_imgs(t_game *game)
 
 static t_bool	init_map_imgs(t_game *game)
 {
-	game->img->empty_img = mlx_xpm_file_to_image(\
+	game->img->empty = mlx_xpm_file_to_image(\
 		game->mlx, "./assets/empty/empty.xpm", \
 			&game->img_sz.x, &game->img_sz.y);
-	game->img->wall_img = mlx_xpm_file_to_image(\
+	game->img->wall = mlx_xpm_file_to_image(\
 		game->mlx, "./assets/wall/wall.xpm", \
 			&game->img_sz.x, &game->img_sz.y);
-	if (!game->img->empty_img || !game->img->wall_img)
+	if (!game->img->empty || !game->img->wall)
 	{
 		free_all(game);
 		exit_with_error("Error: Fail to read map images.\n");
@@ -53,13 +51,22 @@ static t_bool	init_map_imgs(t_game *game)
 
 static t_bool	init_message_imgs(t_game *game)
 {
-	game->img->clear_img = mlx_xpm_file_to_image(\
+	game->message_sz.start.x = 32;
+	game->message_sz.start.y = 192;
+	game->message_sz.game_clear.x = 32;
+	game->message_sz.game_clear.y = 96;
+	game->message_sz.game_over.x = 32;
+	game->message_sz.game_over.y = 96;
+	game->img->start = mlx_xpm_file_to_image(\
+		game->mlx, "./assets/message/start.xpm", \
+			&game->message_sz.start.y, &game->message_sz.start.x);
+	game->img->game_clear = mlx_xpm_file_to_image(\
 		game->mlx, "./assets/message/clear.xpm", \
-			&game->message_sz.x, &game->message_sz.y);
-	game->img->game_over_img = mlx_xpm_file_to_image(\
+			&game->message_sz.game_clear.y, &game->message_sz.game_clear.x);
+	game->img->game_over = mlx_xpm_file_to_image(\
 		game->mlx, "./assets/message/game_over.xpm", \
-			&game->message_sz.x, &game->message_sz.y);
-	if (!game->img->clear_img || !game->img->game_over_img)
+			&game->message_sz.game_over.y, &game->message_sz.game_over.x);
+	if (!game->img->start || !game->img->game_clear || !game->img->game_over)
 	{
 		free_all(game);
 		exit_with_error("Error: Fail to read map images.\n");

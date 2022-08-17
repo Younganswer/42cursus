@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 16:19:11 by younhwan          #+#    #+#             */
-/*   Updated: 2022/08/13 01:15:54 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/08/17 23:43:35 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ t_bool	init_game(t_game **game, char *file)
 	(*game)->map = 0;
 	(*game)->player = 0;
 	(*game)->img = 0;
+	(*game)->status = WAITING;
 	init_map(*game, file);
 	init_player(*game);
 	game_mlx_init(*game);

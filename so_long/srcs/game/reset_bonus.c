@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 21:16:55 by younhwan          #+#    #+#             */
-/*   Updated: 2022/08/12 23:24:06 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/08/17 23:04:12 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ int	reset_game(t_game *game)
 	int	i;
 	int	j;
 
+	game->status = PLAYING;
 	i = -1;
 	while (++i < game->map->size.x)
 	{

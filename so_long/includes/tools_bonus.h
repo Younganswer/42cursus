@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 15:14:53 by younhwan          #+#    #+#             */
-/*   Updated: 2022/08/13 14:21:04 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/08/17 23:52:54 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,15 +46,31 @@ typedef struct s_player
 
 typedef struct s_objs_img
 {
-	void	*empty_img;
-	void	*wall_img;
-	void	*clear_img;
-	void	*game_over_img;
-	void	*collect_imgs[8];
-	void	*player_imgs[32];
-	void	*ghost_imgs[8];
-	void	*exit_imgs[9];
+	void	*empty;
+	void	*wall;
+	void	*start;
+	void	*game_clear;
+	void	*game_over;
+	void	*collect[8];
+	void	*player[32];
+	void	*ghost[8];
+	void	*exit[9];
 }	t_objs_img;
+
+typedef enum e_status
+{
+	WAITING = 0,
+	PLAYING = 1,
+	GAME_CLEAR = 2,
+	GAME_OVER = 3,
+}	t_status;
+
+typedef struct s_message
+{
+	t_coord	start;
+	t_coord	game_clear;
+	t_coord	game_over;
+}	t_message;
 
 typedef struct s_game
 {
@@ -63,9 +79,10 @@ typedef struct s_game
 	t_coord		window_sz;
 	t_objs_img	*img;
 	t_coord		img_sz;
-	t_coord		message_sz;
+	t_message	message_sz;
 	t_map		*map;
 	t_player	*player;
+	t_status	status;
 	int			collects;
 }	t_game;
 
