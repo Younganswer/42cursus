@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 18:43:27 by younhwan          #+#    #+#             */
-/*   Updated: 2022/08/17 23:55:19 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/08/18 16:24:22 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ t_bool	init_imgs(t_game *game)
 		free_all(game);
 		exit_with_error("Error\nFail to malloc images.\n");
 	}
+	ft_memset(game->img, 0, sizeof(game->img));
 	init_map_imgs(game);
 	init_collect_imgs(game);
 	init_ghost_imgs(game);
