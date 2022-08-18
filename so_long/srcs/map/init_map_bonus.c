@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 16:55:15 by younhwan          #+#    #+#             */
-/*   Updated: 2022/08/18 00:59:34 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/08/18 11:29:14 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,6 @@ t_bool	init_map(t_game *game, char *file)
 		free_all(game);
 		exit_with_error("Error: Fail to malloc to map.\n");
 	}
-	game->map->saved = 0;
-	game->map->board = 0;
-	game->map->size.x = 0;
-	game->map->size.y = 0;
 	read_map_file(game, file);
 	copy_to_board(game);
 	validate_map(game);
