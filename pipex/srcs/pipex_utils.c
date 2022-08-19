@@ -6,55 +6,58 @@
 /*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/13 15:14:25 by younhwan          #+#    #+#             */
-/*   Updated: 2022/08/19 16:35:14 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/08/19 19:25:36 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/pipex_bonus.h"
 
-void		execute(const char *file, char **envp);
+void		execute(char **argv, int cmd_idx, char **envp);
 int			open_file(const char *file, t_open_flag flag);
-void		exit_with_error(const char *str);
+void		exit_with_error(void);
 void		usage(void);
 static char	*find_path(char *cmd, char **envp);
 
-void	exit_with_error(const char *str)
+void	exit_with_error(void)
 {
-	ft_putstr_fd(str, 2);
+	perror("\033[31mError");
 	exit(EXIT_FAILURE);
 }
 
-void	execute(const char *file, char **envp)
+void	execute(char **argv, int cmd_idx, char **envp)
 {
 	char	**cmd;
 	char	*cmd_path;
 	int		i;
-	
-	cmd = ft_split(file, ' ');
+
+	cmd = ft_split(argv[cmd_idx], ' ');
 	cmd_path = find_path(cmd[0], envp);
 	if (!cmd_path)
 	{
-		i = -1;
-		while (cmd[++i])
-			free(cmd[i]);
-		free(cmd);
-		exit_with_error("\033[31mError: Invalid command\033[0m\n");
+		if (STDIN_FILENO != 0 || (STDIN_FILENO == 0 && 2 < cmd_idx))
+		{
+			ft_putstr_fd("zsh: command not found: ", 2);
+			ft_putstr_fd(cmd[0], 2);
+			ft_putstr_fd("\n", 2);
+		}
+		exit(EXIT_FAILURE);
 	}
-	if (execve(cmd_path, cmd, envp) == -1)
-		exit_with_error("\033[31mError: Unable to execute command\033[0m\n");
+	if (STDIN_FILENO != 0 || (STDIN_FILENO == 0 && 2 < cmd_idx))
+		if (execve(cmd_path, cmd, envp) == -1)
+			exit_with_error();
 	free(cmd_path);
 	i = -1;
 	while (cmd[++i])
 		free(cmd[i]);
 	free(cmd);
-	return ;
 }
 
 void	usage(void)
 {
 	ft_putstr_fd("\033[31mError: Invalid argument\033[0m\n", 2);
 	ft_putstr_fd("Usage: ./pipex <file1> <cmd1> <cmd2> <...> <file2>\n", 1);
-	ft_putstr_fd("HERE_DOC: ./pipex \"here_doc\" <LIMITER> <cmd> <cmd1> <...> <file>\n", 1);
+	ft_putstr_fd("HERE_DOC: ./pipex \"here_doc\" \
+		<LIMITER> <cmd> <cmd1> <...> <file>\n", 1);
 	exit(EXIT_SUCCESS);
 }
 
@@ -70,7 +73,7 @@ int	open_file(const char *file, t_open_flag flag)
 	else if (flag == FILE_IN)
 		fd = open(file, O_RDONLY, 0777);
 	if (fd == -1)
-		exit_with_error("\033[31mError: Fail to open file.\033[0m\n");
+		perror("\033[31mError");
 	return (fd);
 }
 

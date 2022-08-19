@@ -6,14 +6,14 @@
 /*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 14:57:34 by younhwan          #+#    #+#             */
-/*   Updated: 2022/08/19 16:33:50 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/08/19 19:25:43 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/pipex_bonus.h"
 
 static void here_doc(int argc, const char *limiter);
-static void child_process(const char *cmd, char **envp);
+static void child_process(char **argv, int cmd_idx, char **envp);
 
 int main(int argc, char **argv, char **envp)
 {
@@ -28,20 +28,20 @@ int main(int argc, char **argv, char **envp)
         cmd_idx = 3;
         file_out = open_file(argv[argc - 1], HERE_DOC);
         here_doc(argc, argv[2]);
-		while (TRUE)
-			;
     }
     else
     {
         cmd_idx = 2;
         file_out = open_file(argv[argc - 1], FILE_OUT);
         file_in = open_file(argv[1], FILE_IN);
-        dup2(file_in, STDIN_FILENO);
+		if (file_in != -1)
+        	dup2(file_in, STDIN_FILENO);
     }
     while (cmd_idx < argc - 2)
-        child_process(argv[cmd_idx++], envp);
-    dup2(file_out, STDOUT_FILENO);
-    execute(argv[cmd_idx], envp);
+        child_process(argv, cmd_idx++, envp);
+	if (file_out != -1)
+    	dup2(file_out, STDOUT_FILENO);
+    execute(argv, cmd_idx, envp);
     return (0);
 }
 
@@ -54,7 +54,7 @@ static void here_doc(int argc, const char *end_flag)
 	if (argc < 6)
 		usage();
 	if (pipe(fd) == -1)
-		exit_with_error("\033[31mError: Pipe error\033[0m\n");
+		exit_with_error();
 	reader = fork();
 	if (!reader)
 	{
@@ -78,21 +78,22 @@ static void here_doc(int argc, const char *end_flag)
     return ;
 }
 
-static void child_process(const char *cmd, char **envp)
+static void child_process(char **argv, int cmd_idx, char **envp)
 {
     pid_t   pid;
     int     fd[2];
 
-    if (pipe(fd) == -1)
-		exit_with_error("\033[31mError: Pipe error\033[0m\n");
+	if (pipe(fd) == -1)
+		exit_with_error();
     pid = fork();
 	if (pid == -1)
-		exit_with_error("\033[31mError: Fork error\033[0m\n");
+		exit_with_error();
     if (!pid)
     {
         close(fd[READ]);
         dup2(fd[WRITE], STDOUT_FILENO);
-        execute(cmd, envp);
+        execute(argv, cmd_idx, envp);
+        exit(EXIT_SUCCESS);
     }
     else
     {

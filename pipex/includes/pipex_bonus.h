@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/13 15:03:44 by younhwan          #+#    #+#             */
-/*   Updated: 2022/08/19 16:07:17 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/08/19 17:27:50 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,9 @@ typedef enum e_open_flag
 }	t_open_flag;
 
 // pipex_utils_bonus.c
-void		execute(const char *file, char **envp);
+void		execute(char **argv, int cmd_idx, char **envp);
 int			open_file(const char *file, t_open_flag flag);
-void		exit_with_error(const char *str);
+void		exit_with_error(void);
 void		usage(void);
 
 #endif
