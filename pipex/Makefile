@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+         #
+#    By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/08 16:03:07 by younhwan          #+#    #+#              #
-#    Updated: 2022/08/13 15:14:10 by younhwan         ###   ########.fr        #
+#    Updated: 2022/08/19 15:16:57 by younhwan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,16 +26,16 @@ INCS_DIR = ./includes
 SRCS_DIR = ./srcs
 OBJS_DIR = ./objs
 
-SRCS =	pipex.c\
-		pipex_utils.c
+SRCS =	pipex_bonus.c\
+		pipex_utils_bonus.c
 
 SRCS := ${addprefix ${SRCS_DIR}/, ${SRCS}}
 OBJS = ${SRCS:${SRCS_DIR}/%.c=${OBJS_DIR}/%.o}
 
 all: ${NAME}
 
-# bonus:
-# 	make all
+bonus:
+	make all
 
 ${OBJS_DIR}:
 	mkdir -p objs
