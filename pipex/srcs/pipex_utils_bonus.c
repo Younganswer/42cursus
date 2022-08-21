@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/13 15:14:25 by younhwan          #+#    #+#             */
-/*   Updated: 2022/08/20 15:56:10 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/08/22 00:42:32 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,10 @@ void	execute(char **argv, char **envp, int cmd_idx)
 		}
 		exit(EXIT_FAILURE);
 	}
-	if (fd != -1 || (fd == -1 && 2 < cmd_idx))
-		if (execve(cmd_path, cmd, envp) == -1)
-			exit_with_error();
+	if (fd == -1 && cmd_idx == 2)
+		write(STDOUT_FILENO, "", 0);
+	else if (execve(cmd_path, cmd, envp) == -1)
+		exit_with_error();
 }
 
 int	open_file(const char *file, t_open_flag flag)
@@ -57,15 +58,23 @@ int	open_file(const char *file, t_open_flag flag)
 		fd = open(file, O_RDONLY, 0777);
 	if (fd == -1)
 	{
-		perror("\033[31mError");
+		if (flag == HERE_DOC || flag == FILE_OUT)
+			perror("\033[31mError");
 		if (flag == FILE_OUT)
 			exit(EXIT_FAILURE);
+		if (flag == FILE_IN)
+		{
+			ft_putstr_fd("\033[31mError: No such file or directory: ", 2);
+			ft_putstr_fd(file, 2);
+			ft_putstr_fd("\033[m\n", 2);
+		}	
 	}
 	return (fd);
 }
 
 void	exit_with_error(void)
 {
+	ft_putendl_fd("Hi", 2);
 	perror("\033[31mError");
 	exit(EXIT_FAILURE);
 }
