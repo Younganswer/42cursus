@@ -98,6 +98,5 @@ static void	child_process(int argc, char **argv, char **envp, int cmd_idx)
 		dup2(fd[READ], STDIN_FILENO);
 		if (cmd_idx < argc - 2)
 			child_process(argc, argv, envp, cmd_idx + 1);
-		wait(NULL);
 	}
 }
