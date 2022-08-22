@@ -86,6 +86,7 @@ static void	child_process(int argc, char **argv, char **envp, int cmd_idx)
 		exit_with_error();
 	if (!pid)
 	{
+		close(fd[READ]);
 		dup2(fd[WRITE], STDOUT_FILENO);
 		if (cmd_idx == argc - 2)
 			dup2(open_file(argv[argc - 1], FILE_OUT), STDOUT_FILENO);
@@ -93,6 +94,7 @@ static void	child_process(int argc, char **argv, char **envp, int cmd_idx)
 	}
 	else
 	{
+		close(fd[WRITE]);
 		dup2(fd[READ], STDIN_FILENO);
 		if (cmd_idx < argc - 2)
 			child_process(argc, argv, envp, cmd_idx + 1);
