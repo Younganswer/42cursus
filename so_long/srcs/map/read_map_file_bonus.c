@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 23:54:35 by younhwan          #+#    #+#             */
-/*   Updated: 2022/08/23 18:33:06 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/08/23 20:27:43 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,6 @@ static t_bool	set_map_width(t_game *game, int i)
 static t_bool	malloc_file(t_game *game, char *file)
 {
 	int	lines;
-	int	i;
 
 	lines = cnt_file_lines(game, file);
 	game->map->size.x = lines;
@@ -83,9 +82,7 @@ static t_bool	malloc_file(t_game *game, char *file)
 		free_all(game);
 		exit_with_error("Error\nFail to malloc at saved.\n");
 	}
-	i = 0;
-	while (i < lines)
-		game->map->saved[i++] = 0;	
+	ft_memset(game->map->saved, 0, sizeof(char *) * lines);
 	return (TRUE);
 }
 

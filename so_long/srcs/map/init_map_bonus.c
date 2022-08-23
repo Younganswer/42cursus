@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_map_bonus.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 16:55:15 by younhwan          #+#    #+#             */
-/*   Updated: 2022/08/18 17:17:31 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/08/23 20:25:34 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ static t_bool	copy_to_board(t_game *game)
 		free_all(game);
 		exit_with_error("Error\nFail to malloc at board.\n");
 	}
+	ft_memset(game->map->board, 0, sizeof(char *) * (game->map->size.x));
 	i = -1;
 	while (++i < game->map->size.x)
 	{
