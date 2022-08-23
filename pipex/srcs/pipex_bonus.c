@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/23 22:20:18 by younhwan          #+#    #+#             */
-/*   Updated: 2022/08/23 22:29:26 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/08/23 22:34:59 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,6 @@ static void	get_stdin(int *fd, const char *end_flag)
 		write(fd[WRITE], line, ft_strlen(line));
 		free(line);
 	}
-	free(line);
 	exit(EXIT_SUCCESS);
 }
 
