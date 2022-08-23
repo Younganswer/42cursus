@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/13 15:03:44 by younhwan          #+#    #+#             */
-/*   Updated: 2022/08/19 17:27:50 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/08/20 10:30:23 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ typedef enum e_open_flag
 }	t_open_flag;
 
 // pipex_utils_bonus.c
-void		execute(char **argv, int cmd_idx, char **envp);
+void		execute(char **argv, char **envp, int cmd_idx);
 int			open_file(const char *file, t_open_flag flag);
 void		exit_with_error(void);
 void		usage(void);
