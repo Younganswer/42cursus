@@ -6,11 +6,11 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 18:16:25 by younhwan          #+#    #+#             */
-/*   Updated: 2022/07/14 15:32:10 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/08/24 00:55:05 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../includes/libft.h"
 
 char			**ft_split(char const *s, char c);
 static char		*get_word(char const *s, char c, size_t *s_idx);

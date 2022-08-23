@@ -6,11 +6,11 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 23:43:50 by younhwan          #+#    #+#             */
-/*   Updated: 2022/07/11 13:40:02 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/08/24 00:55:05 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../includes/libft.h"
 
 int	ft_isalpha(int c)
 {

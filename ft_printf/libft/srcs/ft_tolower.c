@@ -6,11 +6,11 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 00:17:14 by younhwan          #+#    #+#             */
-/*   Updated: 2022/07/06 00:18:33 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/08/24 00:55:05 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../includes/libft.h"
 
 int			ft_tolower(int c);
 static int	ft_isupper(int c);

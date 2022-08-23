@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex_utils_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/13 15:14:25 by younhwan          #+#    #+#             */
-/*   Updated: 2022/08/23 22:33:28 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/08/24 00:11:50 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ void	usage(void)
 	ft_putstr_fd("\033[31mError: Invalid argument\033[0m\n", 2);
 	ft_putstr_fd("Usage: ./pipex <file1> <cmd1> <cmd2> <...> <file2>\n", 1);
 	ft_putstr_fd("HERE_DOC: ./pipex \"here_doc\" \
-		<LIMITER> <cmd> <cmd1> <...> <file>\n", 1);
+<LIMITER> <cmd> <cmd1> <...> <file>\n", 1);
 	exit(EXIT_SUCCESS);
 }
 

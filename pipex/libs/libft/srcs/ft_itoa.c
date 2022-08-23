@@ -6,11 +6,11 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 18:38:27 by younhwan          #+#    #+#             */
-/*   Updated: 2022/07/09 13:24:01 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/08/24 00:55:05 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../includes/libft.h"
 
 char			*ft_itoa(int n);
 static void		convert(char *res, long nbr, size_t len);

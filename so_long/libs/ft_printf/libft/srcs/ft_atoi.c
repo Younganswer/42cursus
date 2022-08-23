@@ -6,11 +6,11 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 19:53:11 by younhwan          #+#    #+#             */
-/*   Updated: 2022/07/14 17:06:00 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/08/24 00:52:59 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../includes/libft.h"
 #include "limits.h"
 
 int			ft_atoi(const char *str);

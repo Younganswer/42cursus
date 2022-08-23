@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/13 15:03:44 by younhwan          #+#    #+#             */
-/*   Updated: 2022/08/19 16:34:29 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/08/24 00:44:15 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PIPEX_BONUS_H
-# define PIPEX_BONUS_H
+#ifndef PIPEX_H
+# define PIPEX_H
 
 # include "../libs/libft/includes/libft.h"
 # include "../libs/get_next_line/includes/get_next_line.h"
@@ -40,10 +40,10 @@ typedef enum e_open_flag
 	FILE_OUT = 2,
 }	t_open_flag;
 
-// pipex_utils_bonus.c
-void		execute(const char *file, char **envp);
+// pipex_utils.c
+void		execute(char **argv, char **envp, int cmd_idx);
 int			open_file(const char *file, t_open_flag flag);
-void		exit_with_error(const char *str);
+void		exit_with_error(void);
 void		usage(void);
 
 #endif
