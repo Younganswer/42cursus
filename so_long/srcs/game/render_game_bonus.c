@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render_game_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/06 21:27:03 by younhwan          #+#    #+#             */
-/*   Updated: 2022/08/18 20:33:33 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/08/23 23:47:27 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,23 @@ static t_bool	draw_moves(t_game *game);
 
 int	render_game(t_game *game)
 {
+	static int	was_not_playing;
+
 	if (game->status != PLAYING)
 	{
+		was_not_playing = 1;
 		mlx_clear_window(game->mlx, game->window);
 		draw_message(game);
 	}
 	else
+	{
+		if (was_not_playing)
+		{
+			mlx_clear_window(game->mlx, game->window);
+			was_not_playing = 0;
+		}
 		draw_tiles(game);
+	}
 	return (1);
 }
 
