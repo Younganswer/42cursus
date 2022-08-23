@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/13 15:14:25 by younhwan          #+#    #+#             */
-/*   Updated: 2022/08/22 12:12:43 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/08/23 22:19:33 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,6 @@ int	open_file(const char *file, t_open_flag flag)
 
 void	exit_with_error(void)
 {
-	ft_putendl_fd("Hi", 2);
 	perror("\033[31mError");
 	exit(EXIT_FAILURE);
 }

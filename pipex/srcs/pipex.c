@@ -15,26 +15,19 @@
 static void	here_doc(int argc, const char *end_flag);
 static void	get_stdin(int *fd, const char *end_flag);
 static void	child_process(int argc, char **argv, char **envp, int cmd_idx);
+static void	set_fd(int argc, char **argv, int cmd_idx);
 
 int	main(int argc, char **argv, char **envp)
 {
 	int	cmd_idx;
-	int	file_in;
 
 	if (argc < 5)
 		usage();
+	cmd_idx = 3;
 	if (!ft_strncmp(argv[1], "here_doc", 8))
-	{
-		cmd_idx = 3;
 		here_doc(argc, argv[2]);
-	}
 	else
-	{
-		cmd_idx = 2;
-		file_in = open_file(argv[1], FILE_IN);
-		if (file_in != -1)
-			dup2(file_in, STDIN_FILENO);
-	}
+		cmd_idx--;
 	child_process(argc, argv, envp, cmd_idx);
 	return (0);
 }
@@ -88,16 +81,36 @@ static void	child_process(int argc, char **argv, char **envp, int cmd_idx)
 	{
 		close(fd[READ]);
 		dup2(fd[WRITE], STDOUT_FILENO);
-		if (cmd_idx == argc - 2)
-			dup2(open_file(argv[argc - 1], FILE_OUT), STDOUT_FILENO);
+		close(fd[WRITE]);
+		set_fd(argc, argv, cmd_idx);
 		execute(argv, envp, cmd_idx);
 	}
 	else
 	{
 		close(fd[WRITE]);
 		dup2(fd[READ], STDIN_FILENO);
+		close(fd[READ]);
 		if (cmd_idx < argc - 2)
 			child_process(argc, argv, envp, cmd_idx + 1);
 		waitpid(pid, NULL, 0);
 	}
+}
+
+static void	set_fd(int argc, char **argv, int cmd_idx)
+{
+	int	fd;
+
+	fd = 0;
+	if (cmd_idx == 2)
+		fd = open_file(argv[1], FILE_IN);
+	else if (cmd_idx == argc - 2)
+		fd = open_file(argv[argc - 1], FILE_OUT);
+	if (fd == -1)
+		exit_with_error();
+	if (cmd_idx == 2)
+		dup2(fd, STDIN_FILENO);
+	else if (cmd_idx == argc - 2)
+		dup2(fd, STDOUT_FILENO);
+	close(fd);
+	return ;
 }
