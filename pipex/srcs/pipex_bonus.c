@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/23 22:20:18 by younhwan          #+#    #+#             */
-/*   Updated: 2022/08/24 01:05:31 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/08/24 01:09:27 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,12 +62,15 @@ static void	get_stdin(int *fd, const char *end_flag)
 	char	*line;
 
 	close(fd[READ]);
-	while (ft_strncmp(line, end_flag, ft_strlen(end_flag)))
+	while (TRUE)
 	{
 		line = get_next_line(STDIN_FILENO);
+		if (!ft_strncmp(line, end_flag, ft_strlen(end_flag)))
+			break ;
 		ft_putstr_fd(line, fd[WRITE]);
 		free(line);
 	}
+	free(line);
 	close(fd[WRITE]);
 	exit(EXIT_SUCCESS);
 }
