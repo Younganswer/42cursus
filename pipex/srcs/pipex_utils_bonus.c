@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/13 15:14:25 by younhwan          #+#    #+#             */
-/*   Updated: 2022/08/23 22:19:33 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/08/23 22:33:28 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,7 @@ static char	*find_path(char *cmd, char **envp)
 		tmp = ft_strjoin(paths[i], "/");
 		path = ft_strjoin(tmp, cmd);
 		free(tmp);
-		if (!access(path, F_OK))
+		if (!access(path, X_OK))
 			return (path);
 		free(path);
 	}
