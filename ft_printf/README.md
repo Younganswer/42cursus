@@ -29,13 +29,13 @@ Example
 
 int main(void) {
 	char *my_name = "younhwan";
-	ft_printf("Hello World!\nMy name is %s.\n", my_name);
+	ft_printf("Hello World!\nI'm %s.\n", my_name);
 	return (0);
 }
 
 
 >> ./main.out
 Hello World!
-My name is younhwan.
+I'm younhwan.
 >> 
 ```
