@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   main_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/25 16:26:12 by younhwan          #+#    #+#             */
-/*   Updated: 2022/08/25 16:45:19 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/08/25 16:44:10 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../incs/push_swap.h"
+#include "../incs_bonus/checker_bonus.h"
 
 int	main(void)
 {
-	ft_printf("Hello World!\n");
+	ft_printf("Hello Bonus!\n");
 	return (0);
 }

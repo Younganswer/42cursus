@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/25 16:26:12 by younhwan          #+#    #+#             */
-/*   Updated: 2022/08/25 16:45:19 by younhwan         ###   ########.fr       */
+/*   Created: 2022/08/25 16:27:00 by younhwan          #+#    #+#             */
+/*   Updated: 2022/08/25 16:28:37 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../incs/push_swap.h"
+#ifndef PUSH_SWAP_H
+# define PUSH_SWAP_H
 
-int	main(void)
-{
-	ft_printf("Hello World!\n");
-	return (0);
-}
+# include "../libs/ft_printf/includes/ft_printf.h"
+# include "../libs/get_next_line/includes/get_next_line.h"
+
+#endif
