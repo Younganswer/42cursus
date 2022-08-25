@@ -14,7 +14,7 @@
 	$ ./pipex "here_doc" LIMITER [cmd1] [cmd2] [...] file_out
 <br/>
 
-##### Example
+#### Example
 ```
 $ ./pipex /etc/passwd "grep -v #" "cut -d : -f 5" "sort" output.txt
 ```
