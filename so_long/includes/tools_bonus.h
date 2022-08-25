@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tools_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 15:14:53 by younhwan          #+#    #+#             */
-/*   Updated: 2022/08/17 23:52:54 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/08/25 18:44:59 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,7 @@ typedef struct s_game
 	t_player	*player;
 	t_status	status;
 	int			collects;
+	int			frame;
 }	t_game;
 
 //	main_bonus.c

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_game_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 16:19:11 by younhwan          #+#    #+#             */
-/*   Updated: 2022/08/18 17:17:23 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/08/25 21:37:29 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,10 @@ t_bool	init_game(t_game **game, char *file)
 	ft_memset(*game, 0, sizeof(t_game));
 	(*game)->status = WAITING;
 	init_map(*game, file);
+	(*game)->frame = 64 - 8 * \
+	(((*game)->map->size.x * (*game)->map->size.y) / 72);
+	if ((*game)->frame <= 8)
+		(*game)->frame = 8;
 	init_player(*game);
 	game_mlx_init(*game);
 	game_window_init(*game);

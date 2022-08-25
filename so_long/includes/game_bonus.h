@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_bonus.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 15:08:30 by younhwan          #+#    #+#             */
-/*   Updated: 2022/08/17 23:01:20 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/08/25 18:43:48 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ t_bool	move_to(t_game *game, int dx, int dy);
 int		render_game(t_game *game);
 
 // draw_images_bonus.c
-t_bool	draw_images(t_game *game, int x, int y);
+t_bool	draw_images(t_game *game, int x, int y, int cur_img);
 
 // reset_bonus.c
 int		reset_game(t_game *game);

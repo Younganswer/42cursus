@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render_game_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/06 21:27:03 by younhwan          #+#    #+#             */
-/*   Updated: 2022/08/23 23:47:27 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/08/25 21:37:54 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,16 +66,18 @@ static t_bool	draw_message(t_game *game)
 
 static t_bool	draw_tiles(t_game *game)
 {
-	int	x;
-	int	y;
+	static int	cur_frame;
+	int			x;
+	int			y;
 
+	cur_frame = (cur_frame + 1) % (game->frame);
 	x = 0;
 	while (x < game->map->size.x)
 	{
 		y = 0;
 		while (y < game->map->size.y)
 		{
-			draw_images(game, x, y);
+			draw_images(game, x, y, cur_frame / (game->frame / 8));
 			y++;
 		}
 		if (!x)

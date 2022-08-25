@@ -3,26 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   draw_images_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 17:29:59 by younhwan          #+#    #+#             */
-/*   Updated: 2022/08/17 22:59:03 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/08/25 18:40:07 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/so_long_bonus.h"
 
-t_bool			draw_images(t_game *game, int x, int y);
+t_bool			draw_images(t_game *game, int x, int y, int cur_img);
 static t_bool	draw_collects(t_game *game, int x, int y, int cur_img);
 static t_bool	draw_player(t_game *game, int x, int y, int cur_img);
 static t_bool	draw_ghost(t_game *game, int x, int y, int cur_img);
 static t_bool	draw_exit(t_game *game, int x, int y, int cur_img);
 
-t_bool	draw_images(t_game *game, int x, int y)
+t_bool	draw_images(t_game *game, int x, int y, int cur_img)
 {
-	static int	cur_frame;
-
-	cur_frame = (cur_frame + 1) % 6144;
 	if (game->map->board[x][y] == '1')
 		mlx_put_image_to_window(\
 			game->mlx, game->window, game->img->wall, \
@@ -33,13 +30,13 @@ t_bool	draw_images(t_game *game, int x, int y)
 			game->mlx, game->window, game->img->empty, \
 				y * TILE_SIZE, x * TILE_SIZE);
 		if (game->map->board[x][y] == 'C')
-			draw_collects(game, x, y, cur_frame / 768);
+			draw_collects(game, x, y, cur_img);
 		else if (game->map->board[x][y] == 'P')
-			draw_player(game, x, y, cur_frame / 768);
+			draw_player(game, x, y, cur_img);
 		else if (game->map->board[x][y] == 'G')
-			draw_ghost(game, x, y, cur_frame / 768);
+			draw_ghost(game, x, y, cur_img);
 		else if (game->map->board[x][y] == 'E')
-			draw_exit(game, x, y, cur_frame / 768);
+			draw_exit(game, x, y, cur_img);
 	}
 	return (TRUE);
 }
