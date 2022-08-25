@@ -12,7 +12,7 @@ This project is a very small 2D game. It is built to make you work with textures
 <br/><br/>
 
 ## Usage
-	$ ./so_long [Map_FILE.ber]
+	$ ./so_long [MAP_FILE.ber]
 + Only map files with extension `.ber` are available. There are several map file examples in the `./map/`  directory.
 <br/><br/><br/>
 

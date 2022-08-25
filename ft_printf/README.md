@@ -25,7 +25,7 @@ int ft_printf(const char *str, ...);
 
 Example
 ```
-#include "./includes/ft_printf.h"
+#include "ft_printf.h"
 
 int main(void) {
 	char *my_name = "younhwan";
