@@ -7,7 +7,7 @@
 
 ## Install (Bonus included)
 	$ make
-<br/><br/>
+<br/><br/><br/>
 
 ## Usage
 	$ ./pipex file_in [cmd1] [cmd2] [...] file_out
