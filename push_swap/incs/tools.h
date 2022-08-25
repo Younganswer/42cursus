@@ -1,19 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   tools.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/25 16:27:00 by younhwan          #+#    #+#             */
-/*   Updated: 2022/08/25 16:45:16 by younhwan         ###   ########.fr       */
+/*   Created: 2022/08/25 21:44:22 by younhwan          #+#    #+#             */
+/*   Updated: 2022/08/25 21:45:26 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#ifndef TOOLS_H
+# define TOOLS_H
 
-# include "../libs/ft_printf/includes/ft_printf.h"
-# include "../libs/get_next_line/includes/get_next_line.h"
 
 #endif

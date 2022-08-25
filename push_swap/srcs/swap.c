@@ -1,25 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_exit_with_error.c                               :+:      :+:    :+:   */
+/*   swap.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/25 16:15:47 by younhwan          #+#    #+#             */
-/*   Updated: 2022/08/25 23:02:28 by younhwan         ###   ########.fr       */
+/*   Created: 2022/08/25 22:11:38 by younhwan          #+#    #+#             */
+/*   Updated: 2022/08/25 23:01:11 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/libft.h"
+#include "../incs/push_swap.h"
 
-void	ft_exit_with_error(const char *str)
+t_bool	swap(t_stack *st);
+
+t_bool	swap(t_stack *st)
 {
-	ft_putstr_fd("\033[31mError\033[0m\n", 2);
-	if (str)
-	{
-		ft_putstr_fd("\033[31m", 2);
-		ft_putstr_fd(str, 2);
-		ft_putstr_fd("\033[0m\n", 2);
-	}
-	exit(EXIT_FAILURE);
+	int	top1;
+	int	top2;
+
+	if (st->sz_ < 2)
+		return (FALSE);
+	top1 = pop_back(st);
+	top2 = pop_back(st);
+	push_back(st, top1);
+	push_back(st, top2);
+	return (TRUE);
 }

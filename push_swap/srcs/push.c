@@ -1,25 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_exit_with_error.c                               :+:      :+:    :+:   */
+/*   push.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/25 16:15:47 by younhwan          #+#    #+#             */
-/*   Updated: 2022/08/25 23:02:28 by younhwan         ###   ########.fr       */
+/*   Created: 2022/08/25 22:22:23 by younhwan          #+#    #+#             */
+/*   Updated: 2022/08/25 23:01:26 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/libft.h"
+#include "../incs/push_swap.h"
 
-void	ft_exit_with_error(const char *str)
+t_bool	push_a(t_stack *a, t_stack *b);
+t_bool	push_b(t_stack *a, t_stack *b);
+
+t_bool	push_a(t_stack *a, t_stack *b)
 {
-	ft_putstr_fd("\033[31mError\033[0m\n", 2);
-	if (str)
-	{
-		ft_putstr_fd("\033[31m", 2);
-		ft_putstr_fd(str, 2);
-		ft_putstr_fd("\033[0m\n", 2);
-	}
-	exit(EXIT_FAILURE);
+	int	b_top;
+
+	if (!b->sz_)
+		return (FALSE);
+	b_top = pop_back(b);
+	push_back(a, b_top);
+	return (TRUE);
+}
+
+t_bool	push_b(t_stack *a, t_stack *b)
+{
+	int	a_top;
+
+	if (!a->sz_)
+		return (FALSE);
+	a_top = pop_back(a);
+	push_back(b, a_top);
+	return (TRUE);
 }

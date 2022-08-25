@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 18:35:31 by younhwan          #+#    #+#             */
-/*   Updated: 2022/08/25 16:15:21 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/08/25 21:45:17 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,13 @@ void			ft_lstclear(t_list_libft **lst, void (*del)(void *));
 void			ft_lstiter(t_list_libft *lst, void (*f)(void *));
 t_list_libft	*ft_lstmap(t_list_libft *lst, \
 							void *(*f)(void *), void (*del)(void *));
+
+// Custom types
+typedef enum e_bool
+{
+	FALSE = 0,
+	TRUE = 1,
+}	t_bool;
 
 // Custom functions to use
 void			ft_exit_with_error(const char *str);

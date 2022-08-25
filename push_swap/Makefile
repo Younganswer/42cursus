@@ -6,7 +6,7 @@
 #    By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/08 16:03:07 by younhwan          #+#    #+#              #
-#    Updated: 2022/08/25 16:44:36 by younhwan         ###   ########.fr        #
+#    Updated: 2022/08/25 22:42:06 by younhwan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,14 @@ INCS_DIR = ./incs
 SRCS_DIR = ./srcs
 OBJS_DIR = ./objs
 
-SRCS = 	main.c
+SRCS = 	push_swap.c\
+		init_node.c\
+		init_stack.c\
+		push.c\
+		rotate.c\
+		stack_utils.c\
+		swap.c
+		
 SRCS := ${addprefix ${SRCS_DIR}/, ${SRCS}}
 OBJS = ${SRCS:${SRCS_DIR}/%.c=${OBJS_DIR}/%.o}
 

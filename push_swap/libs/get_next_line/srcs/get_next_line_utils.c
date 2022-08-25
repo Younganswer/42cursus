@@ -3,24 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/26 14:10:04 by younhwan          #+#    #+#             */
-/*   Updated: 2022/08/13 13:26:09 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/08/25 21:54:31 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "../includes/get_next_line.h"
 
-t_list	*ft_get_fd_list(int fd, t_list *fd_list);
-t_node	*ft_insert_node_to_cur_list(t_list *cur_list);
-size_t	ft_strlcat_gnl(char **dest, t_node *cur_node);
-size_t	ft_strncpy_gnl(char *dest, const char *src, size_t n);
-size_t	ft_strlen_gnl(const char *str);
+t_gnl_list	*ft_get_fd_list(int fd, t_gnl_list *fd_list);
+t_gnl_node	*ft_insert_node_to_cur_list(t_gnl_list *cur_list);
+size_t		ft_strlcat_gnl(char **dest, t_gnl_node *cur_node);
+size_t		ft_strncpy_gnl(char *dest, const char *src, size_t n);
+size_t		ft_strlen_gnl(const char *str);
 
-t_list	*ft_get_fd_list(int fd, t_list *fd_list)
+t_gnl_list	*ft_get_fd_list(int fd, t_gnl_list *fd_list)
 {
-	t_list	*ret;
+	t_gnl_list	*ret;
 
 	ret = fd_list;
 	while (ret && ret->fd != fd && ret->next)
@@ -28,10 +28,10 @@ t_list	*ft_get_fd_list(int fd, t_list *fd_list)
 	if (ret && ret->fd == fd)
 		return (ret);
 	if (!ret)
-		ret = (t_list *) malloc(sizeof(t_list));
+		ret = (t_gnl_list *) malloc(sizeof(t_gnl_list));
 	else if (ret && !ret->next)
 	{
-		ret->next = (t_list *) malloc(sizeof(t_list));
+		ret->next = (t_gnl_list *) malloc(sizeof(t_gnl_list));
 		ret = ret->next;
 	}
 	if (!ret)
@@ -43,11 +43,11 @@ t_list	*ft_get_fd_list(int fd, t_list *fd_list)
 	return (ret);
 }
 
-t_node	*ft_insert_node_to_cur_list(t_list *cur_list)
+t_gnl_node	*ft_insert_node_to_cur_list(t_gnl_list *cur_list)
 {
-	t_node	*ret;
+	t_gnl_node	*ret;
 
-	ret = (t_node *) malloc(sizeof(t_node));
+	ret = (t_gnl_node *) malloc(sizeof(t_gnl_node));
 	if (!ret)
 		return (0);
 	ret->idx = 0;
@@ -65,7 +65,7 @@ t_node	*ft_insert_node_to_cur_list(t_list *cur_list)
 	return (ret);
 }
 
-size_t	ft_strlcat_gnl(char **dest, t_node *cur)
+size_t	ft_strlcat_gnl(char **dest, t_gnl_node *cur)
 {
 	char	*save;
 	size_t	d_len;
