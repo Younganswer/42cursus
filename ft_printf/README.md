@@ -5,11 +5,11 @@
 ## Summary
 + The goal of this project is pretty straightfoward. You will recode printf(). You will mainly learn about using a variable number of arguments.
 + You will discover **variadic functions** in C.
-<br/><br/><br/>
+<br/><br/><br/><br/>
 
 ## Install (Bonus excluded)
 	$ make
-<br/><br/>
+<br/><br/><br/>
 
 ## Usage
 	$ [CC] [CFLAGS] [your_main.c] libftprintf.a -o main.out
