@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/13 15:14:25 by younhwan          #+#    #+#             */
-/*   Updated: 2022/08/24 00:43:45 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/08/27 17:40:54 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int	open_file(const char *file, t_open_flag flag)
 {
 	int	fd;
 
-	fd = 0;
+	fd = -1;
 	if (flag == HERE_DOC)
 		fd = open(file, O_WRONLY | O_CREAT | O_APPEND, 0777);
 	else if (flag == FILE_OUT)
