@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/25 16:26:12 by younhwan          #+#    #+#             */
-/*   Updated: 2022/08/25 23:05:43 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/08/27 14:26:40 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,6 @@ int	main(int argc, char **argv)
 	i = 0;
 	while (++i < argc)
 		push_back(a, ft_atoi(argv[i]));
-	while (a->sz_)
-	{
-		i = pop_front(a);
-		ft_printf("%d ", i);
-	}
-	ft_putendl_fd("", 1);
+	
 	return (0);
 }

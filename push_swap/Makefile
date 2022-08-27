@@ -6,7 +6,7 @@
 #    By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/08 16:03:07 by younhwan          #+#    #+#              #
-#    Updated: 2022/08/25 22:42:06 by younhwan         ###   ########.fr        #
+#    Updated: 2022/08/27 14:15:56 by younhwan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,9 @@ OBJS_DIR = ./objs
 SRCS = 	push_swap.c\
 		init_node.c\
 		init_stack.c\
+		pop.c\
 		push.c\
+		push_ab.c\
 		rotate.c\
 		stack_utils.c\
 		swap.c

@@ -1,44 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack_utils.c                                      :+:      :+:    :+:   */
+/*   push_ab.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/25 22:09:02 by younhwan          #+#    #+#             */
-/*   Updated: 2022/08/27 14:27:37 by younhwan         ###   ########.fr       */
+/*   Created: 2022/08/27 14:14:09 by younhwan          #+#    #+#             */
+/*   Updated: 2022/08/27 14:27:21 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs/push_swap.h"
 
-t_bool	free_stack(t_stack *st);
-t_bool	print_stack(t_stack *st);
+t_bool	push_a(t_stack *a, t_stack *b);
+t_bool	push_b(t_stack *a, t_stack *b);
 
-t_bool	free_stack(t_stack *st)
+t_bool	push_a(t_stack *a, t_stack *b)
 {
-	t_node	*tmp;
+	int	top;
 
-	while (st->head)
-	{
-		tmp = st->head;
-		st->head = st->head->next;
-		free(tmp);
-	}
-	free(st);
+	if (!b->sz_)
+		return (FALSE);
+	top = pop_back(b);
+	push_back(a, top);
 	return (TRUE);
 }
 
-t_bool	print_stack(t_stack *st)
+t_bool	push_b(t_stack *a, t_stack *b)
 {
-	t_node	*tmp;
+	int	top;
 
-	tmp = st->head;
-	while (tmp)
-	{
-		ft_printf("%d ", tmp->val);
-		tmp = tmp->next;
-	}
-	ft_printf("\n");
+	if (!a->sz_)
+		return (FALSE);
+	top = pop_back(a);
+	push_back(b, top);
 	return (TRUE);
 }

@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/25 16:27:00 by younhwan          #+#    #+#             */
-/*   Updated: 2022/08/25 22:36:38 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/08/27 14:19:21 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,22 +36,25 @@ t_node	*init_node(int num);
 // init_stack.c
 t_stack	*init_stack(void);
 
-// push.c
+// push_ab.c
 t_bool	push_a(t_stack *a, t_stack *b);
 t_bool	push_b(t_stack *a, t_stack *b);
 
 // rotate.c
-t_bool	ra(t_stack *a);
-t_bool	rb(t_stack *b);
-t_bool	rra(t_stack *a);
-t_bool	rrb(t_stack *b);
+t_bool	rotate(t_stack *st);
+t_bool	reverse_rotate(t_stack *st);
 
 // stack_utils.c
-int		pop_front(t_stack *st);
-t_bool	push_front(t_stack *st, int num);
-int		pop_back(t_stack *st);
-t_bool	push_back(t_stack *st, int num);
 t_bool	free_stack(t_stack *st);
+t_bool	print_stack(t_stack *st);
+
+// pop.c
+int		pop_front(t_stack *st);
+int		pop_back(t_stack *st);
+
+// push.c
+t_bool	push_front(t_stack *st, int num);
+t_bool	push_back(t_stack *st, int num);
 
 // swap.c
 t_bool	swap(t_stack *st);

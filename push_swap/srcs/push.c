@@ -5,34 +5,57 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/25 22:22:23 by younhwan          #+#    #+#             */
-/*   Updated: 2022/08/25 23:01:26 by younhwan         ###   ########.fr       */
+/*   Created: 2022/08/27 14:10:17 by younhwan          #+#    #+#             */
+/*   Updated: 2022/08/27 14:26:07 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs/push_swap.h"
 
-t_bool	push_a(t_stack *a, t_stack *b);
-t_bool	push_b(t_stack *a, t_stack *b);
+t_bool	push_front(t_stack *st, int num);
+t_bool	push_back(t_stack *st, int num);
 
-t_bool	push_a(t_stack *a, t_stack *b)
+t_bool	push_front(t_stack *st, int num)
 {
-	int	b_top;
+	t_node	*to_insert;
 
-	if (!b->sz_)
+	to_insert = init_node(num);
+	if (!to_insert)
 		return (FALSE);
-	b_top = pop_back(b);
-	push_back(a, b_top);
+	if (!st->head && !st->tail)
+	{
+		st->head = to_insert;
+		st->tail = to_insert;
+		return (TRUE);
+	}
+	else
+	{
+		st->head->prev = to_insert;
+		to_insert->next = st->head;
+		st->head = to_insert;
+	}
+	st->sz_++;
 	return (TRUE);
 }
 
-t_bool	push_b(t_stack *a, t_stack *b)
+t_bool	push_back(t_stack *st, int num)
 {
-	int	a_top;
+	t_node	*to_insert;
 
-	if (!a->sz_)
+	to_insert = init_node(num);
+	if (!to_insert)
 		return (FALSE);
-	a_top = pop_back(a);
-	push_back(b, a_top);
+	if (!st->head && !st->tail)
+	{
+		st->head = to_insert;
+		st->tail = to_insert;
+	}
+	else
+	{
+		st->tail->next = to_insert;
+		to_insert->prev = st->tail;
+		st->tail = to_insert;
+	}
+	st->sz_++;
 	return (TRUE);
 }
