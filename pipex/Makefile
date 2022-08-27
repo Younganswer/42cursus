@@ -6,7 +6,7 @@
 #    By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/08 16:03:07 by younhwan          #+#    #+#              #
-#    Updated: 2022/08/19 18:57:35 by younhwan         ###   ########.fr        #
+#    Updated: 2022/08/27 18:01:45 by younhwan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,16 +26,19 @@ INCS_DIR = ./includes
 SRCS_DIR = ./srcs
 OBJS_DIR = ./objs
 
-SRCS =	pipex_bonus.c\
-		pipex_utils_bonus.c
-
+SRCS =	pipex.c\
+		pipex_utils.c
 SRCS := ${addprefix ${SRCS_DIR}/, ${SRCS}}
 OBJS = ${SRCS:${SRCS_DIR}/%.c=${OBJS_DIR}/%.o}
+
+ifdef with_bonus
+	SRCS := ${SRCS:%.c=%_bonus.c}
+endif
 
 all: ${NAME}
 
 bonus:
-	make all
+	make with_bonus=1 all
 
 ${OBJS_DIR}:
 	mkdir -p objs

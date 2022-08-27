@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/23 22:20:18 by younhwan          #+#    #+#             */
-/*   Updated: 2022/08/27 17:48:19 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/08/27 17:55:36 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,8 @@ int	main(int argc, char **argv, char **envp)
 		cmd_idx--;
 	child_process(argc, argv, envp, cmd_idx);
 	if (!ft_strncmp(argv[1], "here_doc", 8) && !access(".heredodc_tmp", F_OK))
-		unlink(".heredoc_tmp");
+		if (unlink(".heredoc_tmp") == -1)
+			exit_with_error();
 	return (0);
 }
 
@@ -102,7 +103,8 @@ static void	set_fd(int argc, char **argv, int cmd_idx)
 		if (cmd_idx == 3)
 			fd = open_file(".heredoc_tmp", FILE_IN);
 		if (fd == -1)
-			unlink(".heredoc_tmp");
+			if (unlink(".heredoc_tmp"))
+				perror("\033[31mError");
 		if (cmd_idx == argc - 2)
 			fd = open_file(argv[argc - 1], HERE_DOC);
 	}
