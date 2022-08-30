@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/25 16:27:00 by younhwan          #+#    #+#             */
-/*   Updated: 2022/08/27 14:19:21 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/08/30 17:59:22 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include "../libs/ft_printf/includes/ft_printf.h"
 # include "../libs/get_next_line/includes/get_next_line.h"
+# include "rb_tree.h"
 
 typedef struct s_node
 {
