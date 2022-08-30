@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/06 21:27:03 by younhwan          #+#    #+#             */
-/*   Updated: 2022/08/25 21:37:54 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/08/30 16:57:06 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,11 @@ int	render_game(t_game *game)
 
 	if (game->status != PLAYING)
 	{
-		was_not_playing = 1;
-		mlx_clear_window(game->mlx, game->window);
+		if (!was_not_playing)
+		{
+			was_not_playing = 1;
+			mlx_clear_window(game->mlx, game->window);
+		}
 		draw_message(game);
 	}
 	else
@@ -93,6 +96,8 @@ static t_bool	draw_moves(t_game *game)
 	int		offset;
 
 	str = ft_itoa(game->player->moves);
+	if (!str)
+		exit_with_error("Error\nFail to draw_moves\n");
 	offset = 10 * ft_strlen(str);
 	if (game->player->collects < game->collects)
 		mlx_string_put(game->mlx, game->window, \
