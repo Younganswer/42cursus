@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   push_ab.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 14:14:09 by younhwan          #+#    #+#             */
-/*   Updated: 2022/08/27 14:27:21 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/08/31 23:34:42 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../incs/push_swap.h"
+#include "../../incs/push_swap.h"
 
 t_bool	push_a(t_stack *a, t_stack *b);
 t_bool	push_b(t_stack *a, t_stack *b);

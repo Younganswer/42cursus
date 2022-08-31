@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 19:53:11 by younhwan          #+#    #+#             */
-/*   Updated: 2022/08/24 00:52:59 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/08/31 23:27:09 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,31 +18,28 @@ static int	ft_isspace(char c);
 
 int	ft_atoi(const char *str)
 {
-	unsigned long long	nbr;
-	int					sign;
-	size_t				i;
+	long long	ret;
+	int			sign;
+	size_t		i;
 
-	nbr = 0;
+	ret = 0;
 	sign = 1;
 	i = 0;
 	while (str[i] && ft_isspace(str[i]))
 		i++;
 	if (str[i] == '+' || str[i] == '-')
 	{
-		if (str[i] == '-')
-			sign = -1;
+		sign += -2 * (str[i] == '-');
 		i++;
 	}
 	while (str[i] && ('0' <= str[i] && str[i] <= '9'))
 	{
-		nbr = 10 * nbr + (str[i] - '0');
-		if (sign == 1 && __LONG_LONG_MAX__ < nbr)
-			return (-1);
-		if (sign == -1 && (unsigned long long) __LONG_LONG_MAX__ + 1 < nbr)
-			return (0);
+		ret = 10 * ret + (str[i] - '0');
+		if (ret < INT32_MIN || INT32_MAX < ret)
+			ft_exit_with_error(0);	
 		i++;
 	}
-	return ((int) nbr * sign);
+	return ((int) (ret * sign));
 }
 
 static int	ft_isspace(char c)

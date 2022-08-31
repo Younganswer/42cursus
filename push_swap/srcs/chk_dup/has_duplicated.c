@@ -1,24 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   insert_node.c                                      :+:      :+:    :+:   */
+/*   has_duplicated.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/30 18:11:35 by younhwan          #+#    #+#             */
-/*   Updated: 2022/08/30 18:12:45 by younhwan         ###   ########.fr       */
+/*   Created: 2022/08/31 23:48:59 by younhwan          #+#    #+#             */
+/*   Updated: 2022/09/01 00:02:19 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../incs/rb_tree.h"
+#include "../../incs/chk_dup.h"
 
-t_bool		insert_node(int val);
+t_bool	has_duplicated(int *arr);
 
-t_bool		insert_node(int val)
+t_bool	has_duplicated(int *arr)
 {
-	t_tree_node	*to_insert;
+	int	sz_;
+	int	i;
 
-	to_insert = init_tree_node(val);
-	
+	sz_ = sizeof(arr) / sizeof(*arr);
+	i = 0;
+	while (i < sz_ - 1)
+	{
+		if (arr[i] == arr[i + 1])
+			return (FALSE);
+		i++;
+	}
 	return (TRUE);
 }

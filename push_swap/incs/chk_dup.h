@@ -1,29 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   swap.c                                             :+:      :+:    :+:   */
+/*   chk_dup.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/25 22:11:38 by younhwan          #+#    #+#             */
-/*   Updated: 2022/08/31 23:34:42 by younhwan         ###   ########.fr       */
+/*   Created: 2022/08/31 23:29:18 by younhwan          #+#    #+#             */
+/*   Updated: 2022/08/31 23:50:02 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../incs/push_swap.h"
+#ifndef CHK_DUP_H
+# define CHK_DUP_H
 
-t_bool	swap(t_stack *st);
+# include "../libs/ft_printf/includes/ft_printf.h"
+# include "../libs/get_next_line/includes/get_next_line.h"
 
-t_bool	swap(t_stack *st)
-{
-	int	top1;
-	int	top2;
+// sort.c
+void	sort(int *arr, int start, int end);
 
-	if (st->sz_ < 2)
-		return (FALSE);
-	top1 = pop_back(st);
-	top2 = pop_back(st);
-	push_back(st, top1);
-	push_back(st, top2);
-	return (TRUE);
-}
+// has_duplicated.c
+t_bool	has_duplicated(int *arr);
+
+#endif

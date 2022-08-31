@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+         #
+#    By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/08 16:03:07 by younhwan          #+#    #+#              #
-#    Updated: 2022/08/30 18:05:50 by younhwan         ###   ########.fr        #
+#    Updated: 2022/08/31 23:40:19 by younhwan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,8 +38,7 @@ SRCS = 	push_swap.c\
 		stack/rotate.c\
 		stack/stack_utils.c\
 		stack/swap.c\
-		tree/init_tree_node.c\
-		tree/init_tree.c
+		sort/sort.c
 		
 SRCS := ${addprefix ${SRCS_DIR}/, ${SRCS}}
 OBJS = ${SRCS:${SRCS_DIR}/%.c=${OBJS_DIR}/%.o}
@@ -60,7 +59,7 @@ bonus: ${NAME_BONUS}
 ${OBJS_DIR}:
 	mkdir -p objs
 	mkdir -p objs/stack
-	mkdir -p objs/tree
+	mkdir -p objs/sort
 
 ${OBJS}: %.o: ${addsuffix .c,${subst obj,src,${%}}} | ${OBJS_DIR}
 	${CC} ${CFLAGS} -g -c ${patsubst %.o,%.c,${subst obj,src,$@}} -o $@ -I ${INCS_DIR}

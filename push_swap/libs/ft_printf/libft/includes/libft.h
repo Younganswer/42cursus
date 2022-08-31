@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 18:35:31 by younhwan          #+#    #+#             */
-/*   Updated: 2022/08/25 21:45:17 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/08/31 23:53:15 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,6 @@ typedef enum e_bool
 }	t_bool;
 
 // Custom functions to use
-void			ft_exit_with_error(const char *str);
+void	ft_exit_with_error(const char *str, int exit_flag);
 
 #endif
