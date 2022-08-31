@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/25 16:26:12 by younhwan          #+#    #+#             */
-/*   Updated: 2022/09/01 00:01:50 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/09/01 00:11:49 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ int	main(int argc, char **argv)
 	b = init_stack();
 	arr = init_sorted_arr(argc, argv);
 	init_a(a, argc, argv);
+	(void) arr;
 	(void) b;
 	return (0);
 }
@@ -43,7 +44,7 @@ static int	*init_sorted_arr(int argc, char **argv)
 	while (++i < argc)
 		ret[i - 1] = ft_atoi(argv[i]);
 	sort(ret, 0, argc - 2);
-	if (has_duplicated(ret))
+	if (has_duplicated(ret, argc - 1))
 		ft_exit_with_error(0, EXIT_SUCCESS);
 	return (ret);
 }

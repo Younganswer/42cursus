@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/25 21:59:05 by younhwan          #+#    #+#             */
-/*   Updated: 2022/08/31 23:34:42 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/09/01 00:07:12 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ t_node	*init_node(int num)
 
 	ret = (t_node *) malloc(sizeof(t_node));
 	if (!ret)
-		ft_exit_with_error(0);
+		ft_exit_with_error(0, EXIT_FAILURE);
 	ret->next = 0;
 	ret->prev = 0;
 	ret->val = num;

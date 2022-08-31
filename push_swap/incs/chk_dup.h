@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/31 23:29:18 by younhwan          #+#    #+#             */
-/*   Updated: 2022/08/31 23:50:02 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/09/01 00:09:58 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,6 @@
 void	sort(int *arr, int start, int end);
 
 // has_duplicated.c
-t_bool	has_duplicated(int *arr);
+t_bool	has_duplicated(int *arr, int n);
 
 #endif

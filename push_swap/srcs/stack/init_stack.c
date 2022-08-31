@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/25 22:36:16 by younhwan          #+#    #+#             */
-/*   Updated: 2022/08/31 23:34:42 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/09/01 00:07:16 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ t_stack	*init_stack(void)
 
 	ret = (t_stack *) malloc(sizeof(t_stack));
 	if (!ret)
-		ft_exit_with_error(0);
+		ft_exit_with_error(0, EXIT_FAILURE);
 	ft_memset(ret, 0, sizeof(t_stack));
 	return (ret);
 }
