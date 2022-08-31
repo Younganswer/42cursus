@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/26 13:46:41 by younhwan          #+#    #+#             */
-/*   Updated: 2022/08/25 21:56:56 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/09/01 00:05:55 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,8 @@ typedef struct s_gnl_list
 char		*get_next_line(int fd);
 int			ft_read_fd(int fd, t_gnl_list *fd_list);
 char		*ft_get_line_from_fd_list(int fd, t_gnl_list **fd_list);
-int			ft_remove_line_from_fd_list(t_gnl_list **cur_list, t_gnl_list **fd_list);
+int			ft_remove_line_from_fd_list(t_gnl_list **cur_list, \
+										t_gnl_list **fd_list);
 int			ft_keep_reading(t_gnl_list *cur_list);
 
 // get_next_line_utils_bonus.c

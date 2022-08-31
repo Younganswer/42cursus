@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/26 13:54:57 by younhwan          #+#    #+#             */
-/*   Updated: 2022/08/25 21:55:24 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/09/01 00:06:26 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 char	*get_next_line(int fd);
 int		ft_read_fd(int fd, t_gnl_list *fd_list);
 char	*ft_get_line_from_fd_list(int fd, t_gnl_list **fd_list);
-int		ft_remove_line_from_fd_list(t_gnl_list **cur_list, t_gnl_list **fd_list);
+int		ft_remove_line_from_fd_list(t_gnl_list **cur_list, \
+									t_gnl_list **fd_list);
 int		ft_keep_reading(t_gnl_list *cur_list);
 
 char	*get_next_line(int fd)
@@ -47,7 +48,7 @@ int	ft_read_fd(int fd, t_gnl_list *fd_list)
 {
 	t_gnl_list	*list_tmp;
 	t_gnl_node	*node_tmp;
-	int		read_bytes;
+	int			read_bytes;
 
 	list_tmp = ft_get_fd_list(fd, fd_list);
 	if (!list_tmp)
@@ -68,8 +69,8 @@ int	ft_read_fd(int fd, t_gnl_list *fd_list)
 
 char	*ft_get_line_from_fd_list(int fd, t_gnl_list **fd_list)
 {
-	char	*ret;
-	size_t	last_idx;
+	char		*ret;
+	size_t		last_idx;
 	t_gnl_list	*list_tmp;
 	t_gnl_node	*node_tmp;
 
@@ -123,7 +124,7 @@ int	ft_remove_line_from_fd_list(t_gnl_list **cur_list, t_gnl_list **fd_list)
 int	ft_keep_reading(t_gnl_list *cur_list)
 {
 	t_gnl_node	*tmp;
-	size_t	i;
+	size_t		i;
 
 	tmp = cur_list->tail;
 	if (!tmp)
