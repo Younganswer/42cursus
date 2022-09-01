@@ -1,21 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   is_not_integer.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/25 16:27:00 by younhwan          #+#    #+#             */
-/*   Updated: 2022/09/01 13:36:22 by younhwan         ###   ########.fr       */
+/*   Created: 2022/09/01 13:33:55 by younhwan          #+#    #+#             */
+/*   Updated: 2022/09/01 13:40:23 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#include "../../incs/chk_input.h"
 
-# include "../libs/ft_printf/includes/ft_printf.h"
-# include "../libs/get_next_line/includes/get_next_line.h"
-# include "stack.h"
-# include "chk_input.h"
+t_bool	is_not_integer(const char *input);
 
-#endif
+t_bool	is_not_integer(const char *input)
+{
+	size_t	len;
+	size_t	i;
+
+	len = ft_strlen(input);
+	i = 0;
+	while (i < len)
+	{
+		if (input[i] == '+' || input[i] == '-')
+		{
+			i++;
+			continue ;
+		}
+		if (input[i] < '0' || '9' < input[i])
+			return (TRUE);
+		i++;
+	}
+	return (FALSE);
+}

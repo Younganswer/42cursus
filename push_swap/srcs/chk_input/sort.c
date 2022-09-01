@@ -6,11 +6,11 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/31 23:30:31 by younhwan          #+#    #+#             */
-/*   Updated: 2022/09/01 00:02:25 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/09/01 13:33:03 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../incs/chk_dup.h"
+#include "../../incs/chk_input.h"
 
 void		sort(int *arr, int start, int end);
 static void	swap(int *a, int *b);
