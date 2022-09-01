@@ -6,7 +6,7 @@
 #    By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/08 16:03:07 by younhwan          #+#    #+#              #
-#    Updated: 2022/09/01 13:37:47 by younhwan         ###   ########.fr        #
+#    Updated: 2022/09/01 13:45:51 by younhwan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,7 +39,6 @@ SRCS = 	push_swap.c\
 		stack/stack_utils.c\
 		stack/swap.c\
 		chk_input/has_duplicated.c\
-		chk_input/is_not_integer.c\
 		chk_input/sort.c
 		
 SRCS := ${addprefix ${SRCS_DIR}/, ${SRCS}}
