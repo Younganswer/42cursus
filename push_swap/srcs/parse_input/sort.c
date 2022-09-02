@@ -6,14 +6,14 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/31 23:30:31 by younhwan          #+#    #+#             */
-/*   Updated: 2022/09/01 13:33:03 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/09/01 16:27:39 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../incs/chk_input.h"
+#include "../../incs/parse_input.h"
 
 void		sort(int *arr, int start, int end);
-static void	swap(int *a, int *b);
+static void	ft_swap(int *a, int *b);
 
 void	sort(int *arr, int start, int end)
 {
@@ -33,16 +33,16 @@ void	sort(int *arr, int start, int end)
 		while (start < j && arr[pivot] <= arr[j])
 			j--;
 		if (j < i)
-			swap(&arr[pivot], &arr[j]);
+			ft_swap(&arr[pivot], &arr[j]);
 		else
-			swap(&arr[i], &arr[j]);
+			ft_swap(&arr[i], &arr[j]);
 	}
 	sort(arr, start, j - 1);
 	sort(arr, j + 1, end);
 	return ;
 }
 
-static void	swap(int *a, int *b)
+static void	ft_swap(int *a, int *b)
 {
 	int	tmp;
 

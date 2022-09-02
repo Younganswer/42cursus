@@ -6,26 +6,26 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 18:16:25 by younhwan          #+#    #+#             */
-/*   Updated: 2022/08/24 00:55:05 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/09/01 15:53:12 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libft.h"
 
-char			**ft_split(char const *s, char c);
-static char		*get_word(char const *s, char c, size_t *s_idx);
-static size_t	cnt_words(char const *s, char c);
-static size_t	cnt_word_len(char const *s, char c);
+char			**ft_split(char const *s, const char *delimeter);
+static char		*get_word(char const *s, const char *delimeter, size_t *s_idx);
+static size_t	cnt_words(char const *s, const char *delimeter);
+static size_t	cnt_word_len(char const *s, const char *delimeter);
 static char		**force_quit(char **res);
 
-char	**ft_split(char const *s, char c)
+char	**ft_split(char const *s, const char *delimeter)
 {
 	char	**res;
 	size_t	words_len;
 	size_t	words_idx;
 	size_t	s_idx;
 
-	words_len = cnt_words(s, c);
+	words_len = cnt_words(s, delimeter);
 	res = (char **) malloc(sizeof(char *) * (words_len + 1));
 	if (!res || !s)
 		return (0);
@@ -33,10 +33,10 @@ char	**ft_split(char const *s, char c)
 	s_idx = 0;
 	while (s[s_idx] && words_idx < words_len)
 	{
-		while (s[s_idx] && s[s_idx] == c)
+		while (s[s_idx] && ft_strchr(delimeter, s[s_idx]))
 			s_idx++;
 		if (s[s_idx])
-			res[words_idx++] = get_word(s, c, &s_idx);
+			res[words_idx++] = get_word(s, delimeter, &s_idx);
 		if (!res[words_idx - 1])
 			return (force_quit(res));
 	}
@@ -44,12 +44,12 @@ char	**ft_split(char const *s, char c)
 	return (res);
 }
 
-static char	*get_word(char const *s, char c, size_t *s_idx)
+static char	*get_word(char const *s, const char *delimeter, size_t *s_idx)
 {
 	char	*res;
 	size_t	word_len;
 
-	word_len = cnt_word_len(&s[*s_idx], c);
+	word_len = cnt_word_len(&s[*s_idx], delimeter);
 	res = (char *) malloc(sizeof(char) * (word_len + 1));
 	if (!res)
 		return (0);
@@ -58,7 +58,7 @@ static char	*get_word(char const *s, char c, size_t *s_idx)
 	return (res);
 }
 
-static size_t	cnt_words(char const *s, char c)
+static size_t	cnt_words(char const *s, const char *delimeter)
 {
 	size_t	cnt;
 	size_t	i;
@@ -67,22 +67,22 @@ static size_t	cnt_words(char const *s, char c)
 	i = 0;
 	while (s[i])
 	{
-		while (s[i] && s[i] == c)
+		while (s[i] && ft_strchr(delimeter, s[i]))
 			i++;
 		if (s[i])
 			cnt++;
-		while (s[i] && s[i] != c)
+		while (s[i] && !ft_strchr(delimeter, s[i]))
 			i++;
 	}
 	return (cnt);
 }
 
-static size_t	cnt_word_len(char const *s, char c)
+static size_t	cnt_word_len(char const *s, const char *delimeter)
 {
 	size_t	len;
 
 	len = 0;
-	while (s[len] && s[len] != c)
+	while (s[len] && !ft_strchr(delimeter, s[len]))
 		len++;
 	return (len);
 }

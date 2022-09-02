@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+         #
+#    By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/08 16:03:07 by younhwan          #+#    #+#              #
-#    Updated: 2022/08/25 16:23:20 by younhwan         ###   ########.fr        #
+#    Updated: 2022/09/01 15:47:34 by younhwan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -64,7 +64,8 @@ SRCS =  ft_atoi.c \
 		ft_lstmap.c \
 		ft_lstnew.c \
 		ft_lstsize.c \
-		ft_exit_with_error.c
+		ft_exit_with_error.c \
+		ft_is_space.c
 
 SRCS := ${SRCS:%.c=${SRCS_DIR}/%.c}
 OBJS := ${SRCS:${SRCS_DIR}/%.c=${OBJS_DIR}/%.o}
