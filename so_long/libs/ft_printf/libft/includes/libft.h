@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 18:35:31 by younhwan          #+#    #+#             */
-/*   Updated: 2022/08/25 16:15:21 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/09/02 14:48:06 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,15 @@ void			ft_lstiter(t_list_libft *lst, void (*f)(void *));
 t_list_libft	*ft_lstmap(t_list_libft *lst, \
 							void *(*f)(void *), void (*del)(void *));
 
+// Custom type to use
+typedef enum e_bool
+{
+	FALSE = 0,
+	TRUE = 1,
+}	t_bool;
+
 // Custom functions to use
-void			ft_exit_with_error(const char *str);
+void			ft_exit_with_error(const char *str, const int exit_flag);
+t_bool 			ft_is_space(const int c);
 
 #endif
