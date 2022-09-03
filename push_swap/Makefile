@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+         #
+#    By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/08 16:03:07 by younhwan          #+#    #+#              #
-#    Updated: 2022/09/01 14:30:50 by younhwan         ###   ########.fr        #
+#    Updated: 2022/09/03 15:17:48 by younhwan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,6 +40,7 @@ SRCS = 	push_swap.c\
 		stack/swap.c\
 		parse_input/parse_input.c\
 		parse_input/has_duplicated.c\
+		parse_input/init_arr.c\
 		parse_input/is_not_integer.c\
 		parse_input/sort.c
 		
