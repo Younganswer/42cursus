@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_input.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/01 14:26:22 by younhwan          #+#    #+#             */
-/*   Updated: 2022/09/02 14:40:59 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/09/03 14:52:42 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 int			*parse_input(t_stack *a, int argc, char **argv);
 static char	**split_argv(char *input);
-static void	push(t_stack *a, char **splited_argv);
-static int	*a_to_arr(t_stack *a);
+static void	push_arguments_to_stack(t_stack *a, char **splited_argv);
+static int	*stack_to_arr(t_stack *a);
 
 int	*parse_input(t_stack *a, int argc, char **argv)
 {
@@ -30,11 +30,11 @@ int	*parse_input(t_stack *a, int argc, char **argv)
 		if (is_not_integer(argv[i]))
 			ft_exit_with_error(0, EXIT_SUCCESS);
 		splited_argv = split_argv(argv[i]);
-		push(a, splited_argv);
+		push_arguments_to_stack(a, splited_argv);
 		free(splited_argv);
 	}
 	sz_ = a->sz_;
-	ret = a_to_arr(a);
+	ret = stack_to_arr(a);
 	sort(ret, 0, sz_ - 1);
 	if (has_duplicated(ret, sz_))
 		ft_exit_with_error(0, EXIT_SUCCESS);
@@ -58,7 +58,7 @@ static char	**split_argv(char *input)
 	return (ret);
 }
 
-static void	push(t_stack *a, char **splited_argv)
+static void	push_arguments_to_stack(t_stack *a, char **splited_argv)
 {
 	int	i;
 
@@ -71,7 +71,7 @@ static void	push(t_stack *a, char **splited_argv)
 	return ;
 }
 
-static int	*a_to_arr(t_stack *a)
+static int	*stack_to_arr(t_stack *a)
 {
 	t_node	*tmp;
 	int		*ret;

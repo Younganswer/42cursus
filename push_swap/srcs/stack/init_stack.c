@@ -3,16 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   init_stack.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/25 22:36:16 by younhwan          #+#    #+#             */
-/*   Updated: 2022/09/01 00:07:16 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/09/03 14:51:06 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../incs/push_swap.h"
-
-t_stack	*init_stack(void);
 
 t_stack	*init_stack(void)
 {

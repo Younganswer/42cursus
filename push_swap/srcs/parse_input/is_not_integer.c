@@ -3,16 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   is_not_integer.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/01 13:53:47 by younhwan          #+#    #+#             */
-/*   Updated: 2022/09/01 14:28:18 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/09/03 14:50:48 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../incs/parse_input.h"
-
-t_bool			is_not_integer(const char *input);
 
 t_bool	is_not_integer(const char *input)
 {
