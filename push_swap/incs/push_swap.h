@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/25 16:27:00 by younhwan          #+#    #+#             */
-/*   Updated: 2022/09/02 14:50:16 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/09/03 14:56:58 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,5 +18,12 @@
 # include "tools.h"
 # include "stack.h"
 # include "parse_input.h"
+
+typedef struct s_var
+{
+	t_stack	*a;
+	t_stack	*b;
+	t_arr	*arr;
+}	t_var;
 
 #endif
