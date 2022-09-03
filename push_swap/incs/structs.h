@@ -1,37 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_input.h                                      :+:      :+:    :+:   */
+/*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/31 23:29:18 by younhwan          #+#    #+#             */
-/*   Updated: 2022/09/03 17:19:46 by younhwan         ###   ########.fr       */
+/*   Created: 2022/09/03 17:18:05 by younhwan          #+#    #+#             */
+/*   Updated: 2022/09/03 17:20:07 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PARSE_INPUT_H
-# define PARSE_INPUT_H
+#ifndef STRUCTS_H
+#define STRUCTS_H
 
 # include "../libs/ft_printf/includes/ft_printf.h"
 # include "../libs/get_next_line/includes/get_next_line.h"
-# include "structs.h"
-# include "tools.h"
-# include "stack.h"
 
-// parse_input.c
-t_bool	parse_input(t_stack *a, int argc, char **argv);
+typedef struct s_node
+{
+	int				val;
+	struct s_node	*next;
+	struct s_node	*prev;
+}	t_node;
 
-// has_duplicated.c
-t_bool	has_duplicated(int *arr, int n);
+typedef struct s_stack
+{
+	t_node	*head;
+	t_node	*tail;
+	size_t	sz_;
+}	t_stack;
 
-// init_arr.c
-t_arr	*init_arr(t_stack *a);
+typedef struct s_arr
+{
+	int 	*chunk;
+	size_t	sz_;
+}	t_arr;
 
-// is_not_integer.c
-t_bool	is_not_integer(const char *input);
-
-// sort_arr.c
-void	sort_arr(int *arr, int start, int end);
+typedef struct s_var
+{
+	t_stack	*a;
+	t_stack	*b;
+	t_arr	*arr;
+}	t_var;
 
 #endif

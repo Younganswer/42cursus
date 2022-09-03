@@ -1,34 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   is_not_integer.c                                   :+:      :+:    :+:   */
+/*   sort_small.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/01 13:53:47 by younhwan          #+#    #+#             */
-/*   Updated: 2022/09/03 17:56:07 by younhwan         ###   ########.fr       */
+/*   Created: 2022/09/03 22:24:26 by younhwan          #+#    #+#             */
+/*   Updated: 2022/09/03 22:56:52 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../incs/parse_input.h"
+#include "../../incs/sort_stack.h"
+#include "../../incs/stack.h"
 
-t_bool	is_not_integer(const char *input)
+t_bool			sort_small(t_var *var, int start, int end);
+
+t_bool	sort_small(t_var *var, int start, int end)
 {
-	size_t	len;
-	size_t	i;
-
-	len = ft_strlen(input);
-	i = 0;
-	while (i < len)
-	{
-		if (input[i] == ' ' || input[i] == '+' || input[i] == '-')
-		{
-			i++;
-			continue ;
-		}
-		if (!ft_isdigit(input[i]))
-			return (TRUE);
-		i++;
-	}
-	return (FALSE);
+	
+	return (TRUE);
 }

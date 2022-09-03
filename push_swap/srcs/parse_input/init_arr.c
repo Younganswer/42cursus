@@ -6,11 +6,11 @@
 /*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/03 15:15:16 by younhwan          #+#    #+#             */
-/*   Updated: 2022/09/03 15:15:41 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/09/03 17:21:10 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../incs/push_swap.h"
+#include "../../incs/parse_input.h"
 
 t_arr			*init_arr(t_stack *a);
 static int		*stack_to_arr(t_stack *a);

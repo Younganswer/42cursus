@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   pop.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 14:08:51 by younhwan          #+#    #+#             */
-/*   Updated: 2022/08/31 23:34:42 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/09/03 17:21:55 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../incs/push_swap.h"
+#include "../../incs/stack.h"
 
 int		pop_front(t_stack *st);
 int		pop_back(t_stack *st);

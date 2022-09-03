@@ -6,7 +6,7 @@
 #    By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/08 16:03:07 by younhwan          #+#    #+#              #
-#    Updated: 2022/09/03 15:17:48 by younhwan         ###   ########.fr        #
+#    Updated: 2022/09/03 20:02:45 by younhwan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,6 +30,12 @@ SRCS_DIR = ./srcs
 OBJS_DIR = ./objs
 
 SRCS = 	push_swap.c\
+		parse_input/parse_input.c\
+		parse_input/has_duplicated.c\
+		parse_input/init_arr.c\
+		parse_input/is_not_integer.c\
+		parse_input/sort_arr.c\
+		sort/sort_stack.c\
 		stack/init_node.c\
 		stack/init_stack.c\
 		stack/pop.c\
@@ -37,12 +43,7 @@ SRCS = 	push_swap.c\
 		stack/push_ab.c\
 		stack/rotate.c\
 		stack/stack_utils.c\
-		stack/swap.c\
-		parse_input/parse_input.c\
-		parse_input/has_duplicated.c\
-		parse_input/init_arr.c\
-		parse_input/is_not_integer.c\
-		parse_input/sort.c
+		stack/swap.c
 		
 SRCS := ${addprefix ${SRCS_DIR}/, ${SRCS}}
 OBJS = ${SRCS:${SRCS_DIR}/%.c=${OBJS_DIR}/%.o}
@@ -62,8 +63,9 @@ bonus: ${NAME_BONUS}
 
 ${OBJS_DIR}:
 	mkdir -p objs
-	mkdir -p objs/stack
 	mkdir -p objs/parse_input
+	mkdir -p objs/sort
+	mkdir -p objs/stack
 
 ${OBJS}: %.o: ${addsuffix .c,${subst obj,src,${%}}} | ${OBJS_DIR}
 	${CC} ${CFLAGS} -g -c ${patsubst %.o,%.c,${subst obj,src,$@}} -o $@ -I ${INCS_DIR}

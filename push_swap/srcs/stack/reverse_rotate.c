@@ -1,54 +1,59 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   swap.c                                             :+:      :+:    :+:   */
+/*   reverse_rotate.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/25 22:11:38 by younhwan          #+#    #+#             */
-/*   Updated: 2022/09/03 20:00:24 by younhwan         ###   ########.fr       */
+/*   Created: 2022/09/03 17:38:23 by younhwan          #+#    #+#             */
+/*   Updated: 2022/09/03 20:01:31 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../incs/stack.h"
 
-t_bool			sa(t_stack *a);
-t_bool			sb(t_stack *b);
-t_bool			ss(t_stack *a, t_stack *b);
-static t_bool	swap(int *a, int *b);
+t_bool	rra(t_stack *a);
+t_bool	rrb(t_stack *a);
+t_bool	rrr(t_stack *a, t_stack*b);
 
-t_bool	sa(t_stack *a)
+t_bool	rra(t_stack *a)
 {
+	int	front;
+
 	if (a->sz_ < 2)
 		return (TRUE);
-	swap(&a->tail->prev->val, &a->tail->val);
-	ft_putstr_fd("sa\n", 1);
+	front = pop_front(a);
+	push_back(a, front);
+	ft_putstr_fd("rra\n", 1);
 	return (TRUE);
 }
 
-t_bool	sb(t_stack *b)
+t_bool	rrb(t_stack *b)
 {
+	int	front;
+
 	if (b->sz_ < 2)
 		return (TRUE);
-	swap(&b->tail->prev->val, &b->tail->val);
-	ft_putstr_fd("sb\n", 1);
+	front = pop_front(b);
+	push_back(b, front);
+	ft_putstr_fd("rrb\n", 1);
 	return (TRUE);
 }
 
-t_bool	ss(t_stack *a, t_stack *b)
+t_bool	rrr(t_stack *a, t_stack *b)
 {
-	swap(&a->tail->prev->val, &a->tail->val);
-	swap(&b->tail->prev->val, &b->tail->val);
-	ft_putstr_fd("ss\n", 1);
-	return (TRUE);
-}
+	int	front;
 
-static t_bool	swap(int *a, int *b)
-{
-	int	tmp;
-
-	tmp = *a;
-	*a = *b;
-	*b = tmp;
+	if (2 <= a->sz_)
+	{
+		front = pop_front(a);
+		push_back(a, front);
+	}
+	if (2 <= b->sz_)
+	{
+		front = pop_front(b);
+		push_back(b, front);
+	}
+	ft_putstr_fd("rrr\n", 1);
 	return (TRUE);
 }

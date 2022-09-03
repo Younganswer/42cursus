@@ -3,17 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   stack_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/25 22:09:02 by younhwan          #+#    #+#             */
-/*   Updated: 2022/08/31 23:34:42 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/09/03 19:59:56 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../incs/push_swap.h"
+#include "../../incs/stack.h"
 
 t_bool	free_stack(t_stack *st);
 t_bool	print_stack(t_stack *st);
+t_bool	swap(int *a, int *b);
 
 t_bool	free_stack(t_stack *st)
 {

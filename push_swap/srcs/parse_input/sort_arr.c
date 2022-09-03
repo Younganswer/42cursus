@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort.c                                             :+:      :+:    :+:   */
+/*   sort_arr.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,10 +12,10 @@
 
 #include "../../incs/parse_input.h"
 
-void		sort(int *arr, int start, int end);
+void		sort_arr(int *arr, int start, int end);
 static void	ft_swap(int *a, int *b);
 
-void	sort(int *arr, int start, int end)
+void	sort_arr(int *arr, int start, int end)
 {
 	int	pivot;
 	int	i;
@@ -37,8 +37,8 @@ void	sort(int *arr, int start, int end)
 		else
 			ft_swap(&arr[i], &arr[j]);
 	}
-	sort(arr, start, j - 1);
-	sort(arr, j + 1, end);
+	sort_arr(arr, start, j - 1);
+	sort_arr(arr, j + 1, end);
 	return ;
 }
 

@@ -1,34 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   is_not_integer.c                                   :+:      :+:    :+:   */
+/*   sort_stack.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/01 13:53:47 by younhwan          #+#    #+#             */
-/*   Updated: 2022/09/03 17:56:07 by younhwan         ###   ########.fr       */
+/*   Created: 2022/09/03 17:16:58 by younhwan          #+#    #+#             */
+/*   Updated: 2022/09/03 22:04:56 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../incs/parse_input.h"
+#ifndef SORT_H
+# define SORT_H
 
-t_bool	is_not_integer(const char *input)
-{
-	size_t	len;
-	size_t	i;
+# include "../libs/ft_printf/includes/ft_printf.h"
+# include "../libs/get_next_line/includes/get_next_line.h"
+# include "structs.h"
 
-	len = ft_strlen(input);
-	i = 0;
-	while (i < len)
-	{
-		if (input[i] == ' ' || input[i] == '+' || input[i] == '-')
-		{
-			i++;
-			continue ;
-		}
-		if (!ft_isdigit(input[i]))
-			return (TRUE);
-		i++;
-	}
-	return (FALSE);
-}
+// sort_stack.c
+t_bool	sort_stack(t_var *var, int start, int end);
+
+#endif

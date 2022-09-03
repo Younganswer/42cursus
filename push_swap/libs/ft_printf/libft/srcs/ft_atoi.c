@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 19:53:11 by younhwan          #+#    #+#             */
-/*   Updated: 2022/09/01 15:46:52 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/09/03 17:56:55 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	ft_atoi(const char *str)
 	}
 	while (str[i])
 	{
-		if (str[i] < '0' || '9' < str[i])
+		if (!ft_isdigit(str[i]))
 			ft_exit_with_error(0, EXIT_SUCCESS);
 		ret = 10 * ret + (str[i] - '0');
 		if (ret < INT32_MIN || INT32_MAX < ret)
