@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/25 16:26:12 by younhwan          #+#    #+#             */
-/*   Updated: 2022/09/03 15:26:30 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/09/03 17:01:49 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,12 @@ int	main(int argc, char **argv)
 {
 	t_var	*var;
 
-	if (argc <= 2)
+	if (argc == 1)
 		return (0);
 	var = init_var(argc, argv);
-	
+	if (var->a->sz_ <= 1)
+		return (0);
+	print_stack(var->a);
 	return (0);
 }
 

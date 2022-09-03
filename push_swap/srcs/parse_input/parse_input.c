@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/01 14:26:22 by younhwan          #+#    #+#             */
-/*   Updated: 2022/09/03 15:17:22 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/09/03 17:07:59 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,16 +35,15 @@ t_bool	parse_input(t_stack *a, int argc, char **argv)
 
 static char	**split_argv(char *input)
 {
-	const char	*delimeter = "\x09\x0A\x0B\x0C\x0D\x20";
 	char		**ret;
 	size_t		i;
 
 	if (is_not_integer(input))
 		ft_exit_with_error(0, EXIT_SUCCESS);
 	i = 0;
-	while (input[i] && ft_is_space(input[i]))
+	while (input[i] && input[i] == ' ')
 		i++;
-	ret = ft_split(&input[i], delimeter);
+	ret = ft_split(&input[i], ' ');
 	if (!ret)
 		ft_exit_with_error(0, EXIT_FAILURE);
 	return (ret);

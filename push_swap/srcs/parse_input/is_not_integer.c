@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/01 13:53:47 by younhwan          #+#    #+#             */
-/*   Updated: 2022/09/03 14:50:48 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/09/03 16:57:42 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ t_bool	is_not_integer(const char *input)
 	i = 0;
 	while (i < len)
 	{
-		if (ft_is_space(input[i]) || input[i] == '+' || input[i] == '-')
+		if (input[i] == ' ' || input[i] == '+' || input[i] == '-')
 		{
 			i++;
 			continue ;
