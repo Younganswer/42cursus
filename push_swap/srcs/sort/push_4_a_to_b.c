@@ -1,24 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort_small.c                                       :+:      :+:    :+:   */
+/*   push_4_a_to_b.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/03 22:24:26 by younhwan          #+#    #+#             */
-/*   Updated: 2022/09/03 22:58:19 by younhwan         ###   ########.fr       */
+/*   Created: 2022/09/05 16:39:32 by younhwan          #+#    #+#             */
+/*   Updated: 2022/09/05 17:31:10 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../incs/sort_stack.h"
 #include "../../incs/stack.h"
 
-t_bool			sort_small(t_var *var, int start, int end);
+t_bool	push_4_a_to_b(t_var *var, t_shape shape);
 
-t_bool	sort_small(t_var *var, int start, int end)
+t_bool	push_4_a_to_b(t_var *var, t_shape shape)
 {
-	(void) var;	
-	(void) start;	
-	(void) end;	
 	return (TRUE);
 }
