@@ -6,31 +6,31 @@
 /*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/03 17:46:28 by younhwan          #+#    #+#             */
-/*   Updated: 2022/09/07 17:02:11 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/09/07 19:39:39 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../incs/sort_stack.h"
 
-t_bool			sort_stack(t_var *var, int size);
-static t_bool	is_not_sorted(t_stack *a);
-static t_bool	merge(t_var *var, int size, t_shape shape);
-static t_bool	b_to_a(t_var *var, int size);
+t_bool			sort_stack(t_var *var);
+// static t_bool	is_not_sorted(t_stack *a);
+// static t_bool	merge(t_var *var, int size, t_shape shape);
+// static t_bool	b_to_a(t_var *var, int size);
 
-t_bool	sort_stack(t_var *var, int size)
+t_bool	sort_stack(t_var *var)
 {
 	divide(var, var->a->sz_ - 2 * (var->a->sz_ / 3), NORMAL);
 	divide(var, var->a->sz_ / 3, REVERSED);
 	divide(var, var->a->sz_ / 3, REVERSED);
-	merge(var, var->a->sz_ - 2 * (var->a->sz_ / 3), NORMAL);
-	merge(var, var->a->sz_ / 3, REVERSED);
-	merge(var, var->a->sz_ / 3, REVERSED);
+	// merge(var, var->a->sz_ - 2 * (var->a->sz_ / 3), NORMAL);
+	// merge(var, var->a->sz_ / 3, REVERSED);
+	// merge(var, var->a->sz_ / 3, REVERSED);
 	return (TRUE);
 }
 
-static t_bool	b_to_a(t_var *var, int size)
-{
-	(void) var;
-	(void) size;
-	return (TRUE);
-}
+// static t_bool	b_to_a(t_var *var, int size)
+// {
+// 	(void) var;
+// 	(void) size;
+// 	return (TRUE);
+// }

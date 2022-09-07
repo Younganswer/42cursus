@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/03 17:16:58 by younhwan          #+#    #+#             */
-/*   Updated: 2022/09/05 17:31:52 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/09/07 19:39:11 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ typedef enum e_shape
 }	t_shape;
 
 // sort_stack.c
-t_bool	sort_stack(t_var *var, int size);
+t_bool	sort_stack(t_var *var);
 
 // divide.c
 t_bool	divide(t_var *var, int size, t_shape shape);

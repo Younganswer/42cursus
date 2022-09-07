@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 16:39:32 by younhwan          #+#    #+#             */
-/*   Updated: 2022/09/05 17:30:56 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/09/07 19:40:59 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,5 +17,7 @@ t_bool	push_5_a_to_b(t_var *var, t_shape shape);
 
 t_bool	push_5_a_to_b(t_var *var, t_shape shape)
 {
+	(void) var;
+	(void) shape;
 	return (TRUE);
 }
