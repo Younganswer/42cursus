@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/31 23:46:17 by younhwan          #+#    #+#             */
-/*   Updated: 2022/09/03 20:00:18 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/09/07 19:27:04 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@ t_bool	push_front(t_stack *st, int num);
 t_bool	push_back(t_stack *st, int num);
 
 // push_ab.c
-t_bool	push_a(t_stack *a, t_stack *b);
-t_bool	push_b(t_stack *a, t_stack *b);
+t_bool	pa(t_stack *a, t_stack *b);
+t_bool	pb(t_stack *a, t_stack *b);
 
 // rotate.c
 t_bool	ra(t_stack *a);

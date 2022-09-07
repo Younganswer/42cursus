@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/03 17:46:28 by younhwan          #+#    #+#             */
-/*   Updated: 2022/09/05 17:33:51 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/09/07 17:02:11 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,12 @@ static t_bool	b_to_a(t_var *var, int size);
 
 t_bool	sort_stack(t_var *var, int size)
 {
-	divide(var, var->a->sz_ / 3, REVERSED);
-	divide(var, var->a->sz_ / 3, REVERSED);
 	divide(var, var->a->sz_ - 2 * (var->a->sz_ / 3), NORMAL);
-	merge(var, var->a->sz_ / 3, REVERSED);
-	merge(var, var->a->sz_ / 3, REVERSED);
+	divide(var, var->a->sz_ / 3, REVERSED);
+	divide(var, var->a->sz_ / 3, REVERSED);
 	merge(var, var->a->sz_ - 2 * (var->a->sz_ / 3), NORMAL);
+	merge(var, var->a->sz_ / 3, REVERSED);
+	merge(var, var->a->sz_ / 3, REVERSED);
 	return (TRUE);
 }
 

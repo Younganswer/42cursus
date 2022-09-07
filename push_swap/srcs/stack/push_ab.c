@@ -6,16 +6,16 @@
 /*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 14:14:09 by younhwan          #+#    #+#             */
-/*   Updated: 2022/09/03 17:42:45 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/09/07 17:11:35 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../incs/stack.h"
 
-t_bool	push_a(t_stack *a, t_stack *b);
-t_bool	push_b(t_stack *a, t_stack *b);
+t_bool	pa(t_stack *a, t_stack *b);
+t_bool	pb(t_stack *a, t_stack *b);
 
-t_bool	push_a(t_stack *a, t_stack *b)
+t_bool	pa(t_stack *a, t_stack *b)
 {
 	int	top;
 
@@ -27,7 +27,7 @@ t_bool	push_a(t_stack *a, t_stack *b)
 	return (TRUE);
 }
 
-t_bool	push_b(t_stack *a, t_stack *b)
+t_bool	pb(t_stack *a, t_stack *b)
 {
 	int	top;
 
