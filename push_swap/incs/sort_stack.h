@@ -6,17 +6,16 @@
 /*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/03 17:16:58 by younhwan          #+#    #+#             */
-/*   Updated: 2022/09/07 19:39:11 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/09/07 21:43:34 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SORT_H
-# define SORT_H
+#ifndef SORT_STACK_H
+# define SORT_STACK_H
 
 # include "../libs/ft_printf/includes/ft_printf.h"
 # include "../libs/get_next_line/includes/get_next_line.h"
 # include "structs.h"
-
 
 typedef enum e_shape
 {

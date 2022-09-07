@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/01 14:26:22 by younhwan          #+#    #+#             */
-/*   Updated: 2022/09/03 17:56:54 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/09/07 21:26:23 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ static void	push_arguments_to_stack(t_stack *a, char **splited_argv)
 	i = 0;
 	while (splited_argv[i])
 	{
-		push_back(a, ft_atoi(splited_argv[i]));
+		push_front(a, ft_atoi(splited_argv[i]));
 		i++;
 	}
 	return ;

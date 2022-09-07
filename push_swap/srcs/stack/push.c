@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 14:10:17 by younhwan          #+#    #+#             */
-/*   Updated: 2022/09/03 17:21:55 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/09/07 21:28:41 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ t_bool	push_front(t_stack *st, int num)
 	{
 		st->head = to_insert;
 		st->tail = to_insert;
-		return (TRUE);
 	}
 	else
 	{

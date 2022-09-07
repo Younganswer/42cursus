@@ -6,12 +6,12 @@
 /*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/03 17:18:05 by younhwan          #+#    #+#             */
-/*   Updated: 2022/09/03 17:20:07 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/09/07 21:44:34 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STRUCTS_H
-#define STRUCTS_H
+# define STRUCTS_H
 
 # include "../libs/ft_printf/includes/ft_printf.h"
 # include "../libs/get_next_line/includes/get_next_line.h"
@@ -32,7 +32,7 @@ typedef struct s_stack
 
 typedef struct s_arr
 {
-	int 	*chunk;
+	int		*chunk;
 	size_t	sz_;
 }	t_arr;
 
