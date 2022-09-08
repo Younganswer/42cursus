@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   divide.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 16:36:05 by younhwan          #+#    #+#             */
-/*   Updated: 2022/09/07 20:59:16 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/09/08 15:26:52 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,15 +21,24 @@ t_bool	divide(t_var *var, int size, t_shape shape)
 	int	second;
 	int	third;
 
-	first = size - 2 * (size / 3);
-	second = third = size / 3;
+	second = size - 2 * (size / 3);
+	first = third = size / 3;
 	if (size < 6)
 		a_to_b(var, size, shape);
 	else
 	{
-		divide(var, first, shape);
-		divide(var, second, shape ^ 1);
-		divide(var, third, shape ^ 1);
+		if (shape == NORMAL)
+		{
+			divide(var, first, shape);
+			divide(var, second, shape ^ 1);
+			divide(var, third, shape ^ 1);
+		}
+		else
+		{
+			divide(var, first, shape ^ 1);
+			divide(var, second, shape ^ 1);
+			divide(var, third, shape);
+		}
 	}
 	return (TRUE);
 }

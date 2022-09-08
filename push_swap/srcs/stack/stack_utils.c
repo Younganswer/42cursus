@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stack_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/25 22:09:02 by younhwan          #+#    #+#             */
-/*   Updated: 2022/09/03 19:59:56 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/09/08 15:08:35 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,14 @@ t_bool	print_stack(t_stack *st)
 {
 	t_node	*tmp;
 
-	tmp = st->head;
+	tmp = st->tail;
 	while (tmp)
 	{
-		ft_printf("%d ", tmp->val);
-		tmp = tmp->next;
+		for (int i=0; i<tmp->val; i++) {
+			ft_putchar_fd('-', 1);
+		}
+		ft_putchar_fd('\n', 1);
+		tmp = tmp->prev;
 	}
 	ft_printf("\n");
 	return (TRUE);

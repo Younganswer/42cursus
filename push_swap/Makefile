@@ -6,7 +6,7 @@
 #    By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/08 16:03:07 by younhwan          #+#    #+#              #
-#    Updated: 2022/09/08 14:01:20 by younhwan         ###   ########.fr        #
+#    Updated: 2022/09/08 16:26:07 by younhwan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,6 +37,7 @@ SRCS = 	push_swap.c\
 		parse_input/sort_arr.c\
 		sort/sort_stack.c\
 		sort/divide.c\
+		sort/is_sorted.c\
 		sort/merge.c\
 		sort/push_2_a_to_b.c\
 		sort/push_3_a_to_b.c\
@@ -67,6 +68,10 @@ all: ${NAME}
 
 bonus: ${NAME_BONUS}
 	make all
+
+run:
+	make all
+	ARG=`ruby -e "puts (0..100).to_a.shuffle.join(' ')"`; ./push_swap $ARG > output.txt
 
 ${OBJS_DIR}:
 	mkdir -p objs
