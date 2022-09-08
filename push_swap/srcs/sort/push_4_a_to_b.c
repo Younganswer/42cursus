@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_4_a_to_b.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 16:39:32 by younhwan          #+#    #+#             */
-/*   Updated: 2022/09/07 21:41:41 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/09/08 11:54:31 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,7 @@
 t_bool			push_4_a_to_b(t_var *var, t_shape shape);
 static t_bool	normal(t_var *var);
 static t_bool	reversed(t_var *var);
-static int		get_min_2(t_var *var);
-static int		get_max_2(t_var *var);
+static int		get_pivot(t_var *var, t_shape shape);
 
 t_bool	push_4_a_to_b(t_var *var, t_shape shape)
 {
@@ -53,14 +52,14 @@ static t_bool	normal(t_var *var)
 {
 	int	exec_pb;
 	int	exec_ra;
-	int	max_2;
+	int	pivot;
 
 	exec_pb = 0;
 	exec_ra = 0;
-	max_2 = get_max_2(var);
+	pivot = get_pivot(var, NORMAL);
 	while (exec_pb < 2)
 	{
-		if (max_2 <= var->a->tail->val)
+		if (pivot <= var->a->tail->val)
 		{
 			pb(var->a, var->b);
 			exec_pb++;
@@ -80,14 +79,14 @@ static t_bool	reversed(t_var *var)
 {
 	int	exec_pb;
 	int	exec_ra;
-	int	min_2;
+	int	pivot;
 
 	exec_pb = 0;
 	exec_ra = 0;
-	min_2 = get_min_2(var);
+	pivot = get_pivot(var, REVERSED);
 	while (exec_pb < 2)
 	{
-		if (var->a->tail->val <= min_2)
+		if (var->a->tail->val <= pivot)
 		{
 			pb(var->a, var->b);
 			exec_pb++;
@@ -103,7 +102,7 @@ static t_bool	reversed(t_var *var)
 	return (TRUE);
 }
 
-static int	get_min_2(t_var *var)
+static int	get_pivot(t_var *var, t_shape shape)
 {
 	int		arr[4];
 	int		i;
@@ -117,22 +116,7 @@ static int	get_min_2(t_var *var)
 		tmp = tmp->prev;
 	}
 	sort_arr(arr, 0, 3);
+	if (shape == NORMAL)
+		return (arr[2]);
 	return (arr[1]);
-}
-
-static int	get_max_2(t_var *var)
-{
-	int		arr[4];
-	int		i;
-	t_node	*tmp;
-
-	i = 4;
-	tmp = var->a->tail;
-	while (i--)
-	{
-		arr[i] = tmp->val;
-		tmp = tmp->prev;
-	}
-	sort_arr(arr, 0, 3);
-	return (arr[2]);
 }
