@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+         #
+#    By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/08 16:03:07 by younhwan          #+#    #+#              #
-#    Updated: 2022/09/07 19:40:37 by younhwan         ###   ########.fr        #
+#    Updated: 2022/09/08 14:01:20 by younhwan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,6 +37,7 @@ SRCS = 	push_swap.c\
 		parse_input/sort_arr.c\
 		sort/sort_stack.c\
 		sort/divide.c\
+		sort/merge.c\
 		sort/push_2_a_to_b.c\
 		sort/push_3_a_to_b.c\
 		sort/push_4_a_to_b.c\

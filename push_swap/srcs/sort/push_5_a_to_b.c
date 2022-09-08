@@ -6,11 +6,12 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 16:39:32 by younhwan          #+#    #+#             */
-/*   Updated: 2022/09/08 11:59:22 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/09/08 14:05:48 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../incs/sort_stack.h"
+#include "../../incs/parse_input.h"
 #include "../../incs/stack.h"
 
 t_bool			push_5_a_to_b(t_var *var, t_shape shape);
@@ -27,8 +28,8 @@ t_bool	push_5_a_to_b(t_var *var, t_shape shape)
 	push_3_a_to_b(var, shape);
 	rrb(var->b);
 	rrb(var->b);
-	if (shape == NORMAL && var->b->tail->prev->val < var->b->tail->val || \
-		shape == REVERSED && var->b->tail->val < var->b->tail->prev->val)
+	if ((shape == NORMAL && var->b->tail->prev->val < var->b->tail->val) || \
+		(shape == REVERSED && var->b->tail->val < var->b->tail->prev->val))
 		sb(var->b);
 	return (TRUE);
 }
