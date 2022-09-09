@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 16:00:06 by younhwan          #+#    #+#             */
-/*   Updated: 2022/09/09 19:36:20 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/09/09 20:46:01 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ static t_bool	make_triangle_in_a(t_var *var)
 	push_to_a = var->size_of_triangles_in_b->sz_;
 	while (push_to_a--)
 	{
-		size = pop_back(var->b);
+		size = pop_back(var->size_of_triangles_in_b);
 		push_front(var->size_of_triangles_in_a, size / 3);
 		push_back(var->size_of_triangles_in_a, size / 3);
 		push_front(var->size_of_triangles_in_b, size - 2 * (size / 3));
