@@ -1,24 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_2_a_to_b.c                                    :+:      :+:    :+:   */
+/*   push_2_b_to_a.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 16:39:32 by younhwan          #+#    #+#             */
-/*   Updated: 2022/09/10 00:14:27 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/09/10 00:16:26 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../incs/divide.h"
 #include "../../incs/stack.h"
 
-t_bool	push_2_a_to_b(t_var *var, t_shape shape)
+t_bool	push_2_b_to_a(t_var *var, t_shape shape)
 {
-	pb(var->a, var->b);
-	pb(var->a, var->b);
-	if ((var->b->tail->val < var->b->tail->prev->val && shape == REVERSED) \
-		|| (var->b->tail->prev->val < var->b->tail->val && shape == NORMAL))
-		sb(var->b);
+	pa(var->a, var->b);
+	pa(var->a, var->b);
+	if ((var->a->tail->val < var->a->tail->prev->val && shape == REVERSED) \
+		|| (var->a->tail->prev->val < var->a->tail->val && shape == NORMAL))
+		sa(var->a);
 	return (TRUE);
 }

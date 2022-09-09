@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pop.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 14:08:51 by younhwan          #+#    #+#             */
-/*   Updated: 2022/09/09 22:05:01 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/09/10 00:49:14 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ t_node	*pop_front(t_stack *st)
 		st->head = st->head->next;
 		st->head->prev = 0;
 	}
+	ret->prev = 0;
+	ret->next = 0;
 	st->sz_--;
 	return (ret);
 }
@@ -53,6 +55,8 @@ t_node	*pop_back(t_stack *st)
 		st->tail = st->tail->prev;
 		st->tail->next = 0;
 	}
+	ret->prev = 0;
+	ret->next = 0;
 	st->sz_--;
 	return (ret);
 }

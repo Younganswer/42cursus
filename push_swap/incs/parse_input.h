@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_input.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/31 23:29:18 by younhwan          #+#    #+#             */
-/*   Updated: 2022/09/09 15:48:55 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/09/10 00:30:27 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,8 @@ t_bool	parse_input(t_stack *a, int argc, char **argv);
 
 // has_duplicated.c
 t_bool	has_duplicated(t_stack *a);
+
+// sort_arr.c
+t_bool	sort_arr(int *arr, int start, int end);
 
 #endif
