@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/31 23:29:18 by younhwan          #+#    #+#             */
-/*   Updated: 2022/09/03 17:19:46 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/09/09 15:04:14 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,7 @@
 t_bool	parse_input(t_stack *a, int argc, char **argv);
 
 // has_duplicated.c
-t_bool	has_duplicated(int *arr, int n);
-
-// init_arr.c
-t_arr	*init_arr(t_stack *a);
+t_bool	has_duplicated(t_stack *a);
 
 // is_not_integer.c
 t_bool	is_not_integer(const char *input);

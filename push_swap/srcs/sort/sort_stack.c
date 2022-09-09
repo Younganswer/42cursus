@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sort_stack.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/03 17:46:28 by younhwan          #+#    #+#             */
-/*   Updated: 2022/09/08 15:27:04 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/09/09 15:06:24 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,3 @@ t_bool	sort_stack(t_var *var)
 	// merge(var, var->b->sz_, FALSE);
 	return (TRUE);
 }
-
-// static t_bool	b_to_a(t_var *var, int size)
-// {
-// 	(void) var;
-// 	(void) size;
-// 	return (TRUE);
-// }
