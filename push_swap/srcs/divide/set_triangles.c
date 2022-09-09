@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 16:00:06 by younhwan          #+#    #+#             */
-/*   Updated: 2022/09/09 22:06:59 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/09/09 22:11:02 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,8 @@ static t_bool	make_triangle_in_a(t_var *var)
 		shape = to_insert->shape;
 		push_front(var->size_of_triangles_in_a, init_node(size / 3, shape));
 		push_back(var->size_of_triangles_in_a, init_node(size / 3, shape ^ 1));
-		push_front(var->size_of_triangles_in_b, init_node(size - 2 * (size / 3), shape));
+		push_front(var->size_of_triangles_in_b, \
+					init_node(size - 2 * (size / 3), shape));
 		free(to_insert);
 	}
 	while (var->size_of_triangles_in_b->sz_)
@@ -77,7 +78,8 @@ static t_bool	make_triangle_in_b(t_var *var)
 		shape = to_insert->shape;
 		push_front(var->size_of_triangles_in_b, init_node(size / 3, shape));
 		push_back(var->size_of_triangles_in_b, init_node(size / 3, shape ^ 1));
-		push_front(var->size_of_triangles_in_a, init_node(size - 2 * (size / 3), shape));
+		push_front(var->size_of_triangles_in_a, \
+					init_node(size - 2 * (size / 3), shape));
 		free(to_insert);
 	}
 	while (var->size_of_triangles_in_a->sz_)
