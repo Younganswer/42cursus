@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/25 16:26:12 by younhwan          #+#    #+#             */
-/*   Updated: 2022/09/07 19:39:23 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/09/09 15:00:16 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,8 @@ static t_var	*init_var(int argc, char **argv)
 		ft_exit_with_error(0, EXIT_FAILURE);
 	ret->a = init_stack();
 	ret->b = init_stack();
+	ret->a_tri_sz = init_stack();
+	ret->b_tri_sz = init_stack();
 	parse_input(ret->a, argc, argv);
-	ret->arr = init_arr(ret->a);
 	return (ret);
 }

@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/01 14:26:22 by younhwan          #+#    #+#             */
-/*   Updated: 2022/09/07 21:26:23 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/09/09 15:04:28 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ t_bool	parse_input(t_stack *a, int argc, char **argv)
 		push_arguments_to_stack(a, splited_argv);
 		free(splited_argv);
 	}
+	if (has_duplicated(a))
+		ft_exit_with_error(0, EXIT_SUCCESS);
 	return (TRUE);
 }
 
@@ -61,3 +63,4 @@ static void	push_arguments_to_stack(t_stack *a, char **splited_argv)
 	}
 	return ;
 }
+

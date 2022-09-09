@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/03 17:18:05 by younhwan          #+#    #+#             */
-/*   Updated: 2022/09/07 21:44:34 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/09/09 14:59:55 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,17 +30,12 @@ typedef struct s_stack
 	size_t	sz_;
 }	t_stack;
 
-typedef struct s_arr
-{
-	int		*chunk;
-	size_t	sz_;
-}	t_arr;
-
 typedef struct s_var
 {
 	t_stack	*a;
 	t_stack	*b;
-	t_arr	*arr;
+	t_stack	*a_tri_sz;
+	t_stack	*b_tri_sz;
 }	t_var;
 
 #endif
