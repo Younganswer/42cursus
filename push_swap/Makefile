@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+         #
+#    By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/08 16:03:07 by younhwan          #+#    #+#              #
-#    Updated: 2022/09/08 16:26:07 by younhwan         ###   ########.fr        #
+#    Updated: 2022/09/09 15:34:56 by younhwan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,28 +30,7 @@ SRCS_DIR = ./srcs
 OBJS_DIR = ./objs
 
 SRCS = 	push_swap.c\
-		parse_input/parse_input.c\
-		parse_input/has_duplicated.c\
-		parse_input/init_arr.c\
-		parse_input/is_not_integer.c\
-		parse_input/sort_arr.c\
-		sort/sort_stack.c\
-		sort/divide.c\
-		sort/is_sorted.c\
-		sort/merge.c\
-		sort/push_2_a_to_b.c\
-		sort/push_3_a_to_b.c\
-		sort/push_4_a_to_b.c\
-		sort/push_5_a_to_b.c\
-		stack/init_node.c\
-		stack/init_stack.c\
-		stack/pop.c\
-		stack/push.c\
-		stack/push_ab.c\
-		stack/rotate.c\
-		stack/reverse_rotate.c\
-		stack/stack_utils.c\
-		stack/swap.c
+		
 		
 SRCS := ${addprefix ${SRCS_DIR}/, ${SRCS}}
 OBJS = ${SRCS:${SRCS_DIR}/%.c=${OBJS_DIR}/%.o}
