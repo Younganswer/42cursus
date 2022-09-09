@@ -6,7 +6,7 @@
 #    By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/08 16:03:07 by younhwan          #+#    #+#              #
-#    Updated: 2022/09/09 15:49:31 by younhwan         ###   ########.fr        #
+#    Updated: 2022/09/09 19:25:48 by younhwan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,6 +30,8 @@ SRCS_DIR = ./srcs
 OBJS_DIR = ./objs
 
 SRCS = 	push_swap.c\
+		divide/divide.c\
+		divide/set_size_of_triangles.c\
 		parse_input/parse_input.c\
 		parse_input/has_duplicated.c\
 		stack/init_node.c\
@@ -61,19 +63,19 @@ bonus: ${NAME_BONUS}
 run:
 	./push_swap `ruby -e "puts (0..100).to_a.shuffle.join(' ')"` > output.txt
 
-${OBJS_DIR}:
+mkdir:
 	mkdir -p objs
+	mkdir -p objs/divide
 	mkdir -p objs/parse_input
-	mkdir -p objs/sort
 	mkdir -p objs/stack
-
-${OBJS}: %.o: ${addsuffix .c,${subst obj,src,${%}}} | ${OBJS_DIR}
-	${CC} ${CFLAGS} -g -c ${patsubst %.o,%.c,${subst obj,src,$@}} -o $@ -I ${INCS_DIR}
 
 ${NAME}: ${OBJS}
 	make -C ${FT_PRINTF_DIR}
 	make -C ${GNL_DIR}
 	${CC} -g -o ${NAME} ${OBJS} ${LIBS} -I ${INCS_DIR}
+
+${OBJS_DIR}/%.o: ${SRCS_DIR}/%.c | mkdir
+	${CC} ${CFLAGS} -g -c $< -o $@ -I ${INCS_DIR}
 
 ${OBJS_BONUS_DIR}:
 	mkdir -p objs_bonus

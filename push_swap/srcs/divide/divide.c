@@ -1,23 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   divide.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/25 16:27:00 by younhwan          #+#    #+#             */
-/*   Updated: 2022/09/09 18:59:12 by younhwan         ###   ########.fr       */
+/*   Created: 2022/09/09 15:58:36 by younhwan          #+#    #+#             */
+/*   Updated: 2022/09/09 17:54:22 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#include "../../incs/divide.h"
+#include "../../incs/stack.h"
 
-# include "../libs/ft_printf/includes/ft_printf.h"
-# include "../libs/get_next_line/includes/get_next_line.h"
-# include "divide.h"
-# include "parse_input.h"
-# include "stack.h"
-# include "structs.h"
-
-#endif
+t_bool	divide(t_var *var)
+{
+	set_size_of_triangles(var);
+	print_stack(var->b);	
+	return (TRUE);
+}
