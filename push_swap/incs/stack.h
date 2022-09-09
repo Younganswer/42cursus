@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/31 23:46:17 by younhwan          #+#    #+#             */
-/*   Updated: 2022/09/07 19:27:04 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/09/09 21:25:08 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,18 +18,18 @@
 # include "structs.h"
 
 // init_node.c
-t_node	*init_node(int num);
+t_node	*init_node(int num, t_shape shape);
 
 // init_stack.c
 t_stack	*init_stack(void);
 
 // pop.c
-int		pop_front(t_stack *st);
-int		pop_back(t_stack *st);
+t_node	*pop_front(t_stack *st);
+t_node	*pop_back(t_stack *st);
 
 // push.c
-t_bool	push_front(t_stack *st, int num);
-t_bool	push_back(t_stack *st, int num);
+t_bool	push_front(t_stack *st, t_node *to_insert);
+t_bool	push_back(t_stack *st, t_node *to_insert);
 
 // push_ab.c
 t_bool	pa(t_stack *a, t_stack *b);

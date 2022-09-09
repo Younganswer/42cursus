@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/25 22:28:55 by younhwan          #+#    #+#             */
-/*   Updated: 2022/09/03 20:01:44 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/09/09 21:26:49 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ t_bool	rr(t_stack *a, t_stack *b);
 
 t_bool	ra(t_stack *a)
 {
-	int	back;
+	t_node	*back;
 
 	if (a->sz_ < 2)
 		return (TRUE);
@@ -30,7 +30,7 @@ t_bool	ra(t_stack *a)
 
 t_bool	rb(t_stack *b)
 {
-	int	back;
+	t_node	*back;
 
 	if (b->sz_ < 2)
 		return (TRUE);
@@ -42,7 +42,7 @@ t_bool	rb(t_stack *b)
 
 t_bool	rr(t_stack *a, t_stack *b)
 {
-	int	back;
+	t_node	*back;
 
 	if (2 <= a->sz_)
 	{

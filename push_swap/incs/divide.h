@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 15:57:14 by younhwan          #+#    #+#             */
-/*   Updated: 2022/09/09 18:59:58 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/09/09 21:18:51 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 // divide.c
 t_bool	divide(t_var *var);
 
-// set_size_of_triangles.c
-t_bool	set_size_of_triangles(t_var *var);
+// set_triangles.c
+t_bool	set_triangles(t_var *var);
 
 #endif

@@ -6,7 +6,7 @@
 #    By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/08 16:03:07 by younhwan          #+#    #+#              #
-#    Updated: 2022/09/09 19:51:19 by younhwan         ###   ########.fr        #
+#    Updated: 2022/09/09 21:19:04 by younhwan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,7 @@ OBJS_DIR = ./objs
 
 SRCS = 	push_swap.c\
 		divide/divide.c\
-		divide/set_size_of_triangles.c\
+		divide/set_triangles.c\
 		parse_input/parse_input.c\
 		parse_input/has_duplicated.c\
 		stack/init_node.c\

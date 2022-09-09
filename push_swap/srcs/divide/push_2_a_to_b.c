@@ -1,27 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_node.c                                        :+:      :+:    :+:   */
+/*   push_2_a_to_b.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/25 21:59:05 by younhwan          #+#    #+#             */
-/*   Updated: 2022/09/09 21:22:17 by younhwan         ###   ########.fr       */
+/*   Created: 2022/09/05 16:39:32 by younhwan          #+#    #+#             */
+/*   Updated: 2022/09/09 21:11:45 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "../../incs/divide.h"
 #include "../../incs/stack.h"
 
-t_node	*init_node(int num, t_shape shape)
+t_bool	push_2_a_to_b(t_var *var, t_shape shape)
 {
-	t_node	*ret;
-
-	ret = (t_node *) malloc(sizeof(t_node));
-	if (!ret)
-		ft_exit_with_error(0, EXIT_FAILURE);
-	ret->shape = shape;
-	ret->next = 0;
-	ret->prev = 0;
-	ret->val = num;
-	return (ret);
+	pb(var->a, var->b);
+	pb(var->a, var->b);
+	if ((var->b->tail->val < var->b->tail->prev->val && shape == REVERSED) \
+		|| (var->b->tail->prev->val < var->b->tail->val && shape == NORMAL))
+		sb(var->b);
+	return (TRUE);
 }

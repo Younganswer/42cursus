@@ -1,27 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_node.c                                        :+:      :+:    :+:   */
+/*   merge.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/25 21:59:05 by younhwan          #+#    #+#             */
-/*   Updated: 2022/09/09 21:22:17 by younhwan         ###   ########.fr       */
+/*   Created: 2022/09/09 20:48:34 by younhwan          #+#    #+#             */
+/*   Updated: 2022/09/09 20:48:53 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../incs/stack.h"
+#include "../../incs/merge.h"
 
-t_node	*init_node(int num, t_shape shape)
+t_bool	merge(t_var *var)
 {
-	t_node	*ret;
-
-	ret = (t_node *) malloc(sizeof(t_node));
-	if (!ret)
-		ft_exit_with_error(0, EXIT_FAILURE);
-	ret->shape = shape;
-	ret->next = 0;
-	ret->prev = 0;
-	ret->val = num;
-	return (ret);
+	
+	return (TRUE);
 }

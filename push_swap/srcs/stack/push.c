@@ -6,22 +6,17 @@
 /*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 14:10:17 by younhwan          #+#    #+#             */
-/*   Updated: 2022/09/07 21:28:41 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/09/09 21:24:59 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../incs/stack.h"
 
-t_bool	push_front(t_stack *st, int num);
-t_bool	push_back(t_stack *st, int num);
+t_bool	push_front(t_stack *st, t_node *to_insert);
+t_bool	push_back(t_stack *st, t_node *to_insert);
 
-t_bool	push_front(t_stack *st, int num)
+t_bool	push_front(t_stack *st, t_node *to_insert)
 {
-	t_node	*to_insert;
-
-	to_insert = init_node(num);
-	if (!to_insert)
-		return (FALSE);
 	if (!st->head && !st->tail)
 	{
 		st->head = to_insert;
@@ -37,13 +32,8 @@ t_bool	push_front(t_stack *st, int num)
 	return (TRUE);
 }
 
-t_bool	push_back(t_stack *st, int num)
+t_bool	push_back(t_stack *st, t_node *to_insert)
 {
-	t_node	*to_insert;
-
-	to_insert = init_node(num);
-	if (!to_insert)
-		return (FALSE);
 	if (!st->head && !st->tail)
 	{
 		st->head = to_insert;

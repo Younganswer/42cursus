@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/25 16:26:12 by younhwan          #+#    #+#             */
-/*   Updated: 2022/09/09 20:13:58 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/09/09 21:34:37 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ int	main(int argc, char **argv)
 static t_var	*init_var(int argc, char **argv)
 {
 	t_var	*ret;
+	t_node	*to_insert;
 
 	ret = (t_var *) malloc(sizeof(t_var));
 	if (!ret)
@@ -44,7 +45,8 @@ static t_var	*init_var(int argc, char **argv)
 		ft_exit_with_error(0, EXIT_SUCCESS);
 	ret->size_of_triangles_in_a = init_stack();
 	ret->size_of_triangles_in_b = init_stack();
-	push_back(ret->size_of_triangles_in_a, ret->a->sz_);
+	to_insert = init_node(ret->a->sz_, NORMAL);
+	push_back(ret->size_of_triangles_in_a, to_insert);
 	ret->a_to_b = TRUE;
 	return (ret);
 }

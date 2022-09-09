@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/03 17:18:05 by younhwan          #+#    #+#             */
-/*   Updated: 2022/09/09 16:03:50 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/09/09 21:18:00 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,16 @@
 # include "../libs/ft_printf/includes/ft_printf.h"
 # include "../libs/get_next_line/includes/get_next_line.h"
 
+typedef enum e_shape
+{
+	NORMAL = 0,
+	REVERSED = 1,
+}	t_shape;
+
 typedef struct s_node
 {
 	int				val;
+	t_shape			shape;
 	struct s_node	*next;
 	struct s_node	*prev;
 }	t_node;
