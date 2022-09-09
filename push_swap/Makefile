@@ -6,7 +6,7 @@
 #    By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/08 16:03:07 by younhwan          #+#    #+#              #
-#    Updated: 2022/09/09 19:25:48 by younhwan         ###   ########.fr        #
+#    Updated: 2022/09/09 19:51:19 by younhwan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -55,7 +55,7 @@ SRCS_BONUS = main_bonus.c
 SRCS_BONUS := ${addprefix ${SRCS_BONUS_DIR}/, ${SRCS_BONUS}}
 OBJS_BONUS = ${SRCS_BONUS:${SRCS_BONUS_DIR}/%.c=${OBJS_BONUS_DIR}/%.o}
 
-all: ${NAME}
+all: ${OBJS_DIR} ${NAME}
 
 bonus: ${NAME_BONUS}
 	make all
@@ -63,7 +63,7 @@ bonus: ${NAME_BONUS}
 run:
 	./push_swap `ruby -e "puts (0..100).to_a.shuffle.join(' ')"` > output.txt
 
-mkdir:
+${OBJS_DIR}:
 	mkdir -p objs
 	mkdir -p objs/divide
 	mkdir -p objs/parse_input
@@ -74,7 +74,7 @@ ${NAME}: ${OBJS}
 	make -C ${GNL_DIR}
 	${CC} -g -o ${NAME} ${OBJS} ${LIBS} -I ${INCS_DIR}
 
-${OBJS_DIR}/%.o: ${SRCS_DIR}/%.c | mkdir
+${OBJS_DIR}/%.o: ${SRCS_DIR}/%.c
 	${CC} ${CFLAGS} -g -c $< -o $@ -I ${INCS_DIR}
 
 ${OBJS_BONUS_DIR}:

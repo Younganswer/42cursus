@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stack_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/25 22:09:02 by younhwan          #+#    #+#             */
-/*   Updated: 2022/09/08 15:08:35 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/09/09 19:37:19 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,5 @@ t_bool	print_stack(t_stack *st)
 		ft_putchar_fd('\n', 1);
 		tmp = tmp->prev;
 	}
-	ft_printf("\n");
 	return (TRUE);
 }

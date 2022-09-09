@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 16:00:06 by younhwan          #+#    #+#             */
-/*   Updated: 2022/09/09 19:03:56 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/09/09 19:36:20 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,13 +43,16 @@ static t_bool	make_triangle_in_a(t_var *var)
 	while (push_to_a--)
 	{
 		size = pop_back(var->b);
-		push_front(var->a, size / 3);
-		push_back(var->a, size / 3);
-		push_front(var->b, size - 2 * (size / 3));
+		push_front(var->size_of_triangles_in_a, size / 3);
+		push_back(var->size_of_triangles_in_a, size / 3);
+		push_front(var->size_of_triangles_in_b, size - 2 * (size / 3));
 	}
-	while (var->b->sz_)
-		push_back(var->a, pop_back(var->b));
-	var->a_to_b = FALSE;
+	while (var->size_of_triangles_in_b->sz_)
+		push_back(\
+			var->size_of_triangles_in_a, \
+			pop_back(var->size_of_triangles_in_b) \
+		);
+	var->a_to_b = TRUE;
 	return (TRUE);
 }
 
@@ -61,13 +64,16 @@ static t_bool	make_triangle_in_b(t_var *var)
 	push_to_b = var->size_of_triangles_in_a->sz_;
 	while (push_to_b--)
 	{
-		size = pop_back(var->a);
-		push_front(var->b, size / 3);
-		push_back(var->b, size / 3);
-		push_front(var->a, size - 2 * (size / 3));
+		size = pop_back(var->size_of_triangles_in_a);
+		push_front(var->size_of_triangles_in_b, size / 3);
+		push_back(var->size_of_triangles_in_b, size / 3);
+		push_front(var->size_of_triangles_in_a, size - 2 * (size / 3));
 	}
-	while (var->a->sz_)
-		push_back(var->b, pop_back(var->a));
-	var->a_to_b = TRUE;
+	while (var->size_of_triangles_in_a->sz_)
+		push_back(\
+			var->size_of_triangles_in_b, \
+			pop_back(var->size_of_triangles_in_a) \
+		);
+	var->a_to_b = FALSE;
 	return (TRUE);
 }
