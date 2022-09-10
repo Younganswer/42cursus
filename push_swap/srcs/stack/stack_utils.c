@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stack_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/25 22:09:02 by younhwan          #+#    #+#             */
-/*   Updated: 2022/09/09 22:08:42 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/09/10 21:39:52 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,13 @@ t_bool	print_stack(t_stack *st)
 	tmp = st->tail;
 	while (tmp)
 	{
-		ft_putstr_fd(ft_itoa(tmp->val), 1);
-		ft_putchar_fd(' ', 1);
-		(tmp->shape == NORMAL) ? ft_putendl_fd("N", 1) : ft_putendl_fd("R", 1);
+		for (int i=0; i<tmp->val; i++) {
+			ft_putchar_fd('-', 1);
+		}
+		ft_putchar_fd('\n', 1);
+		// ft_putstr_fd(ft_itoa(tmp->val), 1);
+		// ft_putchar_fd(' ', 1);
+		// (tmp->shape == NORMAL) ? ft_putendl_fd("N", 1) : ft_putendl_fd("R", 1);
 		tmp = tmp->prev;
 	}
 	return (TRUE);

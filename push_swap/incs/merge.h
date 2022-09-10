@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   merge.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 15:57:14 by younhwan          #+#    #+#             */
-/*   Updated: 2022/09/09 20:48:27 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/09/10 19:51:15 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,5 +19,11 @@
 
 // merge.c
 t_bool	merge(t_var *var);
+
+// make_normal.c
+t_bool	make_normal(t_var *var);
+
+// make_reversed.c
+t_bool	make_reversed(t_var *var);
 
 #endif

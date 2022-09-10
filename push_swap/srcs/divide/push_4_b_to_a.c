@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 16:39:32 by younhwan          #+#    #+#             */
-/*   Updated: 2022/09/10 00:22:17 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/09/11 01:01:10 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,7 +109,7 @@ static int	get_pivot(t_var *var, t_shape shape)
 	t_node	*tmp;
 
 	i = 4;
-	tmp = var->a->tail;
+	tmp = var->b->tail;
 	while (i--)
 	{
 		arr[i] = tmp->val;

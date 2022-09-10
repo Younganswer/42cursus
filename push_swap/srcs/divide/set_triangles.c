@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   set_triangles.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 16:00:06 by younhwan          #+#    #+#             */
-/*   Updated: 2022/09/09 22:11:02 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/09/11 01:02:42 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ t_bool	set_triangles(t_var *var)
 			return (TRUE);
 		make_triangle_in_a(var);
 	}
+	var->a_to_b ^= 1;
 	return (set_triangles(var));
 }
 
@@ -59,7 +60,6 @@ static t_bool	make_triangle_in_a(t_var *var)
 		to_insert->shape ^= 1;
 		push_back(var->size_of_triangles_in_a, to_insert);
 	}
-	var->a_to_b = TRUE;
 	return (TRUE);
 }
 
@@ -88,6 +88,5 @@ static t_bool	make_triangle_in_b(t_var *var)
 		to_insert->shape ^= 1;
 		push_back(var->size_of_triangles_in_b, to_insert);
 	}
-	var->a_to_b = FALSE;
 	return (TRUE);
 }

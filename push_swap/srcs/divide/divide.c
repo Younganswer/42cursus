@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 15:58:36 by younhwan          #+#    #+#             */
-/*   Updated: 2022/09/10 00:37:20 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/09/11 01:03:02 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,29 +20,7 @@ static t_bool	divide_in_b(t_var *var);
 t_bool	divide(t_var *var)
 {
 	set_triangles(var);
-	if (var->a_to_b)
-		print_stack(var->size_of_triangles_in_a);
-	else
-		print_stack(var->size_of_triangles_in_b);
 	divide_in_triangles(var);
-	if (var->a_to_b)
-	{
-		for (t_node *tmp=var->a->tail; tmp; tmp=tmp->prev) {
-			for (int i=0; i<tmp->val; i++) {
-				ft_putchar_fd('-', 1);
-			}
-			ft_putchar_fd('\n', 1);
-		}
-	}
-	else
-	{
-		for (t_node *tmp=var->b->tail; tmp; tmp=tmp->prev) {
-			for (int i=0; i<tmp->val; i++) {
-				ft_putchar_fd('-', 1);
-			}
-			ft_putchar_fd('\n', 1);
-		}
-	}
 	return (TRUE);
 }
 

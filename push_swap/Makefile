@@ -6,7 +6,7 @@
 #    By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/08 16:03:07 by younhwan          #+#    #+#              #
-#    Updated: 2022/09/10 00:31:04 by younhwan         ###   ########.fr        #
+#    Updated: 2022/09/11 01:04:52 by younhwan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,6 +39,9 @@ SRCS = 	push_swap.c\
 		divide/push_4_b_to_a.c\
 		divide/push_5_a_to_b.c\
 		divide/push_5_b_to_a.c\
+		merge/merge.c\
+		merge/make_normal.c\
+		merge/make_reversed.c\
 		parse_input/parse_input.c\
 		parse_input/has_duplicated.c\
 		parse_input/sort_arr.c\
@@ -71,11 +74,12 @@ bonus: ${NAME_BONUS}
 	make all
 
 run:
-	./push_swap `ruby -e "puts (0..100).to_a.shuffle.join(' ')"` > ${OUTPUT}
+	./push_swap `ruby -e "puts (0..20).to_a.shuffle.join(' ')"` > ${OUTPUT}
 
 ${OBJS_DIR}:
 	mkdir -p objs
 	mkdir -p objs/divide
+	mkdir -p objs/merge
 	mkdir -p objs/parse_input
 	mkdir -p objs/stack
 
