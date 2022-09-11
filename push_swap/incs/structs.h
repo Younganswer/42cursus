@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/03 17:18:05 by younhwan          #+#    #+#             */
-/*   Updated: 2022/09/11 16:09:26 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/09/11 22:03:19 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ typedef struct s_var
 	t_stack	*b;
 	t_stack *size_of_triangles_in_a;
 	t_stack *size_of_triangles_in_b;
+	size_t	divide_in;
 	t_bool	a_to_b;
 }	t_var;
 

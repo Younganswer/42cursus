@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 16:00:06 by younhwan          #+#    #+#             */
-/*   Updated: 2022/09/11 17:31:27 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/09/11 22:46:35 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,123 +16,119 @@
 t_bool			set_triangles(t_var *var);
 static t_bool	make_triangle_in_a(t_var *var);
 static t_bool	make_triangle_in_b(t_var *var);
-static t_bool	divide_a_tail_in_b(t_var *var);
-static t_bool	divide_b_tail_in_a(t_var *var);
+static t_bool	set_size_of_triangles_in_a(t_var *var);
+static t_bool	set_size_of_triangles_in_b(t_var *var);
 
 t_bool	set_triangles(t_var *var)
 {
-	if (var->a_to_b)
+	while ((var->a_to_b && var->size_of_triangles_in_a->sz_ < var->divide_in) || \
+		(!var->a_to_b && var->size_of_triangles_in_b->sz_ < var->divide_in))
 	{
-		if (var->size_of_triangles_in_a->tail->val < 6)
-			return (TRUE);
-		else
+		if (var->a_to_b)
 			make_triangle_in_b(var);
-		if (6 <= var->size_of_triangles_in_b->tail->val && \
-			var->size_of_triangles_in_b->tail->prev->val < 6)
-			divide_b_tail_in_a(var);
-	}
-	else
-	{
-		if (var->size_of_triangles_in_b->tail->val < 6)
-			return (TRUE);
 		else
 			make_triangle_in_a(var);
-		if (6 <= var->size_of_triangles_in_a->tail->val && \
-			var->size_of_triangles_in_a->tail->prev->val < 6)
-			divide_a_tail_in_b(var);
+		var->a_to_b ^= 1;
 	}
-	var->a_to_b ^= 1;
-	return (set_triangles(var));
-}
-
-static t_bool	divide_a_tail_in_b(t_var *var)
-{
-	t_node	*tmp;
-	int		size;
-	t_shape	shape;
-
-	tmp = pop_back(var->size_of_triangles_in_a);
-	size = tmp->val;
-	shape = tmp->shape;
-	free(tmp);
-	push_back(var->size_of_triangles_in_b, init_node(size / 3, shape));
-	push_back(var->size_of_triangles_in_b, init_node(size / 3, shape ^ 1));
-	push_back(var->size_of_triangles_in_b,
-		init_node(size - 2 * (size / 3), shape ^ 1));
-	var->a_to_b ^= 1;
-	return (TRUE);
-}
-
-static t_bool	divide_b_tail_in_a(t_var *var)
-{
-	t_node	*tmp;
-	int		size;
-	t_shape	shape;
-
-	tmp = pop_back(var->size_of_triangles_in_b);
-	size = tmp->val;
-	shape = tmp->shape;
-	free(tmp);
-	push_back(var->size_of_triangles_in_a, init_node(size / 3, shape));
-	push_back(var->size_of_triangles_in_a, init_node(size / 3, shape ^ 1));
-	push_back(var->size_of_triangles_in_a,
-		init_node(size - 2 * (size / 3), shape ^ 1));
-	var->a_to_b ^= 1;
+	if (var->a_to_b)
+		set_size_of_triangles_in_a(var);
+	else
+		set_size_of_triangles_in_b(var);
 	return (TRUE);
 }
 
 static t_bool	make_triangle_in_a(t_var *var)
 {
 	t_node	*to_insert;
-	int		push_to_a;
 	int		size;
 	t_shape	shape;
+	int		i;
 
-	push_to_a = var->size_of_triangles_in_b->sz_;
-	while (push_to_a--)
+	i = -1;
+	while (++i < 2)
 	{
-		to_insert = pop_back(var->size_of_triangles_in_b);
-		size = to_insert->val;
-		shape = to_insert->shape;
-		push_front(var->size_of_triangles_in_a, init_node(size / 3, shape));
-		push_back(var->size_of_triangles_in_a, init_node(size / 3, shape ^ 1));
-		push_front(var->size_of_triangles_in_b, \
-					init_node(size - 2 * (size / 3), shape));
-		free(to_insert);
+		to_insert = var->size_of_triangles_in_b->tail;
+		while (to_insert)
+		{
+			size = to_insert->val;
+			shape = to_insert->shape ^ 1;
+			push_back(var->size_of_triangles_in_a, init_node(size, shape));
+			to_insert = to_insert->prev;
+		}
 	}
 	while (var->size_of_triangles_in_b->sz_)
-	{
-		to_insert = pop_back(var->size_of_triangles_in_b);
-		to_insert->shape ^= 1;
-		push_back(var->size_of_triangles_in_a, to_insert);
-	}
+		push_front(var->size_of_triangles_in_a,
+			pop_back(var->size_of_triangles_in_b));
 	return (TRUE);
 }
 
 static t_bool	make_triangle_in_b(t_var *var)
 {
 	t_node	*to_insert;
-	int		push_to_b;
 	int		size;
 	t_shape	shape;
+	int		i;
 
-	push_to_b = var->size_of_triangles_in_a->sz_;
-	while (push_to_b--)
+	i = -1;
+	while (++i < 2)
 	{
-		to_insert = pop_back(var->size_of_triangles_in_a);
-		size = to_insert->val;
-		shape = to_insert->shape;
-		push_front(var->size_of_triangles_in_b, init_node(size / 3, shape));
-		push_back(var->size_of_triangles_in_b, init_node(size / 3, shape ^ 1));
-		push_front(var->size_of_triangles_in_a, \
-					init_node(size - 2 * (size / 3), shape));
-		free(to_insert);
+		to_insert = var->size_of_triangles_in_a->tail;
+		while (to_insert)
+		{
+			size = to_insert->val;
+			shape = to_insert->shape ^ 1;
+			push_back(var->size_of_triangles_in_b, init_node(size, shape));
+			to_insert = to_insert->prev;
+		}
 	}
 	while (var->size_of_triangles_in_a->sz_)
+		push_front(var->size_of_triangles_in_b,
+			pop_back(var->size_of_triangles_in_a));
+	return (TRUE);
+}
+
+static t_bool	set_size_of_triangles_in_a(t_var *var)
+{
+	t_node	*tmp;
+	int		size;
+
+	tmp = var->size_of_triangles_in_a->head;
+	while (tmp)
 	{
-		to_insert = pop_back(var->size_of_triangles_in_a);
-		to_insert->shape ^= 1;
-		push_back(var->size_of_triangles_in_b, to_insert);
+		tmp->val = 0;
+		tmp = tmp->next;
+	}
+	tmp = var->size_of_triangles_in_a->head;
+	size = var->a->sz_;
+	while (size--)
+	{
+		tmp->val++;
+		tmp = tmp->next;
+		if (!tmp)
+			tmp = var->size_of_triangles_in_a->head;
+	}
+	return (TRUE);
+}
+
+static t_bool	set_size_of_triangles_in_b(t_var *var)
+{
+	t_node	*tmp;
+	int		size;
+
+	tmp = var->size_of_triangles_in_b->head;
+	while (tmp)
+	{
+		tmp->val = 0;
+		tmp = tmp->next;
+	}
+	tmp = var->size_of_triangles_in_b->head;
+	size = var->a->sz_;
+	while (size--)
+	{
+		tmp->val++;
+		tmp = tmp->next;
+		if (!tmp)
+			tmp = var->size_of_triangles_in_b->head;
 	}
 	return (TRUE);
 }

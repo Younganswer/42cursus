@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_5_b_to_a.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 16:39:32 by younhwan          #+#    #+#             */
-/*   Updated: 2022/09/10 00:24:19 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/09/11 22:54:05 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ static int	get_pivot(t_var *var)
 	t_node	*tmp;
 
 	i = 5;
-	tmp = var->a->tail;
+	tmp = var->b->tail;
 	while (i--)
 	{
 		arr[i] = tmp->val;
