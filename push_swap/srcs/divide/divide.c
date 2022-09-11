@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   divide.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 15:58:36 by younhwan          #+#    #+#             */
-/*   Updated: 2022/09/11 01:03:02 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/09/11 17:19:21 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,18 +26,27 @@ t_bool	divide(t_var *var)
 
 static t_bool	divide_in_triangles(t_var *var)
 {
-	var->a_to_b ^= 1;
 	if (var->a_to_b)
-	{
-		divide_in_b(var);
-		var->a_to_b = FALSE;
-	}
-	else
 	{
 		while (var->a->sz_)
 			pb(var->a, var->b);
 		divide_in_a(var);
-		var->a_to_b = TRUE;
+		if (var->size_of_triangles_in_b->sz_)
+		{
+			while (var->b->sz_)
+				pa(var->a, var->b);
+			divide_in_b(var);
+		}
+	}
+	else
+	{
+		divide_in_b(var);
+		if (var->size_of_triangles_in_a->sz_)
+		{
+			while (var->a->sz_)
+				pb(var->a, var->b);
+			divide_in_a(var);
+		}
 	}
 	return (TRUE);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   set_triangles.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 16:00:06 by younhwan          #+#    #+#             */
-/*   Updated: 2022/09/11 01:02:42 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/09/11 17:31:27 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 t_bool			set_triangles(t_var *var);
 static t_bool	make_triangle_in_a(t_var *var);
 static t_bool	make_triangle_in_b(t_var *var);
+static t_bool	divide_a_tail_in_b(t_var *var);
+static t_bool	divide_b_tail_in_a(t_var *var);
 
 t_bool	set_triangles(t_var *var)
 {
@@ -23,16 +25,60 @@ t_bool	set_triangles(t_var *var)
 	{
 		if (var->size_of_triangles_in_a->tail->val < 6)
 			return (TRUE);
-		make_triangle_in_b(var);
+		else
+			make_triangle_in_b(var);
+		if (6 <= var->size_of_triangles_in_b->tail->val && \
+			var->size_of_triangles_in_b->tail->prev->val < 6)
+			divide_b_tail_in_a(var);
 	}
 	else
 	{
 		if (var->size_of_triangles_in_b->tail->val < 6)
 			return (TRUE);
-		make_triangle_in_a(var);
+		else
+			make_triangle_in_a(var);
+		if (6 <= var->size_of_triangles_in_a->tail->val && \
+			var->size_of_triangles_in_a->tail->prev->val < 6)
+			divide_a_tail_in_b(var);
 	}
 	var->a_to_b ^= 1;
 	return (set_triangles(var));
+}
+
+static t_bool	divide_a_tail_in_b(t_var *var)
+{
+	t_node	*tmp;
+	int		size;
+	t_shape	shape;
+
+	tmp = pop_back(var->size_of_triangles_in_a);
+	size = tmp->val;
+	shape = tmp->shape;
+	free(tmp);
+	push_back(var->size_of_triangles_in_b, init_node(size / 3, shape));
+	push_back(var->size_of_triangles_in_b, init_node(size / 3, shape ^ 1));
+	push_back(var->size_of_triangles_in_b,
+		init_node(size - 2 * (size / 3), shape ^ 1));
+	var->a_to_b ^= 1;
+	return (TRUE);
+}
+
+static t_bool	divide_b_tail_in_a(t_var *var)
+{
+	t_node	*tmp;
+	int		size;
+	t_shape	shape;
+
+	tmp = pop_back(var->size_of_triangles_in_b);
+	size = tmp->val;
+	shape = tmp->shape;
+	free(tmp);
+	push_back(var->size_of_triangles_in_a, init_node(size / 3, shape));
+	push_back(var->size_of_triangles_in_a, init_node(size / 3, shape ^ 1));
+	push_back(var->size_of_triangles_in_a,
+		init_node(size - 2 * (size / 3), shape ^ 1));
+	var->a_to_b ^= 1;
+	return (TRUE);
 }
 
 static t_bool	make_triangle_in_a(t_var *var)

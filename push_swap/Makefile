@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+         #
+#    By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/08 16:03:07 by younhwan          #+#    #+#              #
-#    Updated: 2022/09/11 01:04:52 by younhwan         ###   ########.fr        #
+#    Updated: 2022/09/11 17:45:04 by younhwan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -74,7 +74,7 @@ bonus: ${NAME_BONUS}
 	make all
 
 run:
-	./push_swap `ruby -e "puts (0..20).to_a.shuffle.join(' ')"` > ${OUTPUT}
+	./push_swap `ruby -e "puts (1..40).to_a.shuffle.join(' ')"` > ${OUTPUT}
 
 ${OBJS_DIR}:
 	mkdir -p objs

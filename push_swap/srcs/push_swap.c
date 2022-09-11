@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/25 16:26:12 by younhwan          #+#    #+#             */
-/*   Updated: 2022/09/11 01:03:45 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/09/11 17:27:23 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,18 +27,17 @@ int	main(int argc, char **argv)
 	// if (var->a->sz_ <= 5)
 		// return (sort_small(var));
 	merge(var);
-	// print_stack(var->a);
 	return (0);
 }
 
 static t_var	*init_var(int argc, char **argv)
 {
 	t_var	*ret;
-	t_node	*to_insert;
 
 	ret = (t_var *) malloc(sizeof(t_var));
 	if (!ret)
 		ft_exit_with_error(0, EXIT_FAILURE);
+	ft_memset(ret, 0, sizeof(t_var));
 	ret->a = init_stack();
 	ret->b = init_stack();
 	parse_input(ret->a, argc, argv);
@@ -46,8 +45,7 @@ static t_var	*init_var(int argc, char **argv)
 		ft_exit_with_error(0, EXIT_SUCCESS);
 	ret->size_of_triangles_in_a = init_stack();
 	ret->size_of_triangles_in_b = init_stack();
-	to_insert = init_node(ret->a->sz_, NORMAL);
-	push_back(ret->size_of_triangles_in_a, to_insert);
+	push_back(ret->size_of_triangles_in_a, init_node(ret->a->sz_, NORMAL));
 	ret->a_to_b = TRUE;
 	return (ret);
 }

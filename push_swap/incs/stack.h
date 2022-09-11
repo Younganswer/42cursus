@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/31 23:46:17 by younhwan          #+#    #+#             */
-/*   Updated: 2022/09/09 21:25:08 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/09/11 16:37:45 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ t_bool	rr(t_stack *a, t_stack *b);
 
 // reverse_rotate.c
 t_bool	rra(t_stack *a);
-t_bool	rrb(t_stack *a);
+t_bool	rrb(t_stack *b);
 t_bool	rrr(t_stack *a, t_stack*b);
 
 // swap.c
