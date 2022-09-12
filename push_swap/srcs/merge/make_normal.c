@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   make_normal.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 20:48:34 by younhwan          #+#    #+#             */
-/*   Updated: 2022/09/11 17:19:28 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/09/12 15:19:36 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../incs/merge.h"
-#include "../../incs/stack.h"
 
 t_bool			make_normal(t_var *var);
 static t_bool	make_in_a(t_var *var);
@@ -35,7 +34,8 @@ static t_bool	make_in_a(t_var *var)
 			var->size_of_triangles_in_a->head->val + \
 			var->size_of_triangles_in_b->head->val + \
 			var->size_of_triangles_in_b->tail->val,
-			NORMAL
+			NORMAL,
+			0
 			)
 		);
 	sort_in_a(var);
@@ -52,7 +52,8 @@ static t_bool	make_in_b(t_var *var)
 			var->size_of_triangles_in_b->head->val + \
 			var->size_of_triangles_in_a->head->val + \
 			var->size_of_triangles_in_a->tail->val,
-			NORMAL
+			NORMAL,
+			0
 			)
 		);
 	sort_in_b(var);
@@ -72,20 +73,20 @@ static t_bool	sort_in_a(t_var *var)
 			(!var->size_of_triangles_in_b->head->val || \
 			var->b->head->val < var->a->head->val) && \
 			(!var->size_of_triangles_in_b->tail->val || \
-			var->b->tail->val < var->a->head->val) && rra(var->a))
+			var->b->tail->val < var->a->head->val) && rra(var))
 			var->size_of_triangles_in_a->head->val--;
 		else if (var->size_of_triangles_in_b->head->val && \
 				(!var->size_of_triangles_in_a->head->val || \
 				var->a->head->val < var->b->head->val) && \
 				(!var->size_of_triangles_in_b->tail->val || \
 				var->b->tail->val < var->b->head->val) && \
-				rrb(var->b) && pa(var->a, var->b))
+				rrb(var) && pa(var))
 			var->size_of_triangles_in_b->head->val--;
 		else if (var->size_of_triangles_in_b->tail->val && \
 			(!var->size_of_triangles_in_a->head->val || \
 			var->a->head->val < var->b->tail->val) && \
 			(!var->size_of_triangles_in_b->head->val || \
-			var->b->head->val < var->b->tail->val) && pa(var->a, var->b))
+			var->b->head->val < var->b->tail->val) && pa(var))
 			var->size_of_triangles_in_b->tail->val--;
 	}
 	return (TRUE);
@@ -101,20 +102,20 @@ static t_bool	sort_in_b(t_var *var)
 			(!var->size_of_triangles_in_a->head->val || \
 			var->a->head->val < var->b->head->val) && \
 			(!var->size_of_triangles_in_a->tail->val || \
-			var->a->tail->val < var->b->head->val) && rrb(var->b))
+			var->a->tail->val < var->b->head->val) && rrb(var))
 			var->size_of_triangles_in_b->head->val--;
 		else if (var->size_of_triangles_in_a->head->val && \
 				(!var->size_of_triangles_in_b->head->val || \
 				var->b->head->val < var->a->head->val) && \
 				(!var->size_of_triangles_in_a->tail->val || \
 				var->a->tail->val < var->a->head->val) && \
-				rra(var->a) && pb(var->a, var->b))
+				rra(var) && pb(var))
 			var->size_of_triangles_in_a->head->val--;
 		else if (var->size_of_triangles_in_a->tail->val && \
 			(!var->size_of_triangles_in_b->head->val || \
 			var->b->head->val < var->a->tail->val) && \
 			(!var->size_of_triangles_in_a->head->val || \
-			var->a->head->val < var->a->tail->val) && pb(var->a, var->b))
+			var->a->head->val < var->a->tail->val) && pb(var))
 			var->size_of_triangles_in_a->tail->val--;
 	}
 	return (TRUE);

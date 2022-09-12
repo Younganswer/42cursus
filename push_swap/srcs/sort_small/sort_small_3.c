@@ -1,23 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_2_a_to_b.c                                    :+:      :+:    :+:   */
+/*   sort_small_3.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/05 16:39:32 by younhwan          #+#    #+#             */
-/*   Updated: 2022/09/12 15:14:35 by younhwan         ###   ########.fr       */
+/*   Created: 2022/09/12 14:36:00 by younhwan          #+#    #+#             */
+/*   Updated: 2022/09/12 15:22:22 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../incs/divide.h"
+#include "../../incs/sort_small.h"
 
-t_bool	push_2_a_to_b(t_var *var, t_shape shape)
+t_bool	sort_small_3(t_var *var);
+
+t_bool	sort_small_3(t_var *var)
 {
-	pb(var);
-	pb(var);
-	if ((var->b->tail->val < var->b->tail->prev->val && shape == REVERSED) \
-		|| (var->b->tail->prev->val < var->b->tail->val && shape == NORMAL))
-		sb(var);
+	if (var->a->head->val < var->a->tail->val && \
+		var->a->head->next->val < var->a->tail->val)
+		ra(var);
+	else if (var->a->tail->val < var->a->head->val && \
+		var->a->tail->prev->val < var->a->head->val)
+		rra(var);
+	if (var->a->tail->prev->val < var->a->tail->val)
+		sa(var);
 	return (TRUE);
 }

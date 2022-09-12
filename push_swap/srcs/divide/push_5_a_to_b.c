@@ -3,16 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   push_5_a_to_b.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 16:39:32 by younhwan          #+#    #+#             */
-/*   Updated: 2022/09/09 21:11:19 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/09/12 15:18:01 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../incs/divide.h"
-#include "../../incs/parse_input.h"
-#include "../../incs/stack.h"
 
 t_bool			push_5_a_to_b(t_var *var, t_shape shape);
 static t_bool	normal(t_var *var);
@@ -26,11 +24,11 @@ t_bool	push_5_a_to_b(t_var *var, t_shape shape)
 	else
 		reversed(var);
 	push_3_a_to_b(var, shape);
-	rrb(var->b);
-	rrb(var->b);
+	rrb(var);
+	rrb(var);
 	if ((shape == NORMAL && var->b->tail->prev->val < var->b->tail->val) || \
 		(shape == REVERSED && var->b->tail->val < var->b->tail->prev->val))
-		sb(var->b);
+		sb(var);
 	return (TRUE);
 }
 
@@ -47,18 +45,18 @@ static t_bool	normal(t_var *var)
 	{
 		if (var->a->tail->val < pivot)
 		{
-			pb(var->a, var->b);
-			rb(var->b);
+			pb(var);
+			rb(var);
 			exec_pb++;
 		}
 		else
 		{
-			ra(var->a);
+			ra(var);
 			exec_ra++;
 		}
 	}
 	while (exec_ra--)
-		rra(var->a);
+		rra(var);
 	return (TRUE);
 }
 
@@ -75,18 +73,18 @@ static t_bool	reversed(t_var *var)
 	{
 		if (pivot < var->a->tail->val)
 		{
-			pb(var->a, var->b);
-			rb(var->b);
+			pb(var);
+			rb(var);
 			exec_pb++;
 		}
 		else
 		{
-			ra(var->a);
+			ra(var);
 			exec_ra++;
 		}
 	}
 	while (exec_ra--)
-		rra(var->a);
+		rra(var);
 	return (TRUE);
 }
 

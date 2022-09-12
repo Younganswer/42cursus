@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_input.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/01 14:26:22 by younhwan          #+#    #+#             */
-/*   Updated: 2022/09/09 22:04:42 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/09/12 15:20:08 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ static void	push_arguments_to_stack(t_stack *a, char **splited_argv)
 	i = 0;
 	while (splited_argv[i])
 	{
-		push_front(a, init_node(ft_atoi(splited_argv[i]), NORMAL));
+		push_front(a, init_node(ft_atoi(splited_argv[i]), NORMAL, 0));
 		i++;
 	}
 	return ;

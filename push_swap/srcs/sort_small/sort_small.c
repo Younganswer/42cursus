@@ -1,23 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_2_a_to_b.c                                    :+:      :+:    :+:   */
+/*   sort_small.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/05 16:39:32 by younhwan          #+#    #+#             */
-/*   Updated: 2022/09/12 15:14:35 by younhwan         ###   ########.fr       */
+/*   Created: 2022/09/12 14:36:00 by younhwan          #+#    #+#             */
+/*   Updated: 2022/09/12 15:22:16 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../incs/divide.h"
+#include "../../incs/sort_small.h"
 
-t_bool	push_2_a_to_b(t_var *var, t_shape shape)
+t_bool	sort_small(t_var *var);
+
+t_bool	sort_small(t_var *var)
 {
-	pb(var);
-	pb(var);
-	if ((var->b->tail->val < var->b->tail->prev->val && shape == REVERSED) \
-		|| (var->b->tail->prev->val < var->b->tail->val && shape == NORMAL))
-		sb(var);
+	if (var->a->sz_ == 2)
+		sort_small_2(var);
+	else if (var->a->sz_ == 3)
+		sort_small_3(var);
+	else if (var->a->sz_ == 4)
+		sort_small_4(var);
+	else if (var->a->sz_ == 5)
+		sort_small_5(var);
 	return (TRUE);
 }

@@ -3,70 +3,56 @@
 /*                                                        :::      ::::::::   */
 /*   swap.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/25 22:11:38 by younhwan          #+#    #+#             */
-/*   Updated: 2022/09/09 21:31:46 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/09/12 15:07:20 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../incs/stack.h"
 
-t_bool	sa(t_stack *a);
-t_bool	sb(t_stack *b);
-t_bool	ss(t_stack *a, t_stack *b);
+t_bool	sa(t_var *var);
+t_bool	sb(t_var *var);
 
-t_bool	sa(t_stack *a)
+t_bool	sa(t_var *var)
 {
 	t_node	*tmp1;
 	t_node	*tmp2;
 
-	if (a->sz_ < 2)
+	if (var->a->sz_ < 2)
 		return (TRUE);
-	tmp1 = pop_back(a);
-	tmp2 = pop_back(a);
-	push_back(a, tmp1);
-	push_back(a, tmp2);
-	ft_putstr_fd("sa\n", 1);
-	return (TRUE);
-}
-
-t_bool	sb(t_stack *b)
-{
-	t_node	*tmp1;
-	t_node	*tmp2;
-
-	if (b->sz_ < 2)
-		return (TRUE);
-	tmp1 = pop_back(b);
-	tmp2 = pop_back(b);
-	push_back(b, tmp1);
-	push_back(b, tmp2);
-	ft_putstr_fd("sb\n", 1);
-	return (TRUE);
-}
-
-t_bool	ss(t_stack *a, t_stack *b)
-{
-	t_node	*tmp1;
-	t_node	*tmp2;
-
-	if (a->sz_ < 2 && b->sz_ < 2)
-		return (TRUE);
-	if (2 <= a->sz_)
+	tmp1 = pop_back(var->a);
+	tmp2 = pop_back(var->a);
+	push_back(var->a, tmp1);
+	push_back(var->a, tmp2);
+	if (var->exec_st->tail->exec == SB)
 	{
-		tmp1 = pop_back(a);
-		tmp2 = pop_back(a);
-		push_back(a, tmp1);
-		push_back(a, tmp2);
-	}	
-	if (2 <= b->sz_)
-	{
-		tmp1 = pop_back(b);
-		tmp2 = pop_back(b);
-		push_back(b, tmp1);
-		push_back(b, tmp2);
+		pop_back(var->exec_st);
+		push_back(var->exec_st, init_node(0, 0, SS));
 	}
-	ft_putstr_fd("ss\n", 1);
+	else
+		push_back(var->exec_st, init_node(0, 0, SA));
+	return (TRUE);
+}
+
+t_bool	sb(t_var *var)
+{
+	t_node	*tmp1;
+	t_node	*tmp2;
+
+	if (var->b->sz_ < 2)
+		return (TRUE);
+	tmp1 = pop_back(var->b);
+	tmp2 = pop_back(var->b);
+	push_back(var->b, tmp1);
+	push_back(var->b, tmp2);
+	if (var->exec_st->tail->exec == SA)
+	{
+		pop_back(var->exec_st);
+		push_back(var->exec_st, init_node(0, 0, SS));
+	}
+	else
+		push_back(var->exec_st, init_node(0, 0, SB));
 	return (TRUE);
 }

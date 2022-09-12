@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 15:57:14 by younhwan          #+#    #+#             */
-/*   Updated: 2022/09/10 00:14:17 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/09/12 14:39:53 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 # include "../libs/ft_printf/includes/ft_printf.h"
 # include "../libs/get_next_line/includes/get_next_line.h"
 # include "structs.h"
+# include "stack.h"
+# include "parse_input.h"
 
 // divide.c
 t_bool	divide(t_var *var);

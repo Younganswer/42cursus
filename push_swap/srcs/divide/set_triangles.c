@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   set_triangles.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 16:00:06 by younhwan          #+#    #+#             */
-/*   Updated: 2022/09/11 22:46:35 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/09/12 15:14:14 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../incs/divide.h"
-#include "../../incs/stack.h"
 
 t_bool			set_triangles(t_var *var);
 static t_bool	make_triangle_in_a(t_var *var);
@@ -52,7 +51,7 @@ static t_bool	make_triangle_in_a(t_var *var)
 		{
 			size = to_insert->val;
 			shape = to_insert->shape ^ 1;
-			push_back(var->size_of_triangles_in_a, init_node(size, shape));
+			push_back(var->size_of_triangles_in_a, init_node(size, shape, 0));
 			to_insert = to_insert->prev;
 		}
 	}
@@ -77,7 +76,7 @@ static t_bool	make_triangle_in_b(t_var *var)
 		{
 			size = to_insert->val;
 			shape = to_insert->shape ^ 1;
-			push_back(var->size_of_triangles_in_b, init_node(size, shape));
+			push_back(var->size_of_triangles_in_b, init_node(size, shape, 0));
 			to_insert = to_insert->prev;
 		}
 	}

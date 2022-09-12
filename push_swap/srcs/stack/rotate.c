@@ -3,57 +3,50 @@
 /*                                                        :::      ::::::::   */
 /*   rotate.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/25 22:28:55 by younhwan          #+#    #+#             */
-/*   Updated: 2022/09/09 21:26:49 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/09/12 15:08:29 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../incs/stack.h"
 
-t_bool	ra(t_stack *a);
-t_bool	rb(t_stack *b);
-t_bool	rr(t_stack *a, t_stack *b);
+t_bool	ra(t_var *var);
+t_bool	rb(t_var *var);
 
-t_bool	ra(t_stack *a)
+t_bool	ra(t_var *var)
 {
 	t_node	*back;
 
-	if (a->sz_ < 2)
+	if (var->a->sz_ < 2)
 		return (TRUE);
-	back = pop_back(a);
-	push_front(a, back);
-	ft_putstr_fd("ra\n", 1);
+	back = pop_back(var->a);
+	push_front(var->a, back);
+	if (var->exec_st->tail->exec == RB)
+	{
+		pop_back(var->exec_st);
+		push_back(var->exec_st, init_node(0, 0, RR));
+	}
+	else
+		push_back(var->exec_st, init_node(0, 0, RA));
 	return (TRUE);
 }
 
-t_bool	rb(t_stack *b)
+t_bool	rb(t_var *var)
 {
 	t_node	*back;
 
-	if (b->sz_ < 2)
+	if (var->b->sz_ < 2)
 		return (TRUE);
-	back = pop_back(b);
-	push_front(b, back);
-	ft_putstr_fd("rb\n", 1);
-	return (TRUE);
-}
-
-t_bool	rr(t_stack *a, t_stack *b)
-{
-	t_node	*back;
-
-	if (2 <= a->sz_)
+	back = pop_back(var->b);
+	push_front(var->b, back);
+	if (var->exec_st->tail->exec == RA)
 	{
-		back = pop_back(a);
-		push_front(a, back);
+		pop_back(var->exec_st);
+		push_back(var->exec_st, init_node(0, 0, RR));
 	}
-	if (2 <= b->sz_)
-	{
-		back = pop_back(b);
-		push_front(b, back);
-	}
-	ft_putstr_fd("rr\n", 1);
+	else
+		push_back(var->exec_st, init_node(0, 0, RB));
 	return (TRUE);
 }

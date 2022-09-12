@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stack.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/31 23:46:17 by younhwan          #+#    #+#             */
-/*   Updated: 2022/09/11 16:37:45 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/09/12 15:23:35 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include "structs.h"
 
 // init_node.c
-t_node	*init_node(int num, t_shape shape);
+t_node	*init_node(int num, t_shape shape, t_exec exec);
 
 // init_stack.c
 t_stack	*init_stack(void);
@@ -32,26 +32,24 @@ t_bool	push_front(t_stack *st, t_node *to_insert);
 t_bool	push_back(t_stack *st, t_node *to_insert);
 
 // push_ab.c
-t_bool	pa(t_stack *a, t_stack *b);
-t_bool	pb(t_stack *a, t_stack *b);
+t_bool	pa(t_var *var);
+t_bool	pb(t_var *var);
 
 // rotate.c
-t_bool	ra(t_stack *a);
-t_bool	rb(t_stack *b);
-t_bool	rr(t_stack *a, t_stack *b);
+t_bool	ra(t_var *var);
+t_bool	rb(t_var *var);
 
 // reverse_rotate.c
-t_bool	rra(t_stack *a);
-t_bool	rrb(t_stack *b);
-t_bool	rrr(t_stack *a, t_stack*b);
+t_bool	rra(t_var *var);
+t_bool	rrb(t_var *var);
 
 // swap.c
-t_bool	sa(t_stack *a);
-t_bool	sb(t_stack *b);
-t_bool	ss(t_stack *a, t_stack *b);
+t_bool	sa(t_var *var);
+t_bool	sb(t_var *var);
 
 // stack_utils.c
 t_bool	free_stack(t_stack *st);
+t_bool	print_exec(t_stack *st);
 t_bool	print_stack(t_stack *st);
 
 #endif

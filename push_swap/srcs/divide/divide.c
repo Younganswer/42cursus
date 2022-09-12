@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   divide.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 15:58:36 by younhwan          #+#    #+#             */
-/*   Updated: 2022/09/11 23:02:07 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/09/12 15:13:55 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../incs/divide.h"
-#include "../../incs/stack.h"
 
 static t_bool	cal_triangles_num(t_var *var);
 static t_bool	divide_in_triangles(t_var *var);
@@ -45,7 +44,7 @@ static t_bool	divide_in_triangles(t_var *var)
 	if (var->a_to_b)
 	{
 		while (var->a->sz_)
-			pb(var->a, var->b);
+			pb(var);
 		divide_in_a(var);
 	}
 	else

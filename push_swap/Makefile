@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+         #
+#    By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/08 16:03:07 by younhwan          #+#    #+#              #
-#    Updated: 2022/09/11 22:53:31 by younhwan         ###   ########.fr        #
+#    Updated: 2022/09/12 15:21:30 by younhwan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,6 +45,11 @@ SRCS = 	push_swap.c\
 		parse_input/parse_input.c\
 		parse_input/has_duplicated.c\
 		parse_input/sort_arr.c\
+		sort_small/sort_small.c\
+		sort_small/sort_small_2.c\
+		sort_small/sort_small_3.c\
+		sort_small/sort_small_4.c\
+		sort_small/sort_small_5.c\
 		stack/init_node.c\
 		stack/init_stack.c\
 		stack/pop.c\
@@ -74,13 +79,14 @@ bonus: ${NAME_BONUS}
 	make all
 
 run:
-	./push_swap `ruby -e "puts (1..40).to_a.shuffle.join(' ')"` > ${OUTPUT}
+	./push_swap `ruby -e "puts (1..500).to_a.shuffle.join(' ')"` > ${OUTPUT}
 
 ${OBJS_DIR}:
 	mkdir -p objs
 	mkdir -p objs/divide
 	mkdir -p objs/merge
 	mkdir -p objs/parse_input
+	mkdir -p objs/sort_small
 	mkdir -p objs/stack
 
 ${NAME}: ${OBJS}

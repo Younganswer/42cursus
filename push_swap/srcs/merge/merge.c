@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   merge.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 20:48:34 by younhwan          #+#    #+#             */
-/*   Updated: 2022/09/11 17:25:49 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/09/12 15:18:55 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../incs/merge.h"
-#include "../../incs/stack.h"
 
 t_bool			merge(t_var *var);
 static t_bool	move_a_top_to_b(t_var *var);
@@ -63,10 +62,10 @@ static t_bool	move_a_top_to_b(t_var *var)
 			push_back(var->size_of_triangles_in_b, to_move);
 	}
 	if (flag)
-		sa(var->a);
+		sa(var);
 	while (size--)
-		if (pb(var->a, var->b) && flag)
-			rb(var->b);
+		if (pb(var) && flag)
+			rb(var);
 	return (TRUE);
 }
 
@@ -92,9 +91,9 @@ static t_bool	move_b_top_to_a(t_var *var)
 			push_back(var->size_of_triangles_in_a, to_move);
 	}
 	if (flag)
-		sb(var->b);
+		sb(var);
 	while (size--)
-		if (pa(var->a, var->b) && flag)
-			ra(var->a);
+		if (pa(var) && flag)
+			ra(var);
 	return (TRUE);
 }
