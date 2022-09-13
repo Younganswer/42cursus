@@ -6,7 +6,7 @@
 #    By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/08 16:03:07 by younhwan          #+#    #+#              #
-#    Updated: 2022/08/01 00:29:07 by younhwan         ###   ########.fr        #
+#    Updated: 2022/09/13 22:24:04 by younhwan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -56,33 +56,38 @@ endif
 #	WITH_BONUS=1 make all
 
 all: ${NAME}
+	@echo "done"
 
 # ${OBJS_BONUS_DIR}:
 # 	mkdir -p objs_bonus
 
 ${OBJS_DIR}:
-	mkdir -p objs
+	@echo "Build libft_printf.a"
+	@mkdir -p objs
 
 ${OBJ_FILES}: %.o: ${addsuffix .c,${subst obj,src,${%}}} | ${OBJS_DIRS}
-	${CC} ${CFLAGS} -c ${patsubst %.o,%.c,${subst obj,src,$@}} -o $@ -I ${INCS_DIR}
+	@${CC} ${CFLAGS} -c ${patsubst %.o,%.c,${subst obj,src,$@}} -o $@ -I ${INCS_DIR}
 
 ${NAME}: ${OBJ_FILES}
-	make -C ${LIBFT_DIR}
-	cp ${LIBFT_DIR}/${LIBFT_NAME} .
-	mv ${LIBFT_NAME} ${NAME}
-	${AR} $@ $^
+	@make -C ${LIBFT_DIR}
+	@cp ${LIBFT_DIR}/${LIBFT_NAME} .
+	@mv ${LIBFT_NAME} ${NAME}
+	@${AR} $@ $^
 
 clean:
-	make -C ${LIBFT_DIR} clean
-	rm -rf ${OBJS_DIR}
+	@echo "Remove dependencies in ft_printf"
+	@make -C ${LIBFT_DIR} clean
+	@rm -rf ${OBJS_DIR}
 #	rm -rf ${OBJS_BONUS_DIR}
 
 fclean: clean
-	${RM} ${NAME}
-	${RM} ${LIBFT_DIR}/${LIBFT_NAME}
+	@echo "Remove libft_printf.a"
+	@make -C ${LIBFT_DIR} fclean
+	@${RM} ${NAME}
 
 re:
-	make fclean
-	make all
+	@echo "Re-build libft_printf.a"
+	@make fclean
+	@make all
 
 .PHONY: all clean fclean re #bonus

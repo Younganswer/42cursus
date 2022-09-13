@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 16:39:32 by younhwan          #+#    #+#             */
-/*   Updated: 2022/09/12 15:16:41 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/09/13 21:44:52 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ t_bool	push_4_a_to_b(t_var *var, t_shape shape)
 		normal(var);
 		if (var->b->tail->prev->val < var->b->tail->val)
 			sb(var);
-		else if (var->a->tail->val < var->a->tail->prev->val)
+		if (var->a->tail->val < var->a->tail->prev->val)
 			sa(var);
 	}
 	else
@@ -32,7 +32,7 @@ t_bool	push_4_a_to_b(t_var *var, t_shape shape)
 		reversed(var);
 		if (var->b->tail->val < var->b->tail->prev->val)
 			sb(var);
-		else if (var->a->tail->prev->val < var->a->tail->val)
+		if (var->a->tail->prev->val < var->a->tail->val)
 			sa(var);
 	}
 	pb(var);

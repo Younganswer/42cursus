@@ -6,7 +6,7 @@
 #    By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/08 16:03:07 by younhwan          #+#    #+#              #
-#    Updated: 2022/09/01 15:47:34 by younhwan         ###   ########.fr        #
+#    Updated: 2022/09/13 22:23:47 by younhwan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -71,24 +71,29 @@ SRCS := ${SRCS:%.c=${SRCS_DIR}/%.c}
 OBJS := ${SRCS:${SRCS_DIR}/%.c=${OBJS_DIR}/%.o}
 
 all: ${NAME}
+	@echo "done"
 
 ${NAME}: ${OBJS}
-	${AR} $@ $^
+	@${AR} $@ $^
 
 ${OBJS}: ${OBJS_DIR}/%.o: ${SRCS_DIR}/%.c | ${OBJS_DIR}
-	${CC} ${CFLAGS} -c $< -o $@ -I ${INCS_DIR}
+	@${CC} ${CFLAGS} -c $< -o $@ -I ${INCS_DIR}
 
 ${OBJS_DIR}:
-	mkdir -p objs
+	@echo "Build libft.a"
+	@mkdir -p objs
 
 clean:
-	rm -rf ${OBJS_DIR}
+	@echo "Remove dependencies in libft"
+	@rm -rf ${OBJS_DIR}
 
 fclean: clean
-	${RM} ${NAME}
+	@echo "Remove libft.a"
+	@${RM} ${NAME}
 
 re:
-	make fclean
-	make all
+	@echo "Re-build libft.a"
+	@make fclean
+	@make all
 
 .PHONY: bonus all clean fclean re

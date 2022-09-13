@@ -6,7 +6,7 @@
 #    By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/01 00:26:43 by younhwan          #+#    #+#              #
-#    Updated: 2022/08/01 14:15:38 by younhwan         ###   ########.fr        #
+#    Updated: 2022/09/13 22:24:52 by younhwan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,24 +29,29 @@ SRCS := ${addprefix ${SRCS_DIR}/, ${SRCS}}
 OBJS = ${SRCS:${SRCS_DIR}/%.c=${OBJS_DIR}/%.o}
 
 all: ${NAME}
+	@echo "done"
 
 ${OBJS_DIR}:
-	mkdir -p objs
+	@echo "Build libgnl.a"
+	@mkdir -p objs
 
 ${OBJS}: %.o: ${addsuffix .c,${subst obj,src,${%}}} | ${OBJS_DIR}
-	${CC} ${CFLAGS} -c ${patsubst %.o,%.c,${subst obj,src,$@}} -o $@ -I ${INCS_DIR}
+	@${CC} ${CFLAGS} -c ${patsubst %.o,%.c,${subst obj,src,$@}} -o $@ -I ${INCS_DIR}
 
 ${NAME}: ${OBJS}
-	${AR} $@ $^
+	@${AR} $@ $^
 
 clean:
-	rm -rf ${OBJS_DIR}
+	@echo "Remove dependencies in get_next_line"
+	@rm -rf ${OBJS_DIR}
 
 fclean: clean
-	${RM} ${NAME}
+	@echo "Remove libgnl.a"
+	@${RM} ${NAME}
 
 re:
-	make fclean
-	make all
+	@echo "Re-build libgnl.a"
+	@make fclean
+	@make all
 
 .PHONY: all clean fclean re

@@ -6,7 +6,7 @@
 #    By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/08 16:03:07 by younhwan          #+#    #+#              #
-#    Updated: 2022/09/12 15:54:16 by younhwan         ###   ########.fr        #
+#    Updated: 2022/09/13 22:26:04 by younhwan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -74,53 +74,63 @@ OBJS_BONUS = ${SRCS_BONUS:${SRCS_BONUS_DIR}/%.c=${OBJS_BONUS_DIR}/%.o}
 OUTPUT = output.txt
 
 all: ${OBJS_DIR} ${NAME}
+	@echo "done"
 
 bonus: ${NAME_BONUS}
-	make all
+	@echo "done"
+	@make all
 
-run:
-	./push_swap `ruby -e "puts (1..10).to_a.shuffle.join(' ')"` > ${OUTPUT}
+# make run ARGC=[number_of_input]
+run: ${OBJS_DIR} ${NAME}
+	./push_swap `ruby -e "puts (1..${ARGC}).to_a.shuffle.join(' ')"` > ${OUTPUT}
+	@tail -n ${ARGC} output.txt
+	@wc -l output.txt | awk '{print "Number of instructions:", $$1 - ${ARGC}}'
 
 ${OBJS_DIR}:
-	mkdir -p objs
-	mkdir -p objs/divide
-	mkdir -p objs/merge
-	mkdir -p objs/parse_input
-	mkdir -p objs/sort_small
-	mkdir -p objs/stack
+	@echo "Build push_swap"
+	@mkdir -p objs
+	@mkdir -p objs/divide
+	@mkdir -p objs/merge
+	@mkdir -p objs/parse_input
+	@mkdir -p objs/sort_small
+	@mkdir -p objs/stack
 
 ${NAME}: ${OBJS}
-	make -C ${FT_PRINTF_DIR}
-	make -C ${GNL_DIR}
-	${CC} -g -o ${NAME} ${OBJS} ${LIBS} -I ${INCS_DIR}
+	@make -C ${FT_PRINTF_DIR}
+	@make -C ${GNL_DIR}
+	@${CC} -g -o ${NAME} ${OBJS} ${LIBS} -I ${INCS_DIR}
 
 ${OBJS_DIR}/%.o: ${SRCS_DIR}/%.c
-	${CC} ${CFLAGS} -g -c $< -o $@ -I ${INCS_DIR}
+	@${CC} ${CFLAGS} -g -c $< -o $@ -I ${INCS_DIR}
 
 ${OBJS_BONUS_DIR}:
-	mkdir -p objs_bonus
+	@echo "Build checker"
+	@mkdir -p objs_bonus
 
 ${OBJS_BONUS}: %.o: ${addsuffix .c,${subst obj,src,${%}}} | ${OBJS_BONUS_DIR}
-	${CC} ${CFLAGS} -g -c ${patsubst %.o,%.c,${subst obj,src,$@}} -o $@ -I ${INCS_BONUS_DIR}
+	@${CC} ${CFLAGS} -g -c ${patsubst %.o,%.c,${subst obj,src,$@}} -o $@ -I ${INCS_BONUS_DIR}
 
 ${NAME_BONUS}: ${OBJS_BONUS}
-	make -C ${FT_PRINTF_DIR}
-	make -C ${GNL_DIR}
-	${CC} -g -o ${NAME_BONUS} ${OBJS_BONUS} ${LIBS} -I ${INCS_BONUS_DIR}
+	@make -C ${FT_PRINTF_DIR}
+	@make -C ${GNL_DIR}
+	@${CC} -g -o ${NAME_BONUS} ${OBJS_BONUS} ${LIBS} -I ${INCS_BONUS_DIR}
 
 clean:
-	make -C ${FT_PRINTF_DIR} clean
-	make -C ${GNL_DIR} clean
-	rm -rf ${OBJS_DIR} ${OBJS_BONUS_DIR}
+	@echo "Remove dependencies in push_swap"
+	@make -C ${FT_PRINTF_DIR} clean
+	@make -C ${GNL_DIR} clean
+	@rm -rf ${OBJS_DIR} ${OBJS_BONUS_DIR}
 
 fclean: clean
-	make -C ${FT_PRINTF_DIR} fclean
-	make -C ${GNL_DIR} fclean
-	${RM} ${NAME} ${NAME_BONUS}
-	${RM} ${OUTPUT}
+	@echo "Remove push_swap, checker"
+	@make -C ${FT_PRINTF_DIR} fclean
+	@make -C ${GNL_DIR} fclean
+	@${RM} ${NAME} ${NAME_BONUS}
+	@${RM} ${OUTPUT}
 	
 re:
-	make fclean
-	make all
+	@echo "Re-build push_swap"
+	@make fclean
+	@make all
 
 .PHONY: all clean fclean re bonus
