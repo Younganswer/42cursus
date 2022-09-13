@@ -29,3 +29,9 @@ $ make run ARGC=[number of input]
 * Default argc = 100
 * Instructions are stored in "output.txt"
 * The number of the instructions is displayed on the terminal
+
+
+## Visualizer
+Thanks for using this visualizer to @o-reo
+https://github.com/o-reo/push_swap_visualizer
+![push_swap_visualize.gif](./push_swap_visualize.gif)
