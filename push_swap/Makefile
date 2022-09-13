@@ -6,7 +6,7 @@
 #    By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/08 16:03:07 by younhwan          #+#    #+#              #
-#    Updated: 2022/09/13 22:31:22 by younhwan         ###   ########.fr        #
+#    Updated: 2022/09/13 22:34:11 by younhwan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -73,19 +73,25 @@ OBJS_BONUS = ${SRCS_BONUS:${SRCS_BONUS_DIR}/%.c=${OBJS_BONUS_DIR}/%.o}
 
 OUTPUT = output.txt
 
+
 all: ${OBJS_DIR} ${NAME}
 	@echo "done"
+
 
 bonus: ${NAME_BONUS}
 	@echo "done"
 	@make all
 
+
 # make run ARGC=[number_of_input]
+# In default argc = 100
 ARGC = 100
+
 run: ${OBJS_DIR} ${NAME}
 	./push_swap `ruby -e "puts (1..${ARGC}).to_a.shuffle.join(' ')"` > ${OUTPUT}
 	@tail -n ${ARGC} output.txt
 	@wc -l output.txt | awk '{print "Number of instructions:", $$1 - ${ARGC}}'
+
 
 ${OBJS_DIR}:
 	@echo "Build push_swap"
@@ -96,31 +102,38 @@ ${OBJS_DIR}:
 	@mkdir -p objs/sort_small
 	@mkdir -p objs/stack
 
+
 ${NAME}: ${OBJS}
 	@make -C ${FT_PRINTF_DIR}
 	@make -C ${GNL_DIR}
 	@${CC} -g -o ${NAME} ${OBJS} ${LIBS} -I ${INCS_DIR}
 
+
 ${OBJS_DIR}/%.o: ${SRCS_DIR}/%.c
 	@${CC} ${CFLAGS} -g -c $< -o $@ -I ${INCS_DIR}
+
 
 ${OBJS_BONUS_DIR}:
 	@echo "Build checker"
 	@mkdir -p objs_bonus
 
+
 ${OBJS_BONUS}: %.o: ${addsuffix .c,${subst obj,src,${%}}} | ${OBJS_BONUS_DIR}
 	@${CC} ${CFLAGS} -g -c ${patsubst %.o,%.c,${subst obj,src,$@}} -o $@ -I ${INCS_BONUS_DIR}
+
 
 ${NAME_BONUS}: ${OBJS_BONUS}
 	@make -C ${FT_PRINTF_DIR}
 	@make -C ${GNL_DIR}
 	@${CC} -g -o ${NAME_BONUS} ${OBJS_BONUS} ${LIBS} -I ${INCS_BONUS_DIR}
 
+
 clean:
 	@echo "Remove dependencies in push_swap"
 	@make -C ${FT_PRINTF_DIR} clean
 	@make -C ${GNL_DIR} clean
 	@rm -rf ${OBJS_DIR} ${OBJS_BONUS_DIR}
+
 
 fclean: clean
 	@echo "Remove push_swap, checker"
@@ -129,9 +142,11 @@ fclean: clean
 	@${RM} ${NAME} ${NAME_BONUS}
 	@${RM} ${OUTPUT}
 	
+
 re:
 	@echo "Re-build push_swap"
 	@make fclean
 	@make all
+
 
 .PHONY: all clean fclean re bonus
