@@ -27,5 +27,5 @@ $ make run
 $ make run ARGC=[number of input]
 ```
 * Default argc = 100
-* Commands will be saved in output.txt
-* The number of the commands is displayed on the terminal
+* Instructions are stored in "output.txt"
+* The number of the instructions is displayed on the terminal
