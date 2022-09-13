@@ -6,7 +6,11 @@
 #    By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/08 16:03:07 by younhwan          #+#    #+#              #
+<<<<<<< HEAD
 #    Updated: 2022/09/13 23:27:07 by younhwan         ###   ########.fr        #
+=======
+#    Updated: 2022/09/13 23:20:29 by younhwan         ###   ########.fr        #
+>>>>>>> d73e10b600cb6c9d7f5c18fcdefa726da90484c6
 #                                                                              #
 # **************************************************************************** #
 
@@ -97,7 +101,6 @@ chk_leaks: ${OBJS_DIR} ${NAME}
 run: ${OBJS_DIR} ${NAME}
 	./push_swap `ruby -e "puts (1..${ARGC}).to_a.shuffle.join(' ')"` > ${OUTPUT}
 	@wc -l output.txt | awk '{print "Number of commands:", $$1}'
-
 
 ${OBJS_DIR}:
 	@echo "Build push_swap"
