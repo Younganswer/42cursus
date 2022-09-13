@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/25 16:26:12 by younhwan          #+#    #+#             */
-/*   Updated: 2022/09/12 15:23:30 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/09/13 22:29:57 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ int	main(int argc, char **argv)
 	}
 	print_exec(var->exec_st);
 	print_stack(var->a);
+	system("leaks push_swap >> leak_check_result; cat leak_check_result | grep leaked");
 	return (0);
 }
 

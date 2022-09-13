@@ -6,7 +6,7 @@
 #    By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/08 16:03:07 by younhwan          #+#    #+#              #
-#    Updated: 2022/09/13 22:26:04 by younhwan         ###   ########.fr        #
+#    Updated: 2022/09/13 22:31:22 by younhwan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -81,6 +81,7 @@ bonus: ${NAME_BONUS}
 	@make all
 
 # make run ARGC=[number_of_input]
+ARGC = 100
 run: ${OBJS_DIR} ${NAME}
 	./push_swap `ruby -e "puts (1..${ARGC}).to_a.shuffle.join(' ')"` > ${OUTPUT}
 	@tail -n ${ARGC} output.txt
