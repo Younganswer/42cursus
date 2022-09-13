@@ -6,7 +6,7 @@
 #    By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/08 16:03:07 by younhwan          #+#    #+#              #
-#    Updated: 2022/09/12 15:21:30 by younhwan         ###   ########.fr        #
+#    Updated: 2022/09/12 15:54:16 by younhwan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -79,7 +79,7 @@ bonus: ${NAME_BONUS}
 	make all
 
 run:
-	./push_swap `ruby -e "puts (1..500).to_a.shuffle.join(' ')"` > ${OUTPUT}
+	./push_swap `ruby -e "puts (1..10).to_a.shuffle.join(' ')"` > ${OUTPUT}
 
 ${OBJS_DIR}:
 	mkdir -p objs
