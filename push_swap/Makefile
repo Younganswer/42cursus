@@ -6,7 +6,7 @@
 #    By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/08 16:03:07 by younhwan          #+#    #+#              #
-#    Updated: 2022/09/13 22:34:11 by younhwan         ###   ########.fr        #
+#    Updated: 2022/09/13 23:27:07 by younhwan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -75,22 +75,28 @@ OUTPUT = output.txt
 
 
 all: ${OBJS_DIR} ${NAME}
-	@echo "done"
 
 
 bonus: ${NAME_BONUS}
-	@echo "done"
 	@make all
 
 
-# make run ARGC=[number_of_input]
-# In default argc = 100
+# Default argc = 100
 ARGC = 100
 
+# Use with pipe pbcopy
+# make generate_arguments | pbcopy
+generate_arguments:
+	@ruby -e "puts (1..${ARGC}).to_a.shuffle.join(' ')"
+
+# Check memory leaks with lldb push_swap argc
+chk_leaks: ${OBJS_DIR} ${NAME}
+	while true; do leaks `ps | grep /push_swap/push_swap | awk 'NR==1 {print $$1}'`; sleep 1; done;
+
+# make run ARGC=[number_of_input]
 run: ${OBJS_DIR} ${NAME}
 	./push_swap `ruby -e "puts (1..${ARGC}).to_a.shuffle.join(' ')"` > ${OUTPUT}
-	@tail -n ${ARGC} output.txt
-	@wc -l output.txt | awk '{print "Number of instructions:", $$1 - ${ARGC}}'
+	@wc -l output.txt | awk '{print "Number of commands:", $$1}'
 
 
 ${OBJS_DIR}:
@@ -107,6 +113,7 @@ ${NAME}: ${OBJS}
 	@make -C ${FT_PRINTF_DIR}
 	@make -C ${GNL_DIR}
 	@${CC} -g -o ${NAME} ${OBJS} ${LIBS} -I ${INCS_DIR}
+	@echo "Build push_swap: done"
 
 
 ${OBJS_DIR}/%.o: ${SRCS_DIR}/%.c
@@ -126,6 +133,7 @@ ${NAME_BONUS}: ${OBJS_BONUS}
 	@make -C ${FT_PRINTF_DIR}
 	@make -C ${GNL_DIR}
 	@${CC} -g -o ${NAME_BONUS} ${OBJS_BONUS} ${LIBS} -I ${INCS_BONUS_DIR}
+	@echo "Build checker: done"
 
 
 clean:

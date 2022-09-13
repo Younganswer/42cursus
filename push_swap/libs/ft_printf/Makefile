@@ -6,7 +6,7 @@
 #    By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/08 16:03:07 by younhwan          #+#    #+#              #
-#    Updated: 2022/09/13 22:24:04 by younhwan         ###   ########.fr        #
+#    Updated: 2022/09/13 23:19:07 by younhwan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -56,7 +56,6 @@ endif
 #	WITH_BONUS=1 make all
 
 all: ${NAME}
-	@echo "done"
 
 # ${OBJS_BONUS_DIR}:
 # 	mkdir -p objs_bonus
@@ -73,6 +72,7 @@ ${NAME}: ${OBJ_FILES}
 	@cp ${LIBFT_DIR}/${LIBFT_NAME} .
 	@mv ${LIBFT_NAME} ${NAME}
 	@${AR} $@ $^
+	@echo "Build libft_printf.a: done"
 
 clean:
 	@echo "Remove dependencies in ft_printf"

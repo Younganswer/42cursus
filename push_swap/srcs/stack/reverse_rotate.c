@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/03 17:38:23 by younhwan          #+#    #+#             */
-/*   Updated: 2022/09/13 21:25:09 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/09/13 22:59:00 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,12 @@ t_bool	rrb(t_var *var);
 
 t_bool	rra(t_var *var)
 {
-	t_node	*front;
-
 	if (var->a->sz_ < 2)
 		return (TRUE);
-	front = pop_front(var->a);
-	push_back(var->a, front);
+	push_back(var->a, pop_front(var->a));
 	if (var->exec_st->sz_ && var->exec_st->tail->exec == RRB)
 	{
-		pop_back(var->exec_st);
+		free(pop_back(var->exec_st));
 		push_back(var->exec_st, init_node(0, 0, RRR));
 	}
 	else
@@ -35,15 +32,12 @@ t_bool	rra(t_var *var)
 
 t_bool	rrb(t_var *var)
 {
-	t_node	*front;
-
 	if (var->b->sz_ < 2)
 		return (TRUE);
-	front = pop_front(var->b);
-	push_back(var->b, front);
+	push_back(var->b, pop_front(var->b));
 	if (var->exec_st->sz_ && var->exec_st->tail->exec == RRA)
 	{
-		pop_back(var->exec_st);
+		free(pop_back(var->exec_st));
 		push_back(var->exec_st, init_node(0, 0, RRR));
 	}
 	else

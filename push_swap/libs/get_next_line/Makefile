@@ -6,7 +6,7 @@
 #    By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/01 00:26:43 by younhwan          #+#    #+#              #
-#    Updated: 2022/09/13 22:24:52 by younhwan         ###   ########.fr        #
+#    Updated: 2022/09/13 23:18:35 by younhwan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,6 @@ SRCS := ${addprefix ${SRCS_DIR}/, ${SRCS}}
 OBJS = ${SRCS:${SRCS_DIR}/%.c=${OBJS_DIR}/%.o}
 
 all: ${NAME}
-	@echo "done"
 
 ${OBJS_DIR}:
 	@echo "Build libgnl.a"
@@ -40,6 +39,7 @@ ${OBJS}: %.o: ${addsuffix .c,${subst obj,src,${%}}} | ${OBJS_DIR}
 
 ${NAME}: ${OBJS}
 	@${AR} $@ $^
+	@echo "Build libgnl.a: done"
 
 clean:
 	@echo "Remove dependencies in get_next_line"
