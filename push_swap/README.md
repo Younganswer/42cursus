@@ -29,7 +29,7 @@ $ make run ARGC=[number of input]
 * Default argc = 100
 * Instructions are stored in "output.txt"
 * The number of the instructions is displayed on the terminal
-
+<br/><br/><br/>
 
 ## Visualizer
 Thanks for using this to @o-reo
