@@ -100,7 +100,7 @@ chk_leaks: ${OBJS_DIR} ${NAME}
 # make run ARGC=[number_of_input]
 run: ${OBJS_DIR} ${NAME}
 	./push_swap `ruby -e "puts (1..${ARGC}).to_a.shuffle.join(' ')"` > ${OUTPUT}
-	@wc -l output.txt | awk '{print "Number of commands:", $$1}'
+	@wc -l output.txt | awk '{print "Number of instructions:", $$1}'
 
 ${OBJS_DIR}:
 	@echo "Build push_swap"
