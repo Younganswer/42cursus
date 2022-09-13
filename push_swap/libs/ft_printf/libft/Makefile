@@ -6,7 +6,7 @@
 #    By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/08 16:03:07 by younhwan          #+#    #+#              #
-#    Updated: 2022/09/13 22:23:47 by younhwan         ###   ########.fr        #
+#    Updated: 2022/09/13 23:19:14 by younhwan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -71,10 +71,10 @@ SRCS := ${SRCS:%.c=${SRCS_DIR}/%.c}
 OBJS := ${SRCS:${SRCS_DIR}/%.c=${OBJS_DIR}/%.o}
 
 all: ${NAME}
-	@echo "done"
 
 ${NAME}: ${OBJS}
 	@${AR} $@ $^
+	@echo "Build libft.a: done"
 
 ${OBJS}: ${OBJS_DIR}/%.o: ${SRCS_DIR}/%.c | ${OBJS_DIR}
 	@${CC} ${CFLAGS} -c $< -o $@ -I ${INCS_DIR}

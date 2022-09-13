@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/01 14:26:22 by younhwan          #+#    #+#             */
-/*   Updated: 2022/09/12 15:20:08 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/09/13 22:50:45 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@ t_bool	parse_input(t_stack *a, int argc, char **argv)
 {
 	char	**splited_argv;
 	int		i;
-
+	int		j;
+	
 	i = 0;
 	while (++i < argc)
 	{
@@ -29,6 +30,12 @@ t_bool	parse_input(t_stack *a, int argc, char **argv)
 			ft_exit_with_error(0, EXIT_SUCCESS);
 		splited_argv = split_argv(argv[i]);
 		push_arguments_to_stack(a, splited_argv);
+		j = 0;
+		while (splited_argv[j])
+		{
+			free(splited_argv[j]);
+			j++;
+		}
 		free(splited_argv);
 	}
 	return (TRUE);

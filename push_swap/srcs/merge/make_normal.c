@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 20:48:34 by younhwan          #+#    #+#             */
-/*   Updated: 2022/09/13 21:29:15 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/09/13 23:04:12 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,9 @@ static t_bool	make_in_a(t_var *var)
 			)
 		);
 	sort_in_a(var);
-	pop_front(var->size_of_triangles_in_a);
-	pop_front(var->size_of_triangles_in_b);
-	pop_back(var->size_of_triangles_in_b);
+	free(pop_front(var->size_of_triangles_in_a));
+	free(pop_front(var->size_of_triangles_in_b));
+	free(pop_back(var->size_of_triangles_in_b));
 	return (TRUE);
 }
 
@@ -57,9 +57,9 @@ static t_bool	make_in_b(t_var *var)
 			)
 		);
 	sort_in_b(var);
-	pop_front(var->size_of_triangles_in_b);
-	pop_front(var->size_of_triangles_in_a);
-	pop_back(var->size_of_triangles_in_a);
+	free(pop_front(var->size_of_triangles_in_b));
+	free(pop_front(var->size_of_triangles_in_a));
+	free(pop_back(var->size_of_triangles_in_a));
 	return (TRUE);
 }
 
