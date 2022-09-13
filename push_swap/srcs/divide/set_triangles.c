@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 16:00:06 by younhwan          #+#    #+#             */
-/*   Updated: 2022/09/12 15:14:14 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/09/13 23:47:05 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ static t_bool	set_size_of_triangles_in_b(t_var *var);
 
 t_bool	set_triangles(t_var *var)
 {
-	while ((var->a_to_b && var->size_of_triangles_in_a->sz_ < var->divide_in) || \
-		(!var->a_to_b && var->size_of_triangles_in_b->sz_ < var->divide_in))
+	while ((var->a_to_b && var->size_of_triangles_in_a->sz_ < var->divide_in) \
+		|| (!var->a_to_b && var->size_of_triangles_in_b->sz_ < var->divide_in))
 	{
 		if (var->a_to_b)
 			make_triangle_in_b(var);

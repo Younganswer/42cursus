@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/01 14:26:22 by younhwan          #+#    #+#             */
-/*   Updated: 2022/09/13 22:50:45 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/09/13 23:47:17 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ t_bool	parse_input(t_stack *a, int argc, char **argv)
 	char	**splited_argv;
 	int		i;
 	int		j;
-	
+
 	i = 0;
 	while (++i < argc)
 	{

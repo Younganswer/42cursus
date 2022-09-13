@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/25 22:09:02 by younhwan          #+#    #+#             */
-/*   Updated: 2022/09/12 15:23:44 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/09/13 23:47:49 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 t_bool	free_stack(t_stack *st);
 t_bool	print_exec(t_stack *st);
-t_bool	print_stack(t_stack *st);
 
 t_bool	free_stack(t_stack *st)
 {
@@ -55,22 +54,6 @@ t_bool	print_exec(t_stack *st)
 		else if (st->head->exec == RRR)
 			ft_putendl_fd("rrr", 1);
 		st->head = st->head->next;
-	}
-	return (TRUE);
-}
-
-t_bool	print_stack(t_stack *st)
-{
-	t_node	*tmp;
-
-	tmp = st->tail;
-	while (tmp)
-	{
-		for (int i=0; i<tmp->val; i++) {
-			ft_putchar_fd('-', 1);
-		}
-		ft_putchar_fd('\n', 1);
-		tmp = tmp->prev;
 	}
 	return (TRUE);
 }

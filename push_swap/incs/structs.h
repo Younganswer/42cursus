@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/03 17:18:05 by younhwan          #+#    #+#             */
-/*   Updated: 2022/09/12 15:00:54 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/09/13 23:45:56 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,8 @@ typedef struct s_var
 {
 	t_stack	*a;
 	t_stack	*b;
-	t_stack *size_of_triangles_in_a;
-	t_stack *size_of_triangles_in_b;
+	t_stack	*size_of_triangles_in_a;
+	t_stack	*size_of_triangles_in_b;
 	t_stack	*exec_st;
 	size_t	divide_in;
 	t_bool	a_to_b;

@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/12 14:36:00 by younhwan          #+#    #+#             */
-/*   Updated: 2022/09/12 15:22:24 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/09/13 23:48:04 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ t_bool	sort_small_4(t_var *var)
 
 static int	get_pivot(t_var *var)
 {
-	int 	arr[4];
+	int		arr[4];
 	t_node	*tmp;
 	int		i;
 
