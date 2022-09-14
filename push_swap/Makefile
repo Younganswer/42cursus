@@ -6,7 +6,7 @@
 #    By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/08 16:03:07 by younhwan          #+#    #+#              #
-#    Updated: 2022/09/14 11:09:55 by younhwan         ###   ########.fr        #
+#    Updated: 2022/09/14 11:57:33 by younhwan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -97,7 +97,10 @@ chk_leaks: ${OBJS_DIR} ${NAME}
 
 # make run ARGC=[number_of_input]
 run: ${OBJS_DIR} ${NAME}
-	./push_swap `ruby -e "puts (1..${ARGC}).to_a.shuffle.join(' ')"` > ${OUTPUT}
+	@echo -n "Number of input: "
+	@echo ${ARGC}
+	@echo "Instructions are stored in 'output.txt'"
+	@ARG=`ruby -e "puts (1..${ARGC}).to_a.shuffle.join(' ')"`; ./push_swap $$ARG > output.txt; echo -n "Checker result: "; ./checker_Mac $$ARG < output.txt
 	@wc -l output.txt | awk '{print "Number of instructions:", $$1}'
 
 
