@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stack.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/31 23:46:17 by younhwan          #+#    #+#             */
-/*   Updated: 2022/09/13 23:47:35 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/09/14 16:13:17 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,5 +50,6 @@ t_bool	sb(t_var *var);
 // stack_utils.c
 t_bool	free_stack(t_stack *st);
 t_bool	print_exec(t_stack *st);
+t_bool	is_sorted(t_stack *st);
 
 #endif

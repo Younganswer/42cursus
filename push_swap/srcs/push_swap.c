@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/25 16:26:12 by younhwan          #+#    #+#             */
-/*   Updated: 2022/09/13 23:15:05 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/09/14 16:15:53 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ int	main(int argc, char **argv)
 		return (0);
 	var = init_var(argc, argv);
 	if (var->a->sz_ <= 1)
+		return (0);
+	if (is_sorted(var->a))
 		return (0);
 	if (var->a->sz_ <= 5)
 		sort_small(var);

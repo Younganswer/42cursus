@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stack_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/25 22:09:02 by younhwan          #+#    #+#             */
-/*   Updated: 2022/09/13 23:47:49 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/09/14 16:22:18 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 t_bool	free_stack(t_stack *st);
 t_bool	print_exec(t_stack *st);
+t_bool	is_sorted(t_stack *st);
 
 t_bool	free_stack(t_stack *st)
 {
@@ -54,6 +55,22 @@ t_bool	print_exec(t_stack *st)
 		else if (st->head->exec == RRR)
 			ft_putendl_fd("rrr", 1);
 		st->head = st->head->next;
+	}
+	return (TRUE);
+}
+
+t_bool	is_sorted(t_stack *st)
+{
+	t_node	*tmp;
+
+	if (st->sz_ <= 1)
+		return (TRUE);
+	tmp = st->head;
+	while (tmp->next)
+	{
+		if (tmp->val - 1 != tmp->next->val)
+			return (FALSE);
+		tmp = tmp->next;
 	}
 	return (TRUE);
 }
