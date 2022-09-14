@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   reverse_rotate.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/03 17:38:23 by younhwan          #+#    #+#             */
-/*   Updated: 2022/09/13 22:59:00 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/09/14 20:13:20 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 t_bool	rra(t_var *var);
 t_bool	rrb(t_var *var);
+t_bool	rrr(t_var *var);
 
 t_bool	rra(t_var *var)
 {
@@ -42,5 +43,14 @@ t_bool	rrb(t_var *var)
 	}
 	else
 		push_back(var->exec_st, init_node(0, 0, RRB));
+	return (TRUE);
+}
+
+t_bool	rrr(t_var *var)
+{
+	if (2 <= var->a->sz_)
+		rra(var);
+	if (2 <= var->b->sz_)
+		rrb(var);
 	return (TRUE);
 }

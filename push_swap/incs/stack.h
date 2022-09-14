@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/31 23:46:17 by younhwan          #+#    #+#             */
-/*   Updated: 2022/09/14 16:13:17 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/09/14 20:13:39 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,14 +38,17 @@ t_bool	pb(t_var *var);
 // rotate.c
 t_bool	ra(t_var *var);
 t_bool	rb(t_var *var);
+t_bool	rr(t_var *var);
 
 // reverse_rotate.c
 t_bool	rra(t_var *var);
 t_bool	rrb(t_var *var);
+t_bool	rrr(t_var *var);
 
 // swap.c
 t_bool	sa(t_var *var);
 t_bool	sb(t_var *var);
+t_bool	ss(t_var *var);
 
 // stack_utils.c
 t_bool	free_stack(t_stack *st);

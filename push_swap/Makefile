@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+         #
+#    By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/08 16:03:07 by younhwan          #+#    #+#              #
-#    Updated: 2022/09/14 11:57:33 by younhwan         ###   ########.fr        #
+#    Updated: 2022/09/14 20:45:12 by younhwan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -69,9 +69,10 @@ INCS_BONUS_DIR = ./incs_bonus
 SRCS_BONUS_DIR = ./srcs_bonus
 OBJS_BONUS_DIR = ./objs_bonus
 
-SRCS_BONUS = main_bonus.c
+SRCS_BONUS = checker_bonus.c
 SRCS_BONUS := ${addprefix ${SRCS_BONUS_DIR}/, ${SRCS_BONUS}}
 OBJS_BONUS = ${SRCS_BONUS:${SRCS_BONUS_DIR}/%.c=${OBJS_BONUS_DIR}/%.o}
+
 
 OUTPUT = output.txt
 
@@ -79,8 +80,7 @@ OUTPUT = output.txt
 all: ${OBJS_DIR} ${NAME}
 
 
-bonus: ${NAME_BONUS}
-	@make all
+bonus: all ${OBJS_BONUS_DIR} ${NAME_BONUS}
 
 
 # Default argc = 100
@@ -96,11 +96,12 @@ chk_leaks: ${OBJS_DIR} ${NAME}
 	while true; do leaks `ps | grep /push_swap/push_swap | awk 'NR==1 {print $$1}'`; sleep 1; done;
 
 # make run ARGC=[number_of_input]
-run: ${OBJS_DIR} ${NAME}
+run:
+	@make bonus
 	@echo -n "Number of input: "
 	@echo ${ARGC}
 	@echo "Instructions are stored in 'output.txt'"
-	@ARG=`ruby -e "puts (1..${ARGC}).to_a.shuffle.join(' ')"`; ./push_swap $$ARG > output.txt; echo -n "Checker result: "; ./checker_Mac $$ARG < output.txt
+	@ARG=`ruby -e "puts (1..${ARGC}).to_a.shuffle.join(' ')"`; ./push_swap $$ARG > output.txt; echo -n "Checker result: "; ./checker $$ARG < output.txt
 	@wc -l output.txt | awk '{print "Number of instructions:", $$1}'
 
 
@@ -130,14 +131,14 @@ ${OBJS_BONUS_DIR}:
 	@mkdir -p objs_bonus
 
 
-${OBJS_BONUS}: %.o: ${addsuffix .c,${subst obj,src,${%}}} | ${OBJS_BONUS_DIR}
-	@${CC} ${CFLAGS} -g -c ${patsubst %.o,%.c,${subst obj,src,$@}} -o $@ -I ${INCS_BONUS_DIR}
+${OBJS_BONUS_DIR}/%.o: ${SRCS_BONUS_DIR}/%.c
+	@${CC} ${CFLAGS} -g -c $< -o $@ -I ${INCS_BONUS_DIR}
 
 
 ${NAME_BONUS}: ${OBJS_BONUS}
 	@make -C ${FT_PRINTF_DIR}
 	@make -C ${GNL_DIR}
-	@${CC} -g -o ${NAME_BONUS} ${OBJS_BONUS} ${LIBS} -I ${INCS_BONUS_DIR}
+	${CC} -g -o ${NAME_BONUS} ${OBJS_BONUS} ${wildcard ${OBJS_DIR}/parse_input/*.o} ${wildcard ${OBJS_DIR}/stack/*.o} ${LIBS} -I ${INCS_BONUS_DIR}
 	@echo "Build checker: done"
 
 

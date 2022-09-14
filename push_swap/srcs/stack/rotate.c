@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rotate.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/25 22:28:55 by younhwan          #+#    #+#             */
-/*   Updated: 2022/09/13 22:59:26 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/09/14 20:12:46 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 t_bool	ra(t_var *var);
 t_bool	rb(t_var *var);
+t_bool	rr(t_var *var);
 
 t_bool	ra(t_var *var)
 {
@@ -42,5 +43,14 @@ t_bool	rb(t_var *var)
 	}
 	else
 		push_back(var->exec_st, init_node(0, 0, RB));
+	return (TRUE);
+}
+
+t_bool	rr(t_var *var)
+{
+	if (2 <= var->a->sz_)
+		ra(var);
+	if (2 <= var->b->sz_)
+		rb(var);
 	return (TRUE);
 }

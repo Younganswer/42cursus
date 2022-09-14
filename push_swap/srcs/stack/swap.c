@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   swap.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/25 22:11:38 by younhwan          #+#    #+#             */
-/*   Updated: 2022/09/13 22:59:45 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/09/14 20:31:15 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 t_bool	sa(t_var *var);
 t_bool	sb(t_var *var);
+t_bool	ss(t_var *var);
 
 t_bool	sa(t_var *var)
 {
@@ -54,5 +55,14 @@ t_bool	sb(t_var *var)
 	}
 	else
 		push_back(var->exec_st, init_node(0, 0, SB));
+	return (TRUE);
+}
+
+t_bool	ss(t_var *var)
+{
+	if (2 <= var->a->sz_)
+		sa(var);
+	if (2 <= var->b->sz_)
+		sb(var);
 	return (TRUE);
 }
