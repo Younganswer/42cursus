@@ -9,7 +9,7 @@
 ## Install
 	$ make
 	$ make bonus //for checker
-* make bonus rule includes make (all)
+* Rule "make bonus" includes "make (all)"
 <br/><br/><br/>
 
 ## Usage
@@ -27,7 +27,7 @@
 $ make run
 $ make run ARGC=[number of input]
 ```
-* make run rule includes make bonus
+* Rule "make run" includes "make bonus"
 * Default argc = 100
 * Instructions are stored in "output.txt"
 * The number of the instructions is displayed on the terminal
