@@ -3,32 +3,34 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+         #
+#    By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/08 16:03:07 by younhwan          #+#    #+#              #
-#    Updated: 2022/09/14 21:05:27 by younhwan         ###   ########.fr        #
+#    Updated: 2022/09/15 01:34:51 by younhwan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SHELL = bash
+SHELL	= /bin/bash
+SPINNER	= /-\|/
+IDX		= 0
 
-NAME = push_swap
-NAME_BONUS = checker
+NAME		= push_swap
+NAME_BONUS	= checker
 
-CC = cc
-CFLAGS = -Wall -Wextra -Werror
-AR = ar rcs
-RM = rm -f
+CC		= cc
+CFLAGS	= -Wall -Wextra -Werror
+AR		= ar rcs
+RM		= rm -f
 
-FT_PRINTF_DIR = ./libs/ft_printf
-GNL_DIR = ./libs/get_next_line
+FT_PRINTF_DIR	= ./libs/ft_printf
+GNL_DIR			= ./libs/get_next_line
 
 LIBS =	./libs/ft_printf/libftprintf.a\
 		./libs/get_next_line/libgnl.a
 
-INCS_DIR = ./incs
-SRCS_DIR = ./srcs
-OBJS_DIR = ./objs
+INCS_DIR	= ./incs
+SRCS_DIR	= ./srcs
+OBJS_DIR	= ./objs
 
 SRCS = 	push_swap.c\
 		divide/divide.c\
@@ -119,6 +121,8 @@ ${OBJS_DIR}:
 
 
 ${NAME}: ${OBJS}
+	@printf "\bdone\n"
+	${eval IDX = 0}
 	@make -C ${FT_PRINTF_DIR}
 	@make -C ${GNL_DIR}
 	@${CC} -g -o ${NAME} ${OBJS} ${LIBS} -I ${INCS_DIR}
@@ -126,6 +130,12 @@ ${NAME}: ${OBJS}
 
 
 ${OBJS_DIR}/%.o: ${SRCS_DIR}/%.c
+	${eval IDX = ${shell expr ${IDX} + 1}}
+	${eval T_IDX = ${shell expr ${IDX} % 32}}
+	${eval T_IDX = ${shell expr ${T_IDX} / 8 + 1}}
+	${eval CHR = ${shell echo ${SPINNER} | cut -c ${T_IDX}}}
+	@if [ ${IDX} = 1 ]; then echo -n "Build dependencies in push_swap ...  "; fi
+	@printf "\b${CHR}"
 	@${CC} ${CFLAGS} -g -c $< -o $@ -I ${INCS_DIR}
 
 
@@ -135,10 +145,18 @@ ${OBJS_BONUS_DIR}:
 
 
 ${OBJS_BONUS_DIR}/%.o: ${SRCS_BONUS_DIR}/%.c
+	${eval IDX = ${shell expr ${IDX} + 1}}
+	${eval T_IDX = ${shell expr ${IDX} % 32}}
+	${eval T_IDX = ${shell expr ${T_IDX} / 8 + 1}}
+	${eval CHR = ${shell echo ${SPINNER} | cut -c ${T_IDX}}}
+	@if [ ${IDX} = 1 ]; then echo -n "Build dependencies in push_swap ...  "; fi
+	@printf "\b${CHR}"
 	@${CC} ${CFLAGS} -g -c $< -o $@ -I ${INCS_BONUS_DIR}
 
 
 ${NAME_BONUS}: ${OBJS_BONUS}
+	@printf "\bdone\n"
+	${eval IDX = 0}
 	@${CC} -g -o ${NAME_BONUS} ${OBJS_BONUS} ${wildcard ${OBJS_DIR}/parse_input/*.o} ${wildcard ${OBJS_DIR}/stack/*.o} ${LIBS} -I ${INCS_BONUS_DIR}
 	@echo "Build checker: done"
 

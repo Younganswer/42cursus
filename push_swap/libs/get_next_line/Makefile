@@ -6,9 +6,13 @@
 #    By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/01 00:26:43 by younhwan          #+#    #+#              #
-#    Updated: 2022/09/13 23:18:35 by younhwan         ###   ########.fr        #
+#    Updated: 2022/09/15 01:32:07 by younhwan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
+
+SHELL	= /bin/bash
+SPINNER	= /-\|/
+IDX		= 0
 
 NAME = libgnl.a
 
@@ -28,16 +32,24 @@ SRCS = 	get_next_line.c\
 SRCS := ${addprefix ${SRCS_DIR}/, ${SRCS}}
 OBJS = ${SRCS:${SRCS_DIR}/%.c=${OBJS_DIR}/%.o}
 
-all: ${NAME}
+all: ${OBJS_DIR}
+	@make ${NAME}
 
 ${OBJS_DIR}:
 	@echo "Build libgnl.a"
 	@mkdir -p objs
 
-${OBJS}: %.o: ${addsuffix .c,${subst obj,src,${%}}} | ${OBJS_DIR}
+${OBJS_DIR}/%.o: ${SRCS_DIR}/%.c
+	${eval IDX = ${shell expr ${IDX} + 1}}
+	${eval T_IDX = ${shell expr ${IDX} % 32}}
+	${eval T_IDX = ${shell expr ${T_IDX} / 8 + 1}}
+	${eval CHR = ${shell echo ${SPINNER} | cut -c ${T_IDX}}}
+	@if [ ${IDX} = 1 ]; then echo -n "Build dependencies in libft_printf.a ...  "; fi
+	@printf "\b${CHR}"
 	@${CC} ${CFLAGS} -c ${patsubst %.o,%.c,${subst obj,src,$@}} -o $@ -I ${INCS_DIR}
 
 ${NAME}: ${OBJS}
+	@printf "\bdone\n"
 	@${AR} $@ $^
 	@echo "Build libgnl.a: done"
 

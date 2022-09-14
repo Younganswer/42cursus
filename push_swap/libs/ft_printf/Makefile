@@ -6,9 +6,13 @@
 #    By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/08 16:03:07 by younhwan          #+#    #+#              #
-#    Updated: 2022/09/13 23:19:07 by younhwan         ###   ########.fr        #
+#    Updated: 2022/09/15 01:20:50 by younhwan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
+
+SHELL	= /bin/bash
+SPINNER	= /-\|/
+IDX		= 0
 
 NAME = libftprintf.a
 
@@ -55,7 +59,8 @@ endif
 #bonus:
 #	WITH_BONUS=1 make all
 
-all: ${NAME}
+all: ${OBJS_DIRS}
+	@make ${NAME}
 
 # ${OBJS_BONUS_DIR}:
 # 	mkdir -p objs_bonus
@@ -64,10 +69,17 @@ ${OBJS_DIR}:
 	@echo "Build libft_printf.a"
 	@mkdir -p objs
 
-${OBJ_FILES}: %.o: ${addsuffix .c,${subst obj,src,${%}}} | ${OBJS_DIRS}
+${OBJ_FILES}: %.o: ${addsuffix .c,${subst obj,src,${%}}}
+	${eval IDX = ${shell expr ${IDX} + 1}}
+	${eval T_IDX = ${shell expr ${IDX} % 32}}
+	${eval T_IDX = ${shell expr ${T_IDX} / 8 + 1}}
+	${eval CHR = ${shell echo ${SPINNER} | cut -c ${T_IDX}}}
+	@if [ ${IDX} = 1 ]; then echo -n "Build dependencies in libft_printf.a ...  "; fi
+	@printf "\b${CHR}"
 	@${CC} ${CFLAGS} -c ${patsubst %.o,%.c,${subst obj,src,$@}} -o $@ -I ${INCS_DIR}
 
 ${NAME}: ${OBJ_FILES}
+	@printf "\bdone\n"
 	@make -C ${LIBFT_DIR}
 	@cp ${LIBFT_DIR}/${LIBFT_NAME} .
 	@mv ${LIBFT_NAME} ${NAME}
