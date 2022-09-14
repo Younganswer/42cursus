@@ -6,9 +6,11 @@
 #    By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/08 16:03:07 by younhwan          #+#    #+#              #
-#    Updated: 2022/09/13 23:45:25 by younhwan         ###   ########.fr        #
+#    Updated: 2022/09/14 11:09:55 by younhwan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
+
+SHELL = bash
 
 NAME = push_swap
 NAME_BONUS = checker
