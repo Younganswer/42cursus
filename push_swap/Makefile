@@ -6,7 +6,7 @@
 #    By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/08 16:03:07 by younhwan          #+#    #+#              #
-#    Updated: 2022/09/14 20:45:12 by younhwan         ###   ########.fr        #
+#    Updated: 2022/09/14 21:05:27 by younhwan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -77,10 +77,13 @@ OBJS_BONUS = ${SRCS_BONUS:${SRCS_BONUS_DIR}/%.c=${OBJS_BONUS_DIR}/%.o}
 OUTPUT = output.txt
 
 
-all: ${OBJS_DIR} ${NAME}
+all: ${OBJS_DIR}
+	@make ${NAME}
 
 
-bonus: all ${OBJS_BONUS_DIR} ${NAME_BONUS}
+bonus: ${OBJS_BONUS_DIR}
+	@make all
+	@make ${NAME_BONUS}
 
 
 # Default argc = 100
@@ -136,9 +139,7 @@ ${OBJS_BONUS_DIR}/%.o: ${SRCS_BONUS_DIR}/%.c
 
 
 ${NAME_BONUS}: ${OBJS_BONUS}
-	@make -C ${FT_PRINTF_DIR}
-	@make -C ${GNL_DIR}
-	${CC} -g -o ${NAME_BONUS} ${OBJS_BONUS} ${wildcard ${OBJS_DIR}/parse_input/*.o} ${wildcard ${OBJS_DIR}/stack/*.o} ${LIBS} -I ${INCS_BONUS_DIR}
+	@${CC} -g -o ${NAME_BONUS} ${OBJS_BONUS} ${wildcard ${OBJS_DIR}/parse_input/*.o} ${wildcard ${OBJS_DIR}/stack/*.o} ${LIBS} -I ${INCS_BONUS_DIR}
 	@echo "Build checker: done"
 
 
