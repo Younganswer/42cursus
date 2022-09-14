@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_input.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/01 14:26:22 by younhwan          #+#    #+#             */
-/*   Updated: 2022/09/13 23:47:17 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/09/14 21:11:09 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,9 +74,11 @@ static t_bool	is_not_integer(const char *input)
 {
 	size_t	len;
 	size_t	i;
+	size_t	num_of_integer;
 
 	len = ft_strlen(input);
 	i = 0;
+	num_of_integer = 0;
 	while (i < len)
 	{
 		if (input[i] == ' ' || input[i] == '+' || input[i] == '-')
@@ -86,7 +88,8 @@ static t_bool	is_not_integer(const char *input)
 		}
 		if (!ft_isdigit(input[i]))
 			return (TRUE);
+		num_of_integer++;
 		i++;
 	}
-	return (FALSE);
+	return (!num_of_integer);
 }

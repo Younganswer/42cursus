@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 19:52:28 by younhwan          #+#    #+#             */
-/*   Updated: 2022/09/14 20:50:39 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/09/14 21:07:30 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,5 +82,7 @@ static t_bool	exec_cmd(t_var *var, const char *cmd)
 		rrb(var);
 	else if (!ft_strncmp("rrr", cmd, ft_strlen(cmd) - 1))
 		rrr(var);
+	else
+		ft_exit_with_error(0, EXIT_SUCCESS);
 	return (TRUE);
 }
