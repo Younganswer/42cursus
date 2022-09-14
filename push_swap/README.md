@@ -38,4 +38,4 @@ Thanks to @o-reo for using this push_swap_visualizer
 <br/>
 https://github.com/o-reo/push_swap_visualizer
 <br/>
-https://user-images.githubusercontent.com/55086725/190155252-05ba71cc-b8c3-4c66-adf0-2857750395af.mp4
+https://user-images.githubusercontent.com/55086725/190156930-16f5c704-cc31-4507-b886-99a644466fee.mp4
