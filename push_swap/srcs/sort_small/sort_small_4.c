@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/12 14:36:00 by younhwan          #+#    #+#             */
-/*   Updated: 2022/09/14 17:44:34 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/09/14 17:54:31 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ t_bool	sort_small_4(t_var *var)
 
 static t_bool	head_is_1(t_var *var)
 {
-	if (var->a->tail->val == 2 && var->a->tail->prev->val == 3)	
+	if (var->a->tail->val == 2 && var->a->tail->prev->val == 3)
 		return (rra(var));
 	if (var->a->tail->val == 2 && var->a->tail->prev->val == 4)
 		return (ra(var) && sa(var) && rra(var) && rra(var));
