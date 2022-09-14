@@ -32,7 +32,7 @@ $ make run ARGC=[number of input]
 <br/><br/><br/><br/>
 
 ## Result
-Thanks for using this push_swap_visualizer to @o-reo
+Thanks to @o-reo for using this push_swap_visualizer
 <br/>
 https://github.com/o-reo/push_swap_visualizer
 ![push_swap_visualize.gif](./push_swap_visualize.gif)
