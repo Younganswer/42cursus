@@ -6,7 +6,7 @@
 #    By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/08 16:03:07 by younhwan          #+#    #+#              #
-#    Updated: 2022/09/15 01:20:50 by younhwan         ###   ########.fr        #
+#    Updated: 2022/09/15 11:09:44 by younhwan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -92,9 +92,11 @@ clean:
 	@rm -rf ${OBJS_DIR}
 #	rm -rf ${OBJS_BONUS_DIR}
 
-fclean: clean
-	@echo "Remove libft_printf.a"
+fclean:
+	@echo "Remove dependencies in ft_printf"
 	@make -C ${LIBFT_DIR} fclean
+	@echo "Remove libft_printf.a"
+	@rm -rf ${OBJS_DIR}
 	@${RM} ${NAME}
 
 re:

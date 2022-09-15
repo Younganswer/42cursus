@@ -6,7 +6,7 @@
 #    By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/08 16:03:07 by younhwan          #+#    #+#              #
-#    Updated: 2022/09/15 01:34:51 by younhwan         ###   ########.fr        #
+#    Updated: 2022/09/15 11:08:37 by younhwan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -168,10 +168,12 @@ clean:
 	@rm -rf ${OBJS_DIR} ${OBJS_BONUS_DIR}
 
 
-fclean: clean
-	@echo "Remove push_swap, checker"
+fclean:
+	@echo "Remove dependencies in push_swap"
 	@make -C ${FT_PRINTF_DIR} fclean
 	@make -C ${GNL_DIR} fclean
+	@echo "Remove push_swap, checker"
+	@rm -rf ${OBJS_DIR} ${OBJS_BONUS_DIR}
 	@${RM} ${NAME} ${NAME_BONUS}
 	@${RM} ${OUTPUT}
 	
