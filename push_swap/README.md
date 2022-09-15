@@ -17,7 +17,7 @@
 	$ ./push_swap [num1] [num2] [num3] [...]
 * Arguments must be a list of integers
 	-  You can do like this
-		* `$ ./push_swap 10 9 8 7 6 5 4 3 2 1`
+		* `$ ./push_swap 10 9 2 1 6 5 4 3 8 7`
 	-  or this
 		* `$ ./push_swap "10 9" 2 1 "6 5 4 3" 8 7`
 <br/>
