@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_input.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/31 23:29:18 by younhwan          #+#    #+#             */
-/*   Updated: 2022/09/12 14:39:48 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/09/16 15:31:10 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 # include "../libs/ft_printf/includes/ft_printf.h"
 # include "../libs/get_next_line/includes/get_next_line.h"
 # include "structs.h"
-# include "tools.h"
 # include "stack.h"
 
 // parse_input.c
