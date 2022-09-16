@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   set_triangles.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 16:00:06 by younhwan          #+#    #+#             */
-/*   Updated: 2022/09/13 23:47:05 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/09/16 19:47:01 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,14 +97,13 @@ static t_bool	set_size_of_triangles_in_a(t_var *var)
 		tmp->val = 0;
 		tmp = tmp->next;
 	}
-	tmp = var->size_of_triangles_in_a->head;
 	size = var->a->sz_;
 	while (size--)
 	{
-		tmp->val++;
-		tmp = tmp->next;
 		if (!tmp)
 			tmp = var->size_of_triangles_in_a->head;
+		tmp->val++;
+		tmp = tmp->next;
 	}
 	return (TRUE);
 }
@@ -120,14 +119,13 @@ static t_bool	set_size_of_triangles_in_b(t_var *var)
 		tmp->val = 0;
 		tmp = tmp->next;
 	}
-	tmp = var->size_of_triangles_in_b->head;
 	size = var->a->sz_;
 	while (size--)
 	{
-		tmp->val++;
-		tmp = tmp->next;
 		if (!tmp)
 			tmp = var->size_of_triangles_in_b->head;
+		tmp->val++;
+		tmp = tmp->next;
 	}
 	return (TRUE);
 }

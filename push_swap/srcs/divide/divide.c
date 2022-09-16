@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   divide.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 15:58:36 by younhwan          #+#    #+#             */
-/*   Updated: 2022/09/13 21:45:36 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/09/16 19:55:51 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ static t_bool	divide_in_a(t_var *var)
 	while (tmp)
 	{
 		if (tmp->val == 1)
-			push_back(var->a, pop_back(var->b));
+			pa(var);
 		else if (tmp->val == 2)
 			push_2_b_to_a(var, tmp->shape);
 		else if (tmp->val == 3)
@@ -82,7 +82,7 @@ static t_bool	divide_in_b(t_var *var)
 	while (tmp)
 	{
 		if (tmp->val == 1)
-			push_back(var->b, pop_back(var->a));
+			pb(var);
 		else if (tmp->val == 2)
 			push_2_a_to_b(var, tmp->shape);
 		else if (tmp->val == 3)

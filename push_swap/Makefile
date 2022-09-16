@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+         #
+#    By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/08 16:03:07 by younhwan          #+#    #+#              #
-#    Updated: 2022/09/15 11:08:37 by younhwan         ###   ########.fr        #
+#    Updated: 2022/09/16 19:39:23 by younhwan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
