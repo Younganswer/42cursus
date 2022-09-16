@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/25 22:09:02 by younhwan          #+#    #+#             */
-/*   Updated: 2022/09/14 16:22:18 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/09/16 18:34:39 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,12 +65,12 @@ t_bool	is_sorted(t_stack *st)
 
 	if (st->sz_ <= 1)
 		return (TRUE);
-	tmp = st->head;
-	while (tmp->next)
+	tmp = st->tail;
+	while (tmp->prev)
 	{
-		if (tmp->val - 1 != tmp->next->val)
+		if (tmp->val > tmp->prev->val)
 			return (FALSE);
-		tmp = tmp->next;
+		tmp = tmp->prev;
 	}
 	return (TRUE);
 }

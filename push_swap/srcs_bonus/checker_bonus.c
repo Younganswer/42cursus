@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 19:52:28 by younhwan          #+#    #+#             */
-/*   Updated: 2022/09/14 21:07:30 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/09/16 18:35:18 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,27 +60,27 @@ static t_var	*init_var(int argc, char **argv)
 
 static t_bool	exec_cmd(t_var *var, const char *cmd)
 {
-	if (!ft_strncmp("sa", cmd, ft_strlen(cmd) - 1))
+	if (!ft_strncmp("sa", cmd, 2))
 		sa(var);
-	else if (!ft_strncmp("sb", cmd, ft_strlen(cmd) - 1))
+	else if (!ft_strncmp("sb", cmd, 2))
 		sb(var);
-	else if (!ft_strncmp("ss", cmd, ft_strlen(cmd) - 1))
+	else if (!ft_strncmp("ss", cmd, 2))
 		ss(var);
-	else if (!ft_strncmp("pa", cmd, ft_strlen(cmd) - 1))
+	else if (!ft_strncmp("pa", cmd, 2))
 		pa(var);
-	else if (!ft_strncmp("pb", cmd, ft_strlen(cmd) - 1))
+	else if (!ft_strncmp("pb", cmd, 2))
 		pb(var);
-	else if (!ft_strncmp("ra", cmd, ft_strlen(cmd) - 1))
+	else if (!ft_strncmp("ra", cmd, 2))
 		ra(var);
-	else if (!ft_strncmp("rb", cmd, ft_strlen(cmd) - 1))
+	else if (!ft_strncmp("rb", cmd, 2))
 		rb(var);
-	else if (!ft_strncmp("rr", cmd, ft_strlen(cmd) - 1))
+	else if (!ft_strncmp("rr", cmd, 2))
 		rr(var);
-	else if (!ft_strncmp("rra", cmd, ft_strlen(cmd) - 1))
+	else if (!ft_strncmp("rra", cmd, 3))
 		rra(var);
-	else if (!ft_strncmp("rrb", cmd, ft_strlen(cmd) - 1))
+	else if (!ft_strncmp("rrb", cmd, 3))
 		rrb(var);
-	else if (!ft_strncmp("rrr", cmd, ft_strlen(cmd) - 1))
+	else if (!ft_strncmp("rrr", cmd, 3))
 		rrr(var);
 	else
 		ft_exit_with_error(0, EXIT_SUCCESS);
