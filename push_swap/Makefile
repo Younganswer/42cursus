@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+         #
+#    By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/08 16:03:07 by younhwan          #+#    #+#              #
-#    Updated: 2022/09/16 19:39:23 by younhwan         ###   ########.fr        #
+#    Updated: 2022/09/17 14:02:10 by younhwan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -79,13 +79,10 @@ OBJS_BONUS = ${SRCS_BONUS:${SRCS_BONUS_DIR}/%.c=${OBJS_BONUS_DIR}/%.o}
 OUTPUT = output.txt
 
 
-all: ${OBJS_DIR}
-	@make ${NAME}
+all: ${NAME}
 
 
-bonus: ${OBJS_BONUS_DIR}
-	@make all
-	@make ${NAME_BONUS}
+bonus: all ${NAME_BONUS}
 
 
 # Default argc = 100
@@ -101,12 +98,13 @@ chk_leaks: ${OBJS_DIR} ${NAME}
 	while true; do leaks `ps | grep /push_swap/push_swap | awk 'NR==1 {print $$1}'`; sleep 1; done;
 
 # make run ARGC=[number_of_input]
-run:
-	@make bonus
+run: bonus
 	@echo -n "Number of input: "
 	@echo ${ARGC}
 	@echo "Instructions are stored in 'output.txt'"
-	@ARG=`ruby -e "puts (1..${ARGC}).to_a.shuffle.join(' ')"`; ./push_swap $$ARG > output.txt; echo -n "Checker result: "; ./checker $$ARG < output.txt
+	@ARG=`ruby -e "puts (1..${ARGC}).to_a.shuffle.join(' ')"`; ./push_swap $$ARG > output.txt;\
+	echo -n "Checker result: ";\
+	./checker $$ARG < output.txt
 	@wc -l output.txt | awk '{print "Number of instructions:", $$1}'
 
 
@@ -129,7 +127,7 @@ ${NAME}: ${OBJS}
 	@echo "Build push_swap: done"
 
 
-${OBJS_DIR}/%.o: ${SRCS_DIR}/%.c
+${OBJS_DIR}/%.o: ${SRCS_DIR}/%.c | ${OBJS_DIR}
 	${eval IDX = ${shell expr ${IDX} + 1}}
 	${eval T_IDX = ${shell expr ${IDX} % 32}}
 	${eval T_IDX = ${shell expr ${T_IDX} / 8 + 1}}
@@ -144,7 +142,7 @@ ${OBJS_BONUS_DIR}:
 	@mkdir -p objs_bonus
 
 
-${OBJS_BONUS_DIR}/%.o: ${SRCS_BONUS_DIR}/%.c
+${OBJS_BONUS_DIR}/%.o: ${SRCS_BONUS_DIR}/%.c | ${OBJS_BONUS_DIR}
 	${eval IDX = ${shell expr ${IDX} + 1}}
 	${eval T_IDX = ${shell expr ${IDX} % 32}}
 	${eval T_IDX = ${shell expr ${T_IDX} / 8 + 1}}
