@@ -6,7 +6,7 @@
 #    By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/08 16:03:07 by younhwan          #+#    #+#              #
-#    Updated: 2022/09/17 14:02:10 by younhwan         ###   ########.fr        #
+#    Updated: 2022/09/18 00:18:16 by younhwan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -132,7 +132,9 @@ ${OBJS_DIR}/%.o: ${SRCS_DIR}/%.c | ${OBJS_DIR}
 	${eval T_IDX = ${shell expr ${IDX} % 32}}
 	${eval T_IDX = ${shell expr ${T_IDX} / 8 + 1}}
 	${eval CHR = ${shell echo ${SPINNER} | cut -c ${T_IDX}}}
-	@if [ ${IDX} = 1 ]; then echo -n "Build dependencies in push_swap ...  "; fi
+	@if [ ${IDX} = 1 ]; then\
+		echo -n "Build dependencies in push_swap ...  ";\
+	fi
 	@printf "\b${CHR}"
 	@${CC} ${CFLAGS} -g -c $< -o $@ -I ${INCS_DIR}
 
