@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+         #
+#    By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/08 16:03:07 by younhwan          #+#    #+#              #
-#    Updated: 2022/09/15 11:09:44 by younhwan         ###   ########.fr        #
+#    Updated: 2022/09/18 13:22:30 by younhwan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -66,7 +66,7 @@ all: ${OBJS_DIRS}
 # 	mkdir -p objs_bonus
 
 ${OBJS_DIR}:
-	@echo "Build libft_printf.a"
+	@echo "Build libftprintf.a"
 	@mkdir -p objs
 
 ${OBJ_FILES}: %.o: ${addsuffix .c,${subst obj,src,${%}}}
@@ -74,7 +74,7 @@ ${OBJ_FILES}: %.o: ${addsuffix .c,${subst obj,src,${%}}}
 	${eval T_IDX = ${shell expr ${IDX} % 32}}
 	${eval T_IDX = ${shell expr ${T_IDX} / 8 + 1}}
 	${eval CHR = ${shell echo ${SPINNER} | cut -c ${T_IDX}}}
-	@if [ ${IDX} = 1 ]; then echo -n "Build dependencies in libft_printf.a ...  "; fi
+	@if [ ${IDX} = 1 ]; then echo -n "Build dependencies in libftprintf.a ...  "; fi
 	@printf "\b${CHR}"
 	@${CC} ${CFLAGS} -c ${patsubst %.o,%.c,${subst obj,src,$@}} -o $@ -I ${INCS_DIR}
 
@@ -84,7 +84,7 @@ ${NAME}: ${OBJ_FILES}
 	@cp ${LIBFT_DIR}/${LIBFT_NAME} .
 	@mv ${LIBFT_NAME} ${NAME}
 	@${AR} $@ $^
-	@echo "Build libft_printf.a: done"
+	@echo "Build libftprintf.a: done"
 
 clean:
 	@echo "Remove dependencies in ft_printf"
@@ -95,12 +95,12 @@ clean:
 fclean:
 	@echo "Remove dependencies in ft_printf"
 	@make -C ${LIBFT_DIR} fclean
-	@echo "Remove libft_printf.a"
+	@echo "Remove libftprintf.a"
 	@rm -rf ${OBJS_DIR}
 	@${RM} ${NAME}
 
 re:
-	@echo "Re-build libft_printf.a"
+	@echo "Re-build libftprintf.a"
 	@make fclean
 	@make all
 

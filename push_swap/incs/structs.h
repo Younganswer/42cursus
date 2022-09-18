@@ -3,18 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/03 17:18:05 by younhwan          #+#    #+#             */
-/*   Updated: 2022/09/13 23:45:56 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/09/18 13:21:54 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STRUCTS_H
 # define STRUCTS_H
 
-# include "../libs/ft_printf/includes/ft_printf.h"
-# include "../libs/get_next_line/includes/get_next_line.h"
+# include "../libs/ft_printf/libft/includes/libft.h"
 
 typedef enum e_shape
 {

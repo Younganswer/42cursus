@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/25 22:09:02 by younhwan          #+#    #+#             */
-/*   Updated: 2022/09/16 20:20:04 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/09/18 13:14:30 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,27 +34,27 @@ void	print_exec(t_stack *st)
 {
 	while (st->head)
 	{
-		if (st->head->exec == SA && ft_putendl_fd("sa", 1))
+		if (st->head->exec == SA && ft_printf("sa\n"))
 			st->head = st->head->next;
-		else if (st->head->exec == SB && ft_putendl_fd("sb", 1))
+		else if (st->head->exec == SB && ft_printf("sb\n"))
 			st->head = st->head->next;
-		else if (st->head->exec == SS && ft_putendl_fd("ss", 1))
+		else if (st->head->exec == SS && ft_printf("ss\n"))
 			st->head = st->head->next;
-		else if (st->head->exec == PA && ft_putendl_fd("pa", 1))
+		else if (st->head->exec == PA && ft_printf("pa\n"))
 			st->head = st->head->next;
-		else if (st->head->exec == PB && ft_putendl_fd("pb", 1))
+		else if (st->head->exec == PB && ft_printf("pb\n"))
 			st->head = st->head->next;
-		else if (st->head->exec == RA && ft_putendl_fd("ra", 1))
+		else if (st->head->exec == RA && ft_printf("ra\n"))
 			st->head = st->head->next;
-		else if (st->head->exec == RB && ft_putendl_fd("rb", 1))
+		else if (st->head->exec == RB && ft_printf("rb\n"))
 			st->head = st->head->next;
-		else if (st->head->exec == RR && ft_putendl_fd("rr", 1))
+		else if (st->head->exec == RR && ft_printf("rr\n"))
 			st->head = st->head->next;
-		else if (st->head->exec == RRA && ft_putendl_fd("rra", 1))
+		else if (st->head->exec == RRA && ft_printf("rra\n"))
 			st->head = st->head->next;
-		else if (st->head->exec == RRB && ft_putendl_fd("rrb", 1))
+		else if (st->head->exec == RRB && ft_printf("rrb\n"))
 			st->head = st->head->next;
-		else if (st->head->exec == RRR && ft_putendl_fd("rrr", 1))
+		else if (st->head->exec == RRR && ft_printf("rrr\n"))
 			st->head = st->head->next;
 	}
 }

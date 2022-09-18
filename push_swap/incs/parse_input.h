@@ -6,15 +6,14 @@
 /*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/31 23:29:18 by younhwan          #+#    #+#             */
-/*   Updated: 2022/09/16 15:31:10 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/09/18 13:20:32 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PARSE_INPUT_H
 # define PARSE_INPUT_H
 
-# include "../libs/ft_printf/includes/ft_printf.h"
-# include "../libs/get_next_line/includes/get_next_line.h"
+# include "../libs/ft_printf/libft/includes/libft.h"
 # include "structs.h"
 # include "stack.h"
 

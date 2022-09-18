@@ -3,18 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   sort_small.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/12 14:34:26 by younhwan          #+#    #+#             */
-/*   Updated: 2022/09/12 14:44:29 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/09/18 13:21:50 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SORT_SMALL_H
 # define SORT_SMALL_H
 
-# include "../libs/ft_printf/includes/ft_printf.h"
-# include "../libs/get_next_line/includes/get_next_line.h"
+# include "../libs/ft_printf/libft/includes/libft.h"
 # include "structs.h"
 # include "stack.h"
 # include "parse_input.h"

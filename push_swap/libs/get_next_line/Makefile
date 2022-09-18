@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+         #
+#    By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/01 00:26:43 by younhwan          #+#    #+#              #
-#    Updated: 2022/09/15 11:09:43 by younhwan         ###   ########.fr        #
+#    Updated: 2022/09/18 13:22:58 by younhwan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,7 +44,7 @@ ${OBJS_DIR}/%.o: ${SRCS_DIR}/%.c
 	${eval T_IDX = ${shell expr ${IDX} % 32}}
 	${eval T_IDX = ${shell expr ${T_IDX} / 8 + 1}}
 	${eval CHR = ${shell echo ${SPINNER} | cut -c ${T_IDX}}}
-	@if [ ${IDX} = 1 ]; then echo -n "Build dependencies in libft_printf.a ...  "; fi
+	@if [ ${IDX} = 1 ]; then echo -n "Build dependencies in libgnl.a ...  "; fi
 	@printf "\b${CHR}"
 	@${CC} ${CFLAGS} -c ${patsubst %.o,%.c,${subst obj,src,$@}} -o $@ -I ${INCS_DIR}
 
