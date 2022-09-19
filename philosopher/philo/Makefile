@@ -6,7 +6,7 @@
 #    By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/08 16:03:07 by younhwan          #+#    #+#              #
-#    Updated: 2022/09/19 11:10:57 by younhwan         ###   ########.fr        #
+#    Updated: 2022/09/19 12:53:00 by younhwan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,6 +26,7 @@ SRCS_DIR	= ./srcs
 OBJS_DIR	= ./objs
 
 SRCS = 	philo.c\
+		utils/ft_atoi.c
 		
 SRCS := ${addprefix ${SRCS_DIR}/, ${SRCS}}
 OBJS = ${SRCS:${SRCS_DIR}/%.c=${OBJS_DIR}/%.o}
@@ -36,6 +37,7 @@ all: ${NAME}
 ${OBJS_DIR}:
 	@echo "Build philo"
 	@mkdir -p objs
+	@mkdir -p objs/utils
 
 
 ${NAME}: ${OBJS}
