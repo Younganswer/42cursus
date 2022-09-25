@@ -1,7 +1,7 @@
 ![42_Logo](http://is.am/56pk)
 ![42_email](http://is.am/56pv)
 <br/>
-![42 stats](https://badge42.vercel.app/api/v2/cl5ndb2w1003509l7uhsiooz8/stats?cursusId=21&coalitionId=88)](https://github.com/JaeSeoKim/badge42)
+![42 stats]()
 <br/><br/>
 
 # 42cursus
