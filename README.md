@@ -1,6 +1,3 @@
-![42_Logo](http://is.am/56pk)
-![42_email](http://is.am/56pw)
-<br/>
 ![42 stats](https://badge42.vercel.app/api/v2/cl8h1sspf00640gjzpe8t5f1y/stats?cursusId=21&coalitionId=85)
 <br/><br/>
 
