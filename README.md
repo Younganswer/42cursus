@@ -6,7 +6,7 @@
 
 | Project       | Tags                        | Circle | Score | Date Submitted   |
 | ------------- | --------------------------- | ------ | ----- | ---------------- |
-| [libft](./libft)         | #library #libc #Makefile    | 0      | 125(https://badge42.vercel.app/api/v2/cl8h1sspf00640gjzpe8t5f1y/project/2645004)   | Thu Jul 21, 2022 |
+| [libft](./libft)         | #library #libc #Makefile    | 0      | [125](https://badge42.vercel.app/api/v2/cl8h1sspf00640gjzpe8t5f1y/project/2645004)   | Thu Jul 21, 2022 |
 | [ft_printf](./ft_printf)     | #printf #variadic_arguments | 1      | 100   | Fri Jul 22, 2022 |
 | [get_next_line](./get_next_line) | #fileio #static #buffer #fd | 1      | 125   | Fri Jul 29, 2022 |
 | Born2beroot   | #virtual_machine #server    | 1      | 125   | Tue Aug 9, 2022  |
