@@ -1,4 +1,4 @@
-![42_Logo](http://is.am/56pg)
+![42_Logo](http://is.am/56pj)
 ![42_email](http://is.am/56pv)
 
 # 42cursus
