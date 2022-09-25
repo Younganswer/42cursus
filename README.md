@@ -1,3 +1,5 @@
+[42_Logo](https://img.shields.io/badge/42seoul-younhwan-success.svg?logo=data:42_Logo.svg)
+
 # 42cursus
 42cursus started at July 4th, 2022
 
