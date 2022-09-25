@@ -1,5 +1,5 @@
 ![42_Logo](http://is.am/56pb)
-![42_email](https://img.shields.io/badge/%20-younhwan%40student.42seoul.kr-critical/v1?style=plastic)
+![42_email](https://img.shields.io/static/v1?label=%20&message=younhwan%40student.42seoul.kr&color=critical&style=plastic&logo=#EA4335)
 
 # 42cursus
 42cursus started at July 4th, 2022
