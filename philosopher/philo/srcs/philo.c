@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 10:48:27 by younhwan          #+#    #+#             */
-/*   Updated: 2022/09/25 15:34:42 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/09/25 20:29:34 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ int	main(int argc, char **argv)
 	if (argc < 5 || 6 < argc)
 		ft_exit_with_error("Usage: ./philo <number_of_philosophers> <time_to_die> <time_to_eat> <time_to_sleep> [number_of_times_each_phliosopher_must_eat]", 0);
 	info = init_info(argc, argv);
+	monitor(info);
 	return (0);
 }
 
@@ -57,6 +58,7 @@ static t_philo	*init_philo(size_t sz_)
 	while (i < sz_)
 	{
 		ret[i].id = i;
+		gettimeofday(&ret[i].time_ate, NULL);
 		i++;
 	}
 	return (ret);

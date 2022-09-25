@@ -6,14 +6,15 @@
 /*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 12:50:51 by younhwan          #+#    #+#             */
-/*   Updated: 2022/09/25 15:28:25 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/09/25 19:34:49 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef UTILS_H
 # define UTILS_H
 
-# include "philo.h"
+# include "unistd.h"
+# include "stdlib.h"
 
 // ft_atoi.c
 int		ft_atoi(const char *str);

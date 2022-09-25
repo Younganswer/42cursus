@@ -6,7 +6,7 @@
 #    By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/08 16:03:07 by younhwan          #+#    #+#              #
-#    Updated: 2022/09/25 15:28:36 by younhwan         ###   ########.fr        #
+#    Updated: 2022/09/25 20:29:23 by younhwan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,8 @@ OBJS_DIR	= ./objs
 SRCS = 	philo.c\
 		utils/ft_atoi.c\
 		utils/ft_exit_with_error.c\
-		utils/ft_putstr_fd.c
+		utils/ft_putstr_fd.c\
+		monitor/monitor.c
 		
 SRCS := ${addprefix ${SRCS_DIR}/, ${SRCS}}
 OBJS = ${SRCS:${SRCS_DIR}/%.c=${OBJS_DIR}/%.o}
@@ -40,6 +41,7 @@ ${OBJS_DIR}:
 	@echo "Build philo"
 	@mkdir -p objs
 	@mkdir -p objs/utils
+	@mkdir -p objs/monitor
 
 
 ${NAME}: ${OBJS}

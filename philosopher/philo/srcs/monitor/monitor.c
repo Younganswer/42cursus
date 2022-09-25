@@ -1,41 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   structs.h                                          :+:      :+:    :+:   */
+/*   monitor.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/19 10:53:06 by younhwan          #+#    #+#             */
-/*   Updated: 2022/09/25 20:24:53 by younhwan         ###   ########.fr       */
+/*   Created: 2022/09/25 19:45:39 by younhwan          #+#    #+#             */
+/*   Updated: 2022/09/25 20:33:02 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef STRUCTS_H
-# define STRUCTS_H
+#include "../../incs/monitor.h"
 
-# include "stddef.h"
-# include "sys/time.h"
+t_bool	monitor(t_info *info);
 
-typedef enum	ebool
+t_bool	monitor(t_info *info)
 {
-	FALSE = 0,
-	TRUE = 1,
-}	t_bool;
+	struct timeval	cur;
+	size_t			i;
 
-typedef struct	s_philo
-{
-	size_t			id;
-	struct timeval	time_ate;
-}	t_philo;
-
-typedef struct	s_info
-{
-	size_t	num_of_philo;
-	size_t	time_to_die;
-	size_t	time_to_eat;
-	size_t	time_to_sleep;
-	size_t	num_to_eat;
-	t_philo	*philos;
-}	t_info;
-
-#endif
+	gettimeofday(&cur, NULL);
+	i = 0;
+	while (i < info->num_of_philo)
+	{
+		printf("%d_in_ms %zu has taken a fork\n", info->philos[i].time_ate.tv_usec, info->philos[i].id);
+		i++;
+	}
+	return (TRUE);
+}
