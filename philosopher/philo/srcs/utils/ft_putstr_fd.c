@@ -1,27 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.h                                            :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/19 12:50:51 by younhwan          #+#    #+#             */
-/*   Updated: 2022/09/25 15:28:25 by younhwan         ###   ########.fr       */
+/*   Created: 2022/09/25 15:26:53 by younhwan          #+#    #+#             */
+/*   Updated: 2022/09/25 15:27:56 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef UTILS_H
-# define UTILS_H
+#include "../../incs/utils.h"
 
-# include "philo.h"
+int	ft_putstr_fd(const char *str, int fd)
+{
+	int	printed;
 
-// ft_atoi.c
-int		ft_atoi(const char *str);
-
-// ft_exit_with_error.c
-void	ft_exit_with_error(const char *str, int exit_flag);
-
-// ft_putstr_fd.c
-int		ft_putstr_fd(const char *str, int fd);
-
-#endif
+	printed = 0;
+	while (str && *str)
+		printed += write(fd, str++, 1);
+	return (printed);
+}

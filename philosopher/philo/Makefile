@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+         #
+#    By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/08 16:03:07 by younhwan          #+#    #+#              #
-#    Updated: 2022/09/19 12:53:00 by younhwan         ###   ########.fr        #
+#    Updated: 2022/09/25 15:28:36 by younhwan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,9 @@ SRCS_DIR	= ./srcs
 OBJS_DIR	= ./objs
 
 SRCS = 	philo.c\
-		utils/ft_atoi.c
+		utils/ft_atoi.c\
+		utils/ft_exit_with_error.c\
+		utils/ft_putstr_fd.c
 		
 SRCS := ${addprefix ${SRCS_DIR}/, ${SRCS}}
 OBJS = ${SRCS:${SRCS_DIR}/%.c=${OBJS_DIR}/%.o}

@@ -1,27 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.h                                            :+:      :+:    :+:   */
+/*   ft_exit_with_error.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/19 12:50:51 by younhwan          #+#    #+#             */
-/*   Updated: 2022/09/25 15:28:25 by younhwan         ###   ########.fr       */
+/*   Created: 2022/08/25 16:15:47 by younhwan          #+#    #+#             */
+/*   Updated: 2022/09/25 15:05:39 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef UTILS_H
-# define UTILS_H
+#include "../../incs/utils.h"
 
-# include "philo.h"
-
-// ft_atoi.c
-int		ft_atoi(const char *str);
-
-// ft_exit_with_error.c
-void	ft_exit_with_error(const char *str, int exit_flag);
-
-// ft_putstr_fd.c
-int		ft_putstr_fd(const char *str, int fd);
-
-#endif
+void	ft_exit_with_error(const char *str, int exit_flag)
+{
+	ft_putstr_fd("\033[31mError\033[0m\n", 2);
+	if (str)
+	{
+		ft_putstr_fd("\033[31m", 2);
+		ft_putstr_fd(str, 2);
+		ft_putstr_fd("\033[0m\n", 2);
+	}
+	exit(exit_flag);
+}

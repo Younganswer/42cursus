@@ -3,49 +3,49 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 19:53:11 by younhwan          #+#    #+#             */
-/*   Updated: 2022/09/19 12:52:36 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/09/25 15:37:27 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../incs/philo.h"
+#include "../../incs/utils.h"
 #include "limits.h"
 
 int			ft_atoi(const char *str);
-static int	ft_isspace(char c);
+static int	ft_isspace(const char c);
 
 int	ft_atoi(const char *str)
 {
 	unsigned long long	nbr;
-	int					sign;
-	size_t				i;
+	int					i;
 
 	nbr = 0;
-	sign = 1;
 	i = 0;
 	while (str[i] && ft_isspace(str[i]))
 		i++;
 	if (str[i] == '+' || str[i] == '-')
 	{
 		if (str[i] == '-')
-			sign = -1;
+			ft_exit_with_error("Input must be natural number", 0);
 		i++;
 	}
 	while (str[i] && ('0' <= str[i] && str[i] <= '9'))
 	{
+		if (str[i] < '0' || '9' < str[i])
+			ft_exit_with_error("Input must be integer", 0);
 		nbr = 10 * nbr + (str[i] - '0');
-		if (sign == 1 && __LONG_LONG_MAX__ < nbr)
-			return (-1);
-		if (sign == -1 && (unsigned long long) __LONG_LONG_MAX__ + 1 < nbr)
-			return (0);
+		if (2147483647 < nbr)
+			ft_exit_with_error("Input must be integer", 0);
 		i++;
 	}
-	return ((int) nbr * sign);
+	if (!nbr)
+		ft_exit_with_error("Input must be natural number", 0);
+	return ((int) nbr);
 }
 
-static int	ft_isspace(char c)
+static int	ft_isspace(const char c)
 {
 	if ((9 <= c && c <= 13) || c == 32)
 		return (1);
