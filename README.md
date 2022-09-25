@@ -1,4 +1,4 @@
-[42_Logo](https://badgen.net/badge/42seoul/younhwan/success?cache=86400&icon=https://meta.intra.42.fr/assets/42_logo-7dfc9110a5319a308863b96bda33cea995046d1731cebb735e41b16255106c12.svg)
+[42_Logo](https://img.shields.io/badge/42seoul-younhwan-success.svg?logo=https://meta.intra.42.fr/assets/42_logo-7dfc9110a5319a308863b96bda33cea995046d1731cebb735e41b16255106c12.svg)
 
 # 42cursus
 42cursus started at July 4th, 2022
