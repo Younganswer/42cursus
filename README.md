@@ -13,5 +13,5 @@
 | Exam Rank 02  |                             | 2      | [![younhwan's 42 Exam Rank 02 Score](http://is.am/56pr)](https://github.com/JaeSeoKim/badge42) | Tue Aug 23, 2022 |
 | [pipex](./pipex)         | #pipe #multi_processing #fd | 2      | [![younhwan's 42 pipex Score](http://is.am/56ps)](https://github.com/JaeSeoKim/badge42) | Wed Aug 24, 2022 |
 | [so_long](./so_long)       | #graphic #game #sprite      | 2      | [![younhwan's 42 so_long Score](http://is.am/56pt)](https://github.com/JaeSeoKim/badge42) | Tue Aug 30, 2022 |
-| [push_swap](./push_swap)     | #algorithm #sort #complexity | 2      | [![younhwan's 42 push_swap Score](http://is.am/56pu)](https://github.com/JaeSeoKim/badge42) | Sum Sep 18, 2022 |
+| [push_swap](./push_swap)     | #algorithm #sort #complexity | 2      | [![younhwan's 42 push_swap Score](http://is.am/56pu)](https://github.com/JaeSeoKim/badge42) | Sun Sep 18, 2022 |
 | [philosopher](./philosopher)     |                              | 3      |       |                  |
