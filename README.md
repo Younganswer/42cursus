@@ -1,5 +1,5 @@
 ![42_Logo](http://is.am/56pg)
-![42_email](http://is.am/56ph)
+![42_email](http://is.am/56pv)
 
 # 42cursus
 42cursus started at July 4th, 2022
