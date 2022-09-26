@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   monitor.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/25 19:45:49 by younhwan          #+#    #+#             */
-/*   Updated: 2022/09/25 20:30:00 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/09/26 12:06:19 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,6 @@
 # include "structs.h"
 
 // monitor.c
-t_bool	monitor(t_info *info);
+t_bool	monitor(t_philo *philos);
 
 #endif
