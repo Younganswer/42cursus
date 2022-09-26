@@ -3,18 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 10:53:06 by younhwan          #+#    #+#             */
-/*   Updated: 2022/09/25 20:24:53 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/09/26 11:27:42 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STRUCTS_H
 # define STRUCTS_H
 
-# include "stddef.h"
-# include "sys/time.h"
+# include <pthread.h>
+# include <stddef.h>
+# include <sys/time.h>
 
 typedef enum	ebool
 {
@@ -22,20 +23,34 @@ typedef enum	ebool
 	TRUE = 1,
 }	t_bool;
 
-typedef struct	s_philo
+typedef enum	e_state
 {
-	size_t			id;
-	struct timeval	time_ate;
-}	t_philo;
+	OCCUPIED = 0,
+	AVAILABLE = 1,
+}	t_state;
 
 typedef struct	s_info
 {
-	size_t	num_of_philo;
-	size_t	time_to_die;
-	size_t	time_to_eat;
-	size_t	time_to_sleep;
-	size_t	num_to_eat;
-	t_philo	*philos;
+	size_t			num_of_philo;
+	size_t			time_to_die;
+	size_t			time_to_eat;
+	size_t			time_to_sleep;
+	size_t			num_to_eat;
+	struct timeval	*started;
 }	t_info;
+
+typedef struct s_fork
+{
+	t_state	state;
+}	t_fork;
+
+typedef struct	s_philo
+{
+	t_info			*info;
+	t_fork			*forks;
+	size_t			id;
+	pthread_t		thread;
+	struct timeval	*time_ate;
+}	t_philo;
 
 #endif

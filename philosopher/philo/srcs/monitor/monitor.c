@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   monitor.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/25 19:45:39 by younhwan          #+#    #+#             */
-/*   Updated: 2022/09/25 20:33:02 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/09/26 11:28:50 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ t_bool	monitor(t_info *info)
 	i = 0;
 	while (i < info->num_of_philo)
 	{
-		printf("%d_in_ms %zu has taken a fork\n", info->philos[i].time_ate.tv_usec, info->philos[i].id);
 		i++;
 	}
 	return (TRUE);
