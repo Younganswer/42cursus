@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 10:53:06 by younhwan          #+#    #+#             */
-/*   Updated: 2022/09/26 23:20:23 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/09/28 11:04:31 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,9 @@ typedef struct	s_info
 	size_t			time_to_eat;
 	size_t			time_to_sleep;
 	size_t			num_to_eat;
+	t_fork			*forks;
 	struct timeval	*started;
+	t_bool			someone_die;
 }	t_info;
 
 typedef struct s_fork
@@ -47,7 +49,8 @@ typedef struct s_fork
 typedef struct	s_philo
 {
 	t_info			*info;
-	t_fork			*forks;
+	t_fork			*left_fork;
+	t_fork			*right_fork;
 	size_t			id;
 	pthread_t		thread;
 	struct timeval	*time_ate;

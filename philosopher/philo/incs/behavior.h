@@ -1,25 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_exit_with_error.c                               :+:      :+:    :+:   */
+/*   behavior.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/25 16:15:47 by younhwan          #+#    #+#             */
-/*   Updated: 2022/09/28 10:33:45 by younhwan         ###   ########.fr       */
+/*   Created: 2022/09/28 10:47:28 by younhwan          #+#    #+#             */
+/*   Updated: 2022/09/28 10:58:47 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../incs/utils.h"
+#ifndef BEHAVIOR_H
+# define BRHAVIOR_H
 
-void	ft_exit_with_error(const char *str, int exit_flag)
-{
-	ft_putstr_fd("\033[31mError\033[0m\n", 2);
-	if (str)
-	{
-		ft_putstr_fd("\033[31m", 2);
-		ft_putstr_fd(str, 2);
-		ft_putstr_fd("\033[0m\n", 2);
-	}
-	exit(exit_flag);
-}
+# include <unistd.h>
+# include "structs.h"
+
+// behavior.c
+void	*behavior(void *arg);
+
+#endif
