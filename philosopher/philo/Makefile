@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+         #
+#    By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/08 16:03:07 by younhwan          #+#    #+#              #
-#    Updated: 2022/09/25 20:29:23 by younhwan         ###   ########.fr        #
+#    Updated: 2022/09/28 12:47:31 by younhwan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,8 @@ SRCS = 	philo.c\
 		utils/ft_atoi.c\
 		utils/ft_exit_with_error.c\
 		utils/ft_putstr_fd.c\
-		monitor/monitor.c
+		monitor/monitor.c\
+		behavior/behavior.c
 		
 SRCS := ${addprefix ${SRCS_DIR}/, ${SRCS}}
 OBJS = ${SRCS:${SRCS_DIR}/%.c=${OBJS_DIR}/%.o}
@@ -42,6 +43,7 @@ ${OBJS_DIR}:
 	@mkdir -p objs
 	@mkdir -p objs/utils
 	@mkdir -p objs/monitor
+	@mkdir -p objs/behavior
 
 
 ${NAME}: ${OBJS}

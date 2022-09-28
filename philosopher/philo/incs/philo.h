@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 10:46:49 by younhwan          #+#    #+#             */
-/*   Updated: 2022/09/25 20:29:08 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/09/28 12:46:28 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,5 +19,6 @@
 # include "structs.h"
 # include "utils.h"
 # include "monitor.h"
+# include "behavior.h"
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 10:53:06 by younhwan          #+#    #+#             */
-/*   Updated: 2022/09/28 11:04:31 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/09/28 12:45:08 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,12 @@ typedef enum	e_state
 	AVAILABLE = 1,
 }	t_state;
 
+typedef struct s_fork
+{
+	pthread_mutex_t	*mutex;
+	t_state			state;
+}	t_fork;
+
 typedef struct	s_info
 {
 	size_t			num_of_philo;
@@ -41,11 +47,6 @@ typedef struct	s_info
 	t_bool			someone_die;
 }	t_info;
 
-typedef struct s_fork
-{
-	t_state	state;
-}	t_fork;
-
 typedef struct	s_philo
 {
 	t_info			*info;
@@ -53,7 +54,7 @@ typedef struct	s_philo
 	t_fork			*right_fork;
 	size_t			id;
 	pthread_t		thread;
-	struct timeval	*time_ate;
+	struct timeval	*cur;
 }	t_philo;
 
 #endif

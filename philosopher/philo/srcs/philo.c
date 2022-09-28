@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 10:48:27 by younhwan          #+#    #+#             */
-/*   Updated: 2022/09/28 11:08:23 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/09/28 12:59:55 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,11 @@
 static t_philo	*init_philos(int argc, char **argv);
 static t_info	*init_info(int argc, char **argv);
 static t_fork	*init_forks(size_t sz_);
-void			*live_as_long_as_you_can(void *arg);
 
 int	main(int argc, char **argv)
 {
 	t_philo	*philos;
+	size_t	sz_;
 	size_t	i;
 
 	if (argc < 5 || 6 < argc)
@@ -27,15 +27,16 @@ int	main(int argc, char **argv)
 			<time_to_die> <time_to_eat> <time_to_sleep> \
 			[number_of_times_each_phliosopher_must_eat]", 0);
 	philos = init_philos(argc, argv);
+	sz_ = philos[0].info->num_of_philo;
 	i = 0;
-	while (i < philos[i].info->num_of_philo)
+	while (i < sz_)
 	{
-		pthread_create(&(philos[i].thread), NULL, live_as_long_as_you_can, &philos[i]);
+		pthread_create(&(philos[i].thread), NULL, behavior, &philos[i]);
 		i++;
 	}
 	monitor(philos);
 	i = 0;
-	while (i < philos[i].info->num_of_philo)
+	while (i < sz_)
 	{
 		pthread_join(philos[i].thread, NULL);
 		i++;
@@ -59,10 +60,10 @@ static t_philo	*init_philos(int argc, char **argv)
 	{
 		ret[i].id = i;
 		ret[i].info = info;
-		ret[i].time_ate = (struct timeval *) malloc(sizeof(struct timeval));
-		if (!ret[i].time_ate)
-			ft_exit_with_error("Fail to malloc at time_ate", 1);
-		memset(ret[i].time_ate, 0, sizeof(struct timeval));
+		ret[i].cur = (struct timeval *) malloc(sizeof(struct timeval));
+		if (!ret[i].cur)
+			ft_exit_with_error("Fail to malloc at cur_time", 1);
+		memset(ret[i].cur, 0, sizeof(struct timeval));
 		i++;
 	}
 	return (ret);
@@ -99,6 +100,12 @@ static t_fork	*init_forks(size_t sz_)
 	memset(ret, 0, sizeof(t_fork) * sz_);
 	i = 0;
 	while (i < sz_)
+	{
+		ret[i].mutex = (pthread_mutex_t *) malloc(sizeof(pthread_mutex_t));
+		if (!ret[i].mutex)
+			ft_exit_with_error("Fail to malloc at mutex", 1);
+		memset(ret[i].mutex, 0, sizeof(pthread_mutex_t));
 		ret[i++].state = AVAILABLE;
+	}
 	return (ret);
 }
