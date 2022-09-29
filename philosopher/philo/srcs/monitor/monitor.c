@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/25 19:45:39 by younhwan          #+#    #+#             */
-/*   Updated: 2022/09/29 16:35:25 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/09/29 16:37:47 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,17 @@ t_bool	monitor(t_philo *philos)
 
 static t_bool	someone_is_dead(t_philo *philos)
 {
-	if (philos->info->time_to_die < \
-		diff_time(philos->info->started) - diff_time(philos->last_eat))
-		return (TRUE);
+	size_t	i;
+
+	i = 0;
+	while (i < philos->info->num_of_philo)
+	{
+		if (0 < diff_time(philos[i].last_eat) && \
+			(philos->info->time_to_die < \
+			diff_time(philos->info->started) - diff_time(philos[i].last_eat)))
+			return (TRUE);
+		i++;
+	}
 	return (FALSE);
 }
 
