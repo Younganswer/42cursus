@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 12:50:51 by younhwan          #+#    #+#             */
-/*   Updated: 2022/09/29 16:08:36 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/09/29 16:56:55 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,5 +28,8 @@ int		ft_putstr_fd(const char *str, int fd);
 
 // diff_time.c
 size_t	diff_time(struct timeval *tv);
+
+// time_passed.c
+t_bool	time_passed(size_t msec);
 
 #endif

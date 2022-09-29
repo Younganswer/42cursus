@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/25 19:45:39 by younhwan          #+#    #+#             */
-/*   Updated: 2022/09/29 16:44:38 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/09/29 17:08:10 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,5 +55,5 @@ static t_bool	someone_is_dead(t_philo *philos)
 static t_bool	eat_enough(t_philo *philos)
 {
 	(void) philos;
-	return (TRUE);
+	return (FALSE);
 }

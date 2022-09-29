@@ -1,28 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   diff_time.c                                        :+:      :+:    :+:   */
+/*   time_passed.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/29 16:04:04 by younhwan          #+#    #+#             */
-/*   Updated: 2022/09/29 17:10:16 by younhwan         ###   ########.fr       */
+/*   Created: 2022/09/29 16:55:42 by younhwan          #+#    #+#             */
+/*   Updated: 2022/09/29 16:57:26 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../incs/utils.h"
-#include <stdio.h>
 
-size_t	diff_time(struct timeval *tv);
+t_bool	time_passed(size_t msec);
 
-size_t	diff_time(struct timeval *tv)
+t_bool	time_passed(size_t msec)
 {
 	struct timeval	cur;
-	size_t			ret;
 
 	gettimeofday(&cur, NULL);
-	ret = (cur.tv_sec - tv->tv_sec) * 1000;
-	ret += (cur.tv_usec - tv->tv_usec) / 1000;
-	printf("ret: %zu\n", ret);
-	return (ret);
+	usleep(msec * 800);
+	while (diff_time(&cur) < msec)
+		usleep(msec * 200);
+	return (TRUE);
 }

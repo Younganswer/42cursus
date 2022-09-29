@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 10:48:03 by younhwan          #+#    #+#             */
-/*   Updated: 2022/09/29 16:30:53 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/09/29 17:00:43 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,9 @@ static t_bool	p_eat(t_philo *const philo)
 		return (FALSE);
 	gettimeofday(philo->last_eat, NULL);
 	printf("%zu %zu is eating\n", diff_time(philo->info->started), philo->id);
-	usleep(philo->info->time_to_eat);
+	if (philo->info->someone_die)
+		return (FALSE);
+	time_passed(philo->info->time_to_eat);
 	philo->left_fork->state = AVAILABLE;
 	philo->right_fork->state = AVAILABLE;
 	philo->left_fork = NULL;
@@ -80,6 +82,8 @@ static t_bool	p_sleep(t_philo *const philo)
 	if (philo->info->someone_die)
 		return (FALSE);
 	printf("%zu %zu is sleeping\n", diff_time(philo->info->started), philo->id);
-	usleep(philo->info->time_to_sleep);
+	if (philo->info->someone_die)
+		return (FALSE);
+	time_passed(philo->info->time_to_sleep);
 	return (TRUE);
 }
