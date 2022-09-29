@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 10:48:03 by younhwan          #+#    #+#             */
-/*   Updated: 2022/09/29 16:18:31 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/09/29 16:30:53 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,8 @@ static t_bool	p_take_forks(t_philo *const philo)
 	forks[left].state = OCCUPIED;
 	philo->right_fork = &forks[right];
 	forks[right].state = OCCUPIED;
-	printf("%zu %zu has taken a fork\n", diff_time(philo->info->started), philo->id);
+	printf("%zu %zu has taken a fork\n", \
+		diff_time(philo->info->started), philo->id);
 	return (TRUE);
 }
 
