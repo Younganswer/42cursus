@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 16:04:04 by younhwan          #+#    #+#             */
-/*   Updated: 2022/09/29 17:10:16 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/09/29 17:24:06 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,5 @@ size_t	diff_time(struct timeval *tv)
 	gettimeofday(&cur, NULL);
 	ret = (cur.tv_sec - tv->tv_sec) * 1000;
 	ret += (cur.tv_usec - tv->tv_usec) / 1000;
-	printf("ret: %zu\n", ret);
 	return (ret);
 }
