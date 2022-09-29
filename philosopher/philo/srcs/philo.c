@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 10:48:27 by younhwan          #+#    #+#             */
-/*   Updated: 2022/09/29 16:18:00 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/09/29 16:29:50 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ static t_philo	*init_philos(int argc, char **argv)
 		ret[i].info = info;
 		ret[i].last_eat = (struct timeval *) malloc(sizeof(struct timeval));
 		if (!ret[i].last_eat)
-			ft_exit_with_error("Fail to malloc at cur_time", 1);
+			ft_exit_with_error("Fail to malloc at last_eat", 1);
 		memset(ret[i].last_eat, 0, sizeof(struct timeval));
 		i++;
 	}
