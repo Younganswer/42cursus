@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 10:53:06 by younhwan          #+#    #+#             */
-/*   Updated: 2022/09/28 12:45:08 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/09/29 16:17:43 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ typedef struct	s_philo
 	t_fork			*right_fork;
 	size_t			id;
 	pthread_t		thread;
-	struct timeval	*cur;
+	struct timeval	*last_eat;
 }	t_philo;
 
 #endif

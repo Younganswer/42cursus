@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Crp_eated: 2022/09/28 10:48:03 by younhwan          #+#    #+#             */
-/*   Updated: 2022/09/28 12:48:02 by younhwan         ###   ########.fr       */
+/*   Created: 2022/09/28 10:48:03 by younhwan          #+#    #+#             */
+/*   Updated: 2022/09/29 16:18:31 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static t_bool	p_sleep(t_philo *const philo);
 
 void	*behavior(void *arg)
 {
-	t_philo	*const philo = (t_philo *) arg;
+	t_philo *const	philo = (t_philo *) arg;
 
 	while (!philo->info->started)
 		continue ;
@@ -42,24 +42,30 @@ void	*behavior(void *arg)
 
 static t_bool	p_take_forks(t_philo *const philo)
 {
-	while (philo->info->forks[philo->id].state == OCCUPIED || \
-			philo->info->forks[(philo->id + 1) % philo->info->num_of_philo].state == OCCUPIED)
+	const size_t	left = philo->id;
+	const size_t	right = (philo->id + 1) % philo->info->num_of_philo;
+	t_fork *const	forks = philo->info->forks;
+
+	if (philo->info->someone_die)
+		return (FALSE);
+	while (forks[left].state == OCCUPIED || forks[right].state == OCCUPIED)
 		continue ;
-	philo->left_fork = &philo->info->forks[philo->id];
-	philo->info->forks[philo->id].state = OCCUPIED;
-	philo->right_fork = &philo->info->forks[(philo->id + 1) % philo->info->num_of_philo];
-	philo->info->forks[(philo->id + 1) % philo->info->num_of_philo].state = OCCUPIED;
-	gettimeofday(philo->cur, NULL);
-	printf("%d %zu has taken a fork\n", philo->cur->tv_usec - philo->info->started->tv_usec, philo->id);
+	if (philo->info->someone_die)
+		return (FALSE);
+	philo->left_fork = &forks[left];
+	forks[left].state = OCCUPIED;
+	philo->right_fork = &forks[right];
+	forks[right].state = OCCUPIED;
+	printf("%zu %zu has taken a fork\n", diff_time(philo->info->started), philo->id);
 	return (TRUE);
 }
 
 static t_bool	p_eat(t_philo *const philo)
 {
-	gettimeofday(philo->cur, NULL);
-	if (philo->info->time_to_die < (size_t)philo->cur->tv_usec - philo->info->started->tv_usec)
+	if (philo->info->someone_die)
 		return (FALSE);
-	printf("%d %zu is eating\n", philo->cur->tv_usec - philo->info->started->tv_usec, philo->id);
+	gettimeofday(philo->last_eat, NULL);
+	printf("%zu %zu is eating\n", diff_time(philo->info->started), philo->id);
 	usleep(philo->info->time_to_eat);
 	philo->left_fork->state = AVAILABLE;
 	philo->right_fork->state = AVAILABLE;
@@ -70,10 +76,9 @@ static t_bool	p_eat(t_philo *const philo)
 
 static t_bool	p_sleep(t_philo *const philo)
 {
-	gettimeofday(philo->cur, NULL);
-	if (philo->info->time_to_die < (size_t)philo->cur->tv_usec - philo->info->started->tv_usec)
+	if (philo->info->someone_die)
 		return (FALSE);
-	printf("%d %zu is sleeping\n", philo->cur->tv_usec - philo->info->started->tv_usec, philo->id);
+	printf("%zu %zu is sleeping\n", diff_time(philo->info->started), philo->id);
 	usleep(philo->info->time_to_sleep);
 	return (TRUE);
 }
