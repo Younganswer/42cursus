@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 10:48:03 by younhwan          #+#    #+#             */
-/*   Updated: 2022/09/30 17:10:52 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/09/30 17:28:42 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,7 @@ void	*behavior(void *arg)
 			break ;
 		if (!p_sleep(philo))
 			break ;
-		// printf("BBBBBBBBBBBBBBB\n");
 	}
-	// printf("AAAAAAAAAAAAA\n");
 	return (NULL);
 }
 
