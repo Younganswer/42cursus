@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 12:50:51 by younhwan          #+#    #+#             */
-/*   Updated: 2022/09/30 16:15:18 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/10/01 01:37:27 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,6 @@ int		ft_putstr_fd(const char *str, int fd);
 size_t	diff_time(struct timeval *tv);
 
 // time_passed.c
-t_bool	time_passed(size_t msec);
+t_bool	time_passed(int msec);
 
 #endif
