@@ -6,14 +6,15 @@
 /*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 10:48:03 by younhwan          #+#    #+#             */
-/*   Updated: 2022/09/30 17:28:42 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/09/30 18:51:52 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../incs/behavior.h"
 
 void			*behavior(void *arg);
-static t_bool	p_take_forks(t_philo *const philo);
+static t_bool	p_take_left_fork(t_philo *const philo);
+static t_bool	p_take_right_fork(t_philo *const philo);
 static t_bool	p_eat(t_philo *const philo);
 static t_bool	p_sleep(t_philo *const philo);
 
@@ -27,11 +28,11 @@ void	*behavior(void *arg)
 	{
 		if (philo->id % 2)
 		{
-			usleep(philo->info->num_of_philo * 2);
-			if (!p_take_forks(philo))
+			usleep(philo->info->time_to_eat * 4);
+			if (!p_take_right_fork(philo) && !p_take_left_fork(philo))
 				break ;
 		}
-		else if (!p_take_forks(philo))
+		else if (!p_take_left_fork(philo) && !p_take_right_fork(philo))
 			break ;
 		if (!p_eat(philo))
 			break ;
@@ -41,32 +42,44 @@ void	*behavior(void *arg)
 	return (NULL);
 }
 
-static t_bool	p_take_forks(t_philo *const philo)
+static t_bool	p_take_left_fork(t_philo *const philo)
 {
-	const size_t	left = philo->id;
-	const size_t	right = (philo->id + 1) % philo->info->num_of_philo;
-	t_fork *const	forks = philo->info->forks;
+	const size_t	left = (philo->id + 1) % philo->info->num_of_philo;
+	t_fork *const	fork = philo->info->forks;
 
-	pthread_mutex_lock(forks[left].mutex);
-	pthread_mutex_lock(forks[right].mutex);
+	pthread_mutex_lock(fork[left].mutex);
+	philo->left_fork = &fork[left];
+	fork[left].state = OCCUPIED;
 	if (philo->info->someone_is_dead)
 	{
-		pthread_mutex_unlock(forks[left].mutex);
-		pthread_mutex_unlock(forks[right].mutex);
+		pthread_mutex_unlock(fork[left].mutex);
 		return (FALSE);
 	}
-	philo->left_fork = &forks[left];
-	forks[left].state = OCCUPIED;
-	philo->right_fork = &forks[right];
-	forks[right].state = OCCUPIED;
+	return (TRUE);
+}
+
+static t_bool	p_take_right_fork(t_philo *const philo)
+{
+	const size_t	right = philo->id;
+	t_fork *const	fork = philo->info->forks;
+
+	pthread_mutex_lock(fork[right].mutex);
+	philo->right_fork = &fork[right];
+	fork[right].state = OCCUPIED;
 	pthread_mutex_lock(philo->info->print_mutex);
-	printf("%zu %zu has taken a fork\n", \
-		diff_time(philo->info->started), philo->id);
+	if (philo->info->someone_is_dead)
+	{
+		pthread_mutex_unlock(fork[right].mutex);
+		return (FALSE);
+	}
 	return (TRUE);
 }
 
 static t_bool	p_eat(t_philo *const philo)
 {
+	pthread_mutex_lock(philo->info->print_mutex);
+	printf("%zu %zu has taken a fork\n", \
+		diff_time(philo->info->started), philo->id);
 	gettimeofday(philo->last_eat, NULL);
 	printf("%zu %zu is eating\n", diff_time(philo->info->started), philo->id);
 	pthread_mutex_unlock(philo->info->print_mutex);
@@ -77,9 +90,12 @@ static t_bool	p_eat(t_philo *const philo)
 	pthread_mutex_unlock(philo->right_fork->mutex);
 	philo->left_fork = NULL;
 	philo->right_fork = NULL;
-	if (philo->info->someone_is_dead)
-		return (FALSE);
 	pthread_mutex_lock(philo->info->print_mutex);
+	if (philo->info->someone_is_dead)
+	{
+		pthread_mutex_unlock(philo->info->print_mutex);
+		return (FALSE);
+	}
 	return (TRUE);
 }
 
@@ -88,9 +104,12 @@ static t_bool	p_sleep(t_philo *const philo)
 	printf("%zu %zu is sleeping\n", diff_time(philo->info->started), philo->id);
 	pthread_mutex_unlock(philo->info->print_mutex);
 	time_passed(philo->info->time_to_sleep);
-	if (philo->info->someone_is_dead)
-		return (FALSE);
 	pthread_mutex_lock(philo->info->print_mutex);
+	if (philo->info->someone_is_dead)
+	{
+		pthread_mutex_unlock(philo->info->print_mutex);
+		return (FALSE);
+	}
 	printf("%zu %zu is thinking\n", diff_time(philo->info->started), philo->id);
 	pthread_mutex_unlock(philo->info->print_mutex);
 	return (TRUE);
