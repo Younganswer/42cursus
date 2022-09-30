@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 10:53:06 by younhwan          #+#    #+#             */
-/*   Updated: 2022/09/29 16:17:43 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/09/30 16:37:34 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,8 @@ typedef struct	s_info
 	size_t			num_to_eat;
 	t_fork			*forks;
 	struct timeval	*started;
-	t_bool			someone_die;
+	t_bool			someone_is_dead;
+	pthread_mutex_t	*print_mutex;
 }	t_info;
 
 typedef struct	s_philo

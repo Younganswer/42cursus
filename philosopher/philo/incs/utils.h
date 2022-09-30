@@ -3,19 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   utils.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 12:50:51 by younhwan          #+#    #+#             */
-/*   Updated: 2022/09/29 16:56:55 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/09/30 16:15:18 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef UTILS_H
 # define UTILS_H
 
-# include "unistd.h"
-# include "stdlib.h"
-# include "structs.h"
+# include <unistd.h>
+# include <stdio.h>
+# include <stdlib.h>
+# include <structs.h>
 
 // ft_atoi.c
 int		ft_atoi(const char *str);

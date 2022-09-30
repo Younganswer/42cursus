@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 10:48:27 by younhwan          #+#    #+#             */
-/*   Updated: 2022/09/29 17:24:19 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/09/30 17:08:36 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	main(int argc, char **argv)
 {
 	t_philo	*philos;
 	size_t	sz_;
-	size_t	i;
+	int		i;
 
 	if (argc < 5 || 6 < argc)
 		ft_exit_with_error("Usage: ./philo <number_of_philosophers> \
@@ -28,19 +28,17 @@ int	main(int argc, char **argv)
 			[number_of_times_each_phliosopher_must_eat]", 0);
 	philos = init_philos(argc, argv);
 	sz_ = philos[0].info->num_of_philo;
-	i = 0;
-	while (i < sz_)
-	{
+	i = -1;
+	while ((size_t)++i < sz_)
 		pthread_create(&(philos[i].thread), NULL, behavior, &philos[i]);
-		i++;
-	}
 	monitor(philos);
-	i = 0;
-	while (i < sz_)
-	{
+	i = -1;
+	while ((size_t)++i < sz_)
 		pthread_join(philos[i].thread, NULL);
-		i++;
-	}
+	i = -1;
+	while ((size_t)++i < sz_)
+		pthread_mutex_destroy(philos->info->forks[i].mutex);
+	pthread_mutex_destroy(philos->info->print_mutex);
 	return (0);
 }
 
@@ -81,11 +79,14 @@ static t_info	*init_info(int argc, char **argv)
 	ret->time_to_die = ft_atoi(argv[2]);
 	ret->time_to_eat = ft_atoi(argv[3]);
 	ret->time_to_sleep = ft_atoi(argv[4]);
-	ret->num_to_eat = -1;
 	if (argc == 6)
 		ret->num_to_eat = ft_atoi(argv[5]);
 	ret->forks = init_forks(ret->num_of_philo);
-	ret->someone_die = FALSE;
+	ret->someone_is_dead = FALSE;
+	ret->print_mutex = (pthread_mutex_t *) malloc(sizeof(pthread_mutex_t));
+	if (!ret->print_mutex)
+		ft_exit_with_error("Fail to malloc at mutex", 1);
+	pthread_mutex_init(ret->print_mutex, NULL);
 	return (ret);
 }
 
@@ -105,6 +106,7 @@ static t_fork	*init_forks(size_t sz_)
 		if (!ret[i].mutex)
 			ft_exit_with_error("Fail to malloc at mutex", 1);
 		memset(ret[i].mutex, 0, sizeof(pthread_mutex_t));
+		pthread_mutex_init(ret[i].mutex, NULL);
 		ret[i++].state = AVAILABLE;
 	}
 	return (ret);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   monitor.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/25 19:45:39 by younhwan          #+#    #+#             */
-/*   Updated: 2022/09/29 17:08:10 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/09/30 16:39:13 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ t_bool	monitor(t_philo *philos)
 	{
 		if (someone_is_dead(philos))
 			break ;
-		if (0 <= philos->info->num_to_eat && eat_enough(philos))
+		if (0 < philos->info->num_to_eat && eat_enough(philos))
 			break ;
 		usleep(philos->info->num_of_philo);
 	}
@@ -44,7 +44,11 @@ static t_bool	someone_is_dead(t_philo *philos)
 		if (0 < diff_time(philos->info->started) && \
 			philos->info->time_to_die < diff_time(philos[i].last_eat))
 		{
-			philos->info->someone_die = TRUE;
+			pthread_mutex_lock(philos->info->print_mutex);
+			printf("%zu %zu died\n", \
+				diff_time(philos->info->started), philos[i].id);
+			pthread_mutex_unlock(philos->info->print_mutex);
+			philos->info->someone_is_dead = TRUE;
 			return (TRUE);
 		}
 		i++;
