@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 10:53:06 by younhwan          #+#    #+#             */
-/*   Updated: 2022/09/30 16:37:34 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/09/30 17:58:03 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,13 @@
 # include <stddef.h>
 # include <sys/time.h>
 
-typedef enum	ebool
+typedef enum ebool
 {
 	FALSE = 0,
 	TRUE = 1,
 }	t_bool;
 
-typedef enum	e_state
+typedef enum e_state
 {
 	OCCUPIED = 0,
 	AVAILABLE = 1,
@@ -35,7 +35,7 @@ typedef struct s_fork
 	t_state			state;
 }	t_fork;
 
-typedef struct	s_info
+typedef struct s_info
 {
 	size_t			num_of_philo;
 	size_t			time_to_die;
@@ -48,7 +48,7 @@ typedef struct	s_info
 	pthread_mutex_t	*print_mutex;
 }	t_info;
 
-typedef struct	s_philo
+typedef struct s_philo
 {
 	t_info			*info;
 	t_fork			*left_fork;
