@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 10:48:27 by younhwan          #+#    #+#             */
-/*   Updated: 2022/10/01 20:06:21 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/10/01 20:40:05 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,12 @@ static t_info	*init_info(int argc, char **argv);
 int	main(int argc, char **argv)
 {
 	t_philo	*philos;
-	size_t	sz_;
 
 	if (argc < 5 || 6 < argc)
 		ft_exit_with_error("Usage: ./philo <number_of_philosophers> \
-			<time_to_die> <time_to_eat> <time_to_sleep> \
-			[number_of_times_each_phliosopher_must_eat]", 0);
+<time_to_die> <time_to_eat> <time_to_sleep> \
+[number_of_times_each_phliosopher_must_eat]", 0);
 	philos = init_philos(argc, argv);
-	sz_ = philos[0].info->num_of_philo;
 	start_routine(philos);
 	sem_close(philos->info->forks);
 	sem_close(philos->info->print_sem);
@@ -39,27 +37,26 @@ static t_bool	start_routine(t_philo *philos)
 	size_t	i;
 
 	i = 0;
-	while (i < philos->info->num_of_philo)
+	while (i <= philos->info->num_of_philo)
 	{
 		pid = fork();
+		if (pid == -1)
+			kill_with_error("Fail to fork", philos->info->print_sem);
+		if (!pid)
+		{
+			pthread_create(&philos[i].thread, NULL, routine, &philos[i]);
+			monitor(&philos[i]);
+			pthread_join(philos[i].thread, NULL);
+			exit(EXIT_SUCCESS);
+		}
 		i += 2;
+		if ((i == philos->info->num_of_philo && \
+			!(philos->info->num_of_philo % 2)) || \
+			(i == philos->info->num_of_philo + 1 && \
+			philos->info->num_of_philo % 2))
+			i = 1;
 	}
-	i = 1;
-	while (i < philos->info->num_of_philo)
-	{
-		pid = fork();
-		i += 2;
-	}
-	if (pid == -1)
-		kill_with_error("Fail to fork", philos->info->print_sem);
-	if (!pid)
-	{
-		pthread_create(&philos[i].thread, NULL, routine, &philos[i]);
-		monitor(&philos[i]);
-		pthread_join(philos[i].thread, NULL);
-	}
-	else
-		waitpid(pid, NULL, 0);
+	waitpid(0, NULL, 0);
 	return (TRUE);
 }
 

@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef routine_H
-# define routine_H
+#ifndef ROUTINE_H
+# define ROUTINE_H
 
 # include <unistd.h>
 # include <stdio.h>

@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/25 19:45:39 by younhwan          #+#    #+#             */
-/*   Updated: 2022/10/01 19:57:38 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/10/01 20:09:24 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ static t_bool	eat_enough(t_philo *philos);
 
 t_bool	monitor(t_philo *philos)
 {
-	
 	while (TRUE)
 	{
 		if (0 < philos->info->num_to_eat && eat_enough(philos))
@@ -30,7 +29,7 @@ t_bool	monitor(t_philo *philos)
 	return (TRUE);
 }
 
-static void		when_someone_dies_kill_all(t_philo *philos)
+static void	when_someone_dies_kill_all(t_philo *philos)
 {
 	int	i;
 
