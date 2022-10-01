@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 10:48:03 by younhwan          #+#    #+#             */
-/*   Updated: 2022/10/01 16:08:26 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/10/01 21:49:28 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,13 @@ void	*routine(void *arg)
 		gettimeofday(philo->last_eat, NULL);
 	while (!philo->info->someone_is_dead)
 	{
-		if (philo->info->num_of_philo == 1 && !usleep(1000))
-			continue ;
 		if (philo->id % 2 && !philo->last_eat->tv_usec)
 			usleep(philo->info->time_to_eat * 5);
 		if (!p_take_forks(philo))
 			break ;
+		while (philo->info->num_of_philo == 1 && !usleep(1000))
+			if (philo->info->someone_is_dead)
+				return (NULL);
 		if (!p_eat(philo))
 			break ;
 		if (philo->num_of_eat == philo->info->num_to_eat && \
@@ -51,19 +52,25 @@ static t_bool	p_take_forks(t_philo *const philo)
 	t_fork *const	forks = philo->info->forks;
 
 	pthread_mutex_lock(forks[left].mutex);
+	pthread_mutex_lock(philo->info->print_mutex);
+	printf("%zu %zu has taken a fork\n", \
+		diff_time(philo->info->started), philo->id);
+	pthread_mutex_unlock(philo->info->print_mutex);
+	if (philo->info->num_of_philo == 1)
+		return (!pthread_mutex_unlock(philo->info->print_mutex));
 	pthread_mutex_lock(forks[right].mutex);
 	pthread_mutex_lock(philo->info->print_mutex);
+	printf("%zu %zu has taken a fork\n", \
+		diff_time(philo->info->started), philo->id);
 	if (philo->info->someone_is_dead)
 	{
 		pthread_mutex_unlock(forks[left].mutex);
-		pthread_mutex_unlock(forks[right].mutex);
-		pthread_mutex_unlock(philo->info->print_mutex);
-		return (FALSE);
+		if (philo->info->num_of_philo != 1)
+			pthread_mutex_unlock(forks[right].mutex);
+		return (pthread_mutex_unlock(philo->info->print_mutex));
 	}
 	philo->left_fork = &forks[left];
 	philo->right_fork = &forks[right];
-	printf("%zu %zu has taken a fork\n", \
-		diff_time(philo->info->started), philo->id);
 	return (TRUE);
 }
 
