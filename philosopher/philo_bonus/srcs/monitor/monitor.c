@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/25 19:45:39 by younhwan          #+#    #+#             */
-/*   Updated: 2022/10/01 21:27:44 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/10/01 21:54:54 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,6 @@ static void	when_i_die_kill_all(t_philo *philo)
 
 static t_bool	eat_enough(t_philo *philo)
 {
-	return (FALSE);
-	if (philo->info->num_of_philo == philo->info->num_of_philo_eat)
-		return (TRUE);
+	(void) philo;
 	return (FALSE);
 }

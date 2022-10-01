@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 10:48:03 by younhwan          #+#    #+#             */
-/*   Updated: 2022/10/01 21:45:09 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/10/01 21:56:08 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,6 @@ void	*routine(void *arg)
 		while (philo->info->num_of_philo == 1)
 			usleep(1000);
 		p_eat(philo);
-		if (philo->num_of_eat == philo->info->num_to_eat && \
-			!sem_post(philo->info->print_sem))
-			break ;
 		p_sleep(philo);
 	}
 	return (NULL);
@@ -58,9 +55,6 @@ static t_bool	p_eat(t_philo *const philo)
 	time_passed(philo->info->time_to_eat);
 	sem_post(philo->info->forks);
 	sem_post(philo->info->forks);
-	if (philo->info->num_to_eat && \
-		philo->num_of_eat == philo->info->num_to_eat)
-		philo->info->num_of_philo_eat++;
 	sem_wait(philo->info->print_sem);
 	return (TRUE);
 }

@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 10:48:27 by younhwan          #+#    #+#             */
-/*   Updated: 2022/10/01 21:41:25 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/10/01 22:22:43 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,10 +102,10 @@ static t_info	*init_info(int argc, char **argv)
 	ret->time_to_sleep = ft_atoi(argv[4]);
 	if (argc == 6)
 		ret->num_to_eat = ft_atoi(argv[5]);
-	ret->forks = sem_open("forks_sem", O_CREAT, ret->num_of_philo);
-	sem_unlink("forks_sem");
-	ret->print_sem = sem_open("print_sem", O_CREAT, 1);
-	sem_unlink("print_sem");
+	sem_unlink("/dev/tmp/forks_sem");
+	ret->forks = sem_open("/dev/tmp/forks_sem", O_CREAT | O_EXCL, 0644, ret->num_of_philo);
+	sem_unlink("/dev/tmp/print_sem");
+	ret->print_sem = sem_open("/dev/tmp/print_sem", O_CREAT | O_EXCL, 0644, 1);
 	ret->started = (struct timeval *) malloc(sizeof(struct timeval));
 	if (!ret->started)
 		ft_exit_with_error("Fail to malloc at started", 1);
