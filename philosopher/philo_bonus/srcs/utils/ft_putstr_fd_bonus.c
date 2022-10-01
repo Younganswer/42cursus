@@ -1,25 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philo.h                                            :+:      :+:    :+:   */
+/*   ft_putstr_fd_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/19 10:46:49 by younhwan          #+#    #+#             */
-/*   Updated: 2022/10/01 20:01:20 by younhwan         ###   ########.fr       */
+/*   Created: 2022/09/25 15:26:53 by younhwan          #+#    #+#             */
+/*   Updated: 2022/10/02 00:18:12 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHILO_H
-# define PHILO_H
+#include "../../incs/utils_bonus.h"
 
-# include <string.h>
-# include <stdlib.h>
-# include <sys/time.h>
-# include <pthread.h>
-# include "structs.h"
-# include "utils.h"
-# include "monitor.h"
-# include "routine.h"
+int	ft_putstr_fd(const char *str, int fd)
+{
+	int	printed;
 
-#endif
+	printed = 0;
+	while (str && *str)
+		printed += write(fd, str++, 1);
+	return (printed);
+}

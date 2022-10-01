@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   monitor.c                                          :+:      :+:    :+:   */
+/*   monitor_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/25 19:45:39 by younhwan          #+#    #+#             */
-/*   Updated: 2022/10/02 00:10:54 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/10/02 00:17:50 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../incs/utils.h"
-#include "../../incs/monitor.h"
+#include "../../incs/utils_bonus.h"
+#include "../../incs/monitor_bonus.h"
 
 t_bool			monitor(t_philo *philo);
 static void		when_i_die_kill_all(t_philo *philo);

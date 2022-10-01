@@ -1,24 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_sem_open.c                                      :+:      :+:    :+:   */
+/*   diff_time_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/01 23:59:33 by younhwan          #+#    #+#             */
-/*   Updated: 2022/10/02 00:01:23 by younhwan         ###   ########.fr       */
+/*   Created: 2022/09/29 16:04:04 by younhwan          #+#    #+#             */
+/*   Updated: 2022/10/02 00:18:02 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../incs/utils.h"
+#include "../../incs/utils_bonus.h"
+#include <stdio.h>
 
-sem_t	*ft_sem_open(const char *name, int value)
+size_t	diff_time(struct timeval *tv);
+
+size_t	diff_time(struct timeval *tv)
 {
-	sem_t	*ret;
+	struct timeval	cur;
+	size_t			ret;
 
-	sem_unlink(name);
-	ret = sem_open(name, O_CREAT | O_EXCL, 0644, value);
-	if (ret == SEM_FAILED)
-		ft_exit_with_error("Fail to open semaphore", 1);
+	gettimeofday(&cur, NULL);
+	ret = (cur.tv_sec - tv->tv_sec) * 1000;
+	ret += (cur.tv_usec - tv->tv_usec) / 1000;
 	return (ret);
 }

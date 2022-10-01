@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   kill_with_error.c                                  :+:      :+:    :+:   */
+/*   kill_all_with_error_bonus.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/01 19:09:41 by younhwan          #+#    #+#             */
-/*   Updated: 2022/10/01 20:51:41 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/10/02 00:18:20 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../incs/utils.h"
+#include "../../incs/utils_bonus.h"
 
 void	kill_all_with_error(const char *str, sem_t *print_sem)
 {

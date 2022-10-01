@@ -1,23 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_exit_with_error_bonus.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/25 15:26:53 by younhwan          #+#    #+#             */
-/*   Updated: 2022/09/28 10:33:46 by younhwan         ###   ########.fr       */
+/*   Created: 2022/08/25 16:15:47 by younhwan          #+#    #+#             */
+/*   Updated: 2022/10/02 00:18:09 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../incs/utils.h"
+#include "../../incs/utils_bonus.h"
 
-int	ft_putstr_fd(const char *str, int fd)
+void	ft_exit_with_error(const char *str, int exit_flag)
 {
-	int	printed;
-
-	printed = 0;
-	while (str && *str)
-		printed += write(fd, str++, 1);
-	return (printed);
+	ft_putstr_fd("\033[31mError\033[0m\n", 2);
+	if (str)
+	{
+		ft_putstr_fd("\033[31m", 2);
+		ft_putstr_fd(str, 2);
+		ft_putstr_fd("\033[0m\n", 2);
+	}
+	exit(exit_flag);
 }

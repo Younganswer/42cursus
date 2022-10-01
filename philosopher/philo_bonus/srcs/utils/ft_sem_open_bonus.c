@@ -1,25 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_exit_with_error.c                               :+:      :+:    :+:   */
+/*   ft_sem_open_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/25 16:15:47 by younhwan          #+#    #+#             */
-/*   Updated: 2022/09/28 10:33:45 by younhwan         ###   ########.fr       */
+/*   Created: 2022/10/01 23:59:33 by younhwan          #+#    #+#             */
+/*   Updated: 2022/10/02 00:18:15 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../incs/utils.h"
+#include "../../incs/utils_bonus.h"
 
-void	ft_exit_with_error(const char *str, int exit_flag)
+sem_t	*ft_sem_open(const char *name, int value)
 {
-	ft_putstr_fd("\033[31mError\033[0m\n", 2);
-	if (str)
-	{
-		ft_putstr_fd("\033[31m", 2);
-		ft_putstr_fd(str, 2);
-		ft_putstr_fd("\033[0m\n", 2);
-	}
-	exit(exit_flag);
+	sem_t	*ret;
+
+	sem_unlink(name);
+	ret = sem_open(name, O_CREAT | O_EXCL, 0644, value);
+	if (ret == SEM_FAILED)
+		ft_exit_with_error("Fail to open semaphore", 1);
+	return (ret);
 }

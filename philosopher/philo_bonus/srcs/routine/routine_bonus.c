@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   routine.c                                          :+:      :+:    :+:   */
+/*   routine_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 10:48:03 by younhwan          #+#    #+#             */
-/*   Updated: 2022/10/02 00:13:54 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/10/02 00:34:31 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../incs/routine.h"
+#include "../../incs/routine_bonus.h"
 
 void			*routine(void *arg);
 static t_bool	p_take_forks(t_philo *const philo);
@@ -39,7 +39,9 @@ static t_bool	p_take_forks(t_philo *const philo)
 	sem_wait(philo->info->print_sem);
 	printf("%zu %zu has taken a fork\n", \
 		diff_time(philo->info->started), philo->id);
+	sem_post(philo->info->print_sem);
 	sem_wait(philo->info->forks);
+	sem_wait(philo->info->print_sem);
 	printf("%zu %zu has taken a fork\n", \
 		diff_time(philo->info->started), philo->id);
 	if (philo->info->num_of_philo == 1)

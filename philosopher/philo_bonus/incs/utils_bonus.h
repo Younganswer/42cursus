@@ -1,24 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.h                                            :+:      :+:    :+:   */
+/*   utils_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 12:50:51 by younhwan          #+#    #+#             */
-/*   Updated: 2022/10/02 00:00:35 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/10/02 00:17:29 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef UTILS_H
-# define UTILS_H
+#ifndef UTILS_BONUS_H
+# define UTILS_BONUS_H
 
 # include <unistd.h>
 # include <stdlib.h>
 # include <sys/time.h>
 # include <signal.h>
 # include <semaphore.h>
-# include "structs.h"
+# include "structs_bonus.h"
 
 // ft_atoi.c
 int		ft_atoi(const char *str);

@@ -6,7 +6,7 @@
 #    By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/08 16:03:07 by younhwan          #+#    #+#              #
-#    Updated: 2022/10/02 00:01:35 by younhwan         ###   ########.fr        #
+#    Updated: 2022/10/02 00:18:59 by younhwan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,16 +25,16 @@ INCS_DIR	= ./incs
 SRCS_DIR	= ./srcs
 OBJS_DIR	= ./objs
 
-SRCS = 	philo.c\
-		utils/ft_atoi.c\
-		utils/ft_exit_with_error.c\
-		utils/ft_putstr_fd.c\
-		utils/ft_sem_open.c\
-		utils/diff_time.c\
-		utils/kill_all_with_error.c\
-		utils/time_passed.c\
-		monitor/monitor.c\
-		routine/routine.c
+SRCS = 	philo_bonus.c\
+		utils/ft_atoi_bonus.c\
+		utils/ft_exit_with_error_bonus.c\
+		utils/ft_putstr_fd_bonus.c\
+		utils/ft_sem_open_bonus.c\
+		utils/diff_time_bonus.c\
+		utils/kill_all_with_error_bonus.c\
+		utils/time_passed_bonus.c\
+		monitor/monitor_bonus.c\
+		routine/routine_bonus.c
 		
 SRCS := ${addprefix ${SRCS_DIR}/, ${SRCS}}
 OBJS = ${SRCS:${SRCS_DIR}/%.c=${OBJS_DIR}/%.o}
@@ -84,4 +84,4 @@ re:
 	@make all
 
 
-.PHONY: all clean fclean re bonus
+.PHONY: all clean fclean re

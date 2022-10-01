@@ -1,27 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   diff_time.c                                        :+:      :+:    :+:   */
+/*   routine.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/29 16:04:04 by younhwan          #+#    #+#             */
-/*   Updated: 2022/09/29 17:24:06 by younhwan         ###   ########.fr       */
+/*   Created: 2022/09/28 10:47:28 by younhwan          #+#    #+#             */
+/*   Updated: 2022/09/29 16:05:51 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../incs/utils.h"
-#include <stdio.h>
+#ifndef ROUTINE_BONUS_H
+# define ROUTINE_BONUS_H
 
-size_t	diff_time(struct timeval *tv);
+# include <unistd.h>
+# include <stdio.h>
+# include "structs_bonus.h"
+# include "utils_bonus.h"
 
-size_t	diff_time(struct timeval *tv)
-{
-	struct timeval	cur;
-	size_t			ret;
+// routine.c
+void	*routine(void *arg);
 
-	gettimeofday(&cur, NULL);
-	ret = (cur.tv_sec - tv->tv_sec) * 1000;
-	ret += (cur.tv_usec - tv->tv_usec) / 1000;
-	return (ret);
-}
+#endif
