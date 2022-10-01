@@ -6,7 +6,7 @@
 #    By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/08 16:03:07 by younhwan          #+#    #+#              #
-#    Updated: 2022/10/01 20:07:13 by younhwan         ###   ########.fr        #
+#    Updated: 2022/10/01 20:52:08 by younhwan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,7 @@ SRCS = 	philo.c\
 		utils/ft_exit_with_error.c\
 		utils/ft_putstr_fd.c\
 		utils/diff_time.c\
-		utils/kill_with_error.c\
+		utils/kill_all_with_error.c\
 		utils/time_passed.c\
 		monitor/monitor.c\
 		routine/routine.c

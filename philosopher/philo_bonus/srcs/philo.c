@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 10:48:27 by younhwan          #+#    #+#             */
-/*   Updated: 2022/10/01 20:40:05 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/10/01 20:51:53 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,11 +37,11 @@ static t_bool	start_routine(t_philo *philos)
 	size_t	i;
 
 	i = 0;
-	while (i <= philos->info->num_of_philo)
+	while (i < philos->info->num_of_philo)
 	{
 		pid = fork();
 		if (pid == -1)
-			kill_with_error("Fail to fork", philos->info->print_sem);
+			kill_all_with_error("Fail to fork", philos->info->print_sem);
 		if (!pid)
 		{
 			pthread_create(&philos[i].thread, NULL, routine, &philos[i]);
