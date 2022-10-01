@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 10:48:27 by younhwan          #+#    #+#             */
-/*   Updated: 2022/10/01 13:57:37 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/10/01 11:37:55 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,6 +107,7 @@ static t_fork	*init_forks(size_t sz_)
 			ft_exit_with_error("Fail to malloc at mutex", 1);
 		memset(ret[i].mutex, 0, sizeof(pthread_mutex_t));
 		pthread_mutex_init(ret[i].mutex, NULL);
+		ret[i++].state = AVAILABLE;
 	}
 	return (ret);
 }

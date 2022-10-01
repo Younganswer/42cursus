@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 10:48:03 by younhwan          #+#    #+#             */
-/*   Updated: 2022/10/01 13:57:24 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/10/01 13:06:59 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,9 @@ static t_bool	p_take_forks(t_philo *const philo)
 		return (FALSE);
 	}
 	philo->left_fork = &forks[left];
+	forks[left].state = OCCUPIED;
 	philo->right_fork = &forks[right];
+	forks[right].state = OCCUPIED;
 	printf("%zu %zu has taken a fork\n", \
 		diff_time(philo->info->started), philo->id);
 	return (TRUE);
@@ -74,6 +76,8 @@ static t_bool	p_eat(t_philo *const philo)
 	philo->num_of_eat++;
 	pthread_mutex_unlock(philo->info->print_mutex);
 	time_passed(philo->info->time_to_eat);
+	philo->left_fork->state = AVAILABLE;
+	philo->right_fork->state = AVAILABLE;
 	pthread_mutex_unlock(philo->left_fork->mutex);
 	pthread_mutex_unlock(philo->right_fork->mutex);
 	philo->left_fork = NULL;
