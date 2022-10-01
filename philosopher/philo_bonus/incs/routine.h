@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   behavior.h                                         :+:      :+:    :+:   */
+/*   routine.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,15 +10,15 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef BEHAVIOR_H
-# define BEHAVIOR_H
+#ifndef routine_H
+# define routine_H
 
 # include <unistd.h>
 # include <stdio.h>
 # include "structs.h"
 # include "utils.h"
 
-// behavior.c
-void	*behavior(void *arg);
+// routine.c
+void	*routine(void *arg);
 
 #endif

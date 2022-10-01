@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 10:48:27 by younhwan          #+#    #+#             */
-/*   Updated: 2022/10/01 11:37:55 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/10/01 14:33:20 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	main(int argc, char **argv)
 	sz_ = philos[0].info->num_of_philo;
 	i = -1;
 	while ((size_t)++i < sz_)
-		pthread_create(&(philos[i].thread), NULL, behavior, &philos[i]);
+		pthread_create(&(philos[i].thread), NULL, routine, &philos[i]);
 	monitor(philos);
 	i = -1;
 	while ((size_t)++i < sz_)
@@ -93,21 +93,20 @@ static t_info	*init_info(int argc, char **argv)
 static t_fork	*init_forks(size_t sz_)
 {
 	t_fork	*ret;
-	size_t	i;
+	int		i;
 
 	ret = (t_fork *) malloc(sizeof(t_fork) * sz_);
 	if (!ret)
 		ft_exit_with_error("Fail to malloc at forks", 1);
 	memset(ret, 0, sizeof(t_fork) * sz_);
-	i = 0;
-	while (i < sz_)
+	i = -1;
+	while ((size_t)++i < sz_)
 	{
 		ret[i].mutex = (pthread_mutex_t *) malloc(sizeof(pthread_mutex_t));
 		if (!ret[i].mutex)
 			ft_exit_with_error("Fail to malloc at mutex", 1);
 		memset(ret[i].mutex, 0, sizeof(pthread_mutex_t));
 		pthread_mutex_init(ret[i].mutex, NULL);
-		ret[i++].state = AVAILABLE;
 	}
 	return (ret);
 }

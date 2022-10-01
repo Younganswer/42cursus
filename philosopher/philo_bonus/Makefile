@@ -6,7 +6,7 @@
 #    By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/08 16:03:07 by younhwan          #+#    #+#              #
-#    Updated: 2022/10/01 13:53:55 by younhwan         ###   ########.fr        #
+#    Updated: 2022/10/01 14:33:54 by younhwan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ SHELL	= /bin/bash
 SPINNER	= /-\|/
 IDX		= 0
 
-NAME	= philo_bonus
+NAME	= philo
 
 CC		= cc
 CFLAGS	= -Wall -Wextra -Werror
@@ -25,14 +25,14 @@ INCS_DIR	= ./incs
 SRCS_DIR	= ./srcs
 OBJS_DIR	= ./objs
 
-SRCS = 	philo_bonus.c\
+SRCS = 	philo.c\
 		utils/ft_atoi.c\
 		utils/ft_exit_with_error.c\
 		utils/ft_putstr_fd.c\
 		utils/diff_time.c\
 		utils/time_passed.c\
 		monitor/monitor.c\
-		behavior/behavior.c
+		routine/routine.c
 		
 SRCS := ${addprefix ${SRCS_DIR}/, ${SRCS}}
 OBJS = ${SRCS:${SRCS_DIR}/%.c=${OBJS_DIR}/%.o}
@@ -46,7 +46,7 @@ ${OBJS_DIR}:
 	@mkdir -p objs
 	@mkdir -p objs/utils
 	@mkdir -p objs/monitor
-	@mkdir -p objs/behavior
+	@mkdir -p objs/routine
 
 
 ${NAME}: ${OBJS}

@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 10:46:49 by younhwan          #+#    #+#             */
-/*   Updated: 2022/09/30 15:11:11 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/10/01 14:32:45 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,6 @@
 # include "structs.h"
 # include "utils.h"
 # include "monitor.h"
-# include "behavior.h"
+# include "routine.h"
 
 #endif

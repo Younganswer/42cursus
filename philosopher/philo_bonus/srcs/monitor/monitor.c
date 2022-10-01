@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/25 19:45:39 by younhwan          #+#    #+#             */
-/*   Updated: 2022/10/01 12:59:37 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/10/01 15:17:52 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ t_bool	monitor(t_philo *philos)
 			break ;
 		if (someone_is_dead(philos))
 			break ;
-		usleep(philos->info->num_of_philo * 40);
+		usleep(philos->info->num_of_philo * 20);
 	}
 	return (TRUE);
 }
