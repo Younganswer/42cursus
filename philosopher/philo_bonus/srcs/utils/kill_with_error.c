@@ -1,25 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philo.h                                            :+:      :+:    :+:   */
+/*   kill_with_error.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/19 10:46:49 by younhwan          #+#    #+#             */
-/*   Updated: 2022/10/01 20:01:20 by younhwan         ###   ########.fr       */
+/*   Created: 2022/10/01 19:09:41 by younhwan          #+#    #+#             */
+/*   Updated: 2022/10/01 19:25:09 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHILO_H
-# define PHILO_H
+#include "../../incs/utils.h"
 
-# include <string.h>
-# include <stdlib.h>
-# include <sys/time.h>
-# include <pthread.h>
-# include "structs.h"
-# include "utils.h"
-# include "monitor.h"
-# include "routine.h"
-
-#endif
+void	kill_with_error(const char *str, sem_t *print_sem)
+{
+	sem_wait(print_sem);
+	ft_putstr_fd("\033[31mError\033[0m\n", 2);
+	if (str)
+	{
+		ft_putstr_fd("\033[31m", 2);
+		ft_putstr_fd(str, 2);
+		ft_putstr_fd("\033[0m\n", 2);
+	}
+	kill(0, SIGKILL);
+	return ;
+}

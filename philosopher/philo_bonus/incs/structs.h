@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 10:53:06 by younhwan          #+#    #+#             */
-/*   Updated: 2022/10/01 14:08:29 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/10/01 19:30:49 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define STRUCTS_H
 
 # include <pthread.h>
+# include <semaphore.h>
 # include <stddef.h>
 # include <sys/time.h>
 
@@ -23,11 +24,6 @@ typedef enum ebool
 	TRUE = 1,
 }	t_bool;
 
-typedef struct s_fork
-{
-	pthread_mutex_t	*mutex;
-}	t_fork;
-
 typedef struct s_info
 {
 	size_t			num_of_philo;
@@ -36,17 +32,14 @@ typedef struct s_info
 	size_t			time_to_sleep;
 	size_t			num_to_eat;
 	size_t			num_of_philo_eat;
-	t_fork			*forks;
+	sem_t			*forks;
 	struct timeval	*started;
-	t_bool			someone_is_dead;
-	pthread_mutex_t	*print_mutex;
+	sem_t			*print_sem;
 }	t_info;
 
 typedef struct s_philo
 {
 	t_info			*info;
-	t_fork			*left_fork;
-	t_fork			*right_fork;
 	size_t			id;
 	size_t			num_of_eat;
 	pthread_t		thread;

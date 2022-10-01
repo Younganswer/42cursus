@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/25 19:45:39 by younhwan          #+#    #+#             */
-/*   Updated: 2022/10/01 15:17:52 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/10/01 19:57:38 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,27 +14,23 @@
 #include "../../incs/monitor.h"
 
 t_bool			monitor(t_philo *philos);
-static t_bool	someone_is_dead(t_philo *philos);
+static void		when_someone_dies_kill_all(t_philo *philos);
 static t_bool	eat_enough(t_philo *philos);
 
 t_bool	monitor(t_philo *philos)
 {
-	philos[0].info->started = (struct timeval *) malloc(sizeof(struct timeval));
-	if (!philos[0].info->started)
-		ft_exit_with_error("Fail to malloc at started", 1);
-	gettimeofday(philos[0].info->started, NULL);
+	
 	while (TRUE)
 	{
 		if (0 < philos->info->num_to_eat && eat_enough(philos))
 			break ;
-		if (someone_is_dead(philos))
-			break ;
+		when_someone_dies_kill_all(philos);
 		usleep(philos->info->num_of_philo * 20);
 	}
 	return (TRUE);
 }
 
-static t_bool	someone_is_dead(t_philo *philos)
+static void		when_someone_dies_kill_all(t_philo *philos)
 {
 	int	i;
 
@@ -44,15 +40,13 @@ static t_bool	someone_is_dead(t_philo *philos)
 		if (philos[i].last_eat->tv_usec && \
 			philos->info->time_to_die < diff_time(philos[i].last_eat))
 		{
-			pthread_mutex_lock(philos->info->print_mutex);
+			sem_wait(philos->info->print_sem);
 			printf("%zu %zu died\n", \
 				diff_time(philos->info->started), philos[i].id);
-			philos->info->someone_is_dead = TRUE;
-			pthread_mutex_unlock(philos->info->print_mutex);
-			return (TRUE);
+			kill(0, SIGKILL);
 		}
 	}
-	return (FALSE);
+	return ;
 }
 
 static t_bool	eat_enough(t_philo *philos)
