@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   monitor.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/25 19:45:39 by younhwan          #+#    #+#             */
-/*   Updated: 2022/10/01 21:54:54 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/10/02 00:10:54 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ t_bool	monitor(t_philo *philo)
 {
 	while (TRUE)
 	{
-		if (0 < philo->info->num_to_eat && eat_enough(philo))
+		if (eat_enough(philo))
 			break ;
 		when_i_die_kill_all(philo);
 		usleep(philo->info->num_of_philo * 20);
@@ -44,6 +44,7 @@ static void	when_i_die_kill_all(t_philo *philo)
 
 static t_bool	eat_enough(t_philo *philo)
 {
-	(void) philo;
-	return (FALSE);
+	if (!philo->info->num_to_eat)
+		return (FALSE);
+	return (philo->num_of_eat == philo->info->num_to_eat);
 }

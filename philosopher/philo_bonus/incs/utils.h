@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 12:50:51 by younhwan          #+#    #+#             */
-/*   Updated: 2022/10/01 20:51:45 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/10/02 00:00:35 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,9 @@ void	ft_exit_with_error(const char *str, int exit_flag);
 
 // ft_putstr_fd.c
 int		ft_putstr_fd(const char *str, int fd);
+
+// ft_sem_open.c
+sem_t	*ft_sem_open(const char *name, int value);
 
 // kill_with_error.c
 void	kill_all_with_error(const char *str, sem_t *print_sem);

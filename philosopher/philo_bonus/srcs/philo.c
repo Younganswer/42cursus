@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   philo.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 10:48:27 by younhwan          #+#    #+#             */
-/*   Updated: 2022/10/01 22:22:43 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/10/02 00:02:02 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs/philo.h"
+#include <fcntl.h>
 
 static t_bool	start_routine(t_philo *philos);
 static t_philo	*init_philos(int argc, char **argv);
@@ -102,10 +103,8 @@ static t_info	*init_info(int argc, char **argv)
 	ret->time_to_sleep = ft_atoi(argv[4]);
 	if (argc == 6)
 		ret->num_to_eat = ft_atoi(argv[5]);
-	sem_unlink("/dev/tmp/forks_sem");
-	ret->forks = sem_open("/dev/tmp/forks_sem", O_CREAT | O_EXCL, 0644, ret->num_of_philo);
-	sem_unlink("/dev/tmp/print_sem");
-	ret->print_sem = sem_open("/dev/tmp/print_sem", O_CREAT | O_EXCL, 0644, 1);
+	ret->forks = ft_sem_open("forks_sem", ret->num_of_philo);
+	ret->print_sem = ft_sem_open("print_sem", 1);
 	ret->started = (struct timeval *) malloc(sizeof(struct timeval));
 	if (!ret->started)
 		ft_exit_with_error("Fail to malloc at started", 1);

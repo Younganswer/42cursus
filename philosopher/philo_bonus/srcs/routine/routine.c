@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   routine.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 10:48:03 by younhwan          #+#    #+#             */
-/*   Updated: 2022/10/01 21:56:08 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/10/02 00:13:54 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@ void	*routine(void *arg)
 		p_take_forks(philo);
 		while (philo->info->num_of_philo == 1)
 			usleep(1000);
-		p_eat(philo);
+		if (!p_eat(philo))
+			break ;
 		p_sleep(philo);
 	}
 	return (NULL);
@@ -56,6 +57,8 @@ static t_bool	p_eat(t_philo *const philo)
 	sem_post(philo->info->forks);
 	sem_post(philo->info->forks);
 	sem_wait(philo->info->print_sem);
+	if (philo->info->num_to_eat == philo->num_of_eat)
+		return (sem_post(philo->info->print_sem));
 	return (TRUE);
 }
 

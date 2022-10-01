@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+         #
+#    By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/08 16:03:07 by younhwan          #+#    #+#              #
-#    Updated: 2022/10/01 20:52:08 by younhwan         ###   ########.fr        #
+#    Updated: 2022/10/02 00:01:35 by younhwan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,6 +29,7 @@ SRCS = 	philo.c\
 		utils/ft_atoi.c\
 		utils/ft_exit_with_error.c\
 		utils/ft_putstr_fd.c\
+		utils/ft_sem_open.c\
 		utils/diff_time.c\
 		utils/kill_all_with_error.c\
 		utils/time_passed.c\
