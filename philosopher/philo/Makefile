@@ -6,7 +6,7 @@
 #    By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/08 16:03:07 by younhwan          #+#    #+#              #
-#    Updated: 2022/09/30 16:15:24 by younhwan         ###   ########.fr        #
+#    Updated: 2022/10/01 14:33:54 by younhwan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,7 @@ SRCS = 	philo.c\
 		utils/diff_time.c\
 		utils/time_passed.c\
 		monitor/monitor.c\
-		behavior/behavior.c
+		routine/routine.c
 		
 SRCS := ${addprefix ${SRCS_DIR}/, ${SRCS}}
 OBJS = ${SRCS:${SRCS_DIR}/%.c=${OBJS_DIR}/%.o}
@@ -46,7 +46,7 @@ ${OBJS_DIR}:
 	@mkdir -p objs
 	@mkdir -p objs/utils
 	@mkdir -p objs/monitor
-	@mkdir -p objs/behavior
+	@mkdir -p objs/routine
 
 
 ${NAME}: ${OBJS}

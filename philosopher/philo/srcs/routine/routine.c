@@ -1,23 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   behavior.c                                         :+:      :+:    :+:   */
+/*   routine.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 10:48:03 by younhwan          #+#    #+#             */
-/*   Updated: 2022/10/01 14:07:14 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/10/01 14:32:57 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../incs/behavior.h"
+#include "../../incs/routine.h"
 
-void			*behavior(void *arg);
+void			*routine(void *arg);
 static t_bool	p_take_forks(t_philo *const philo);
 static t_bool	p_eat(t_philo *const philo);
 static t_bool	p_sleep(t_philo *const philo);
 
-void	*behavior(void *arg)
+void	*routine(void *arg)
 {
 	t_philo *const	philo = (t_philo *) arg;
 

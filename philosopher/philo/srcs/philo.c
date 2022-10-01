@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 10:48:27 by younhwan          #+#    #+#             */
-/*   Updated: 2022/10/01 14:11:33 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/10/01 14:33:20 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	main(int argc, char **argv)
 	sz_ = philos[0].info->num_of_philo;
 	i = -1;
 	while ((size_t)++i < sz_)
-		pthread_create(&(philos[i].thread), NULL, behavior, &philos[i]);
+		pthread_create(&(philos[i].thread), NULL, routine, &philos[i]);
 	monitor(philos);
 	i = -1;
 	while ((size_t)++i < sz_)
