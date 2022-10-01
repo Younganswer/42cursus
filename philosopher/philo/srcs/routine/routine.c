@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   routine.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 10:48:03 by younhwan          #+#    #+#             */
-/*   Updated: 2022/10/01 21:49:28 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/10/02 00:30:46 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,17 +31,14 @@ void	*routine(void *arg)
 			usleep(philo->info->time_to_eat * 5);
 		if (!p_take_forks(philo))
 			break ;
-		while (philo->info->num_of_philo == 1 && !usleep(1000))
-			if (philo->info->someone_is_dead)
-				return (NULL);
 		if (!p_eat(philo))
-			break ;
-		if (philo->num_of_eat == philo->info->num_to_eat && \
-			!pthread_mutex_unlock(philo->info->print_mutex))
 			break ;
 		if (!p_sleep(philo))
 			break ;
 	}
+	while (philo->info->num_of_philo == 1 && !usleep(1000))
+		if (philo->info->someone_is_dead)
+			return (NULL);
 	return (NULL);
 }
 
@@ -57,7 +54,7 @@ static t_bool	p_take_forks(t_philo *const philo)
 		diff_time(philo->info->started), philo->id);
 	pthread_mutex_unlock(philo->info->print_mutex);
 	if (philo->info->num_of_philo == 1)
-		return (!pthread_mutex_unlock(philo->info->print_mutex));
+		return (pthread_mutex_unlock(forks[left].mutex));
 	pthread_mutex_lock(forks[right].mutex);
 	pthread_mutex_lock(philo->info->print_mutex);
 	printf("%zu %zu has taken a fork\n", \
@@ -65,9 +62,9 @@ static t_bool	p_take_forks(t_philo *const philo)
 	if (philo->info->someone_is_dead)
 	{
 		pthread_mutex_unlock(forks[left].mutex);
-		if (philo->info->num_of_philo != 1)
-			pthread_mutex_unlock(forks[right].mutex);
-		return (pthread_mutex_unlock(philo->info->print_mutex));
+		pthread_mutex_unlock(forks[right].mutex);
+		pthread_mutex_unlock(philo->info->print_mutex);
+		return (FALSE);
 	}
 	philo->left_fork = &forks[left];
 	philo->right_fork = &forks[right];
@@ -85,9 +82,11 @@ static t_bool	p_eat(t_philo *const philo)
 	pthread_mutex_unlock(philo->right_fork->mutex);
 	philo->left_fork = NULL;
 	philo->right_fork = NULL;
-	if (philo->info->num_to_eat && \
-		philo->num_of_eat == philo->info->num_to_eat)
+	if (philo->num_of_eat == philo->info->num_to_eat)
+	{
 		philo->info->num_of_philo_eat++;
+		return (FALSE);
+	}
 	if (philo->info->someone_is_dead)
 		return (FALSE);
 	pthread_mutex_lock(philo->info->print_mutex);

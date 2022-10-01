@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   monitor.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/25 19:45:39 by younhwan          #+#    #+#             */
-/*   Updated: 2022/10/01 15:17:52 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/10/02 00:20:14 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ t_bool	monitor(t_philo *philos)
 	gettimeofday(philos[0].info->started, NULL);
 	while (TRUE)
 	{
-		if (0 < philos->info->num_to_eat && eat_enough(philos))
+		if (eat_enough(philos))
 			break ;
 		if (someone_is_dead(philos))
 			break ;
@@ -57,7 +57,7 @@ static t_bool	someone_is_dead(t_philo *philos)
 
 static t_bool	eat_enough(t_philo *philos)
 {
-	if (philos->info->num_of_philo == philos->info->num_of_philo_eat)
-		return (TRUE);
-	return (FALSE);
+	if (!philos->info->num_to_eat)
+		return (FALSE);
+	return (philos->info->num_of_philo == philos->info->num_of_philo_eat);
 }
