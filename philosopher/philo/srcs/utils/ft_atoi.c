@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 19:53:11 by younhwan          #+#    #+#             */
-/*   Updated: 2022/09/28 10:33:41 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/10/01 11:48:10 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@ int	ft_atoi(const char *str)
 			ft_exit_with_error("Input must be integer", 0);
 		i++;
 	}
+	if (str[i])
+		ft_exit_with_error("Input must be integer", 0);
 	if (!nbr)
 		ft_exit_with_error("Input must be natural number", 0);
 	return ((int) nbr);
