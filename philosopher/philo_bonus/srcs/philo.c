@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 10:48:27 by younhwan          #+#    #+#             */
-/*   Updated: 2022/10/01 20:02:15 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/10/01 20:06:21 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,7 @@ static t_info	*init_info(int argc, char **argv)
 	ret->print_sem = sem_open("print_sem", O_CREAT, 1);
 	sem_unlink("print_sem");
 	ret->started = (struct timeval *) malloc(sizeof(struct timeval));
-	if (ret->started)
+	if (!ret->started)
 		ft_exit_with_error("Fail to malloc at started", 1);
 	gettimeofday(ret->started, NULL);
 	return (ret);
