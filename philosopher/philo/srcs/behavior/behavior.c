@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 10:48:03 by younhwan          #+#    #+#             */
-/*   Updated: 2022/10/01 11:44:42 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/10/01 13:06:59 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,12 @@ void	*behavior(void *arg)
 
 	while (!philo->info->started)
 		continue ;
+	if (philo->info->num_of_philo == 1)
+		gettimeofday(philo->last_eat, NULL);
 	while (!philo->info->someone_is_dead)
 	{
+		if (philo->info->num_of_philo == 1 && !usleep(1000))
+			continue ;
 		if (philo->id % 2 && !philo->last_eat->tv_usec)
 			usleep(philo->info->time_to_eat * 5);
 		if (!p_take_forks(philo))
@@ -32,6 +36,9 @@ void	*behavior(void *arg)
 		if (!p_eat(philo))
 			break ;
 		if (!p_sleep(philo))
+			break ;
+		if (philo->info->num_to_eat && \
+			philo->num_of_eat == philo->info->num_to_eat)
 			break ;
 	}
 	return (NULL);
@@ -66,6 +73,7 @@ static t_bool	p_eat(t_philo *const philo)
 {
 	gettimeofday(philo->last_eat, NULL);
 	printf("%zu %zu is eating\n", diff_time(philo->info->started), philo->id);
+	philo->num_of_eat++;
 	pthread_mutex_unlock(philo->info->print_mutex);
 	time_passed(philo->info->time_to_eat);
 	philo->left_fork->state = AVAILABLE;
@@ -74,6 +82,9 @@ static t_bool	p_eat(t_philo *const philo)
 	pthread_mutex_unlock(philo->right_fork->mutex);
 	philo->left_fork = NULL;
 	philo->right_fork = NULL;
+	if (philo->info->num_to_eat && \
+		philo->num_of_eat == philo->info->num_to_eat)
+		philo->info->num_of_philo_eat++;
 	if (philo->info->someone_is_dead)
 		return (FALSE);
 	pthread_mutex_lock(philo->info->print_mutex);
