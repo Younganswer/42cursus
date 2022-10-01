@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 10:48:03 by younhwan          #+#    #+#             */
-/*   Updated: 2022/10/01 14:32:57 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/10/01 16:08:26 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,10 @@ void	*routine(void *arg)
 			break ;
 		if (!p_eat(philo))
 			break ;
-		if (!p_sleep(philo))
+		if (philo->num_of_eat == philo->info->num_to_eat && \
+			!pthread_mutex_unlock(philo->info->print_mutex))
 			break ;
-		if (philo->info->num_to_eat && \
-			philo->num_of_eat == philo->info->num_to_eat)
+		if (!p_sleep(philo))
 			break ;
 	}
 	return (NULL);
