@@ -8,8 +8,8 @@
 
 ## Install
 	$ make (all)
-* Mandatory in directory !nbsp;!nbsp;**philo/**
-* Bonus in directory !nbsp;!nbsp;**philo_bonus/**
+* Mandatory in directory &nbsp;&nbsp;**philo/**
+* Bonus in directory &nbsp;&nbsp;**philo_bonus/**
 <br/><br/><br/>
 
 ## Usage
