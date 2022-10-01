@@ -3,16 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   time_passed.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 16:55:42 by younhwan          #+#    #+#             */
-/*   Updated: 2022/10/01 01:46:45 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/10/01 19:12:47 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../incs/utils.h"
-
-t_bool	time_passed(int msec);
 
 t_bool	time_passed(int msec)
 {

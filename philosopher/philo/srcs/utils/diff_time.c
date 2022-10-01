@@ -3,17 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   diff_time.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 16:04:04 by younhwan          #+#    #+#             */
-/*   Updated: 2022/09/29 17:24:06 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/10/01 19:12:22 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../incs/utils.h"
-#include <stdio.h>
-
-size_t	diff_time(struct timeval *tv);
 
 size_t	diff_time(struct timeval *tv)
 {

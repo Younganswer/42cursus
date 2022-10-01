@@ -6,12 +6,11 @@
 /*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 19:53:11 by younhwan          #+#    #+#             */
-/*   Updated: 2022/10/01 13:08:46 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/10/01 19:12:38 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../incs/utils.h"
-#include "limits.h"
 
 int			ft_atoi(const char *str);
 static int	ft_isspace(const char c);
