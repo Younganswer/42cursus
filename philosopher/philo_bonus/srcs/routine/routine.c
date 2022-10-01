@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 10:48:03 by younhwan          #+#    #+#             */
-/*   Updated: 2022/10/01 19:55:25 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/10/01 21:45:09 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ void	*routine(void *arg)
 
 	while (TRUE)
 	{
-		if (philo->info->num_of_philo == 1 && !usleep(1000))
-			continue ;
 		p_take_forks(philo);
+		while (philo->info->num_of_philo == 1)
+			usleep(1000);
 		p_eat(philo);
 		if (philo->num_of_eat == philo->info->num_to_eat && \
 			!sem_post(philo->info->print_sem))
@@ -38,10 +38,14 @@ void	*routine(void *arg)
 static t_bool	p_take_forks(t_philo *const philo)
 {
 	sem_wait(philo->info->forks);
-	sem_wait(philo->info->forks);
 	sem_wait(philo->info->print_sem);
 	printf("%zu %zu has taken a fork\n", \
 		diff_time(philo->info->started), philo->id);
+	sem_wait(philo->info->forks);
+	printf("%zu %zu has taken a fork\n", \
+		diff_time(philo->info->started), philo->id);
+	if (philo->info->num_of_philo == 1)
+		sem_post(philo->info->print_sem);
 	return (TRUE);
 }
 

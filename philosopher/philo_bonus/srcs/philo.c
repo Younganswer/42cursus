@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 10:48:27 by younhwan          #+#    #+#             */
-/*   Updated: 2022/10/01 20:51:53 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/10/01 21:41:25 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ static t_info	*init_info(int argc, char **argv);
 int	main(int argc, char **argv)
 {
 	t_philo	*philos;
+	int		i;
 
 	if (argc < 5 || 6 < argc)
 		ft_exit_with_error("Usage: ./philo <number_of_philosophers> \
@@ -26,6 +27,9 @@ int	main(int argc, char **argv)
 [number_of_times_each_phliosopher_must_eat]", 0);
 	philos = init_philos(argc, argv);
 	start_routine(philos);
+	i = -1;
+	while ((size_t)++i < philos->info->num_of_philo)
+		waitpid(0, NULL, 0);
 	sem_close(philos->info->forks);
 	sem_close(philos->info->print_sem);
 	return (0);
@@ -44,7 +48,7 @@ static t_bool	start_routine(t_philo *philos)
 			kill_all_with_error("Fail to fork", philos->info->print_sem);
 		if (!pid)
 		{
-			pthread_create(&philos[i].thread, NULL, routine, &philos[i]);
+			pthread_create(&(philos[i].thread), NULL, routine, &philos[i]);
 			monitor(&philos[i]);
 			pthread_join(philos[i].thread, NULL);
 			exit(EXIT_SUCCESS);
@@ -56,7 +60,6 @@ static t_bool	start_routine(t_philo *philos)
 			philos->info->num_of_philo % 2))
 			i = 1;
 	}
-	waitpid(0, NULL, 0);
 	return (TRUE);
 }
 
