@@ -16,4 +16,4 @@
 | [push_swap](./push_swap)     | #algorithm #sort #complexity | 2      | [![younhwan's 42 push_swap Score](http://is.am/56pu)](https://github.com/JaeSeoKim/badge42) | Sun Sep 18, 2022 |
 | [philosopher](./philosopher)     | #thread #mutex #semaphor     | 3      | [![younhwan's 42 Philosophers Score](http://is.am/56q8)](https://github.com/JaeSeoKim/badge42) |                  |
 | [minishell](./minishell)     |                              | 3      |        |                  |
-| [CPP Module](./CPP\ Module)     |                              | 3      |        |                  |
+| [CPP Module](./CPP_Module)     |                              | 3      |        |                  |
