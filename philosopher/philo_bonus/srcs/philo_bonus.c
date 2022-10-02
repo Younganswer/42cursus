@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 10:48:27 by younhwan          #+#    #+#             */
-/*   Updated: 2022/10/02 13:50:16 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/10/02 14:26:03 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ static t_bool	start_routine(t_philo *philos)
 	size_t	i;
 
 	i = 0;
+	gettimeofday(philos->info->started, NULL);
 	while (i < philos->info->num_of_philo)
 	{
 		pid = fork();
@@ -107,6 +108,5 @@ static t_info	*init_info(int argc, char **argv)
 	ret->started = (struct timeval *) malloc(sizeof(struct timeval));
 	if (!ret->started)
 		ft_exit_with_error("Fail to malloc at started", 1);
-	gettimeofday(ret->started, NULL);
 	return (ret);
 }
