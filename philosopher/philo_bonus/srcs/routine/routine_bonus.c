@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 10:48:03 by younhwan          #+#    #+#             */
-/*   Updated: 2022/10/02 14:20:52 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/10/02 16:01:25 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,13 +44,13 @@ static t_bool	p_take_forks(t_philo *const philo)
 	sem_wait(philo->info->print_sem);
 	printf("%zu %zu has taken a fork\n", \
 		diff_time(philo->info->started), philo->id);
-	if (philo->info->num_of_philo == 1)
-		sem_post(philo->info->print_sem);
+	sem_post(philo->info->print_sem);
 	return (TRUE);
 }
 
 static t_bool	p_eat(t_philo *const philo)
 {
+	sem_wait(philo->info->print_sem);
 	gettimeofday(philo->last_eat, NULL);
 	printf("%zu %zu is eating\n", diff_time(philo->info->started), philo->id);
 	philo->num_of_eat++;
@@ -58,14 +58,12 @@ static t_bool	p_eat(t_philo *const philo)
 	time_passed(philo->info->time_to_eat);
 	sem_post(philo->info->forks);
 	sem_post(philo->info->forks);
-	sem_wait(philo->info->print_sem);
-	if (philo->info->num_to_eat == philo->num_of_eat)
-		return (sem_post(philo->info->print_sem));
 	return (TRUE);
 }
 
 static t_bool	p_sleep(t_philo *const philo)
 {
+	sem_wait(philo->info->print_sem);
 	printf("%zu %zu is sleeping\n", diff_time(philo->info->started), philo->id);
 	sem_post(philo->info->print_sem);
 	time_passed(philo->info->time_to_sleep);

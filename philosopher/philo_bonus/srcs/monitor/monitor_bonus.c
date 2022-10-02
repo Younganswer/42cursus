@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/25 19:45:39 by younhwan          #+#    #+#             */
-/*   Updated: 2022/10/02 14:17:17 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/10/02 15:04:03 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ static t_bool	eat_enough(t_philo *philo);
 
 t_bool	monitor(t_philo *philo)
 {
-	gettimeofday(philo->last_eat, NULL);
 	while (!eat_enough(philo))
 	{
 		when_i_die_kill_all(philo);

@@ -6,13 +6,14 @@
 /*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 10:48:27 by younhwan          #+#    #+#             */
-/*   Updated: 2022/10/02 14:26:03 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/10/02 16:10:09 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs/philo_bonus.h"
 
 static t_bool	start_routine(t_philo *philos);
+static t_bool	child_process(t_philo *philo);
 static t_philo	*init_philos(int argc, char **argv);
 static t_info	*init_info(int argc, char **argv);
 
@@ -48,12 +49,7 @@ static t_bool	start_routine(t_philo *philos)
 		if (pid == -1)
 			kill_all_with_error("Fail to fork", philos->info->print_sem);
 		if (!pid)
-		{
-			pthread_create(&(philos[i].thread), NULL, routine, &philos[i]);
-			monitor(&philos[i]);
-			pthread_join(philos[i].thread, NULL);
-			exit(EXIT_SUCCESS);
-		}
+			child_process(&philos[i]);
 		i += 2;
 		if ((i == philos->info->num_of_philo && \
 			!(philos->info->num_of_philo % 2)) || \
@@ -61,6 +57,18 @@ static t_bool	start_routine(t_philo *philos)
 			philos->info->num_of_philo % 2))
 			i = 1;
 	}
+	return (TRUE);
+}
+
+static t_bool	child_process(t_philo *philo)
+{
+	gettimeofday(philo->last_eat, NULL);
+	if (philo->id % 2)
+		usleep(philo->info->num_of_philo * 5);
+	pthread_create(&(philo->thread), NULL, routine, philo);
+	monitor(philo);
+	pthread_join(philo->thread, NULL);
+	exit(EXIT_SUCCESS);
 	return (TRUE);
 }
 
