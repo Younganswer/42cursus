@@ -6,7 +6,7 @@
 #    By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/08 16:03:07 by younhwan          #+#    #+#              #
-#    Updated: 2022/10/02 17:24:39 by younhwan         ###   ########.fr        #
+#    Updated: 2022/10/02 17:35:28 by younhwan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ CFLAGS	= -Wall -Wextra -Werror -std=c++98
 AR		= ar rcs
 RM		= rm -f
 
-INCS_DIR	= ./incs
+#INCS_DIR	= ./incs
 SRCS_DIR	= ./srcs
 OBJS_DIR	= ./objs
 
