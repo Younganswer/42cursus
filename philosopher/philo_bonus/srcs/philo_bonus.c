@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 10:48:27 by younhwan          #+#    #+#             */
-/*   Updated: 2022/10/02 00:18:28 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/10/02 13:50:16 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,8 +102,8 @@ static t_info	*init_info(int argc, char **argv)
 	ret->time_to_sleep = ft_atoi(argv[4]);
 	if (argc == 6)
 		ret->num_to_eat = ft_atoi(argv[5]);
-	ret->forks = ft_sem_open("forks_sem", ret->num_of_philo);
-	ret->print_sem = ft_sem_open("print_sem", 1);
+	ret->forks = ft_sem_open("sem_for_forks", ret->num_of_philo);
+	ret->print_sem = ft_sem_open("sem_to_print", 1);
 	ret->started = (struct timeval *) malloc(sizeof(struct timeval));
 	if (!ret->started)
 		ft_exit_with_error("Fail to malloc at started", 1);
