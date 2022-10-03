@@ -1,6 +1,5 @@
 [![younhwan's 42 stats](http://is.am/572u)](https://github.com/JaeSeoKim/badge42)
 [![younhwan's 42 stats](https://badge42.vercel.app/api/v2/cl8h1sspf00640gjzpe8t5f1y/stats?cursusId=21&coalitionId=85)](https://github.com/JaeSeoKim/badge42)
-[![younhwan's 42 stats](http://is.am/56pn)](https://github.com/JaeSeoKim/badge42)
 <br/><br/>
 
 # 42cursus
@@ -16,6 +15,6 @@
 | [pipex](./pipex)         | #pipe #multi_processing #fd | 2      | [![younhwan's 42 pipex Score](http://is.am/56ps)](https://github.com/JaeSeoKim/badge42) | Wed Aug 24, 2022 |
 | [so_long](./so_long)       | #graphic #game #sprite      | 2      | [![younhwan's 42 so_long Score](http://is.am/56pt)](https://github.com/JaeSeoKim/badge42) | Tue Aug 30, 2022 |
 | [push_swap](./push_swap)     | #algorithm #sort #complexity | 2      | [![younhwan's 42 push_swap Score](http://is.am/56pu)](https://github.com/JaeSeoKim/badge42) | Sun Sep 18, 2022 |
-| [philosopher](./philosopher)     | #thread #mutex #semaphor     | 3      | [![younhwan's 42 Philosophers Score](http://is.am/56q8)](https://github.com/JaeSeoKim/badge42) | Mon Oct 4, 2022 |
+| [philosopher](./philosopher)     | #thread #mutex #semaphor     | 3      | [![younhwan's 42 Philosophers Score](https://badge42.vercel.app/api/v2/cl8h1sspf00640gjzpe8t5f1y/project/2791811)](https://github.com/JaeSeoKim/badge42) | Mon Oct 4, 2022 |
 | [minishell](./minishell)     |                              | 3      |        |                  |
 | [CPP_Module](./CPP_Module)     |                              | 3      |        |                  |
