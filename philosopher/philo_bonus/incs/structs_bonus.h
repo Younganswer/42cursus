@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   structs.h                                          :+:      :+:    :+:   */
+/*   structs_bonus.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 10:53:06 by younhwan          #+#    #+#             */
-/*   Updated: 2022/10/01 19:30:49 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/10/03 15:34:18 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef STRUCTS_H
-# define STRUCTS_H
+#ifndef STRUCTS_BONUS_H
+# define STRUCTS_BONUS_H
 
 # include <pthread.h>
 # include <semaphore.h>
