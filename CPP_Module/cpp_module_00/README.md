@@ -14,12 +14,16 @@
 ### ex00
 	$ ./megaphone [String to say] ...
 * With no argument is OK
+<br/>
+
 ### ex01
 	$ ./phonebook
 * ADD: save a new contact
 * SEARCH: display a specific contact
 * EXIT: program quits
 * Any other input is discarded
+<br/>
+
 
 ### ex02
 	$ ./tests
