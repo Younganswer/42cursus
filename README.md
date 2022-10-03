@@ -1,3 +1,4 @@
+[![younhwan's 42 stats](http://is.am/572u)](https://github.com/JaeSeoKim/badge42)
 [![younhwan's 42 stats](http://is.am/56pn)](https://github.com/JaeSeoKim/badge42)
 <br/><br/>
 
