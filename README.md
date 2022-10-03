@@ -1,4 +1,5 @@
 [![younhwan's 42 stats](http://is.am/572u)](https://github.com/JaeSeoKim/badge42)
+[![younhwan's 42 stats](https://badge42.vercel.app/api/v2/cl8h1sspf00640gjzpe8t5f1y/stats?cursusId=21&coalitionId=85)](https://github.com/JaeSeoKim/badge42)
 [![younhwan's 42 stats](http://is.am/56pn)](https://github.com/JaeSeoKim/badge42)
 <br/><br/>
 
