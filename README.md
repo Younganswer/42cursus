@@ -17,4 +17,4 @@
 | [push_swap](./push_swap)     | #algorithm #sort #complexity | 2      | [![younhwan's 42 push_swap Score](http://is.am/56pu)](https://github.com/JaeSeoKim/badge42) | Sun Sep 18, 2022 |
 | [philosopher](./philosopher)     | #process #thread #context_switching #data_race #dead_lock | 3      | [![younhwan's 42 Philosophers Score](https://badge42.vercel.app/api/v2/cl8h1sspf00640gjzpe8t5f1y/project/2791811)](https://github.com/JaeSeoKim/badge42) | Mon Oct 4, 2022 |
 | [minishell](./minishell)     |                              | 3      |        |                  |
-| [CPP_Module](./CPP_Module)     |                              | 3      |        |                  |
+| [CPP_Module](./CPP_Module)     |                              | 4      |        |                  |
