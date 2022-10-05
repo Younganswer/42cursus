@@ -6,14 +6,14 @@
 /*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/15 01:11:58 by younhwan          #+#    #+#             */
-/*   Updated: 2022/08/25 16:28:41 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/10/05 21:25:11 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
 
-# include "../libft/includes/libft.h"
+# include "../libft/incs/libft.h"
 # include <stdarg.h>
 
 // ft_printf.c

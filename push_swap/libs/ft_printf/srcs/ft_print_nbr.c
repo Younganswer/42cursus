@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   ft_print_nbr.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/15 02:17:28 by younhwan          #+#    #+#             */
-/*   Updated: 2022/07/22 14:38:50 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/10/05 21:26:02 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
-#include "../libft/includes/libft.h"
+#include "../libft/incs/libft.h"
 
 int	ft_print_nbr(const int nbr)
 {

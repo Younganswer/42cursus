@@ -6,14 +6,14 @@
 /*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/12 14:34:26 by younhwan          #+#    #+#             */
-/*   Updated: 2022/09/18 13:21:50 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/10/05 21:25:41 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SORT_SMALL_H
 # define SORT_SMALL_H
 
-# include "../libs/ft_printf/libft/includes/libft.h"
+# include "../libs/ft_printf/libft/incs/libft.h"
 # include "structs.h"
 # include "stack.h"
 # include "parse_input.h"

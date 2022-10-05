@@ -6,14 +6,14 @@
 /*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 15:57:14 by younhwan          #+#    #+#             */
-/*   Updated: 2022/09/18 13:19:25 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/10/05 21:25:37 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MERGE_H
 # define MERGE_H
 
-# include "../libs/ft_printf/libft/includes/libft.h"
+# include "../libs/ft_printf/libft/incs/libft.h"
 # include "structs.h"
 # include "stack.h"
 

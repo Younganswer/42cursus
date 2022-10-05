@@ -6,7 +6,7 @@
 #    By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/08 16:03:07 by younhwan          #+#    #+#              #
-#    Updated: 2022/10/05 17:57:40 by younhwan         ###   ########.fr        #
+#    Updated: 2022/10/05 21:33:06 by younhwan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -109,13 +109,13 @@ run: bonus
 
 
 ${OBJS_DIR}:
-	@echo "Build push_swap"
-	@mkdir -p objs
-	@mkdir -p objs/divide
-	@mkdir -p objs/merge
-	@mkdir -p objs/parse_input
-	@mkdir -p objs/sort_small
-	@mkdir -p objs/stack
+	@echo "Build ${NAME}"
+	@mkdir -p ${OBJS_DIR}
+	@mkdir -p ${OBJS_DIR}/divide
+	@mkdir -p ${OBJS_DIR}/merge
+	@mkdir -p ${OBJS_DIR}/parse_input
+	@mkdir -p ${OBJS_DIR}/sort_small
+	@mkdir -p ${OBJS_DIR}/stack
 
 
 ${NAME}: ${OBJS}
@@ -124,7 +124,7 @@ ${NAME}: ${OBJS}
 	@make -C ${FT_PRINTF_DIR}
 	@make -C ${GNL_DIR}
 	@${CC} -g -o ${NAME} ${OBJS} ${LIBS} -I ${INCS_DIR}
-	@echo "Build push_swap: done"
+	@echo "Build ${NAME}: done"
 
 
 ${OBJS_DIR}/%.o: ${SRCS_DIR}/%.c | ${OBJS_DIR}
@@ -133,15 +133,15 @@ ${OBJS_DIR}/%.o: ${SRCS_DIR}/%.c | ${OBJS_DIR}
 	${eval T_IDX = ${shell expr ${T_IDX} / 8 + 1}}
 	${eval CHR = ${shell echo ${SPINNER} | cut -c ${T_IDX}}}
 	@if [ ${IDX} = 1 ]; then\
-		echo -n "Build dependencies in push_swap ...  ";\
+		echo -n "Build dependencies in ${NAME} ...  ";\
 	fi
 	@printf "\b${CHR}"
 	@${CC} -g -c $< -o $@ -I ${INCS_DIR}
 
 
 ${OBJS_BONUS_DIR}:
-	@echo "Build checker"
-	@mkdir -p objs_bonus
+	@echo "Build ${NAME_BONUS}"
+	@mkdir -p ${OBJS_BONUS_DIR}
 
 
 ${OBJS_BONUS_DIR}/%.o: ${SRCS_BONUS_DIR}/%.c | ${OBJS_BONUS_DIR}
@@ -149,7 +149,7 @@ ${OBJS_BONUS_DIR}/%.o: ${SRCS_BONUS_DIR}/%.c | ${OBJS_BONUS_DIR}
 	${eval T_IDX = ${shell expr ${IDX} % 32}}
 	${eval T_IDX = ${shell expr ${T_IDX} / 8 + 1}}
 	${eval CHR = ${shell echo ${SPINNER} | cut -c ${T_IDX}}}
-	@if [ ${IDX} = 1 ]; then echo -n "Build dependencies in push_swap ...  "; fi
+	@if [ ${IDX} = 1 ]; then echo -n "Build dependencies in ${NAME} ...  "; fi
 	@printf "\b${CHR}"
 	@${CC} ${CFLAGS} -g -c $< -o $@ -I ${INCS_BONUS_DIR}
 
@@ -158,28 +158,28 @@ ${NAME_BONUS}: ${OBJS_BONUS}
 	@printf "\bdone\n"
 	${eval IDX = 0}
 	@${CC} -g -o ${NAME_BONUS} ${OBJS_BONUS} ${wildcard ${OBJS_DIR}/parse_input/*.o} ${wildcard ${OBJS_DIR}/stack/*.o} ${LIBS} -I ${INCS_BONUS_DIR}
-	@echo "Build checker: done"
+	@echo "Build ${NAME_BONUS}: done"
 
 
 clean:
-	@echo "Remove dependencies in push_swap"
+	@echo "Remove dependencies in ${NAME}"
 	@make -C ${FT_PRINTF_DIR} clean
 	@make -C ${GNL_DIR} clean
 	@rm -rf ${OBJS_DIR} ${OBJS_BONUS_DIR}
 
 
 fclean:
-	@echo "Remove dependencies in push_swap"
+	@echo "Remove dependencies in ${NAME}"
 	@make -C ${FT_PRINTF_DIR} fclean
 	@make -C ${GNL_DIR} fclean
-	@echo "Remove push_swap, checker"
+	@echo "Remove ${NAME}, ${NAME_BONUS}"
 	@rm -rf ${OBJS_DIR} ${OBJS_BONUS_DIR}
 	@${RM} ${NAME} ${NAME_BONUS}
 	@${RM} ${OUTPUT}
 	
 
 re:
-	@echo "Re-build push_swap"
+	@echo "Re-build ${NAME}"
 	@make fclean
 	@make all
 
