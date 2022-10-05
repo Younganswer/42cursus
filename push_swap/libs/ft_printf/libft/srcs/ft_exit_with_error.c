@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_exit_with_error.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/25 16:15:47 by younhwan          #+#    #+#             */
-/*   Updated: 2022/08/31 23:53:21 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/10/05 17:47:20 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/libft.h"
+#include "../incs/libft.h"
 
 void	ft_exit_with_error(const char *str, int exit_flag)
 {
