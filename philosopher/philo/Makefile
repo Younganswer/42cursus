@@ -6,7 +6,7 @@
 #    By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/08 16:03:07 by younhwan          #+#    #+#              #
-#    Updated: 2022/10/05 11:17:46 by younhwan         ###   ########.fr        #
+#    Updated: 2022/10/05 17:57:54 by younhwan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -64,7 +64,7 @@ ${OBJS_DIR}/%.o: ${SRCS_DIR}/%.c | ${OBJS_DIR}
 		echo -n "Build dependencies in philo ...  ";\
 	fi
 	@printf "\b${CHR}"
-	@${CC} ${CFLAGS} -g -c $< -o $@ -I ${INCS_DIR}
+	@${CC} -g -c $< -o $@ -I ${INCS_DIR}
 
 
 clean:

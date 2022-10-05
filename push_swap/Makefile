@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+         #
+#    By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/08 16:03:07 by younhwan          #+#    #+#              #
-#    Updated: 2022/09/18 00:18:16 by younhwan         ###   ########.fr        #
+#    Updated: 2022/10/05 17:57:40 by younhwan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -136,7 +136,7 @@ ${OBJS_DIR}/%.o: ${SRCS_DIR}/%.c | ${OBJS_DIR}
 		echo -n "Build dependencies in push_swap ...  ";\
 	fi
 	@printf "\b${CHR}"
-	@${CC} ${CFLAGS} -g -c $< -o $@ -I ${INCS_DIR}
+	@${CC} -g -c $< -o $@ -I ${INCS_DIR}
 
 
 ${OBJS_BONUS_DIR}:
