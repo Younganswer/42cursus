@@ -6,7 +6,7 @@
 #    By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/08 16:03:07 by younhwan          #+#    #+#              #
-#    Updated: 2022/10/07 21:07:53 by younhwan         ###   ########.fr        #
+#    Updated: 2022/10/07 21:15:12 by younhwan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ SHELL	= /bin/bash
 SPINNER	= /-\|/
 IDX		= 0
 
-NAME	= BraiiiiiiinnnzzzZ
+NAME	= Moar\ brainz!
 
 CC		= clang++
 CFLAGS	= -Wall -Wextra -Werror -std=c++98
@@ -26,9 +26,8 @@ SRCS_DIR	= ./srcs
 OBJS_DIR	= ./objs
 
 SRCS =	main.cpp \
-		newZombie.cpp \
-		randomChump.cpp \
-		Zombie.cpp
+		Zombie.cpp \
+		zombieHorde.cpp
 		
 SRCS := ${addprefix ${SRCS_DIR}/, ${SRCS}}
 OBJS = ${SRCS:${SRCS_DIR}/%.cpp=${OBJS_DIR}/%.o}
