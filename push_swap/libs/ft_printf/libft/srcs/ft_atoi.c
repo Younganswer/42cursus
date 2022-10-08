@@ -3,17 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 19:53:11 by younhwan          #+#    #+#             */
-/*   Updated: 2022/10/05 17:47:20 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/10/09 00:22:47 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs/libft.h"
 #include "limits.h"
-
-int			ft_atoi(const char *str);
 
 int	ft_atoi(const char *str)
 {
