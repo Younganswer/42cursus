@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+         #
+#    By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/08 16:03:07 by younhwan          #+#    #+#              #
-#    Updated: 2022/10/02 20:59:14 by younhwan         ###   ########.fr        #
+#    Updated: 2022/10/08 23:20:31 by younhwan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,8 +25,9 @@ INCS_DIR	= ./incs
 SRCS_DIR	= ./srcs
 OBJS_DIR	= ./objs
 
-SRCS =	main.cpp\
-		phone_book.cpp
+SRCS =	main.cpp \
+		Contack.cpp \
+		PhoneBook.cpp
 		
 SRCS := ${addprefix ${SRCS_DIR}/, ${SRCS}}
 OBJS = ${SRCS:${SRCS_DIR}/%.cpp=${OBJS_DIR}/%.o}

@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/02 20:50:22 by younhwan          #+#    #+#             */
-/*   Updated: 2022/10/02 21:07:30 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/10/08 23:16:04 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
-#include "../incs/phone_book.hpp"
+#include "../incs/PhoneBook.hpp"
 
 int	main(void) {
-	Phone_book phone_book;
+	PhoneBook phone_book;
 	while (true) {
 		std::string	cmd;
 		std::cout << "Enter command\n>> ";

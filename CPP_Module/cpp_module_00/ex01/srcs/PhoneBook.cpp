@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   phone_book.cpp                                     :+:      :+:    :+:   */
+/*   PhoneBook.cpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -11,17 +11,13 @@
 /* ************************************************************************** */
 
 #include <iostream>
-#include "../incs/phone_book.hpp"
+#include "../incs/PhoneBook.hpp"
 
-Phone_book::Phone_book(void) {
-	first_pos = 0;
-	cur_pos = 0;
-	for (int i=0; i<8; i++) {
-		contacts[i].initialized = 0;
-	}
+PhoneBook::PhoneBook(void): first_pos(0), cur_pos(0) {
+	return;
 }
 
-bool	Phone_book::print_field(const std::string &str) {
+bool	PhoneBook::print_field(const std::string &str) {
 	for (unsigned long i=0; str.length()<10 && i<10-str.length(); i++) {
 		std::cout << ' ';
 	}
@@ -31,7 +27,7 @@ bool	Phone_book::print_field(const std::string &str) {
 	return (true);
 }
 
-bool	Phone_book::add(void) {
+bool	PhoneBook::add(void) {
 	std::cout << "Enter first name\n>> ";
 	std::cin >> contacts[cur_pos].first_name;
 	std::cout << "Enter last name\n>> ";
@@ -49,7 +45,7 @@ bool	Phone_book::add(void) {
 	return (true);
 }
 
-bool	Phone_book::search(void) {
+bool	PhoneBook::search(void) {
 	for (int i=0; i<8; i++) {
 		if (contacts[(first_pos + i) % 8].initialized) {
 			print_field(std::to_string(i));
@@ -82,6 +78,6 @@ bool	Phone_book::search(void) {
 	return (true);
 }
 
-Phone_book::~Phone_book(void) {
+PhoneBook::~PhoneBook(void) {
 	return;
 }

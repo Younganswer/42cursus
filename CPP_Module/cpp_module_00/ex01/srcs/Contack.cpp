@@ -1,29 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   megaphone.cpp                                      :+:      :+:    :+:   */
+/*   Contack.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/02 17:24:43 by younhwan          #+#    #+#             */
-/*   Updated: 2022/10/08 23:11:54 by younhwan         ###   ########.fr       */
+/*   Created: 2022/10/08 23:16:19 by younhwan          #+#    #+#             */
+/*   Updated: 2022/10/08 23:18:33 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
-#include <string>
+#include "../incs/Contact.hpp"
 
-int	main(int argc, char **argv) {
-	if (argc == 1) {
-		std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *\n";
-		return (0);
-	}
-	for (int i=1; i<argc; i++) {
-		std::string str(argv[i]);
-		for (size_t j=0; j<str.length(); j++) {
-			std::cout << (char) std::toupper(str[j]);
-		}
-	}
-	std::cout << '\n';
-	return (0);
+Contact::Contact(void) {
+	this->first_name = std::string();
+	this->last_name = std::string();
+	this->nick_name = std::string();
+	this->darkest_secret = std::string();
+	this->phone_number = std::string();
+	this->initialized = false;
+	return;
+}
+
+Contact::~Contact(void) {
+	return;
 }

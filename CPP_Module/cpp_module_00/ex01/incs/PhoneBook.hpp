@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   phone_book.hpp                                     :+:      :+:    :+:   */
+/*   PhoneBook.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/02 17:39:32 by younhwan          #+#    #+#             */
-/*   Updated: 2022/10/02 21:15:09 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/10/08 23:15:34 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHONE_BOOK_HPP
-# define PHONE_BOOK_HPP
-# include "contact.hpp"
+#ifndef PHONEBOOK_HPP
+# define PHONEBOOK_HPP
+# include "Contact.hpp"
 
-class Phone_book {
+class PhoneBook {
 private:
 	Contact	contacts[8];
 	int		first_pos;
@@ -22,10 +22,10 @@ private:
 	bool	print_field(const std::string &);
 	
 public:
-	Phone_book(void);
+	PhoneBook(void);
 	bool	add(void);
 	bool	search(void);
-	~Phone_book(void);
+	~PhoneBook(void);
 };
 
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   contact.hpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/02 17:44:34 by younhwan          #+#    #+#             */
-/*   Updated: 2022/10/02 21:06:12 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/10/08 23:20:54 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ public:
 	std::string	phone_number;
 	bool		initialized;
 
-	Contact(void) {}
-	~Contact(void) {}
+	Contact(void);
+	~Contact(void);
 };
 
 #endif // CONTACT_HPP
