@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/08 23:33:51 by younhwan          #+#    #+#             */
-/*   Updated: 2022/10/09 00:00:28 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/10/09 23:41:01 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ public:
 	HumanB(void);
 	HumanB(const std::string &name);
 	HumanB(const std::string &name, Weapon &weapon);
-	HumanB(const HumanB &HumanB);
-	HumanB	&operator=(const HumanB &HumanB);
+	HumanB(const HumanB &humanB);
+	HumanB	&operator=(const HumanB &humanB);
 	~HumanB(void);
 
 	bool	attack(void);

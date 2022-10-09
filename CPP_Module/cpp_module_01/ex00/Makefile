@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+         #
+#    By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/08 16:03:07 by younhwan          #+#    #+#              #
-#    Updated: 2022/10/07 21:07:53 by younhwan         ###   ########.fr        #
+#    Updated: 2022/10/09 22:57:06 by younhwan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,10 +16,11 @@ IDX		= 0
 
 NAME	= BraiiiiiiinnnzzzZ
 
-CC		= clang++
-CFLAGS	= -Wall -Wextra -Werror -std=c++98
-AR		= ar rcs
-RM		= rm -f
+CC			= clang++
+CXXFLAGS	= -Wall -Wextra -Werror -std=c++98 -O2
+LDFLAGS		= fsanitize=address -g3
+AR			= ar rcs
+RM			= rm -f
 
 INCS_DIR	= ./incs
 SRCS_DIR	= ./srcs
@@ -32,6 +33,7 @@ SRCS =	main.cpp \
 		
 SRCS := ${addprefix ${SRCS_DIR}/, ${SRCS}}
 OBJS = ${SRCS:${SRCS_DIR}/%.cpp=${OBJS_DIR}/%.o}
+DEPS = ${OBJS:.o=.d}
 
 
 all: ${NAME}
@@ -44,7 +46,7 @@ ${OBJS_DIR}:
 
 ${NAME}: ${OBJS}
 	@printf "\bdone\n"
-	@${CC} -g -o ${NAME} ${OBJS} -I ${INCS_DIR}
+	@${CC} ${CXXFLAGS} ${LDFLAGS} -g -o ${NAME} ${OBJS} -I ${INCS_DIR}
 	@echo "Build ${NAME}: done"
 
 
@@ -57,7 +59,7 @@ ${OBJS_DIR}/%.o: ${SRCS_DIR}/%.cpp | ${OBJS_DIR}
 		echo -n "Build dependencies in ${NAME} ...  ";\
 	fi
 	@printf "\b${CHR}"
-	@${CC} ${CFLAGS} -g -c $< -o $@ -I ${INCS_DIR}
+	@${CC} ${CXXFLAGS} -g -c $< -o $@ -I ${INCS_DIR} -MD
 
 
 clean:
@@ -76,3 +78,5 @@ re:
 
 
 .PHONY: all clean fclean re
+
+-include ${DEPS}

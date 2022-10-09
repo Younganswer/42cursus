@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/08 23:32:08 by younhwan          #+#    #+#             */
-/*   Updated: 2022/10/08 23:38:29 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/10/09 23:38:02 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,7 @@ Weapon::Weapon(void) {
 }
 
 Weapon::Weapon(const std::string type) {
-	this->type.clear();
-	this->type.append(type);
+	this->type = type.c_str();
 	return;
 }
 
@@ -29,8 +28,7 @@ Weapon::Weapon(const Weapon &weapon) {
 }
 
 Weapon	&Weapon::operator=(const Weapon &weapon) {
-	this->type.clear();
-	this->type.append(weapon.type);
+	this->type = weapon.type.c_str();
 	return (*this);
 }
 
@@ -43,7 +41,6 @@ std::string	Weapon::getType(void) {
 }
 
 bool		Weapon::setType(const std::string &type) {
-	this->type.clear();
-	this->type.append(type);
+	this->type = type.c_str();
 	return (true);
 }
