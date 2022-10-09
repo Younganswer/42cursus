@@ -6,7 +6,7 @@
 #    By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/08 16:03:07 by younhwan          #+#    #+#              #
-#    Updated: 2022/10/09 22:57:06 by younhwan         ###   ########.fr        #
+#    Updated: 2022/10/09 23:55:17 by younhwan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,11 +14,11 @@ SHELL	= /bin/bash
 SPINNER	= /-\|/
 IDX		= 0
 
-NAME	= BraiiiiiiinnnzzzZ
+NAME	= replace
 
 CC			= clang++
 CXXFLAGS	= -Wall -Wextra -Werror -std=c++98 -O2
-LDFLAGS		= fsanitize=address -g3
+LDFLAGS		= -fsanitize=address -g3
 AR			= ar rcs
 RM			= rm -f
 
@@ -27,9 +27,8 @@ SRCS_DIR	= ./srcs
 OBJS_DIR	= ./objs
 
 SRCS =	main.cpp \
-		newZombie.cpp \
-		randomChump.cpp \
-		Zombie.cpp
+		replace/Replace.cpp \
+		utils/exit_with_error.cpp
 		
 SRCS := ${addprefix ${SRCS_DIR}/, ${SRCS}}
 OBJS = ${SRCS:${SRCS_DIR}/%.cpp=${OBJS_DIR}/%.o}
@@ -42,6 +41,8 @@ all: ${NAME}
 ${OBJS_DIR}:
 	@echo "Build ${NAME}"
 	@mkdir -p objs
+	@mkdir -p objs/replace
+	@mkdir -p objs/utils
 
 
 ${NAME}: ${OBJS}

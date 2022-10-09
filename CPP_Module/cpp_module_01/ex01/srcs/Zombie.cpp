@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Zombie.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 20:52:26 by younhwan          #+#    #+#             */
-/*   Updated: 2022/10/07 21:05:57 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/10/09 23:38:46 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ Zombie::Zombie(void) {
 }
 
 Zombie::Zombie(std::string name) {
-	this->name.append(name);
+	this->name = name.c_str();
 	return;
 }
 
@@ -30,8 +30,7 @@ Zombie	&Zombie::operator=(const Zombie &zombie) {
 	if (this == &zombie)
 		return (*this);
 
-	this->name.clear();
-	this->name.append(zombie.name);
+	this->name = zombie.name.c_str();
 	return (*this);
 }
 
@@ -41,8 +40,7 @@ void	Zombie::announce(void) {
 }
 
 bool	Zombie::setName(std::string name) {
-	this->name.clear();
-	this->name.append(name);
+	this->name = name.c_str();
 	return (true);
 }
 

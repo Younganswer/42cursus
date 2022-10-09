@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/08 23:35:15 by younhwan          #+#    #+#             */
-/*   Updated: 2022/10/09 00:01:37 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/10/09 23:40:47 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,27 +20,24 @@ HumanB::HumanB(void) {
 
 HumanB::HumanB(const std::string &name) {
 	weapon = NULL;
-	this->name.clear();
-	this->name.append(name);
+	this->name = name.c_str();
 	return;
 }
 
 HumanB::HumanB(const std::string &name, Weapon &weapon) {
 	this->weapon = &weapon;
-	this->name.clear();
-	this->name.append(name);
+	this->name = name.c_str();
 	return;
 }
 
-HumanB::HumanB(const HumanB &HumanB) {
-	(*this) = HumanB;
+HumanB::HumanB(const HumanB &humanB) {
+	(*this) = humanB;
 	return;
 }
 
-HumanB	&HumanB::operator=(const HumanB &HumanB) {
-	*(this->weapon) = *(HumanB.weapon);
-	this->name.clear();
-	this->name.append(HumanB.name);
+HumanB	&HumanB::operator=(const HumanB &humanB) {
+	*(this->weapon) = *(humanB.weapon);
+	this->name = humanB.name.c_str();
 	return (*this);
 }
 

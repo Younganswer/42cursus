@@ -1,36 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   HumanB.hpp                                         :+:      :+:    :+:   */
+/*   utils.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/08 23:33:51 by younhwan          #+#    #+#             */
-/*   Updated: 2022/10/09 23:41:01 by younhwan         ###   ########.fr       */
+/*   Created: 2022/10/09 23:11:19 by younhwan          #+#    #+#             */
+/*   Updated: 2022/10/09 23:30:17 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef HUMANB_HPP
-# define HUMANB_HPP
+#ifndef UTILS_HPP
+# define UTILS_HPP
 
 # include <iostream>
-# include "Weapon.hpp"
+# include <string>
 
-class HumanB {
-private:
-	Weapon		*weapon;
-	std::string	name;
-
-public:
-	HumanB(void);
-	HumanB(const std::string &name);
-	HumanB(const std::string &name, Weapon &weapon);
-	HumanB(const HumanB &humanB);
-	HumanB	&operator=(const HumanB &humanB);
-	~HumanB(void);
-
-	bool	attack(void);
-	bool	setWeapon(Weapon &weapon);
-};
+void	exit_with_error(const std::string &message, bool exit_flag);
 
 #endif

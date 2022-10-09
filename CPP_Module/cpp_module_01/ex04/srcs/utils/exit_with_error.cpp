@@ -1,36 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   HumanB.hpp                                         :+:      :+:    :+:   */
+/*   exit_with_error.cpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/08 23:33:51 by younhwan          #+#    #+#             */
-/*   Updated: 2022/10/09 23:41:01 by younhwan         ###   ########.fr       */
+/*   Created: 2022/10/09 23:11:07 by younhwan          #+#    #+#             */
+/*   Updated: 2022/10/09 23:51:33 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef HUMANB_HPP
-# define HUMANB_HPP
+#include "../../incs/utils.hpp"
 
-# include <iostream>
-# include "Weapon.hpp"
+void	exit_with_error(const std::string &message, bool exit_flag);
 
-class HumanB {
-private:
-	Weapon		*weapon;
-	std::string	name;
-
-public:
-	HumanB(void);
-	HumanB(const std::string &name);
-	HumanB(const std::string &name, Weapon &weapon);
-	HumanB(const HumanB &humanB);
-	HumanB	&operator=(const HumanB &humanB);
-	~HumanB(void);
-
-	bool	attack(void);
-	bool	setWeapon(Weapon &weapon);
-};
-
-#endif
+void	exit_with_error(const std::string &message, bool exit_flag) {
+	std::cerr << "\033[31mError: " << message << "\033[0m\n";
+	exit(exit_flag);
+}

@@ -1,36 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   HumanB.hpp                                         :+:      :+:    :+:   */
+/*   Replace.hpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/08 23:33:51 by younhwan          #+#    #+#             */
-/*   Updated: 2022/10/09 23:41:01 by younhwan         ###   ########.fr       */
+/*   Created: 2022/10/09 23:30:10 by younhwan          #+#    #+#             */
+/*   Updated: 2022/10/09 23:52:51 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef HUMANB_HPP
-# define HUMANB_HPP
+#ifndef REPLACE_HPP
+# define REPLACE_HPP
 
 # include <iostream>
-# include "Weapon.hpp"
+# include <fstream>
+# include <sstream>
+# include <string>
 
-class HumanB {
+class Replace {
 private:
-	Weapon		*weapon;
-	std::string	name;
+	std::string	fileName;
+	std::string	s1;
+	std::string	s2;
+	bool	replaceLine(std::string &line);
 
 public:
-	HumanB(void);
-	HumanB(const std::string &name);
-	HumanB(const std::string &name, Weapon &weapon);
-	HumanB(const HumanB &humanB);
-	HumanB	&operator=(const HumanB &humanB);
-	~HumanB(void);
-
-	bool	attack(void);
-	bool	setWeapon(Weapon &weapon);
+	Replace(void);
+	Replace(const std::string &fileName, const std::string &s1, const std::string &s2);
+	~Replace(void);
+	
+	bool	replace(void);
 };
 
 #endif
