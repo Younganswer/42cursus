@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 10:33:08 by younhwan          #+#    #+#             */
-/*   Updated: 2022/10/10 14:12:48 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/10/10 15:39:02 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ size_t	Harl::hash(const std::string &level) {
 	size_t			ret = 0;
 
 	for (size_t i=0; i<level.length(); i++) {
-		ret += (level[i] * (int) my_pow(PRIME, i)) % FUNC_ARR_SIZE;
+		ret += (level[i] * my_pow(PRIME, i)) % FUNC_ARR_SIZE;
 	}
 	return (ret % FUNC_ARR_SIZE);
 }
