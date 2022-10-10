@@ -32,7 +32,7 @@
 
 ### ex06
 	$ ./harlFilter <Things to complain>
-#### Supported things to complain)
+#### Supported things to complain
 * "DEBUG"
 * "INFO"
 * "WARNING"
