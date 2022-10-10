@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 20:54:29 by younhwan          #+#    #+#             */
-/*   Updated: 2022/10/10 11:27:30 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/10/10 14:13:12 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 int	main(void) {
 	Harl	harl;
-	harl.complain("debug");
-	harl.complain("info");
-	harl.complain("warning");
-	harl.complain("error");
-	harl.complain("undefined");
+	harl.complain("DEBUG");
+	harl.complain("INFO");
+	harl.complain("WARNING");
+	harl.complain("ERROR");
+	harl.complain("UNDEFINED");
 	return (0);
 }

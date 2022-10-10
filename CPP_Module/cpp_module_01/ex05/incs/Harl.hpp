@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Harl.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 10:32:04 by younhwan          #+#    #+#             */
-/*   Updated: 2022/10/10 11:35:39 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/10/10 14:01:01 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ private:
 	void	info(void);
 	void	warning(void);
 	void	error(void);
-	void	invalid_behavior(void);
+	void	undefined_behavior(void);
 
 public:
 	Harl(void);

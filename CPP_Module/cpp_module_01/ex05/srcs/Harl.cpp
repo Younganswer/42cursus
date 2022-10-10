@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Harl.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 10:33:08 by younhwan          #+#    #+#             */
-/*   Updated: 2022/10/10 11:35:15 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/10/10 14:12:48 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 Harl::Harl(void) {
 	for (size_t i=0; i<FUNC_ARR_SIZE; i++) {
-		func[i] = &Harl::invalid_behavior;
+		func[i] = &Harl::undefined_behavior;
 	}
-	func[hash("debug")] = &Harl::debug;
-	func[hash("info")] = &Harl::info;
-	func[hash("warning")] = &Harl::warning;
-	func[hash("error")] = &Harl::error;
+	func[hash("DEBUG")] = &Harl::debug;
+	func[hash("INFO")] = &Harl::info;
+	func[hash("WARNING")] = &Harl::warning;
+	func[hash("ERROR")] = &Harl::error;
 	return;
 }
 
@@ -28,27 +28,31 @@ Harl::~Harl(void) {
 }
 
 void	Harl::debug(void) {
-	std::cout << "DEBUG: ...\n";
+	std::cout << "[ DEBUG ]\n";
+	std::cout << "Message about debug\n";
 	return;
 }
 
 void	Harl::info(void) {
-	std::cout << "INFO: ...\n";
+	std::cout << "[ INFO ]\n";
+	std::cout << "Message about infomation\n";
 	return;
 }
 
 void	Harl::warning(void) {
-	std::cout << "WARNING: ...\n";
+	std::cout << "[ WARNING ]\n";
+	std::cout << "Message about warning\n";
 	return;
 }
 
 void	Harl::error(void) {
-	std::cout << "ERROR: ...\n";
+	std::cout << "[ ERROR ]\n";
+	std::cout << "Message about error\n";
 	return;
 }
 
-void	Harl::invalid_behavior(void) {
-	std::cerr << "\033[31mError: Invalid behavior\033[0m\n";
+void	Harl::undefined_behavior(void) {
+	std::cout << "[ Probably complaining about insignificant problems ]\n";
 	return;
 }
 
