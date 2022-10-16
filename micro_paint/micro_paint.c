@@ -44,11 +44,14 @@ int	main(int argc, char **argv) {
 				write(1, "Error: Operation file corrupted\n", 32);
 				return (1);
 			}
-		} else {
+		} else if (op->flag == 'R') {
 			if (!draw_filled_rectangle(info, op)) {
 				write(1, "Error: Operation file corrupted\n", 32);
 				return (1);
 			}
+		} else {
+			write(1, "Error: Unexpected error\n", 25);
+			return (1);
 		}
 	}
 	draw_board(info);
