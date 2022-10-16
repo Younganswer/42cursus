@@ -2,8 +2,11 @@
 
 t_bool	init_rectangle(Rectangle *info, FILE *fd);
 t_bool	draw_border_only(Rectangle *info, Op *op);
-int	ceil(float operand);
-int	floor(float operand);
+t_bool	draw_filled_rectangle(Rectangle *info, Op *op);
+t_bool	draw_board(Rectangle *info);
+
+int	ft_ceil(float operand);
+int	ft_floor(float operand);
 
 int	main(int argc, char **argv) {
 	if (argc != 2) {
@@ -37,11 +40,18 @@ int	main(int argc, char **argv) {
 			return (1);
 		}
 		if (op->flag == 'r') {
-			draw_border_only(info, op);
+			if (!draw_border_only(info, op)) {
+				write(1, "Error: Operation file corrupted\n", 32);
+				return (1);
+			}
 		} else {
-
+			if (!draw_filled_rectangle(info, op)) {
+				write(1, "Error: Operation file corrupted\n", 32);
+				return (1);
+			}
 		}
 	}
+	draw_board(info);
 	return (0);
 }
 
@@ -73,9 +83,63 @@ t_bool	init_rectangle(Rectangle *info, FILE *fd) {
 }
 
 t_bool	draw_border_only(Rectangle *info, Op *op) {
+	int startPosX = ft_ceil(op->x);
+	int startPosY = ft_ceil(op->y);
+	int endPosX = ft_floor(op->x + op->width);
+	int endPosY = ft_floor(op->y + op->height);
+	if ((info->width <= startPosX || info->height <= startPosY) || 
+		(endPosX <= 0 || endPosY <= 0))
+		return (TRUE);
 
+	for (int i=startPosY; i<=endPosY; i++) {
+		if (i < 0 || info->height <= i)
+			continue;
+		for (int j=startPosX; j<=endPosX; j++) {
+			if ((i != startPosY && i != endPosY) && 
+				(j != startPosX && j != endPosX))
+				continue;
+			if (j < 0 || info->width <= j)
+				continue;
+			info->board[i][j] = op->c;
+		}
+	}
 	return (TRUE);
 }
 
-int	ceil(float operand);
-int	floor(float operand);
+t_bool	draw_filled_rectangle(Rectangle *info, Op *op) {
+	int startPosX = ft_ceil(op->x);
+	int startPosY = ft_ceil(op->y);
+	int endPosX = ft_floor(op->x + op->width);
+	int endPosY = ft_floor(op->y + op->height);
+	if ((info->width <= startPosX || info->height <= startPosY) || 
+		(endPosX <= 0 || endPosY <= 0))
+		return (TRUE);
+	for (int i=startPosY; i<=endPosY; i++) {
+		if (i < 0 || info->height <= i)
+			continue;
+		for (int j=startPosX; j<=endPosX; j++) {
+			if (j < 0 || info->width <= j)
+				continue;
+			info->board[i][j] = op->c;
+		}
+	}
+	return (TRUE);
+}
+
+t_bool	draw_board(Rectangle *info) {
+	for (int i=0; i<info->height; i++) {
+		for (int j=0; j<info->width; j++) {
+			write(1, &info->board[i][j], 1);
+		}
+		write(1, "\n", 1);
+	}
+	return (TRUE);
+}
+
+int	ft_ceil(float operand) {
+	return (((int)(operand * 10) % 10) ? (operand + 1) : operand);
+}
+
+int	ft_floor(float operand) {
+	return ((operand < 0) ? (operand - 1) : operand);
+}
