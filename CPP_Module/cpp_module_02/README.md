@@ -7,5 +7,17 @@
 <br/><br/><br/>
 
 ### ex00
-	$ ./
+	$ ./fixed
+<br/>
+
+### ex01
+	$ ./fixed
+<br/>
+
+### ex02
+	$ ./fixed
+<br/>
+
+### ex03
+	$ ./bsp
 <br/>
