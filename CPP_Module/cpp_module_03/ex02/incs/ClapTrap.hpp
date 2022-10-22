@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/22 15:01:16 by younhwan          #+#    #+#             */
-/*   Updated: 2022/10/22 16:43:46 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/10/22 17:02:38 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,16 @@ private:
 	unsigned int	hit_points;
 	unsigned int	energy_points;
 	unsigned int	attack_damage;
+
+protected:
+	void			setName(const std::string &name);
+	std::string		getName(void);
+	void			setHitPoints(unsigned int amount);
+	unsigned int	getHitPoints(void);
+	void			setEnergePoints(unsigned int amount);
+	unsigned int	getEnergePoints(void);
+	void			setAttackDamage(unsigned int amount);
+	unsigned int	getAttackDamage(void);
 	
 public:
 	ClapTrap(void);
@@ -34,13 +44,6 @@ public:
 	void	takeDamage(unsigned int amount);
 	void	beRepaired(unsigned int amount);
 
-
-	void			setHitPoints(unsigned int amount);
-	unsigned int	getHitPoints(void);
-	void			setEnergePoints(unsigned int amount);
-	unsigned int	getEnergePoints(void);
-	void			setAttackDamage(unsigned int amount);
-	unsigned int	getAttackDamage(void);
 };
 
 #endif

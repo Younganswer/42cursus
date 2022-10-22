@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/22 15:08:56 by younhwan          #+#    #+#             */
-/*   Updated: 2022/10/22 17:04:22 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/10/22 17:05:35 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,22 +49,22 @@ void	ClapTrap::attack(ClapTrap &target) {
 	if (!energy_points)
 		return;
 	if (!target.hit_points) {
-		std::cout << "ClapTrap [" << target.name << "] already has no hit points\n";
+		std::cout << '[' << target.name << "] already has no hit points\n";
 		return;
 	}
 	energy_points--;
-	std::cout << "ClapTrap [" << name << "] attacks [" << target.name << "], causing [" << attack_damage << "] points of damage!\n";
+	std::cout << '[' << name << "] attacks [" << target.name << "], causing [" << attack_damage << "] points of damage!\n";
 	target.takeDamage(attack_damage);
 	return;
 }
 
 void	ClapTrap::takeDamage(unsigned int amount) {
 	if (hit_points <= amount) {
-		std::cout << "ClapTrap [" << name << "] is run out of its hit points\n";
+		std::cout << '[' << name << "] is run out of its hit points\n";
 		hit_points = 0;
 		return;
 	}
-	std::cout << "ClapTrap [" << name << "] took " <<  amount << " damage!\n";
+	std::cout << '[' << name << "] took " <<  amount << " damage!\n";
 	hit_points -= amount;
 	return;
 }
@@ -73,7 +73,7 @@ void	ClapTrap::beRepaired(unsigned int amount) {
 	if (!energy_points)
 		return;
 	energy_points--;
-	std::cout << "Claptrap [" << name << "] regained " << amount << " of its hit points ";
+	std::cout << '[' << name << "] regained " << amount << " of its hit points ";
 	hit_points += amount;
 	return;
 }
