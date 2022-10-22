@@ -6,25 +6,24 @@
 /*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/22 15:48:23 by younhwan          #+#    #+#             */
-/*   Updated: 2022/10/22 17:19:32 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/10/22 18:44:11 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../incs/ScavTrap.hpp"
-#include "../incs/FragTrap.hpp"
+#include "../incs/DiamondTrap.hpp"
 
 int	main(void) {
-	ScavTrap	jeolim("jeolim");
+	ClapTrap	jeolim("jeolim");
 	ScavTrap	hyunkyle("hyunkyle");
 	FragTrap	daegulee("dagulee");
+	DiamondTrap	younhwan("younhwan");
 
 	hyunkyle.attack(jeolim);
 	hyunkyle.attack(jeolim);
-	hyunkyle.attack(jeolim);
-	hyunkyle.attack(jeolim);
-	hyunkyle.attack(jeolim);
+	jeolim.beRepaired(100);
 	hyunkyle.attack(jeolim);
 	hyunkyle.guardGate();
 	daegulee.highFivesGuys();
+	younhwan.whoAmI();
 	return (0);
 }

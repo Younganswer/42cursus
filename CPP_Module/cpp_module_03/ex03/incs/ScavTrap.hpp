@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/22 16:15:44 by younhwan          #+#    #+#             */
-/*   Updated: 2022/10/22 16:46:46 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/10/22 18:27:56 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include "ClapTrap.hpp"
 
-class ScavTrap : public ClapTrap {
+class ScavTrap : virtual public ClapTrap {
 public:
 	ScavTrap(void);
 	ScavTrap(const std::string &name);

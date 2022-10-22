@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/22 15:48:23 by younhwan          #+#    #+#             */
-/*   Updated: 2022/10/22 17:19:32 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/10/22 18:42:01 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "../incs/FragTrap.hpp"
 
 int	main(void) {
-	ScavTrap	jeolim("jeolim");
+	ClapTrap	jeolim("jeolim");
 	ScavTrap	hyunkyle("hyunkyle");
 	FragTrap	daegulee("dagulee");
 
