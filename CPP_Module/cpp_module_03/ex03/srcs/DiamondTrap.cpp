@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/22 18:22:47 by younhwan          #+#    #+#             */
-/*   Updated: 2022/10/22 18:43:08 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/10/22 18:50:48 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,13 @@ DiamondTrap::DiamondTrap(void): ClapTrap(), ScavTrap(), FragTrap(), _name(std::s
 	return;
 }
 
-DiamondTrap::DiamondTrap(const std::string &name): ClapTrap(name + "_clap_trap"), ScavTrap(name + "_scav_trap"), FragTrap(name + "_frag_trap") {
+DiamondTrap::DiamondTrap(const std::string &name): ClapTrap(name + "_clap_trap"), ScavTrap(name + "_clap_trap"), FragTrap(name + "_clap_trap") {
 	std::cout << "const std::string constructor of DiamonTrap is called\n";
 	this->_name = name.c_str();
 	return;
 }
 
-DiamondTrap::DiamondTrap(const DiamondTrap &diamond_trap): ClapTrap(diamond_trap.getName() + "_clap_trap"), ScavTrap(diamond_trap.getName() + "_scav_trap"), FragTrap(diamond_trap.getName() + "_frag_trap") {
+DiamondTrap::DiamondTrap(const DiamondTrap &diamond_trap): ClapTrap(diamond_trap.getName() + "_clap_trap"), ScavTrap(diamond_trap.getName() + "_clap_trap"), FragTrap(diamond_trap.getName() + "_clap_trap") {
 	(*this) = diamond_trap;
 	std::cout << "Copy constructor of DiamonTrap is called\n";
 	return;

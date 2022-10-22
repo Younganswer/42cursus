@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/22 18:21:43 by younhwan          #+#    #+#             */
-/*   Updated: 2022/10/22 18:31:59 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/10/22 19:14:50 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ private:
 	using FragTrap::hit_points;
 	using ScavTrap::energy_points;
 	using FragTrap::attack_damage;
-	using ScavTrap::attack;
 	
 public:
 	DiamondTrap(void);
@@ -32,6 +31,8 @@ public:
 	DiamondTrap	&operator=(const DiamondTrap &diamond_trap);
 	~DiamondTrap(void);
 
+	using ScavTrap::attack;
+	
 	void	whoAmI(void);
 };
 
