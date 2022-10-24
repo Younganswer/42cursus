@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   DiamondTrap.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/22 18:21:43 by younhwan          #+#    #+#             */
-/*   Updated: 2022/10/22 19:14:50 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/10/24 11:46:51 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,6 @@
 class DiamondTrap: public ScavTrap, public FragTrap {
 private:
 	std::string	_name;
-	using FragTrap::hit_points;
-	using ScavTrap::energy_points;
-	using FragTrap::attack_damage;
 	
 public:
 	DiamondTrap(void);
@@ -31,8 +28,6 @@ public:
 	DiamondTrap	&operator=(const DiamondTrap &diamond_trap);
 	~DiamondTrap(void);
 
-	using ScavTrap::attack;
-	
 	void	whoAmI(void);
 };
 

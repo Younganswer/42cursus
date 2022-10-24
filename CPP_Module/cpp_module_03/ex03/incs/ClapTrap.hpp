@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/22 15:01:16 by younhwan          #+#    #+#             */
-/*   Updated: 2022/10/24 11:35:00 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/10/24 11:46:10 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,13 @@
 # include <string>
 
 class ClapTrap {
-protected:
+private:
 	std::string		name;
 	unsigned int	hit_points;
 	unsigned int	energy_points;
 	unsigned int	attack_damage;
 
+protected:
 	std::string		getName(void) const ;
 	unsigned int	getHitPoints(void) const ;
 	unsigned int	getEnergePoints(void) const ;
