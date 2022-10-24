@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ScavTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/22 16:15:44 by younhwan          #+#    #+#             */
-/*   Updated: 2022/10/22 18:27:56 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/10/24 12:33:49 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ public:
 	ScavTrap	&operator=(const ScavTrap &scav_trap);
 	~ScavTrap(void);
 
+	void	attack(const std::string &target);
 	void	guardGate(void);
 };
 

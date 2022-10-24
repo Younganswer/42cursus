@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/22 18:22:47 by younhwan          #+#    #+#             */
-/*   Updated: 2022/10/24 11:47:10 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/10/24 12:39:37 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,29 @@ DiamondTrap	&DiamondTrap::operator=(const DiamondTrap &diamond_trap) {
 
 DiamondTrap::~DiamondTrap(void) {
 	std::cout << "Destructor of DiamondTrap is called\n";
+	return;
+}
+
+unsigned int	DiamondTrap::getAttackDamage(void) const {
+	return (FragTrap::getAttackDamage());
+}
+
+void	DiamondTrap::attack(const std::string &target) {
+	if (!ScavTrap::getEnergePoints() || !FragTrap::getHitPoints())
+		return;
+	ScavTrap::attack(target);
+	return;
+}
+
+void	DiamondTrap::takeDamage(unsigned int amount) {
+	FragTrap::takeDamage(amount);
+	return;
+}
+
+void	DiamondTrap::beRepaired(unsigned int amount) {
+	if (!ScavTrap::getEnergePoints() || !FragTrap::getHitPoints())
+		return;
+	FragTrap::beRepaired(amount);
 	return;
 }
 

@@ -6,31 +6,31 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/22 15:08:56 by younhwan          #+#    #+#             */
-/*   Updated: 2022/10/24 11:43:30 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/10/24 12:48:47 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs/ClapTrap.hpp"
 
 ClapTrap::ClapTrap(void): name(std::string()), hit_points(10), energy_points(10), attack_damage(0) {
-	std::cout << "Default constructor of ClapTrap is called\n";
+	std::cout << "Default constructor of CL4P-TP is called\n";
 	return;
 }
 
 ClapTrap::ClapTrap(const std::string &name): name(name.c_str()), hit_points(10), energy_points(10), attack_damage(0) {
-	std::cout << "const std::string constructor of ClapTrap is called\n";
+	std::cout << "const std::string constructor of CL4P-TP is called\n";
 	return;
 }
 
 ClapTrap::ClapTrap(const ClapTrap &clap_trap) {
-	std::cout << "Copy constructor of ClapTrap is called\n";
+	std::cout << "Copy constructor of CL4P-TP is called\n";
 	if (this != &clap_trap)
 		(*this) = clap_trap;
 	return;
 }
 
 ClapTrap	&ClapTrap::operator=(const ClapTrap &clap_trap) {
-	std::cout << "Copy assignment operator of ClapTrap is called\n";
+	std::cout << "Copy assignment operator of CL4P-TP is called\n";
 	if (this != &clap_trap) {
 		this->name = clap_trap.name.c_str();
 		this->hit_points = clap_trap.hit_points;
@@ -41,7 +41,7 @@ ClapTrap	&ClapTrap::operator=(const ClapTrap &clap_trap) {
 }
 
 ClapTrap::~ClapTrap(void) {
-	std::cout << "Destructor of ClapTrap is called\n";
+	std::cout << "Destructor of CL4P-TP is called\n";
 	return;
 }
 
@@ -49,17 +49,17 @@ void	ClapTrap::attack(const std::string &target) {
 	if (!energy_points || !hit_points)
 		return;
 	energy_points--;
-	std::cout << "ClapTrap [" << name << "] attacks [" << target << "], causing [" << attack_damage << "] points of damage!\n";
+	std::cout << "CL4P-TP [" << name << "] attacks [" << target << "], causing [" << attack_damage << "] points of damage!\n";
 	return;
 }
 
 void	ClapTrap::takeDamage(unsigned int amount) {
 	if (hit_points <= amount) {
-		std::cout << "ClapTrap [" << name << "] is run out of its hit points\n";
+		std::cout << "CL4P-TP [" << name << "] is run out of its hit points\n";
 		hit_points = 0;
 		return;
 	}
-	std::cout << "ClapTrap [" << name << "] took [" <<  amount << "] damage!\n";
+	std::cout << "CL4P-TP [" << name << "] took [" <<  amount << "] damage!\n";
 	hit_points -= amount;
 	return;
 }
@@ -68,7 +68,7 @@ void	ClapTrap::beRepaired(unsigned int amount) {
 	if (!energy_points || !hit_points)
 		return;
 	energy_points--;
-	std::cout << '[' << name << "] is repaired: Restore [" << amount << "] hit points\n";
+	std::cout << "CL4P-TP [" << name << "] is repaired: Restore [" << amount << "] hit points\n";
 	hit_points += amount;
 	return;
 }
