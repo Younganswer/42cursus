@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ClapTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/22 15:01:16 by younhwan          #+#    #+#             */
-/*   Updated: 2022/10/22 17:02:38 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/10/24 11:36:34 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,15 @@ private:
 	unsigned int	attack_damage;
 
 protected:
+	std::string		getName(void) const;
+	unsigned int	getHitPoints(void) const;
+	unsigned int	getEnergePoints(void) const;
+	unsigned int	getAttackDamage(void) const;
+	
 	void			setName(const std::string &name);
-	std::string		getName(void);
 	void			setHitPoints(unsigned int amount);
-	unsigned int	getHitPoints(void);
 	void			setEnergePoints(unsigned int amount);
-	unsigned int	getEnergePoints(void);
 	void			setAttackDamage(unsigned int amount);
-	unsigned int	getAttackDamage(void);
 	
 public:
 	ClapTrap(void);
@@ -40,10 +41,9 @@ public:
 	ClapTrap	&operator=(const ClapTrap &clap_trap);
 	virtual	~ClapTrap(void);
 
-	void	attack(ClapTrap &target);
+	void	attack(const std::string &target);
 	void	takeDamage(unsigned int amount);
 	void	beRepaired(unsigned int amount);
-
 };
 
 #endif

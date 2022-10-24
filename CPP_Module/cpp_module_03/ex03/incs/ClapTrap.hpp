@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ClapTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/22 15:01:16 by younhwan          #+#    #+#             */
-/*   Updated: 2022/10/22 18:47:07 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/10/24 11:35:00 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,6 @@ protected:
 	void			setEnergePoints(unsigned int amount);
 	void			setAttackDamage(unsigned int amount);
 	
-	void			takeDamage(unsigned int amount);
-	
 public:
 	ClapTrap(void);
 	ClapTrap(const std::string &name);
@@ -42,9 +40,9 @@ public:
 	ClapTrap	&operator=(const ClapTrap &clap_trap);
 	virtual		~ClapTrap(void);
 
-	void		attack(ClapTrap &target);
+	void		attack(const std::string &target);
+	void		takeDamage(unsigned int amount);
 	void		beRepaired(unsigned int amount);
-
 };
 
 #endif

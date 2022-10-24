@@ -3,27 +3,44 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/22 15:48:23 by younhwan          #+#    #+#             */
-/*   Updated: 2022/10/22 18:44:11 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/10/24 11:37:55 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs/DiamondTrap.hpp"
 
 int	main(void) {
-	ClapTrap	jeolim("jeolim");
-	ScavTrap	hyunkyle("hyunkyle");
-	FragTrap	daegulee("dagulee");
-	DiamondTrap	younhwan("younhwan");
-
-	hyunkyle.attack(jeolim);
-	hyunkyle.attack(jeolim);
-	jeolim.beRepaired(100);
-	hyunkyle.attack(jeolim);
-	hyunkyle.guardGate();
-	daegulee.highFivesGuys();
-	younhwan.whoAmI();
+	{
+		ClapTrap	jeolim("jeolim");
+		jeolim.attack("Rock");
+		jeolim.takeDamage(5);
+		jeolim.beRepaired(5);
+	}
+	{
+		ScavTrap	hyunkyle("hyunkyle");
+		hyunkyle.attack("Tree");
+		hyunkyle.takeDamage(10);
+		hyunkyle.beRepaired(10);
+		hyunkyle.guardGate();
+	}
+	{
+		FragTrap	dagulee("dagulee");
+		dagulee.attack("Wheel");
+		dagulee.takeDamage(20);
+		dagulee.beRepaired(20);
+		dagulee.highFivesGuys();
+	}
+	{
+		DiamondTrap	younhwan("younhwan");
+		younhwan.attack("Wall");
+		younhwan.takeDamage(30);
+		younhwan.beRepaired(30);
+		younhwan.guardGate();
+		younhwan.highFivesGuys();
+		younhwan.whoAmI();
+	}
 	return (0);
 }
