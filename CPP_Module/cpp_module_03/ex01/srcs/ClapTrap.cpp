@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/22 15:08:56 by younhwan          #+#    #+#             */
-/*   Updated: 2022/10/24 11:33:18 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/10/24 11:43:40 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ ClapTrap::~ClapTrap(void) {
 }
 
 void	ClapTrap::attack(const std::string &target) {
-	if (!energy_points)
+	if (!energy_points || !hit_points)
 		return;
 	energy_points--;
 	std::cout << '[' << name << "] attacks [" << target << "], causing [" << attack_damage << "] points of damage!\n";
@@ -65,7 +65,7 @@ void	ClapTrap::takeDamage(unsigned int amount) {
 }
 
 void	ClapTrap::beRepaired(unsigned int amount) {
-	if (!energy_points)
+	if (!energy_points || !hit_points)
 		return;
 	energy_points--;
 	std::cout << '[' << name << "] is repaired: Restore [" << amount << "] hit points\n";
