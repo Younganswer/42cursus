@@ -16,12 +16,6 @@
 
 int	main(void) {
 	{
-		const Animal *meta = new Animal();
-		std:: cout << meta->getType() << " " << '\n';
-		meta->makeSound();
-		delete meta;
-	}
-	{
 		const Animal *dog = new Dog();
 		std::cout << dog->getType() << " " << '\n';
 		dog->makeSound();
@@ -33,5 +27,13 @@ int	main(void) {
 		cat->makeSound(); //will output the cat sound!
 		delete cat;
 	}
+	// {
+	// 	const Animal *animal;
+	// 	try {
+	// 		animal = new Animal();
+	// 	} catch (std::exception &e) {
+	// 		std::cout << e.what() << '\n';
+	// 	}
+	// }
 	return (0);
 }

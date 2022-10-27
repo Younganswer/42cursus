@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 11:20:03 by younhwan          #+#    #+#             */
-/*   Updated: 2022/10/27 11:51:20 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/10/27 11:59:39 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,6 @@ Animal	&Animal::operator=(const Animal& ref) {
 
 Animal::~Animal(void) {
 	std::cout << "Animal destructor called" << '\n';
-}
-
-void	Animal::makeSound(void) const {
-	std::cout << "Animal makeSound called" << '\n';
 }
 
 std::string	Animal::getType(void) const {

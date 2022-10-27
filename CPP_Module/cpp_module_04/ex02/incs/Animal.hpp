@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 11:18:22 by younhwan          #+#    #+#             */
-/*   Updated: 2022/10/27 11:30:19 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/10/27 11:59:17 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ class Animal {
 		Animal	&operator=(const Animal& ref);
 		virtual ~Animal(void);
 		
-		virtual void 	makeSound(void) const;
+		virtual void 	makeSound(void) const = 0;
 		std::string		getType(void) const;
 };
 
