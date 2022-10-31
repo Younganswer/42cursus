@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/31 10:42:36 by younhwan          #+#    #+#             */
-/*   Updated: 2022/10/31 12:35:14 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/10/31 13:48:26 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,9 @@ const std::string	&Character::getName(void) const {
 }
 
 void	Character::equip(AMateria *mat) {
+	if (mat == NULL)
+		return ;
+
 	if (mat->getEquipped())
 		return ;
 
@@ -69,6 +72,9 @@ void	Character::equip(AMateria *mat) {
 void	Character::unequip(int idx) {
 	if (idx < 0 || idx > 3)
 		return;
+	if (this->_inventory[idx] == NULL)
+		return;
+	
 	this->_inventory[idx]->setEquipped(false);
 	this->_inventory[idx] = NULL;
 }

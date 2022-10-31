@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 12:11:34 by younhwan          #+#    #+#             */
-/*   Updated: 2022/10/31 12:35:53 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/10/31 13:46:48 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ AMateria	&AMateria::operator=(const AMateria &ref) {
 	if (this != &ref) {
 		this->_type = ref._type.c_str();
 		this->_xp = ref._xp;
+		this->_equipped = ref._equipped;
 	}
 	return (*this);
 }

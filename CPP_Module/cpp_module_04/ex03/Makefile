@@ -6,7 +6,7 @@
 #    By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/08 16:03:07 by younhwan          #+#    #+#              #
-#    Updated: 2022/10/31 12:20:58 by younhwan         ###   ########.fr        #
+#    Updated: 2022/10/31 13:12:52 by younhwan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,8 @@ SRCS =	main.cpp \
 		Ice.cpp \
 		Cure.cpp \
 		Character.cpp \
-		MateriaSource.cpp
+		MateriaSource.cpp \
+		Floor.cpp
 
 SRCS := ${addprefix ${SRCS_DIR}/, ${SRCS}}
 OBJS = ${SRCS:${SRCS_DIR}/%.cpp=${OBJS_DIR}/%.o}

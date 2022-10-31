@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/31 10:50:19 by younhwan          #+#    #+#             */
-/*   Updated: 2022/10/31 12:10:49 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/10/31 13:59:00 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,17 +41,19 @@ MateriaSource::~MateriaSource(void) {
 }
 
 void	MateriaSource::learnMateria(AMateria *mat) {
-	if (this->_count < 4)
-		this->_materia[this->_count++] = mat;
+	if (4 <= this->_count)
+		return;
+	this->_materia[this->_count++] = mat;
 }
 
 AMateria	*MateriaSource::createMateria(const std::string &type) {
-	for (int i=0; i<4; i++) {
-		if (this->_materia[i] == NULL)
+	AMateria	*ret = NULL;
+	
+	for (int i=0; i<_count; i++) {
+		if (this->_materia[i]->getType() == type) {
+			ret = this->_materia[i]->clone();
 			break;
-		if (this->_materia[i]->getType() != type)
-			continue;
-		return (this->_materia[i]->clone());
+		}
 	}
-	return (NULL);
+	return (ret);
 }
