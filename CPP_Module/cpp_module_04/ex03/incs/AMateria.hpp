@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 12:06:03 by younhwan          #+#    #+#             */
-/*   Updated: 2022/10/27 12:50:33 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/10/31 12:35:00 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,13 @@
 
 # include <iostream>
 # include <string>
-# include "ICharacter.hpp"
+class ICharacter;
 
-class AMateria
-{
+class AMateria {
 	protected:
 		std::string		_type;
 		unsigned int	_xp;
+		bool			_equipped;
 		
 	public:
 		AMateria(void);
@@ -33,6 +33,10 @@ class AMateria
 		// Getter
 		const std::string	&getType(void) const;
 		unsigned int		getXP(void) const;
+		bool				getEquipped(void) const;
+
+		// Setter
+		void				setEquipped(bool equipped);
 		
 		virtual AMateria	*clone(void) const = 0;
 		virtual void		use(ICharacter &target);

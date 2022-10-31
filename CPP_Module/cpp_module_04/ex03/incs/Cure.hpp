@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 12:58:13 by younhwan          #+#    #+#             */
-/*   Updated: 2022/10/27 12:58:54 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/10/31 12:09:07 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <iostream>
 # include <string>
 # include "AMateria.hpp"
+# include "Character.hpp"
 
 class Cure: public AMateria {
 	public:

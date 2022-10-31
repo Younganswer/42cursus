@@ -6,7 +6,7 @@
 #    By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/08 16:03:07 by younhwan          #+#    #+#              #
-#    Updated: 2022/10/27 13:04:27 by younhwan         ###   ########.fr        #
+#    Updated: 2022/10/31 12:20:58 by younhwan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ SHELL	= /bin/bash
 SPINNER	= /-\|/
 IDX		= 0
 
-NAME	= Abstract\ class
+NAME	= Interface\ \&\ Recap
 
 CC			= clang++
 CXXFLAGS	= -Wall -Wextra -Werror -std=c++98 -O2
@@ -30,9 +30,7 @@ SRCS =	main.cpp \
 		AMateria.cpp \
 		Ice.cpp \
 		Cure.cpp \
-		ICharacter.cpp \
 		Character.cpp \
-		IMateriaSource.cpp \
 		MateriaSource.cpp
 
 SRCS := ${addprefix ${SRCS_DIR}/, ${SRCS}}
