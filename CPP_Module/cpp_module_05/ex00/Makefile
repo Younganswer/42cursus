@@ -6,7 +6,7 @@
 #    By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/08 16:03:07 by younhwan          #+#    #+#              #
-#    Updated: 2022/11/01 10:56:09 by younhwan         ###   ########.fr        #
+#    Updated: 2022/11/01 10:57:53 by younhwan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ SHELL	= /bin/bash
 SPINNER	= /-\|/
 IDX		= 0
 
-NAME	= 
+NAME	= Mommy,\ when\ I\ grow\ up,\ I\ want\ to\ be\ a\ bureaucrat!
 
 CC			= clang++
 CXXFLAGS	= -Wall -Wextra -Werror -std=c++98 -O2
@@ -27,6 +27,7 @@ SRCS_DIR	= ./srcs
 OBJS_DIR	= ./objs
 
 SRCS =	main.cpp \
+		Bureaucrat.cpp
 
 SRCS := ${addprefix ${SRCS_DIR}/, ${SRCS}}
 OBJS = ${SRCS:${SRCS_DIR}/%.cpp=${OBJS_DIR}/%.o}

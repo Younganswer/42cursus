@@ -13,7 +13,7 @@
 
 ## Usage
 ### ex00
-	$ ./
+	$ ./Mommy,\ when\ I\ grow\ up,\ I\ want\ to\ be\ a\ bureaucrat!
 <br/>
 
 ### ex01
