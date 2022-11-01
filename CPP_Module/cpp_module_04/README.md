@@ -11,6 +11,7 @@
 	$ make (all)
 <br/>
 
+## Usage
 ### ex00
 	$ ./Polymorphism
 <br/>

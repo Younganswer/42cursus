@@ -12,8 +12,6 @@
 <br/><br/>
 
 ## Usage
-<br/>
-
 ### ex00
 	$ ./megaphone [String to say] ...
 * With no argument is OK
