@@ -6,6 +6,14 @@
 ### This document contains the exercises of Module 01 from C++ modules.
 <br/><br/><br/>
 
+## Install
+#### You can install all exercise with following command
+	$ make (all)
+<br/><br/>
+
+## Usage
+<br/>
+
 ### ex00
 	$ ./BraiiiiiiinnnzzzZ
 <br/>

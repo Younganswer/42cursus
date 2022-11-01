@@ -7,10 +7,13 @@
 <br/><br/><br/>
 
 ## Install
+#### You can install all exercise with following command
 	$ make (all)
-<br/><br/><br/><br/>
+<br/><br/>
 
 ## Usage
+<br/>
+
 ### ex00
 	$ ./megaphone [String to say] ...
 * With no argument is OK

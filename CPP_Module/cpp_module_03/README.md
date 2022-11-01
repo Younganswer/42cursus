@@ -6,6 +6,11 @@
 ### This document contains the exercises of Module 03 from C++ modules.
 <br/><br/><br/>
 
+## Install
+#### You can install all exercise with following command
+	$ make (all)
+<br/>
+
 ### ex00
 	$ ./Aaaaand...\ OPEN!
 <br/>
