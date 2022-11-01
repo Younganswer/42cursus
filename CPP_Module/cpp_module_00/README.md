@@ -7,7 +7,7 @@
 <br/><br/><br/>
 
 ## Install
-#### You can install all exercise with following command
+#### You can install each exercise with following command
 	$ make (all)
 <br/><br/>
 
