@@ -17,7 +17,7 @@
 <br/>
 
 ### ex01
-	$ ./
+	$ ./Form\ up,\ maggots!
 <br/>
 
 ### ex02
