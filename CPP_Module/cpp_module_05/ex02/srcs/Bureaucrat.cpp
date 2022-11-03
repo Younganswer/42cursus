@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 11:05:30 by younhwan          #+#    #+#             */
-/*   Updated: 2022/11/03 12:29:40 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/11/03 13:00:42 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,17 @@ void	Bureaucrat::signForm(Form &ref) {
 		std::cout << this->_name << " signs " << ref.getName() << '\n';
 	} catch (std::exception &e) {
 		std::cout << this->_name << " cannot sign " << ref.getName() << " because " << e.what() << '\n';
+	} catch (...) {
+		std::cout << "\033[31mError: Unknown Error\033[0m" << '\n';
+	}
+}
+
+void	Bureaucrat::executeForm(Form const &form) {
+	try {
+		std::cout << this->_name << " executes " << form.getName() << '\n';
+		form.execute(*this);
+	} catch (std::exception &e) {
+		std::cout << this->_name << " cannot execute " << form.getName() << " because " << e.what() << '\n';
 	} catch (...) {
 		std::cout << "\033[31mError: Unknown Error\033[0m" << '\n';
 	}

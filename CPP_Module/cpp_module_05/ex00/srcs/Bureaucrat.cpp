@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 11:05:30 by younhwan          #+#    #+#             */
-/*   Updated: 2022/11/01 13:40:08 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/11/03 12:29:29 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 Bureaucrat::Bureaucrat(void) : _name("younhwan"), _grade(150) {}
 
-Bureaucrat::Bureaucrat(const std::string name, int grade) throw(std::exception): _name(std::string(name.c_str())), _grade(grade) {
+Bureaucrat::Bureaucrat(const std::string &name, int grade) throw(std::exception): _name(std::string(name.c_str())), _grade(grade) {
 	if (grade < 1)
 		throw Bureaucrat::GradeTooHighException(_name);
 	else if (grade > 150)

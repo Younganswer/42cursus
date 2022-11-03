@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 10:47:16 by younhwan          #+#    #+#             */
-/*   Updated: 2022/11/03 12:29:07 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/11/03 12:33:47 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ class Form {
 		Form(void);
 		Form(const std::string &name, const int grade_to_sign, const int grade_to_execute) throw(std::exception);
 		Form(const Form &ref);
-		Form	&operator=(const Form &ref);
+		Form	&operator=(const Form &rhs);
 		~Form(void);
 
 		// Getter
@@ -40,6 +40,7 @@ class Form {
 
 		// Utils
 		void				beSigned(const Bureaucrat &ref) throw(std::exception);
+		virtual void		execute(const Bureaucrat &ref) const throw(std::exception) = 0;
 
 		// Exception
 		class GradeTooHighException: public std::exception {
@@ -61,6 +62,17 @@ class Form {
 				GradeTooLowException(void);
 				GradeTooLowException(const std::string &name);
 				~GradeTooLowException(void) throw();
+				virtual const char* what() const throw();
+		};
+
+		class FormNotSignedException: public std::exception {
+			private:
+				std::string _msg;
+
+			public:
+				FormNotSignedException(void);
+				FormNotSignedException(const std::string &name);
+				~FormNotSignedException(void) throw();
 				virtual const char* what() const throw();
 		};
 };

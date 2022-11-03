@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 10:56:32 by younhwan          #+#    #+#             */
-/*   Updated: 2022/11/03 12:29:45 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/11/03 12:59:11 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,18 @@ Form::GradeTooLowException::GradeTooLowException(const std::string &name) {
 Form::GradeTooLowException::~GradeTooLowException(void) throw() {}
 
 const char	*Form::GradeTooLowException::what(void) const throw() {
+	return (this->_msg.c_str());
+}
+
+Form::FormNotSignedException::FormNotSignedException(void): _msg("Form is not signed") {}
+
+Form::FormNotSignedException::FormNotSignedException(const std::string &name) {
+	this->_msg = std::string(name.c_str()) + " is not signed";
+}
+
+Form::FormNotSignedException::~FormNotSignedException(void) throw() {}
+
+const char	*Form::FormNotSignedException::what(void) const throw() {
 	return (this->_msg.c_str());
 }
 

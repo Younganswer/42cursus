@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 10:58:37 by younhwan          #+#    #+#             */
-/*   Updated: 2022/11/02 11:24:44 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/11/03 12:28:56 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ class Bureaucrat {
 		
 	public:
 		Bureaucrat(void);
-		Bureaucrat(const std::string name, int grade) throw(std::exception);
+		Bureaucrat(const std::string &name, int grade) throw(std::exception);
 		Bureaucrat(const Bureaucrat &ref);
 		Bureaucrat	&operator=(const Bureaucrat &ref);
 		~Bureaucrat(void);
@@ -44,7 +44,7 @@ class Bureaucrat {
 				std::string	_msg;
 			public:
 				GradeTooHighException(void);
-				GradeTooHighException(const std::string name);
+				GradeTooHighException(const std::string &name);
 				~GradeTooHighException(void) throw();
 				virtual const char	*what(void) const throw();
 		};
@@ -55,7 +55,7 @@ class Bureaucrat {
 
 			public:
 				GradeTooLowException(void);
-				GradeTooLowException(const std::string name);
+				GradeTooLowException(const std::string &name);
 				~GradeTooLowException(void) throw();
 				virtual const char	*what(void) const throw();
 		};
