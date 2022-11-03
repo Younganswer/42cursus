@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 11:13:33 by younhwan          #+#    #+#             */
-/*   Updated: 2022/11/03 12:58:19 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/11/03 15:55:29 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,16 @@
 #include "../incs/RobotomyRequestForm.hpp"
 #include "../incs/PresidentialPardonForm.hpp"
 
-int	main(void) {
+int	main(int argc, char **argv) {
 	try {
 		Bureaucrat				younhwan("younhwan", 40);
 		ShrubberyCreationForm	berry("home");
+		if (argc == 2) {
+			berry.setTarget(argv[1]);
+		} else if (2 <= argc) {
+			std::cerr << "\033[31mUsage: ./No, you need form 28B, not 28C... [target]\033[0m" << '\n';
+			return (1);
+		}
 		RobotomyRequestForm		robot("younhwan");
 		PresidentialPardonForm	presi("younhwan");
 		std::cout << younhwan << berry << robot << presi;

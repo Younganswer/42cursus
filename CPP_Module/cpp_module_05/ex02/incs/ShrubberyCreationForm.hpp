@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 12:42:48 by younhwan          #+#    #+#             */
-/*   Updated: 2022/11/03 12:58:09 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/11/03 15:53:46 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,9 @@ class ShrubberyCreationForm: public Form {
 
 		// Getter
 		const std::string	&getTarget(void) const;
+
+		// Setter
+		void				setTarget(const std::string &target);
 
 		// Utils
 		void				execute(const Bureaucrat &ref) const throw(std::exception);

@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 12:43:34 by younhwan          #+#    #+#             */
-/*   Updated: 2022/11/03 13:04:57 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/11/03 15:57:41 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,11 @@ const std::string	&ShrubberyCreationForm::getTarget(void) const {
 	return (this->_target);
 }
 
+// Setter
+void				ShrubberyCreationForm::setTarget(const std::string &target) {
+	this->_target = std::string(target.c_str());
+}
+
 // Utils
 void				ShrubberyCreationForm::execute(const Bureaucrat &ref) const throw(std::exception) {
 	if (this->getIsSigned() == false) {
@@ -42,7 +47,7 @@ void				ShrubberyCreationForm::execute(const Bureaucrat &ref) const throw(std::e
 		throw Form::GradeTooLowException();
 	}
 	else {
-		std::ofstream fout(this->_target + "_shruberry");
+		std::ofstream fout(this->_target + "_shrubbery");
 		if (!fout.is_open()) {
 			throw ShrubberyCreationForm::FileOpenException(this->_target + "_shruberry");
 		}

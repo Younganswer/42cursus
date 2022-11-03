@@ -6,7 +6,7 @@
 #    By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/08 16:03:07 by younhwan          #+#    #+#              #
-#    Updated: 2022/11/03 12:57:36 by younhwan         ###   ########.fr        #
+#    Updated: 2022/11/03 15:59:23 by younhwan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,6 +41,11 @@ DEPS = ${OBJS:.o=.d}
 all: ${NAME}
 
 
+TARGET	= home
+run: ${NAME}
+	./${NAME} ${TARGET}
+
+
 ${OBJS_DIR}:
 	@echo "Build ${NAME}"
 	@mkdir -p objs
@@ -68,6 +73,7 @@ ${OBJS_DIR}/%.o: ${SRCS_DIR}/%.cpp | ${OBJS_DIR}
 
 clean:
 	@echo "Remove dependencies in ${NAME}"
+	@rm -f *shrubbery
 	@rm -rf ${OBJS_DIR}
 
 
