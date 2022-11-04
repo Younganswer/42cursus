@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 19:32:51 by younhwan          #+#    #+#             */
-/*   Updated: 2022/11/04 19:53:37 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/11/04 22:07:15 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@ class Intern {
 		static Form	*makeRobotomyRequestForm(const std::string &target);
 		static Form	*makeShrubberyCreationForm(const std::string &target);
 		
-		static const Form			*(*_form[3])(const std::string &target);
+		static Form	*(*const _form[3])(const std::string &target);
+		
 		static const std::string	_form_name[3];
 		
 	public:

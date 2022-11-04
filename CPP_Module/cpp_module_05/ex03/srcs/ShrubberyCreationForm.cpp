@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 12:43:34 by younhwan          #+#    #+#             */
-/*   Updated: 2022/11/03 15:57:41 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/11/04 22:15:59 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void				ShrubberyCreationForm::execute(const Bureaucrat &ref) const throw(std::e
 		fout << "   `&%\\ ` /%&'    |.|        \\ '|8'" << '\n';
 		fout << "       |o|        | |         | |" << '\n';
 		fout << "       |.|        | |         | |" << '\n';
-		fout << "     \\/ ._\\//_/__/  ,\\_//__.\\/.  \\_//__/_" << '\n';
+		fout << "  __\\\\/ ._\\//_/__/  ,\\_//__.\\/.  \\_//__/_" << '\n';
 		fout.close();
 	}
 }
