@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 11:13:33 by younhwan          #+#    #+#             */
-/*   Updated: 2022/11/04 22:15:02 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/11/05 17:51:03 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,37 +18,57 @@
 #include "../incs/Intern.hpp"
 
 int	main(int argc, char **argv) {
+	if (2 < argc) {
+		std::cerr << "\033[31mUsage: ./At least this beats coffee-making [target]\033[0m" << '\n';
+		return (1);
+	}
 	try {
 		Bureaucrat				younhwan("younhwan", 40);
-		ShrubberyCreationForm	berry("home");
-		if (argc == 2) {
-			berry.setTarget(argv[1]);
-		} else if (2 <= argc) {
-			std::cerr << "\033[31mUsage: ./No, you need form 28B, not 28C... [target]\033[0m" << '\n';
-			return (1);
-		}
+		std::cout << younhwan;
+
 		Intern					intern;
+		
+		ShrubberyCreationForm	*shrubbery = (ShrubberyCreationForm *) intern.makeForm("shrubbery creation", "home");
+		if (shrubbery) {
+			if (argc == 2)
+				shrubbery->setTarget(argv[1]);
+			std::cout << *shrubbery;
+			younhwan.signForm(*shrubbery);
+			younhwan.executeForm(*shrubbery);
+		}
+
 		RobotomyRequestForm		*robot = (RobotomyRequestForm *) intern.makeForm("robotomy request", "Bender");
+		if (robot) {
+			std::cout << *robot;
+			younhwan.signForm(*robot);
+			younhwan.executeForm(*robot);
+		}
+		
 		PresidentialPardonForm	*presi = (PresidentialPardonForm *) intern.makeForm("presidential pardon", "younhwan");
-		std::cout << younhwan << berry << *robot << *presi;
-		younhwan.signForm(berry);
-		younhwan.signForm(*robot);
-		younhwan.signForm(*presi);
-		younhwan.executeForm(berry);
-		younhwan.executeForm(*robot);
-		younhwan.executeForm(*presi);
+		if (presi) {
+			std::cout << *presi;
+			younhwan.signForm(*presi);
+			younhwan.executeForm(*presi);
+		}
+
 	} catch (std::exception &e) {
 		std::cout << "\033[31mError: " << e.what() << "\033[0m" << '\n';
 	} catch (...) {
 		std::cout << "\033[31mError: Unknown Error\033[0m" << '\n';
 	}
+	std::cout << '\n';
 	try {
 		Bureaucrat				jeolim("jeolim", 1);
+		std::cout << jeolim;
+
 		Intern					intern;
+		
 		PresidentialPardonForm	*presi = (PresidentialPardonForm *) intern.makeForm("presidential pardon", "jeolim");
-		std::cout << jeolim << *presi;
-		jeolim.signForm(*presi);
-		jeolim.executeForm(*presi);
+		if (presi) {
+			std::cout << *presi;
+			jeolim.signForm(*presi);
+			jeolim.executeForm(*presi);
+		}
 	} catch (std::exception &e) {
 		std::cout << "\033[31mError: " << e.what() << "\033[0m" << '\n';
 	} catch (...) {

@@ -21,9 +21,15 @@
 <br/>
 
 ### ex02
-	$ ./
+	$ ./No,\ you\ need\ form\ 28B,\ not\ 28C...
 <br/>
 
 ### ex03
-	$ ./
+#### In manual
+	$ ./At\ least\ this\ beats\ coffee-making [target]
+* target will be used for file name
+	* ex) target_shrubbery
+#### You can also use 'make run' command
+	$ make run [TARGET=your_target]
+
 <br/>
