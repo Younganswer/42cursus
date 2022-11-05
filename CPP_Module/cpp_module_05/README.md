@@ -26,7 +26,7 @@
 
 ### ex03
 * target will be used for file name
-	ex) target_shrubbery
+	* ex) target_shrubbery
 #### In manual
 	$ ./At\ least\ this\ beats\ coffee-making [target]
 #### You can also use 'make run' command
