@@ -25,7 +25,7 @@
 <br/>
 
 ### ex03
-#### target will be used for file name
+target will be used for file name
 * ex) target_shrubbery
 #### In manual
 	$ ./At\ least\ this\ beats\ coffee-making [target]
