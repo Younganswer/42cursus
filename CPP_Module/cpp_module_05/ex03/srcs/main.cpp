@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 11:13:33 by younhwan          #+#    #+#             */
-/*   Updated: 2022/11/05 17:51:03 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/11/09 17:30:38 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,10 @@ int	main(int argc, char **argv) {
 		return (1);
 	}
 	try {
-		Bureaucrat				younhwan("younhwan", 40);
-		std::cout << younhwan;
+		Bureaucrat	younhwan("younhwan", 40);
+		Intern		intern;
 
-		Intern					intern;
+		std::cout << younhwan;
 		
 		ShrubberyCreationForm	*shrubbery = (ShrubberyCreationForm *) intern.makeForm("shrubbery creation", "home");
 		if (shrubbery) {
@@ -58,10 +58,10 @@ int	main(int argc, char **argv) {
 	}
 	std::cout << '\n';
 	try {
-		Bureaucrat				jeolim("jeolim", 1);
-		std::cout << jeolim;
+		Bureaucrat	jeolim("jeolim", 1);
+		Intern		intern;
 
-		Intern					intern;
+		std::cout << jeolim;
 		
 		PresidentialPardonForm	*presi = (PresidentialPardonForm *) intern.makeForm("presidential pardon", "jeolim");
 		if (presi) {
