@@ -6,7 +6,7 @@
 #    By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/08 16:03:07 by younhwan          #+#    #+#              #
-#    Updated: 2022/10/05 17:57:54 by younhwan         ###   ########.fr        #
+#    Updated: 2022/11/11 14:02:00 by younhwan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,7 +51,7 @@ ${OBJS_DIR}:
 
 ${NAME}: ${OBJS}
 	@printf "\bdone\n"
-	@${CC} -g -o ${NAME} ${OBJS} -I ${INCS_DIR} -fsanitize=thread
+	@${CC} -g -o ${NAME} ${OBJS} -I ${INCS_DIR}
 	@echo "Build philo: done"
 
 
