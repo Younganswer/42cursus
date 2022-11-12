@@ -14,7 +14,6 @@
 ## Usage
 ### ex00
 	$ ./convert [string]
-
 * string can be one of the following:
 	* char (printable character)
 	* int 
