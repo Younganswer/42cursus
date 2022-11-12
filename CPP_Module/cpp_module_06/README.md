@@ -14,13 +14,13 @@
 ## Usage
 ### ex00
 	$ ./convert [string]
-<br/>
 
 * string can be one of the following:
 	* char
 	* int
 	* float
 	* double
+<br/>
 
 ### ex01
 	$ ./
