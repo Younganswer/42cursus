@@ -16,10 +16,10 @@
 	$ ./convert [string]
 
 * string can be one of the following:
-	* char
-	* int
-	* float
-	* double
+	* char (printable character)
+	* int 
+	* float (x.y'f')
+	* double (x.y)
 <br/>
 
 ### ex01
