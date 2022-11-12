@@ -8,3 +8,4 @@
 | [cpp_module_03](./cpp_module_03) |                             |       |                  |
 | [cpp_module_04](./cpp_module_04) |                             |       |                  |
 | [cpp_module_05](./cpp_module_05) |                             |       |                  |
+| [cpp_module_06](./cpp_module_06) |                             |       |                  |
