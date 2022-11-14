@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 16:55:42 by younhwan          #+#    #+#             */
-/*   Updated: 2022/11/14 16:31:53 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/11/14 16:42:43 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ t_bool	time_passed(int msec)
 		have_to_sleep = msec * 1000 - ((cur.tv_sec - start.tv_sec) * \
 			1000 * 1000 + (cur.tv_usec - start.tv_usec));
 	}
-	if (0 < have_to_sleep)
-		usleep(have_to_sleep);
+	usleep(200);
 	return (TRUE);
 }
