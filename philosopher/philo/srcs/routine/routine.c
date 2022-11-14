@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 10:48:03 by younhwan          #+#    #+#             */
-/*   Updated: 2022/11/14 15:08:24 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/11/14 16:23:10 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	*routine(void *arg)
 	while (!philo->info->someone_is_dead)
 	{
 		if (philo->id % 2 && !philo->last_eat->tv_usec)
-			usleep(philo->info->time_to_eat * 5);
+			usleep(philo->info->time_to_eat * 100);
 		if (!p_take_forks(philo))
 			break ;
 		if (!p_eat(philo))
@@ -60,8 +60,8 @@ static t_bool	p_take_forks(t_philo *const philo)
 		return (pthread_mutex_unlock(forks[left].mutex));
 	if (philo->info->num_of_philo != 1)
 		pthread_mutex_lock(forks[right].mutex);
-	pthread_mutex_lock(philo->info->print_mutex);
 	philo->right_fork = &forks[right];
+	pthread_mutex_lock(philo->info->print_mutex);
 	if (philo->info->someone_is_dead)
 		return (pthread_mutex_unlock(forks[left].mutex) || \
 				pthread_mutex_unlock(forks[right].mutex) || \
@@ -79,8 +79,8 @@ static t_bool	p_eat(t_philo *const philo)
 	pthread_mutex_unlock(philo->info->print_mutex);
 	time_passed(philo->info->time_to_eat);
 	pthread_mutex_unlock(philo->left_fork->mutex);
-	pthread_mutex_unlock(philo->right_fork->mutex);
 	philo->left_fork = NULL;
+	pthread_mutex_unlock(philo->right_fork->mutex);
 	philo->right_fork = NULL;
 	if (philo->num_of_eat == philo->info->num_to_eat)
 	{
