@@ -22,7 +22,7 @@
 <br/>
 
 ### ex01
-	$ ./
+	$ ./serialization
 <br/>
 
 ### ex02
