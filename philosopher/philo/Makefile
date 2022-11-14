@@ -6,7 +6,7 @@
 #    By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/08 16:03:07 by younhwan          #+#    #+#              #
-#    Updated: 2022/11/14 15:52:50 by younhwan         ###   ########.fr        #
+#    Updated: 2022/11/14 21:01:10 by younhwan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,7 +51,7 @@ ${OBJS_DIR}:
 
 ${NAME}: ${OBJS}
 	@printf "\bdone\n"
-	@${CC} -g -o ${NAME} ${OBJS} -I ${INCS_DIR}
+	@${CC} ${CFLAGS} -g -o ${NAME} ${OBJS} -I ${INCS_DIR}
 	@echo "Build philo: done"
 
 
@@ -64,7 +64,7 @@ ${OBJS_DIR}/%.o: ${SRCS_DIR}/%.c | ${OBJS_DIR}
 		echo -n "Build dependencies in philo ...  ";\
 	fi
 	@printf "\b${CHR}"
-	@${CC} -g -c $< -o $@ -I ${INCS_DIR}
+	@${CC} ${CFLAGS} -g -c $< -o $@ -I ${INCS_DIR}
 
 
 clean:

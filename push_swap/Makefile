@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+         #
+#    By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/08 16:03:07 by younhwan          #+#    #+#              #
-#    Updated: 2022/10/05 21:33:06 by younhwan         ###   ########.fr        #
+#    Updated: 2022/11/14 20:59:39 by younhwan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -136,7 +136,7 @@ ${OBJS_DIR}/%.o: ${SRCS_DIR}/%.c | ${OBJS_DIR}
 		echo -n "Build dependencies in ${NAME} ...  ";\
 	fi
 	@printf "\b${CHR}"
-	@${CC} -g -c $< -o $@ -I ${INCS_DIR}
+	@${CC} ${CFLAGS} -g -c $< -o $@ -I ${INCS_DIR}
 
 
 ${OBJS_BONUS_DIR}:
