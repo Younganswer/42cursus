@@ -21,4 +21,4 @@
 <br/>
 
 ### ex02
-	$ ./
+	$ ./Mutated\ abomination
