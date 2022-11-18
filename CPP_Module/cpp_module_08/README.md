@@ -1,9 +1,9 @@
-## C++ Module 07
-### C++ templates
+## C++ Module 08
+### Templated containers, iterators, algorithms
 <br/><br/><br/>
 
 ## Summary
-### This document contains the exercises of Module 07 from C++ modules.
+### This document contains the exercises of Module 08 from C++ modules.
 <br/><br/><br/>
 
 ## Install
@@ -13,12 +13,12 @@
 
 ## Usage
 ### ex00
-	$ ./Start\ with\ a\ few\ functions
+	$ ./Easy\ find
 <br/>
 
 ### ex01
-	$ ./Iter
+	$ ./Span
 <br/>
 
 ### ex02
-	$ ./Array
+	$ ./
