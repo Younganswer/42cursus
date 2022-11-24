@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/22 16:19:34 by younhwan          #+#    #+#             */
-/*   Updated: 2022/10/24 12:41:57 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/11/24 12:17:38 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 FragTrap::FragTrap(void): ClapTrap() {
 	std::cout << "Default constructor of FR4G-TP is called\n";
 	this->setHitPoints(100);
-	this->setEnergePoints(100);
 	this->setAttackDamage(30);
 	return;
 }
@@ -23,7 +22,6 @@ FragTrap::FragTrap(void): ClapTrap() {
 FragTrap::FragTrap(const std::string &name): ClapTrap(name) {
 	std::cout << "const std::string constructor of FR4G-TP is called\n";
 	this->setHitPoints(100);
-	this->setEnergePoints(100);
 	this->setAttackDamage(30);
 	return;
 }

@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/22 16:19:34 by younhwan          #+#    #+#             */
-/*   Updated: 2022/10/24 12:40:28 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/11/24 12:16:40 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,13 @@
 
 ScavTrap::ScavTrap(void): ClapTrap() {
 	std::cout << "Default constructor of SC4V-TP is called\n";
-	this->setHitPoints(100);
 	this->setEnergePoints(50);
-	this->setAttackDamage(20);
 	return;
 }
 
 ScavTrap::ScavTrap(const std::string &name): ClapTrap(name) {
 	std::cout << "const std::string constructor of SC4V-TP is called\n";
-	this->setHitPoints(100);
 	this->setEnergePoints(50);
-	this->setAttackDamage(20);
 	return;
 }
 
