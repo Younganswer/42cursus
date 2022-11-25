@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/22 15:01:16 by younhwan          #+#    #+#             */
-/*   Updated: 2022/10/24 11:36:34 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/11/25 21:20:25 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,33 +17,38 @@
 # include <string>
 
 class ClapTrap {
-private:
-	std::string		name;
-	unsigned int	hit_points;
-	unsigned int	energy_points;
-	unsigned int	attack_damage;
-
-protected:
-	std::string		getName(void) const;
-	unsigned int	getHitPoints(void) const;
-	unsigned int	getEnergePoints(void) const;
-	unsigned int	getAttackDamage(void) const;
+	private:
+		std::string		_name;
+		unsigned int	_hit_points;
+		unsigned int	_energy_points;
+		unsigned int	_attack_damage;
 	
-	void			setName(const std::string &name);
-	void			setHitPoints(unsigned int amount);
-	void			setEnergePoints(unsigned int amount);
-	void			setAttackDamage(unsigned int amount);
-	
-public:
-	ClapTrap(void);
-	ClapTrap(const std::string &name);
-	ClapTrap(const ClapTrap &clap_trap);
-	ClapTrap	&operator=(const ClapTrap &clap_trap);
-	virtual	~ClapTrap(void);
+	protected:
+		// Getter
+		std::string		getName(void);
 
-	void	attack(const std::string &target);
-	void	takeDamage(unsigned int amount);
-	void	beRepaired(unsigned int amount);
+		const std::string	&getName(void) const;
+		unsigned int		getHitPoints(void) const;
+		unsigned int		getEnergePoints(void) const;
+		unsigned int		getAttackDamage(void) const;
+	
+		// Setter
+		void			setName(const std::string &name);
+		void			setHitPoints(unsigned int amount);
+		void			setEnergePoints(unsigned int amount);
+		void			setAttackDamage(unsigned int amount);
+		
+	public:
+		ClapTrap(void);
+		ClapTrap(const std::string &name);
+		ClapTrap(const ClapTrap &clap_trap);
+		ClapTrap	&operator=(const ClapTrap &clap_trap);
+		virtual	~ClapTrap(void);
+	
+		// Utils
+		void	attack(const std::string &target);
+		void	takeDamage(unsigned int amount);
+		void	beRepaired(unsigned int amount);
 };
 
 #endif
