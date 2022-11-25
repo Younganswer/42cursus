@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+         #
+#    By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/08 16:03:07 by younhwan          #+#    #+#              #
-#    Updated: 2022/10/02 17:35:28 by younhwan         ###   ########.fr        #
+#    Updated: 2022/11/25 20:11:52 by younhwan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,10 +18,10 @@ NAME	= megaphone
 
 CC		= clang++
 CFLAGS	= -Wall -Wextra -Werror -std=c++98
+LDFLAGS	=
 AR		= ar rcs
 RM		= rm -f
 
-#INCS_DIR	= ./incs
 SRCS_DIR	= ./srcs
 OBJS_DIR	= ./objs
 
@@ -41,7 +41,7 @@ ${OBJS_DIR}:
 
 ${NAME}: ${OBJS}
 	@printf "\bdone\n"
-	@${CC} -g -o ${NAME} ${OBJS} -I ${INCS_DIR}
+	@${CC} ${LDFLAGS} -g -o ${NAME} ${OBJS}
 	@echo "Build ${NAME}: done"
 
 
@@ -54,7 +54,7 @@ ${OBJS_DIR}/%.o: ${SRCS_DIR}/%.cpp | ${OBJS_DIR}
 		echo -n "Build dependencies in ${NAME} ...  ";\
 	fi
 	@printf "\b${CHR}"
-	@${CC} ${CFLAGS} -g -c $< -o $@ -I ${INCS_DIR}
+	@${CC} ${CFLAGS} -g -c $< -o $@
 
 
 clean:

@@ -6,7 +6,7 @@
 #    By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/08 16:03:07 by younhwan          #+#    #+#              #
-#    Updated: 2022/11/11 16:01:36 by younhwan         ###   ########.fr        #
+#    Updated: 2022/11/25 20:32:00 by younhwan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,8 +17,8 @@ IDX		= 0
 NAME	= harl
 
 CC			= clang++
-CXXFLAGS	= -Wall -Wextra -Werror -std=c++98 -O2
-LDFLAGS		= -fsanitize=address -g3
+CXXFLAGS	= -Wall -Wextra -Werror -std=c++98
+LDFLAGS		=
 AR			= ar rcs
 RM			= rm -f
 
@@ -44,7 +44,7 @@ ${OBJS_DIR}:
 
 ${NAME}: ${OBJS}
 	@printf "\bdone\n"
-	@${CC} ${CXXFLAGS} ${LDFLAGS} -g -o ${NAME} ${OBJS} -I ${INCS_DIR}
+	@${CC} ${LDFLAGS} -g -o ${NAME} ${OBJS} -I ${INCS_DIR}
 	@echo "Build ${NAME}: done"
 
 

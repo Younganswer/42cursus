@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Zombie.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 20:40:11 by younhwan          #+#    #+#             */
-/*   Updated: 2022/10/07 20:53:43 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/11/25 20:13:19 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,17 +17,18 @@
 # include <string>
 
 class Zombie {
-private:
-	std::string	name;
-
-public:
-	Zombie(void);
-	Zombie(std::string name);
-	Zombie(const Zombie &zombie);
-	Zombie	&operator=(const Zombie &zombie);
-	~Zombie(void);
-
-	void	announce(void);
+	private:
+		std::string	_name;
+	
+	public:
+		Zombie(void);
+		Zombie(const std::string &name);
+		Zombie(const Zombie &zombie);
+		Zombie	&operator=(const Zombie &zombie);
+		~Zombie(void);
+	
+		// Util
+		void	announce(void);
 };
 
 Zombie	*newZombie(std::string name);

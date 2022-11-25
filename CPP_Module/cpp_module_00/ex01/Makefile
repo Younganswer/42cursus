@@ -6,7 +6,7 @@
 #    By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/08 16:03:07 by younhwan          #+#    #+#              #
-#    Updated: 2022/10/08 23:20:31 by younhwan         ###   ########.fr        #
+#    Updated: 2022/11/25 20:12:16 by younhwan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,6 +18,7 @@ NAME	= phonebook
 
 CC		= clang++
 CFLAGS	= -Wall -Wextra -Werror -std=c++98
+LDFLAGS	=
 AR		= ar rcs
 RM		= rm -f
 
@@ -43,7 +44,7 @@ ${OBJS_DIR}:
 
 ${NAME}: ${OBJS}
 	@printf "\bdone\n"
-	@${CC} -g -o ${NAME} ${OBJS} -I ${INCS_DIR}
+	@${CC} ${LDFLAGS} -g -o ${NAME} ${OBJS} -I ${INCS_DIR}
 	@echo "Build ${NAME}: done"
 
 

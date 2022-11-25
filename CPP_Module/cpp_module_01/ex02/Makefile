@@ -6,7 +6,7 @@
 #    By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/08 16:03:07 by younhwan          #+#    #+#              #
-#    Updated: 2022/10/09 22:55:07 by younhwan         ###   ########.fr        #
+#    Updated: 2022/11/25 20:18:18 by younhwan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,15 +14,14 @@ SHELL	= /bin/bash
 SPINNER	= /-\|/
 IDX		= 0
 
-NAME	= HI\ THIS\ IS\ BRAIN
+NAME	= brain
 
 CC			= clang++
-CXXFLAGS	= -Wall -Wextra -Werror -std=c++98 -O2
-LDFLAGS		= fsanitize=address -g3
+CXXFLAGS	= -Wall -Wextra -Werror -std=c++98
+LDFLAGS		=
 AR			= ar rcs
 RM			= rm -f
 
-# INCS_DIR	= ./incs
 SRCS_DIR	= ./srcs
 OBJS_DIR	= ./objs
 
@@ -43,7 +42,7 @@ ${OBJS_DIR}:
 
 ${NAME}: ${OBJS}
 	@printf "\bdone\n"
-	@${CC} ${CXXFLAGS} ${LDFLAGS} -g -o ${NAME} ${OBJS}
+	@${CC} ${LDFLAGS} -g -o ${NAME} ${OBJS}
 	@echo "Build ${NAME}: done"
 
 

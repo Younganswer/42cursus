@@ -6,27 +6,27 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/08 23:35:15 by younhwan          #+#    #+#             */
-/*   Updated: 2022/10/09 23:40:47 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/11/25 20:23:37 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs/HumanB.hpp"
 
 HumanB::HumanB(void) {
-	weapon = NULL;
-	name = std::string();
+	this->_weapon = NULL;
+	this->_name = std::string();
 	return;
 }
 
 HumanB::HumanB(const std::string &name) {
-	weapon = NULL;
-	this->name = name.c_str();
+	this->_weapon = NULL;
+	this->_name = std::string(name.c_str());
 	return;
 }
 
 HumanB::HumanB(const std::string &name, Weapon &weapon) {
-	this->weapon = &weapon;
-	this->name = name.c_str();
+	this->_weapon = &weapon;
+	this->_name = std::string(name.c_str());
 	return;
 }
 
@@ -36,21 +36,21 @@ HumanB::HumanB(const HumanB &humanB) {
 }
 
 HumanB	&HumanB::operator=(const HumanB &humanB) {
-	*(this->weapon) = *(humanB.weapon);
-	this->name = humanB.name.c_str();
+	if (this != &humanB) {
+		this->_weapon = humanB._weapon;
+		this->_name = std::string(humanB._name.c_str());
+	}
 	return (*this);
 }
 
-HumanB::~HumanB(void) {
-	return;
-}
+HumanB::~HumanB(void) {}
 
 bool	HumanB::attack(void) {
-	std::cout << name << " attacks with their " << weapon->getType() << '\n';
+	std::cout << this->_name << " attacks with their " << this->_weapon->getType() << '\n';
 	return (true);
 }
 
 bool	HumanB::setWeapon(Weapon &weapon) {
-	this->weapon = &weapon;
+	this->_weapon = &weapon;
 	return (true);
 }

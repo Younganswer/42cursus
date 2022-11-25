@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/09 23:33:44 by younhwan          #+#    #+#             */
-/*   Updated: 2022/10/09 23:57:11 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/11/25 20:29:39 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,40 +14,39 @@
 #include "../../incs/utils.hpp"
 
 Replace::Replace(void) {
-	fileName = std::string();
-	s1 = std::string();
-	s2 = std::string();
+	this->_fileName = std::string();
+	this->_s1 = std::string();
+	this->_s2 = std::string();
 	return;
 }
 
 Replace::Replace(const std::string &fileName, const std::string &s1, const std::string &s2) {
-	this->fileName = fileName.c_str();
-	this->s1 = s1.c_str();
-	this->s2 = s2.c_str();
+	this->_fileName = std::string(fileName.c_str());
+	this->_s1 = std::string(s1.c_str());
+	this->_s2 = std::string(s2.c_str());
 	return;
 }
 
-Replace::~Replace(void) {
-	return;
-}
+Replace::~Replace(void) {}
 
 bool	Replace::replaceLine(std::string &line) {
-	std::string::size_type	iter = line.find(s1);
+	std::string::size_type	iter = line.find(this->_s1);
 	while (iter != std::string::npos) {
-		line.erase(iter, s1.length());
-		line.insert(iter, s2);
-		iter = line.find(s1);
+		line.erase(iter, this->_s1.length());
+		line.insert(iter, this->_s2);
+		iter = line.find(this->_s1);
 	}
 	return (true);
 }
 
 bool	Replace::replace(void) {
-	std::ifstream	fin(fileName);
+	std::ifstream	fin(this->_fileName);
 	if (!fin.is_open())
-		exit_with_error("Fail to open file \'" + fileName + "\'", 1);
-	std::ofstream	fout(fileName + ".replace");
+		exit_with_error(std::string("Fail to open file ") + "'" + this->_fileName + "'", 1);
+
+	std::ofstream	fout(this->_fileName + ".replace");
 	if (!fout.is_open())
-		exit_with_error("Fail to open file \'" + fileName + ".replace\'", 1);
+		exit_with_error(std::string("Fail to open file ") + "'" + this->_fileName + ".replace" + "'", 1);
 	
 	std::string	line, stream;
 	while (getline(fin, line)) {

@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/09 23:30:10 by younhwan          #+#    #+#             */
-/*   Updated: 2022/10/09 23:52:51 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/11/25 20:27:28 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,18 +19,21 @@
 # include <string>
 
 class Replace {
-private:
-	std::string	fileName;
-	std::string	s1;
-	std::string	s2;
-	bool	replaceLine(std::string &line);
+	private:
+		std::string	_fileName;
+		std::string	_s1;
+		std::string	_s2;
 
-public:
-	Replace(void);
-	Replace(const std::string &fileName, const std::string &s1, const std::string &s2);
-	~Replace(void);
-	
-	bool	replace(void);
+		// Util
+		bool	replaceLine(std::string &line);
+
+	public:
+		Replace(void);
+		Replace(const std::string &fileName, const std::string &s1, const std::string &s2);
+		~Replace(void);
+
+		// Util	
+		bool	replace(void);
 };
 
 #endif

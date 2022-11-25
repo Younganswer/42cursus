@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 20:54:29 by younhwan          #+#    #+#             */
-/*   Updated: 2022/10/07 21:11:03 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/11/25 20:17:51 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,18 @@
 #include <string>
 
 int	main(void) {
-	std::string str = "HI THIS IS BRAIN";
-	std::string *stringPTR = &str;
-	std::string &stringREF = str;
+	{
+		std::string str = "HI THIS IS BRAIN";
+		std::string *stringPTR = &str;
+		std::string &stringREF = str;
 
-	std::cout << &str << '\n';
-	std::cout << stringPTR << '\n';
-	std::cout << &stringREF << '\n';
-	
-	std::cout << str << '\n';
-	std::cout << *stringPTR << '\n';
-	std::cout << stringREF << '\n';
+		std::cout << &str << '\n';
+		std::cout << stringPTR << '\n';
+		std::cout << &stringREF << '\n';
+
+		std::cout << str << '\n';
+		std::cout << *stringPTR << '\n';
+		std::cout << stringREF << '\n';
+	}
 	return (0);
 }

@@ -6,21 +6,21 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/08 23:35:15 by younhwan          #+#    #+#             */
-/*   Updated: 2022/10/09 23:39:53 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/11/25 20:22:48 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs/HumanA.hpp"
 
 HumanA::HumanA(void) {
-	weapon = NULL;
-	name = std::string();
+	this->_weapon = NULL;
+	this->_name = std::string();
 	return;
 }
 
 HumanA::HumanA(const std::string &name, Weapon &weapon) {
-	this->weapon = &weapon;
-	this->name = name.c_str();
+	this->_weapon = &weapon;
+	this->_name = std::string(name.c_str());
 	return;
 }
 
@@ -30,21 +30,21 @@ HumanA::HumanA(const HumanA &humanA) {
 }
 
 HumanA	&HumanA::operator=(const HumanA &humanA) {
-	*(this->weapon) = *(humanA.weapon);
-	this->name = humanA.name.c_str();
+	if (this != &humanA) {
+		this->_weapon = humanA._weapon;
+		this->_name = std::string(humanA._name.c_str());
+	}
 	return (*this);
 }
 
-HumanA::~HumanA(void) {
-	return;
-}
+HumanA::~HumanA(void) {}
 
 bool	HumanA::attack(void) {
-	std::cout << name << " attacks with their " << weapon->getType() << '\n';
+	std::cout << this->_name << " attacks with their " << this->_weapon->getType() << '\n';
 	return (true);
 }
 
 bool	HumanA::setWeapon(Weapon &weapon) {
-	this->weapon = &weapon;
+	this->_weapon = &weapon;
 	return (true);
 }
