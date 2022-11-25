@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 20:54:29 by younhwan          #+#    #+#             */
-/*   Updated: 2022/11/25 22:11:55 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/11/26 00:02:40 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 int	main(void) {
 	{
 		Weapon	club = Weapon("crude spiked club");
-
+	
 		HumanA	bob("Bob", club);
 		bob.attack();
 		club.setType("some other type of club");
@@ -31,6 +31,6 @@ int	main(void) {
 		club.setType("some other type of club");
 		jim.attack();
 	}
-	//system("ps | grep ./violence | head -n 1 | awk '{print $1}' | xargs leaks > leaks_result; cat leaks_result | grep leaked; rm -rf leaks_result");
+	// system("leaks $PPID > leaks_result; cat leaks_result | grep leaked; rm -rf leaks_result");
 	return (0);
 }

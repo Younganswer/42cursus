@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/08 23:32:08 by younhwan          #+#    #+#             */
-/*   Updated: 2022/11/25 20:24:14 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/11/26 00:01:38 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ Weapon::Weapon(void) {
 	return;
 }
 
-Weapon::Weapon(const std::string type) {
+Weapon::Weapon(const std::string &type) {
 	this->_type = std::string(type.c_str());
 	return;
 }
