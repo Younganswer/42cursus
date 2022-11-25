@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 20:54:29 by younhwan          #+#    #+#             */
-/*   Updated: 2022/11/25 22:05:12 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/11/25 22:11:55 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,6 @@ int	main(void) {
 		club.setType("some other type of club");
 		jim.attack();
 	}
-	int	*arr = new int[25];
-	arr[0] = 0;
-	arr = NULL;
-	system("ps | grep ./violence | head -n 1 | awk '{print $1}' | xargs leaks > leaks_result; cat leaks_result | grep leaked; rm -rf leaks_result");
+	//system("ps | grep ./violence | head -n 1 | awk '{print $1}' | xargs leaks > leaks_result; cat leaks_result | grep leaked; rm -rf leaks_result");
 	return (0);
 }
