@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 11:18:22 by younhwan          #+#    #+#             */
-/*   Updated: 2022/10/27 11:30:19 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/11/26 12:19:51 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,17 +18,21 @@
 
 class Animal {
 	protected:
-		std::string type;
+		std::string _type;
 		
 	public:
 		Animal(void);
 		Animal(const std::string &type);		
 		Animal(const Animal &ref);
-		Animal	&operator=(const Animal& ref);
 		virtual ~Animal(void);
+		Animal	&operator=(const Animal& ref);
 		
-		virtual void 	makeSound(void) const;
-		std::string		getType(void) const;
+		// Getter
+		std::string			getType(void);
+		const std::string	&getType(void) const;
+
+		// Util
+		virtual void		makeSound(void) const;
 };
 
 #endif

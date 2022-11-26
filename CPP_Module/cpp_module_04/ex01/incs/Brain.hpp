@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 11:40:10 by younhwan          #+#    #+#             */
-/*   Updated: 2022/10/27 11:42:26 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/11/26 12:31:47 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,17 @@
 
 class Brain {
 	private:
-		std::string ideas[100];
+		std::string _ideas[100];
 		
 	public:
 		Brain(void);
 		Brain(const Brain &ref);
-		Brain	&operator=(const Brain& ref);
 		~Brain(void);
+		Brain	&operator=(const Brain& ref);
 		
-		std::string	*getIdeas(void) const;
+		// Getter
+		std::string			getIdea(int idx);
+		const std::string	&getIdea(int idx) const;
 };
 
 #endif

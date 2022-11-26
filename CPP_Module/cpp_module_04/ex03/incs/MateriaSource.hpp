@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/31 10:49:48 by younhwan          #+#    #+#             */
-/*   Updated: 2022/10/31 11:40:58 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/11/26 12:56:04 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,12 @@ class MateriaSource: public IMateriaSource {
 	public:
 		MateriaSource(void);
 		MateriaSource(const MateriaSource &ref);
-		virtual	~MateriaSource(void);
+		virtual			~MateriaSource(void);
+		MateriaSource	&operator=(const MateriaSource &ref);
 
-		MateriaSource		&operator=(const MateriaSource &ref);
-
+		// Utils
 		virtual void		learnMateria(AMateria *mat);
-		virtual AMateria	*createMateria(const std::string &type);
+		virtual AMateria	*createMateria(const std::string &type) const;
 };
 
 #endif

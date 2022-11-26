@@ -16,22 +16,17 @@
 
 int	main(void) {
 	{
-		const Animal *meta = new Animal();
-		std:: cout << meta->getType() << " " << '\n';
-		meta->makeSound();
-		delete meta;
-	}
-	{
-		const Animal *dog = new Dog();
-		std::cout << dog->getType() << " " << '\n';
-		dog->makeSound();
-		delete dog;
-	}
-	{
-		const Animal *cat = new Cat();
-		std::cout << cat->getType() << " " << '\n';
-		cat->makeSound(); //will output the cat sound!
-		delete cat;
+		Animal** const	meta = new Animal*[100];
+		for (int i=0; i<50; i++) {
+			meta[i] = new Dog();
+		}
+		for (int i=50; i<100; i++) {
+			meta[i] = new Cat();
+		}
+		for (int i=0; i<100; i++) {
+			delete meta[i];
+		}
+		delete[] meta;
 	}
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 11:22:28 by younhwan          #+#    #+#             */
-/*   Updated: 2022/10/27 11:44:30 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/11/26 12:27:39 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,15 @@
 
 class Dog: public Animal {
 	private:
-		Brain	*brain;
+		Brain	*_brain;
 
 	public:
 		Dog(void);
 		Dog(const Dog &ref);
-		Dog	&operator=(const Dog &ref);
-		virtual ~Dog(void);
+		virtual	~Dog(void);
+		Dog		&operator=(const Dog &ref);
+
+		// Util
 		virtual void makeSound(void) const;
 };
 

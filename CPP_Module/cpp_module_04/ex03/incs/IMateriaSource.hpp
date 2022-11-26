@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/31 10:47:30 by younhwan          #+#    #+#             */
-/*   Updated: 2022/10/31 12:21:06 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/11/26 13:00:59 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,11 @@
 
 class IMateriaSource {
 	public:
-		virtual ~IMateriaSource(void) {}
+		virtual ~IMateriaSource(void) {};
+
+		// Utils
 		virtual void		learnMateria(AMateria *mat) = 0;
-		virtual AMateria	*createMateria(std::string const &type) = 0;
+		virtual AMateria	*createMateria(std::string const &type) const = 0;
 };
 
 #endif

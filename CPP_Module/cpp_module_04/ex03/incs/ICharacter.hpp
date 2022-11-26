@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 12:08:25 by younhwan          #+#    #+#             */
-/*   Updated: 2022/10/31 12:21:02 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/11/26 13:01:00 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,12 @@
 
 class ICharacter {
 	public:
-		virtual ~ICharacter(void) {}
+		virtual ~ICharacter(void) {};
 
 		// Getter
 		virtual const std::string	&getName(void) const = 0;
 
+		// Utils
 		virtual void				equip(AMateria *mat) = 0;
 		virtual void				unequip(int idx) = 0;
 		virtual void				use(int idx, ICharacter &target) = 0;

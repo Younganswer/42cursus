@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 12:58:13 by younhwan          #+#    #+#             */
-/*   Updated: 2022/10/31 12:09:07 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/11/26 12:50:40 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,10 @@ class Cure: public AMateria {
 	public:
 		Cure(void);
 		Cure(const Cure &ref);
-		Cure	&operator=(const Cure &ref);
 		virtual	~Cure(void);
+		Cure	&operator=(const Cure &ref);
 
+		// Utils
 		virtual AMateria	*clone(void) const;
 		virtual void		use(ICharacter& target);
 };

@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 11:22:28 by younhwan          #+#    #+#             */
-/*   Updated: 2022/10/27 11:23:40 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/11/26 12:22:15 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,11 @@ class Dog: public Animal {
 	public:
 		Dog(void);
 		Dog(const Dog &ref);
-		Dog	&operator=(const Dog &ref);
-		virtual ~Dog(void);
-		virtual void makeSound(void) const;
+		virtual	~Dog(void);
+		Dog		&operator=(const Dog &ref);
+
+		// Util
+		virtual void	makeSound(void) const;
 };
 
 #endif

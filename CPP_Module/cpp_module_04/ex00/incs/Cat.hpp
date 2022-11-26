@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 11:25:15 by younhwan          #+#    #+#             */
-/*   Updated: 2022/10/27 11:25:33 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/11/26 12:21:21 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,10 @@ class Cat: public Animal {
 	public:
 		Cat(void);
 		Cat(const Cat &ref);
-		Cat	&operator=(const Cat &ref);
 		virtual ~Cat(void);
+		Cat		&operator=(const Cat &ref);
+
+		// Util
 		virtual void makeSound(void) const;
 };
 
