@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/22 16:15:44 by younhwan          #+#    #+#             */
-/*   Updated: 2022/11/25 21:20:44 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/11/26 12:04:24 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,10 @@ class ScavTrap: public ClapTrap {
 		ScavTrap(void);
 		ScavTrap(const std::string &name);
 		ScavTrap(const ScavTrap &scav_trap);
-		ScavTrap	&operator=(const ScavTrap &scav_trap);
 		~ScavTrap(void);
+		ScavTrap	&operator=(const ScavTrap &scav_trap);
 
-		// Utils
+		// Util
 		void	guardGate(void);
 };
 

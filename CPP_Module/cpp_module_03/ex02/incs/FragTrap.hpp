@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   FragTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/22 16:15:44 by younhwan          #+#    #+#             */
-/*   Updated: 2022/10/22 17:17:53 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/11/26 12:05:41 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,16 @@
 
 # include "ClapTrap.hpp"
 
-class FragTrap : public ClapTrap {
-public:
-	FragTrap(void);
-	FragTrap(const std::string &name);
-	FragTrap(const FragTrap &Frag_trap);
-	FragTrap	&operator=(const FragTrap &Frag_trap);
-	~FragTrap(void);
+class FragTrap: public ClapTrap {
+	public:
+		FragTrap(void);
+		FragTrap(const std::string &name);
+		FragTrap(const FragTrap &Frag_trap);
+		~FragTrap(void);
+		FragTrap	&operator=(const FragTrap &Frag_trap);
 
-	void	highFivesGuys(void);
+		// Util
+		void	highFivesGuys(void);
 };
 
 #endif

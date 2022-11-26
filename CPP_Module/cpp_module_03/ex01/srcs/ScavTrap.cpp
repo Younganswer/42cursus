@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/22 16:19:34 by younhwan          #+#    #+#             */
-/*   Updated: 2022/11/25 21:21:48 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/11/26 12:04:22 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ ScavTrap::~ScavTrap(void) {
 	return;
 }
 
+// Util
 void	ScavTrap::guardGate(void) {
 	std::cout << "SC4V-TP [" << this->getName() << "] is now in Gate keeper mode" << '\n';
 	return;

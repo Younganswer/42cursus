@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/22 15:01:16 by younhwan          #+#    #+#             */
-/*   Updated: 2022/11/25 21:20:25 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/11/26 12:11:28 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,7 @@ class ClapTrap {
 	
 	protected:
 		// Getter
-		std::string		getName(void);
-
+		std::string			getName(void);
 		const std::string	&getName(void) const;
 		unsigned int		getHitPoints(void) const;
 		unsigned int		getEnergePoints(void) const;
@@ -42,8 +41,8 @@ class ClapTrap {
 		ClapTrap(void);
 		ClapTrap(const std::string &name);
 		ClapTrap(const ClapTrap &clap_trap);
+		virtual		~ClapTrap(void);
 		ClapTrap	&operator=(const ClapTrap &clap_trap);
-		virtual	~ClapTrap(void);
 	
 		// Utils
 		void	attack(const std::string &target);

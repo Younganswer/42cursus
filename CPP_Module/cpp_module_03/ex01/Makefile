@@ -6,7 +6,7 @@
 #    By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/08 16:03:07 by younhwan          #+#    #+#              #
-#    Updated: 2022/11/25 21:23:12 by younhwan         ###   ########.fr        #
+#    Updated: 2022/11/26 12:17:39 by younhwan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ SHELL	= /bin/bash
 SPINNER	= /-\|/
 IDX		= 0
 
-NAME	= serena
+NAME	= SC4V-TP
 
 CC			= clang++
 CXXFLAGS	= -Wall -Wextra -Werror -std=c++98

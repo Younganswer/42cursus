@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ScavTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/22 16:15:44 by younhwan          #+#    #+#             */
-/*   Updated: 2022/10/22 16:46:46 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/11/26 12:05:18 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,16 @@
 
 # include "ClapTrap.hpp"
 
-class ScavTrap : public ClapTrap {
-public:
-	ScavTrap(void);
-	ScavTrap(const std::string &name);
-	ScavTrap(const ScavTrap &scav_trap);
-	ScavTrap	&operator=(const ScavTrap &scav_trap);
-	~ScavTrap(void);
+class ScavTrap: public ClapTrap {
+	public:
+		ScavTrap(void);
+		ScavTrap(const std::string &name);
+		ScavTrap(const ScavTrap &scav_trap);
+		~ScavTrap(void);
+		ScavTrap	&operator=(const ScavTrap &scav_trap);
 
-	void	guardGate(void);
+		// Util
+		void	guardGate(void);
 };
 
 #endif

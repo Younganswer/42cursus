@@ -6,7 +6,7 @@
 #    By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/08 16:03:07 by younhwan          #+#    #+#              #
-#    Updated: 2022/11/25 21:14:43 by younhwan         ###   ########.fr        #
+#    Updated: 2022/11/26 12:17:30 by younhwan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ SHELL	= /bin/bash
 SPINNER	= /-\|/
 IDX		= 0
 
-NAME	= open
+NAME	= CL4P-TP
 
 CC			= clang++
 CXXFLAGS	= -Wall -Wextra -Werror -std=c++98
