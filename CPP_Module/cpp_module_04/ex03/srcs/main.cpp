@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/31 11:26:26 by younhwan          #+#    #+#             */
-/*   Updated: 2022/11/26 13:02:23 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/11/26 13:05:53 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,12 +40,12 @@ int	main(void) {
 
 		me->unequip(1); // Floor[1] points that unequipped materia
 		
-		// system("leaks $PPID | grep leaked > leaks_result; cat leaks_result; rm -rf leaks_result");
+		// system("leaks $PPID > leaks_result; cat leaks_result | grep leaked; rm -rf leaks_result");
 		delete floor;
 		delete me;
 		delete bob;
 		delete src;
 	}
-	// system("leaks $PPID | grep leaked > leaks_result; cat leaks_result; rm -rf leaks_result");
+	// system("leaks $PPID > leaks_result; cat leaks_result | grep leaked; rm -rf leaks_result");
 	return (0);
 }
