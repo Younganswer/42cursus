@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 11:05:19 by younhwan          #+#    #+#             */
-/*   Updated: 2022/10/19 12:13:37 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/11/26 11:58:04 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,9 @@ static float	cross_product(const Point &vector1, const Point &vector2);
 bool	bsp(const Point a, const Point b, const Point c, const Point point) {
 	float	direction;
 
-	if (!(direction = cross_product(b-a, point-a)))
-		return (false);
-	if (direction * cross_product(c-b, point-b) <= 0)
-		return (false);
-	if (direction * cross_product(a-c, point-c) <= 0)
+	if ((direction = cross_product(b-a, point-a)) == 0 || \
+		(direction * cross_product(c-b, point-b) <= 0) || \
+		(direction * cross_product(a-c, point-c) <= 0))
 		return (false);
 	return (true);
 }

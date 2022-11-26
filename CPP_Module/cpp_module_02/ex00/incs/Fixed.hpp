@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Fixed.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 14:24:51 by younhwan          #+#    #+#             */
-/*   Updated: 2022/10/10 14:38:00 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/11/26 11:53:42 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,18 +16,21 @@
 # include <iostream>
 
 class Fixed {
-private:
-	static const int	fractional_bits = 8;
-	int					raw_bits;
+	private:
+		static const int	_fractional_bits = 8;
+		int					_raw_bits;
 
-public:
-	Fixed(void);
-	Fixed(const Fixed &fixed);
-	Fixed	&operator=(const Fixed &fixed);
-	~Fixed(void);
+	public:
+		Fixed(void);
+		Fixed(const Fixed &fixed);
+		~Fixed(void);
+		Fixed	&operator=(const Fixed &fixed);
 
-	int		getRawBits(void) const;
-	void	setRawBits(const int raw);
+		// Getter
+		int		getRawBits(void) const;
+
+		// Setter
+		void	setRawBits(const int raw);
 };
 
 #endif

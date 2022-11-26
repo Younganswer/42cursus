@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 10:57:33 by younhwan          #+#    #+#             */
-/*   Updated: 2022/10/19 12:05:31 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/11/26 11:55:05 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,24 +16,26 @@
 # include "Fixed.hpp"
 
 class Point {
-private:
-	Fixed	x;
-	Fixed	y;
+	private:
+		Fixed	_x;
+		Fixed	_y;
 
-public:
-	Point(void);
-	Point(float x, float y);
-	Point(Fixed x, Fixed y);
-	Point(const Point &point);
-	Point	&operator=(const Point &point);
-	~Point(void);
+	public:
+		Point(void);
+		Point(float x, float y);
+		Point(Fixed x, Fixed y);
+		Point(const Point &point);
+		~Point(void);
+		Point	&operator=(const Point &point);
 
-	Fixed		getX(void);
-	const Fixed	getX(void) const;
-	Fixed		getY(void);
-	const Fixed	getY(void) const;
+		// Getter
+		Fixed		getX(void);
+		Fixed		getY(void);
+		const Fixed	getX(void) const;
+		const Fixed	getY(void) const;
 
-	const Point	operator-(const Point point) const;
+		// Operator Overload
+		const Point	operator-(const Point point) const;
 };
 
 bool	bsp(const Point a, const Point b, const Point c, const Point point);
