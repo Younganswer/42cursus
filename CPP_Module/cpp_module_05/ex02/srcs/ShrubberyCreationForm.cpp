@@ -6,17 +6,17 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 12:43:34 by younhwan          #+#    #+#             */
-/*   Updated: 2022/11/03 15:57:41 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/11/29 16:41:14 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs/ShrubberyCreationForm.hpp"
+#include "../incs/Bureaucrat.hpp"
 
 ShrubberyCreationForm::ShrubberyCreationForm(void): Form("ShrubberyCreationForm", 145, 137), _target(std::string()) {}
-
 ShrubberyCreationForm::ShrubberyCreationForm(const std::string &target): Form("ShrubberyCreationForm", 145, 137), _target(std::string(target.c_str())) {}
-
 ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &ref): Form("ShrubberyCreationForm", 145, 137), _target(std::string(ref.getTarget().c_str())) {}
+ShrubberyCreationForm::~ShrubberyCreationForm(void) {}
 
 ShrubberyCreationForm	&ShrubberyCreationForm::operator=(const ShrubberyCreationForm &rhs) {
 	if (this != &rhs) {
@@ -26,17 +26,11 @@ ShrubberyCreationForm	&ShrubberyCreationForm::operator=(const ShrubberyCreationF
 	return (*this);
 }
 
-ShrubberyCreationForm::~ShrubberyCreationForm(void) {}
-
 // Getter
-const std::string	&ShrubberyCreationForm::getTarget(void) const {
-	return (this->_target);
-}
+const std::string	&ShrubberyCreationForm::getTarget(void) const { return (this->_target); }
 
 // Setter
-void				ShrubberyCreationForm::setTarget(const std::string &target) {
-	this->_target = std::string(target.c_str());
-}
+void				ShrubberyCreationForm::setTarget(const std::string &target) { this->_target = std::string(target.c_str()); }
 
 // Utils
 void				ShrubberyCreationForm::execute(const Bureaucrat &ref) const throw(std::exception) {
@@ -65,14 +59,8 @@ void				ShrubberyCreationForm::execute(const Bureaucrat &ref) const throw(std::e
 	}
 }
 
+// Exception: FileOpenException
 ShrubberyCreationForm::FileOpenException::FileOpenException(void) {}
-
-ShrubberyCreationForm::FileOpenException::FileOpenException(const std::string &name): std::exception() {
-	this->_msg = std::string("Fail to open file: ") + name;
-}
-
+ShrubberyCreationForm::FileOpenException::FileOpenException(const std::string &name): std::exception() { this->_msg = std::string("Fail to open file: ") + name; }
 ShrubberyCreationForm::FileOpenException::~FileOpenException(void) throw() {}
-
-const char	*ShrubberyCreationForm::FileOpenException::what(void) const throw() {
-	return (this->_msg.c_str());
-}
+const char	*ShrubberyCreationForm::FileOpenException::what(void) const throw() { return (this->_msg.c_str()); }

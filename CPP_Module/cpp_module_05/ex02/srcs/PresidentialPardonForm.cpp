@@ -6,18 +6,17 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 12:30:58 by younhwan          #+#    #+#             */
-/*   Updated: 2022/11/03 12:38:01 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/11/29 16:40:21 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs/PresidentialPardonForm.hpp"
+#include "../incs/Bureaucrat.hpp"
 
 PresidentialPardonForm::PresidentialPardonForm(void): Form("PresidentialPardonForm", 25, 5), _target(std::string()) {}
-
 PresidentialPardonForm::PresidentialPardonForm(const std::string &target): Form("PresidentialPardonForm", 25, 5), _target(std::string(target.c_str())) {}
-
 PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm &ref): Form(ref), _target(std::string(ref.getTarget().c_str())) {}
-
+PresidentialPardonForm::~PresidentialPardonForm(void) {}
 PresidentialPardonForm	&PresidentialPardonForm::operator=(const PresidentialPardonForm &rhs) {
 	if (this != &rhs) {
 		Form::operator=(rhs);
@@ -26,12 +25,8 @@ PresidentialPardonForm	&PresidentialPardonForm::operator=(const PresidentialPard
 	return (*this);
 }
 
-PresidentialPardonForm::~PresidentialPardonForm(void) {}
-
 // Getter
-const std::string	&PresidentialPardonForm::getTarget(void) const {
-	return (this->_target);
-}
+const std::string	&PresidentialPardonForm::getTarget(void) const { return (this->_target); }
 
 // Utils
 void				PresidentialPardonForm::execute(const Bureaucrat &ref) const throw(std::exception) {

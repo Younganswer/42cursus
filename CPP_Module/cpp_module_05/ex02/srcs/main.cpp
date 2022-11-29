@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 11:13:33 by younhwan          #+#    #+#             */
-/*   Updated: 2022/11/03 15:55:29 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/11/29 16:40:02 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	main(int argc, char **argv) {
 		if (argc == 2) {
 			berry.setTarget(argv[1]);
 		} else if (2 <= argc) {
-			std::cerr << "\033[31mUsage: ./No, you need form 28B, not 28C... [target]\033[0m" << '\n';
+			std::cerr << "\033[31m" << "Usage: ./forms [target]" << "\033[0m" << '\n';
 			return (1);
 		}
 		RobotomyRequestForm		robot("younhwan");
@@ -36,9 +36,9 @@ int	main(int argc, char **argv) {
 		younhwan.executeForm(robot);
 		younhwan.executeForm(presi);
 	} catch (std::exception &e) {
-		std::cout << "\033[31mError: " << e.what() << "\033[0m" << '\n';
+		std::cout << "\033[31m" << "Error: " << e.what() << "\033[0m" << '\n';
 	} catch (...) {
-		std::cout << "\033[31mError: Unknown Error\033[0m" << '\n';
+		std::cout << "\033[31m" << "Error: Unknown Error" << "\033[0m" << '\n';
 	}
 	try {
 		Bureaucrat				jeolim("jeolim", 1);
@@ -47,9 +47,9 @@ int	main(int argc, char **argv) {
 		jeolim.signForm(presi);
 		jeolim.executeForm(presi);
 	} catch (std::exception &e) {
-		std::cout << "\033[31mError: " << e.what() << "\033[0m" << '\n';
+		std::cout << "\033[31m" << "Error: " << e.what() << "\033[0m" << '\n';
 	} catch (...) {
-		std::cout << "\033[31mError: Unknown Error\033[0m" << '\n';
+		std::cout << "\033[31m" << "Error: Unknown Error" << "\033[0m" << '\n';
 	}
 	return (0);
 }

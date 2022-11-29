@@ -6,18 +6,17 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 12:38:28 by younhwan          #+#    #+#             */
-/*   Updated: 2022/11/03 12:42:42 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/11/29 16:40:40 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs/RobotomyRequestForm.hpp"
+#include "../incs/Bureaucrat.hpp"
 
 RobotomyRequestForm::RobotomyRequestForm(void): Form("RobotomyRequestForm", 72, 45), _target(std::string()) {}
-
 RobotomyRequestForm::RobotomyRequestForm(const std::string &target): Form("RobotomyRequestForm", 72, 45), _target(std::string(target.c_str())) {}
-
 RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm &ref): Form(ref), _target(std::string(ref.getTarget().c_str())) {}
-
+RobotomyRequestForm::~RobotomyRequestForm(void) {}
 RobotomyRequestForm	&RobotomyRequestForm::operator=(const RobotomyRequestForm &rhs) {
 	if (this != &rhs) {
 		Form::operator=(rhs);
@@ -26,12 +25,8 @@ RobotomyRequestForm	&RobotomyRequestForm::operator=(const RobotomyRequestForm &r
 	return (*this);
 }
 
-RobotomyRequestForm::~RobotomyRequestForm(void) {}
-
 // Getter
-const std::string	&RobotomyRequestForm::getTarget(void) const {
-	return (this->_target);
-}
+const std::string	&RobotomyRequestForm::getTarget(void) const { return (this->_target); }
 
 // Utils
 void				RobotomyRequestForm::execute(const Bureaucrat &ref) const throw(std::exception) {
