@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 10:58:37 by younhwan          #+#    #+#             */
-/*   Updated: 2022/11/03 12:29:19 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/11/29 15:39:15 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,11 @@ class Bureaucrat {
 		~Bureaucrat(void);
 
 		// Getter
+		std::string			getName(void);
 		const std::string	&getName(void) const;
 		int					getGrade(void) const;
 
+		// Utils
 		void				incGrade(void) throw(std::exception);
 		void				decGrade(void) throw(std::exception);
 
@@ -39,12 +41,10 @@ class Bureaucrat {
 			private:
 				std::string	_msg;
 			public:
-				GradeTooHighException(void) {}
-				GradeTooHighException(const std::string &name) { _msg = std::string("\033[31mError: ") + name.c_str() + "\'s grade is too high\033[0m"; }
-				~GradeTooHighException(void) throw() {}
-				virtual const char	*what(void) const throw() {
-					return (_msg.c_str());
-				}
+				GradeTooHighException(void);
+				GradeTooHighException(const std::string &name);
+				~GradeTooHighException(void) throw();
+				virtual const char	*what(void) const throw();
 		};
 
 		class GradeTooLowException: public std::exception {
@@ -52,12 +52,10 @@ class Bureaucrat {
 				std::string	_msg;
 
 			public:
-				GradeTooLowException(void) {}
-				GradeTooLowException(const std::string &name) { _msg = std::string("\033[31mError: ") + name.c_str() + "\'s grade is too low\033[0m"; }
-				~GradeTooLowException(void) throw() {}
-				virtual const char	*what(void) const throw() {
-					return (_msg.c_str());
-				}
+				GradeTooLowException(void);
+				GradeTooLowException(const std::string &name);
+				~GradeTooLowException(void) throw();
+				virtual const char	*what(void) const throw();
 		};
 };
 

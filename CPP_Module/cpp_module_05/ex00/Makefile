@@ -6,7 +6,7 @@
 #    By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/08 16:03:07 by younhwan          #+#    #+#              #
-#    Updated: 2022/11/11 16:00:12 by younhwan         ###   ########.fr        #
+#    Updated: 2022/11/29 15:36:28 by younhwan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,11 +14,11 @@ SHELL	= /bin/bash
 SPINNER	= /-\|/
 IDX		= 0
 
-NAME	= Mommy,\ when\ I\ grow\ up,\ I\ want\ to\ be\ a\ bureaucrat!
+NAME	= bureaucrat
 
 CC			= clang++
 CXXFLAGS	= -Wall -Wextra -Werror -std=c++98 -O2
-LDFLAGS		= -fsanitize=address -g3
+LDFLAGS		= -g3
 AR			= ar rcs
 RM			= rm -f
 

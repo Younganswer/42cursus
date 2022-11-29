@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 11:13:33 by younhwan          #+#    #+#             */
-/*   Updated: 2022/11/09 13:10:46 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/11/29 15:51:12 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@ int	main(void) {
 		younhwan.decGrade();
 		std::cout << younhwan;
 	} catch (std::exception &e) {
-		std::cout << e.what() << '\n';
+		std::cout << "\033[31m" << "Error: " << e.what() << "\033[0m" << '\n';
 	} catch (...) {
-		std::cout << "\033[31mError: Unknown Error\033[0m" << '\n';
+		std::cout << "\033[31m" << "Error: Unknown Error" << "\033[0m" << '\n';
 	}
 	try {
 		Bureaucrat	jeolim("jeolim", 1);
@@ -33,9 +33,9 @@ int	main(void) {
 		jeolim.incGrade();
 		std::cout << jeolim;
 	} catch (std::exception &e) {
-		std::cout << e.what() << '\n';
+		std::cout << "\033[31m" << "Error: " << e.what() << "\033[0m" << '\n';
 	} catch (...) {
-		std::cout << "\033[31mError: Unknown Error\033[0m" << '\n';
+		std::cout << "\033[31m" << "Error: Unknown Error" << "\033[0m" << '\n';
 	}
 	try {
 		Bureaucrat	hyunkyle("hyunkyle", 0);
@@ -45,9 +45,9 @@ int	main(void) {
 		hyunkyle.decGrade();
 		std::cout << hyunkyle;
 	} catch (std::exception &e) {
-		std::cout << e.what() << '\n';
+		std::cout << "\033[31m" << "Error: " << e.what() << "\033[0m" << '\n';
 	} catch (...) {
-		std::cout << "\033[31mError: Unknown Error\033[0m" << '\n';
+		std::cout << "\033[31m" << "Error: Unknown Error" << "\033[0m" << '\n';
 	}
 	try {
 		Bureaucrat	daegulee("daegulee", 151);
@@ -57,9 +57,9 @@ int	main(void) {
 		daegulee.decGrade();
 		std::cout << daegulee;
 	} catch (std::exception &e) {
-		std::cout << e.what() << '\n';
+		std::cout << "\033[31m" << "Error: " << e.what() << "\033[0m" << '\n';
 	} catch (...) {
-		std::cout << "\033[31mError: Unknown Error\033[0m" << '\n';
+		std::cout << "\033[31m" << "Error: Unknown Error" << "\033[0m" << '\n';
 	}
 	return (0);
 }

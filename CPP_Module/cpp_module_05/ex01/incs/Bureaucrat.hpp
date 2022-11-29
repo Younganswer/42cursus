@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 10:58:37 by younhwan          #+#    #+#             */
-/*   Updated: 2022/11/03 12:28:56 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/11/29 16:08:16 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,13 +31,14 @@ class Bureaucrat {
 		~Bureaucrat(void);
 
 		// Getter
+		std::string			getName(void);
 		const std::string	&getName(void) const;
 		int					getGrade(void) const;
 
 		// Utils
 		void				incGrade(void) throw(std::exception);
 		void				decGrade(void) throw(std::exception);
-		void				signForm(Form &ref);
+		void				signForm(Form &ref) throw(std::exception);
 
 		class GradeTooHighException: public std::exception {
 			private:
