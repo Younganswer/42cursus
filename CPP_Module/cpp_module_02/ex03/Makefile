@@ -6,7 +6,7 @@
 #    By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/08 16:03:07 by younhwan          #+#    #+#              #
-#    Updated: 2022/11/26 11:59:23 by younhwan         ###   ########.fr        #
+#    Updated: 2022/11/30 16:44:44 by younhwan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,8 +17,8 @@ IDX		= 0
 NAME	= bsp
 
 CC			= clang++
-CXXFLAGS	= -Wall -Wextra -Werror -std=c++98
-LDFLAGS		=
+CXXFLAGS	= -Wall -Wextra -Werror -std=c++98 -O2
+LDFLAGS		= -g3
 AR			= ar rcs
 RM			= rm -f
 

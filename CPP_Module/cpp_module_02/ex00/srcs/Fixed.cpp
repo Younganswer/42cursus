@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 14:25:08 by younhwan          #+#    #+#             */
-/*   Updated: 2022/11/26 11:53:55 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/11/30 16:37:43 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ Fixed	&Fixed::operator=(const Fixed &fixed) {
 // Getter
 int		Fixed::getRawBits(void) const {
 	std::cout << "getRawBits member function called" << '\n';
-	return (_raw_bits);
+	return (this->_raw_bits);
 }
 
 // Setter

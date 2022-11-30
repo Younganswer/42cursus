@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 20:54:29 by younhwan          #+#    #+#             */
-/*   Updated: 2022/11/26 11:43:29 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/11/30 16:41:55 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,12 @@
 
 int	main(void) {
 	{
-		Fixed	a;
-		Fixed const b(10);
-		Fixed const c(42.42f);
+		const int	b_init = 10;
+		const float	c_init = 42.42f;
+		
+		Fixed		a;
+		Fixed const b(b_init);
+		Fixed const c(c_init);
 		Fixed const d(b);
 
 		a = Fixed(1234.4321f);

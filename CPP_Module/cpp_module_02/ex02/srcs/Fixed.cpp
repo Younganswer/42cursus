@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 14:25:08 by younhwan          #+#    #+#             */
-/*   Updated: 2022/11/26 11:52:09 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/11/30 16:36:05 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,26 +25,26 @@ Fixed	&Fixed::operator=(const Fixed &fixed) {
 }
 
 // Getter
-int		Fixed::getRawBits(void) const { return (_raw_bits); }
+int		Fixed::getRawBits(void) const { return (this->_raw_bits); }
 
 // Setter
 void	Fixed::setRawBits(const int raw) { this->_raw_bits = raw; }
 
 // Utils
-int			Fixed::toInt(void) const { return (_raw_bits >> _fractional_bits); }
-float		Fixed::toFloat(void) const { return ((float)_raw_bits / (1 << _fractional_bits)); }
+int			Fixed::toInt(void) const { return (this->_raw_bits >> _fractional_bits); }
+float		Fixed::toFloat(void) const { return ((float)this->_raw_bits / (1 << _fractional_bits)); }
 Fixed		&Fixed::min(Fixed &fixed1, Fixed &fixed2) { return ((fixed1._raw_bits < fixed2._raw_bits) ? fixed1 : fixed2); }
 Fixed		&Fixed::max(Fixed &fixed1, Fixed &fixed2) { return ((fixed1._raw_bits > fixed2._raw_bits) ? fixed1 : fixed2); }
 const Fixed	&Fixed::min(const Fixed &fixed1, const Fixed &fixed2) { return ((fixed1._raw_bits < fixed2._raw_bits) ? fixed1 : fixed2); }
 const Fixed	&Fixed::max(const Fixed &fixed1, const Fixed &fixed2) { return ((fixed1._raw_bits > fixed2._raw_bits) ? fixed1 : fixed2); }
 
 // Operator Overload
-bool	Fixed::operator<(const Fixed &rhs) const { return (_raw_bits < rhs._raw_bits); }
-bool	Fixed::operator>(const Fixed &rhs) const { return (_raw_bits > rhs._raw_bits); }
-bool	Fixed::operator<=(const Fixed &rhs) const { return (_raw_bits <= rhs._raw_bits); }
-bool	Fixed::operator>=(const Fixed &rhs) const { return (_raw_bits >= rhs._raw_bits); }
-bool	Fixed::operator==(const Fixed &rhs) const { return (_raw_bits == rhs._raw_bits); }
-bool	Fixed::operator!=(const Fixed &rhs) const { return (_raw_bits != rhs._raw_bits); }
+bool	Fixed::operator<(const Fixed &rhs) const { return (this->_raw_bits < rhs._raw_bits); }
+bool	Fixed::operator>(const Fixed &rhs) const { return (this->_raw_bits > rhs._raw_bits); }
+bool	Fixed::operator<=(const Fixed &rhs) const { return (this->_raw_bits <= rhs._raw_bits); }
+bool	Fixed::operator>=(const Fixed &rhs) const { return (this->_raw_bits >= rhs._raw_bits); }
+bool	Fixed::operator==(const Fixed &rhs) const { return (this->_raw_bits == rhs._raw_bits); }
+bool	Fixed::operator!=(const Fixed &rhs) const { return (this->_raw_bits != rhs._raw_bits); }
 Fixed	Fixed::operator+(const Fixed &rhs) const { return (Fixed(this->toFloat() + rhs.toFloat())); }
 Fixed	Fixed::operator-(const Fixed &rhs) const { return (Fixed(this->toFloat() - rhs.toFloat())); }
 Fixed	Fixed::operator*(const Fixed &rhs) const { return (Fixed(this->toFloat() * rhs.toFloat())); }
