@@ -18,6 +18,11 @@
 # include "structs.h"
 # include "utils.h"
 
+# define FORK_MSG "%zu %zu has taken a fork\n"
+# define EATING_MSG "%zu %zu is eating\n"
+# define SLEEPING_MSG "%zu %zu is sleeping\n"
+# define THINKING_MSG "%zu %zu is thinking\n"
+
 // routine.c
 void	*routine(void *arg);
 
