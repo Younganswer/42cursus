@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: younhwan <younhwan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 20:12:28 by younhwan          #+#    #+#             */
-/*   Updated: 2022/10/05 17:47:20 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/12/19 14:02:27 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void			*ft_calloc(size_t sz_, size_t count, const char *error_msg);
 static t_bool	is_invalid_input(size_t sz_, size_t count);
 
-void		*ft_calloc(size_t sz_, size_t count, const char *error_msg)
+void	*ft_calloc(size_t sz_, size_t count, const char *error_msg)
 {
 	void	*res;
 
