@@ -6,7 +6,7 @@
 #    By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/08 16:03:07 by younhwan          #+#    #+#              #
-#    Updated: 2022/11/26 12:17:52 by younhwan         ###   ########.fr        #
+#    Updated: 2022/12/29 17:12:43 by younhwan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,8 +32,8 @@ SRCS =	main.cpp \
 		FragTrap.cpp
 		
 SRCS := ${addprefix ${SRCS_DIR}/, ${SRCS}}
-OBJS = ${SRCS:${SRCS_DIR}/%.cpp=${OBJS_DIR}/%.o}
-DEPS = ${OBJS:.o=.d}
+OBJS := ${SRCS:${SRCS_DIR}/%.cpp=${OBJS_DIR}/%.o}
+DEPS := ${OBJS:.o=.d}
 
 
 all: ${NAME}
