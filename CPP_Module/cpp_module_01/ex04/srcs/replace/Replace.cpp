@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/09 23:33:44 by younhwan          #+#    #+#             */
-/*   Updated: 2022/11/25 20:29:39 by younhwan         ###   ########.fr       */
+/*   Updated: 2022/12/29 20:39:31 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,11 +40,11 @@ bool	Replace::replaceLine(std::string &line) {
 }
 
 bool	Replace::replace(void) {
-	std::ifstream	fin(this->_fileName);
+	std::ifstream	fin(this->_fileName.c_str());
 	if (!fin.is_open())
 		exit_with_error(std::string("Fail to open file ") + "'" + this->_fileName + "'", 1);
 
-	std::ofstream	fout(this->_fileName + ".replace");
+	std::ofstream	fout(std::string(this->_fileName + ".replace").c_str());
 	if (!fout.is_open())
 		exit_with_error(std::string("Fail to open file ") + "'" + this->_fileName + ".replace" + "'", 1);
 	
