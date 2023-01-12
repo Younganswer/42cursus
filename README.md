@@ -21,4 +21,4 @@
 | [CPP_Module](./CPP_Module)     |                              | 4      |        |                  |
 | [net_practice](./net_practice)     |                              | 4      |        |                  |
 | [cub3d](https://github.com/Younganswer/cub3d/tree/main)     |                              | 4      |        |                  |
-| [minirt](https://github.com/Younganswer/minirt/tree/main)     |                              | 4      |        |                  |
+| [miniRT](https://github.com/Younganswer/miniRT/tree/main)     |                              | 4      |        |                  |
