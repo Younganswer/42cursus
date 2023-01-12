@@ -4,6 +4,3 @@
 [submodule "cub3d"]
 	path = cub3d
 	url = https://github.com/Younganswer/cub3d
-[submodule "minirt"]
-	path = minirt
-	url = https://github.com/Younganswer/minirt
