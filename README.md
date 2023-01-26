@@ -17,7 +17,7 @@
 | [push_swap](./push_swap)     | #algorithm #sort #complexity | 2      | [![younhwan's 42 push_swap Score](http://is.am/56pu)](https://github.com/JaeSeoKim/badge42) | Sun Sep 18, 2022 |
 | [philosopher](./philosopher)     | #process #thread #context_switching #data_race #dead_lock | 3      | [![younhwan's 42 Philosophers Score](https://badge42.vercel.app/api/v2/cl8h1sspf00640gjzpe8t5f1y/project/2791811)](https://github.com/JaeSeoKim/badge42) | Mon Oct 04, 2022 |
 | Exam Rank 03  | #micro_paint | 3      | [![younhwan's 42 Exam Rank 03 Score](https://badge42.vercel.app/api/v2/cl8h1sspf00640gjzpe8t5f1y/project/2864285)](https://github.com/JaeSeoKim/badge42) | Fri Nov 4, 2022 |
-| [minishell](https://github.com/Younganswer/minishell/tree/main)     | #bash #process #fd #lex #parse | 3      |  | Mon Jan 09, 2023 |
+| [minishell](https://github.com/Younganswer/minishell/tree/main)     | #bash #process #fd #lex #parse | 3      | [![younhwan's 42 minishell Score](https://badge42.vercel.app/api/v2/cl8h1sspf00640gjzpe8t5f1y/project/2895599)](https://github.com/JaeSeoKim/badge42) | Mon Jan 09, 2023 |
 | [CPP_Module](./CPP_Module)     |                              | 4      |        |                  |
 | [net_practice](./net_practice)     |                              | 4      |        |                  |
 | [cub3d](https://github.com/Younganswer/cub3d/tree/main)     |                              | 4      |        |                  |
