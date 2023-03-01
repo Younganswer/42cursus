@@ -2,7 +2,7 @@ SHELL		= /bin/bash
 IDX			= 0
 
 NAME		= megaphone
-CXX			= clang++
+CXX			= c++
 CXXFLAGS	= -Wall -Wextra -Werror -std=c++98 -MD -O3
 LDFLAGS		= 
 RM			= rm -f
