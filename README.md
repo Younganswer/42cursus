@@ -21,5 +21,5 @@
 | [cub3d](https://github.com/Younganswer/cub3d/tree/main) | #computer_graphics #raycasting #game | 4 | Not for submit | Mon Feb 10, 2023 |
 | Exam Rank 04 | #micro_shell | 4 | [![younhwan's 42 Exam Rank 04 Score](https://badge42.vercel.app/api/v2/cl8h1sspf00640gjzpe8t5f1y/project/2979989)](https://github.com/JaeSeoKim/badge42) | Tue Feb 28, 2023 |
 | [miniRT](https://github.com/Younganswer/miniRT/tree/main) | #computer_graphics #raytracing | 4 | [![younhwan's 42 miniRT Score](https://badge42.vercel.app/api/v2/cl8h1sspf00640gjzpe8t5f1y/project/2961040)](https://github.com/JaeSeoKim/badge42) | Wed Mar 1, 2023 |
-| [net_practice](./net_practice)  |  | 4 |  |  |
+| [net_practice](./net_practice) | #network #ip #subnet_mask #routing | 4 |  | Wed Mar 1, 2023 |
 | [CPP_Module](./CPP_Module) |  | 4 |  |  |
