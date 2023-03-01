@@ -12,7 +12,10 @@ int	main(void) {
 		std::cout << "Enter command\n>> ";
 		getline(std::cin, cmd);
 		while (input_is_empty(cmd) || input_is_invalid(cmd)) {
-			if (input_is_empty(cmd)) {
+			if (std::cin.eof()) {
+				std::cout << '\n';
+				return (0);
+			} else if (input_is_empty(cmd)) {
 				std::cout << "\033[31mError: Input is empty\033[0m\n";
 				std::cout << "\033[31mPlease enter valid input\033[0m\n\n";
 			} else {
@@ -26,9 +29,11 @@ int	main(void) {
 		if (cmd.compare("EXIT") == 0)
 			break;
 		if (cmd.compare("ADD") == 0)
-			phone_book.add();
+			if (phone_book.add() == false)
+				return (0);
 		if (cmd.compare("SEARCH") == 0)
-			phone_book.search();
+			if (phone_book.search() == false)
+				return (0);
 	}
 	return (0);
 }

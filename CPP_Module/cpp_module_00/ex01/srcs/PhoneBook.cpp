@@ -1,5 +1,6 @@
 #include "../incs/PhoneBook.hpp"
 #include <iostream>
+#include <iomanip>
 
 const std::string	objects[] = {
 	"first name",
@@ -34,6 +35,10 @@ bool	PhoneBook::add(void) {
 		std::string input;
 		std::cout << "Enter " << objects[i] << '\n' << ">> ";
 		getline(std::cin, input);
+		if (std::cin.eof()) {
+			std::cout << '\n';
+			return (false);
+		}
 		while (input_is_empty(input)) {
 			std::cout << "\033[31m" << "Error: Input is empty" << "\033[0m" << '\n';
 			std::cout << "\033[31m" << "Pleaes enter valid input" << "\033[0m" << "\n\n";
@@ -53,9 +58,10 @@ bool	PhoneBook::add(void) {
 }
 
 bool	PhoneBook::search(void) {
-	printPhoneBook();
-	printRecord(getIndex());
-	return (true);
+	return (
+		printPhoneBook() &&
+		printRecord(getIndex())
+	);
 }
 
 int	PhoneBook::getIndex(void) {
@@ -67,6 +73,10 @@ int	PhoneBook::getIndex(void) {
 	while (true) {
 		if (input.compare("EXIT") == 0)
 			return (-1);
+		if (std::cin.eof()) {
+			std::cout << '\n';
+			return (-2);
+		}
 		while (input_is_empty(input)) {
 			std::cout << "\033[31m" << "Error: Input is empty" << "\033[0m" << '\n';
 			std::cout << "\033[31m" << "Pleaes enter valid input" << "\033[0m" << '\n';
@@ -74,16 +84,8 @@ int	PhoneBook::getIndex(void) {
 			std::cout << "Enter index of phonebook\n>> ";
 			getline(std::cin, input);
 		}
-		try {
-			ret = std::stoi(input);
-		} catch (std::exception &e) {
-			std::cout << "\033[31m" << "Error: Invalid index" << "\033[0m" << '\n';
-			std::cout << "\033[31m" << "Index must be one of [0, 1, 2, 3, 4, 5, 6, 7]" << "\033[0m" << '\n';
-			std::cout << "If you want to exit \"SEARCH\", enter EXIT\n\n";
-			std::cout << "Enter index of phonebook\n>> ";
-			getline(std::cin, input);
-			continue ;
-		}
+
+		ret = atoi(input.c_str());
 		if (ret < 0 || 7 <= ret) {
 			std::cout << "\033[31m" << "Error: Invalid index" << "\033[0m" << '\n';
 			std::cout << "\033[31m" << "Index must be one of [0, 1, 2, 3, 4, 5, 6, 7]" << "\033[0m" << '\n';
@@ -125,6 +127,8 @@ bool	PhoneBook::printPhoneBook(void) {
 bool	PhoneBook::printRecord(int idx) {
 	if (idx == -1)
 		return (true);
+	if (idx == -2)
+		return (false);
 
 	for (int i=0; i<5; i++) {
 		std::cout << objects[i] << ": ";
@@ -138,9 +142,7 @@ bool	PhoneBook::printField(const std::string &str) {
 	if (10 < str.length()) {
 		std::cout << str.substr(0, 9) << '.';
 	} else {
-		for (size_t i=0; i<10-str.length(); i++)
-			std::cout << ' ';
-		std::cout << str;
+		std::cout << std::setw(10) << str;
 	}
 	return (true);
 }
