@@ -2,7 +2,7 @@ SHELL		= /bin/bash
 IDX			= 0
 
 NAME		= phonebook
-CXX			= clang++
+CXX			= c++
 CXXFLAGS	= -Wall -Wextra -Werror -I${INCS_DIR} -std=c++98 -MD -O3
 LDFLAGS		= 
 RM			= rm -f
