@@ -31,6 +31,9 @@ PhoneBook::PhoneBook(void): _first_pos(0), _cur_pos(0) {}
 PhoneBook::~PhoneBook(void) {}
 
 bool	PhoneBook::add(void) {
+	if (_contacts[_cur_pos].getInitialized() == true)
+		_first_pos = (_first_pos + 1) % 8;
+
 	for (int i=0; i<5; i++) {
 		std::string input;
 		std::cout << "Enter " << objects[i] << '\n' << ">> ";
@@ -50,9 +53,6 @@ bool	PhoneBook::add(void) {
 	_contacts[_cur_pos].setInitialized(true);
 
 	_cur_pos = (_cur_pos + 1) % 8;
-	if (_cur_pos == _first_pos)
-		_first_pos++;
-
 	std::cout << '\n';
 	return (true);
 }
@@ -86,7 +86,7 @@ int	PhoneBook::getIndex(void) {
 		}
 
 		ret = atoi(input.c_str());
-		if (ret < 0 || 7 <= ret) {
+		if (std::isdigit(input[0]) == false || ret < 0 || 7 < ret) {
 			std::cout << "\033[31m" << "Error: Invalid index" << "\033[0m" << '\n';
 			std::cout << "\033[31m" << "Index must be one of [0, 1, 2, 3, 4, 5, 6, 7]" << "\033[0m" << '\n';
 			std::cout << "If you want to exit \"SEARCH\", enter EXIT\n\n";
@@ -121,6 +121,7 @@ bool	PhoneBook::printPhoneBook(void) {
 		printField(_contacts[(_first_pos + i) % 8].getNickName());
 		std::cout << '\n';
 	}
+	std::cout << '\n';
 	return (true);
 }
 
