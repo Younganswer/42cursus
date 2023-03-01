@@ -1,17 +1,6 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   Contact.hpp                                        :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/02 17:44:34 by younhwan          #+#    #+#             */
-/*   Updated: 2022/11/25 17:01:30 by younhwan         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #ifndef CONTACT_HPP
 # define CONTACT_HPP
+
 # include <string>
 
 class Contact {
@@ -43,12 +32,12 @@ class Contact {
 		bool				getInitialized(void) const;
 		
 		// Setter
-		void	setFirstName(const std::string &first_name);
-		void	setLastName(const std::string &last_name);
-		void	setNickName(const std::string &nick_name);
-		void	setDarkestSecret(const std::string &darkest_secret);
-		void	setPhoneNumber(const std::string &phone_number);
-		void	setInitialized(const bool &initialized);
+		bool	setFirstName(std::string first_name);
+		bool	setLastName(std::string last_name);
+		bool	setNickName(std::string nick_name);
+		bool	setDarkestSecret(std::string darkest_secret);
+		bool	setPhoneNumber(std::string phone_number);
+		bool	setInitialized(bool initialized);
 };
 
 #endif

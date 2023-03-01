@@ -1,36 +1,42 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/02 20:50:22 by younhwan          #+#    #+#             */
-/*   Updated: 2022/10/08 23:16:04 by younhwan         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include <iostream>
 #include "../incs/PhoneBook.hpp"
 
+static bool	input_is_empty(const std::string &input);
+static bool	input_is_invalid(const std::string &input);
+
 int	main(void) {
 	PhoneBook phone_book;
+
 	while (true) {
 		std::string	cmd;
 		std::cout << "Enter command\n>> ";
-		std::cin >> cmd;
-		while (cmd.compare("ADD") && cmd.compare("SEARCH") && cmd.compare("EXIT")) {
-			std::cout << "\033[31mError: Invalid command\033[0m\n";
-			std::cout << "\033[31mCommand must be one of \"ADD\" \"SEARCH\" \"EXIT\"\033[0m\n";
+		getline(std::cin, cmd);
+		while (input_is_empty(cmd) || input_is_invalid(cmd)) {
+			if (input_is_empty(cmd)) {
+				std::cout << "\033[31mError: Input is empty\033[0m\n";
+				std::cout << "\033[31mPlease enter valid input\033[0m\n\n";
+			} else {
+				std::cout << "\033[31mError: Invalid command\033[0m\n";
+				std::cout << "\033[31mCommand must be one of \"ADD\" \"SEARCH\" \"EXIT\"\033[0m\n\n";
+			}
 			std::cout << "Enter command\n>> ";
-			std::cin >> cmd;
+			getline(std::cin, cmd);
 		}
-		if (!cmd.compare("EXIT"))
+		std::cout << '\n';
+		if (cmd.compare("EXIT") == 0)
 			break;
-		if (!cmd.compare("ADD"))
+		if (cmd.compare("ADD") == 0)
 			phone_book.add();
-		if (!cmd.compare("SEARCH"))
+		if (cmd.compare("SEARCH") == 0)
 			phone_book.search();
 	}
 	return (0);
+}
+
+static bool	input_is_empty(const std::string &input) {
+	return (input.empty() || input == "\n");
+}
+
+static bool	input_is_invalid(const std::string &input) {
+	return (input.compare("ADD") && input.compare("SEARCH") && input.compare("EXIT"));
 }
