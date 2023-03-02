@@ -1,31 +1,9 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   Weapon.cpp                                         :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/08 23:32:08 by younhwan          #+#    #+#             */
-/*   Updated: 2022/11/26 00:01:38 by younhwan         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "../incs/Weapon.hpp"
 
-Weapon::Weapon(void) {
-	this->_type = std::string();
-	return;
-}
-
-Weapon::Weapon(const std::string &type) {
-	this->_type = std::string(type.c_str());
-	return;
-}
-
-Weapon::Weapon(const Weapon &weapon) {
-	*this = weapon;
-	return;
-}
+Weapon::Weapon(void) { this->_type = std::string(); }
+Weapon::Weapon(const std::string &type) { this->_type = std::string(type.c_str()); }
+Weapon::Weapon(const Weapon &weapon) { *this = weapon; }
+Weapon::~Weapon(void) {}
 
 Weapon	&Weapon::operator=(const Weapon &weapon) {
 	if (this != &weapon) {
@@ -34,12 +12,11 @@ Weapon	&Weapon::operator=(const Weapon &weapon) {
 	return (*this);
 }
 
-Weapon::~Weapon(void) {}
+// Getter
+std::string			Weapon::getType(void) { return (this->_type); }
+const std::string	&Weapon::getType(void) const { return (this->_type); }
 
-std::string	Weapon::getType(void) {
-	return (this->_type);
-}
-
+// Setter
 bool		Weapon::setType(const std::string &type) {
 	this->_type = std::string(type.c_str());
 	return (true);
