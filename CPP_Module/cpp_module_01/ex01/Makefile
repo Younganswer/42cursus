@@ -1,20 +1,8 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/07/08 16:03:07 by younhwan          #+#    #+#              #
-#    Updated: 2022/11/25 20:17:18 by younhwan         ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
-
 SHELL	= /bin/bash
 SPINNER	= /-\|/
 IDX		= 0
 
-NAME	= zombie
+NAME	= zombie_horde
 
 CC			= clang++
 CXXFLAGS	= -Wall -Wextra -Werror -std=c++98
