@@ -1,27 +1,20 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/07 20:54:29 by younhwan          #+#    #+#             */
-/*   Updated: 2022/10/09 23:52:08 by younhwan         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "../incs/Replace.hpp"
-#include "../incs/utils.hpp"
+#include <iostream>
 
 int	main(int argc, char **argv) {
-	if (argc != 4)
-		exit_with_error("Invalid arguments\nUsage: ./replace <filename> <string1> <string2>", 0);
-
+	if (argc != 4) {
+		std::cout << "Invalid arguments\nUsage: ./replace <filename> <string1> <string2>" << '\n';
+		return (1);
+	}
+		
 	Replace	replace(argv[1], argv[2], argv[3]);
 	try {
-		replace.replace();
+		if (replace.replace() == false) {
+			return (1);
+		}
 	} catch (std::string err) {
-		exit_with_error(err, 1);
+		std::cerr << "\033[31m" << "Error: " << err << "\033[0m" << '\n';
+		return (1);
 	}
 	return (0);
 }

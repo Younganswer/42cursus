@@ -1,83 +1,79 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/07/08 16:03:07 by younhwan          #+#    #+#              #
-#    Updated: 2022/11/25 20:31:35 by younhwan         ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
+SHELL		= /bin/bash
+IDX			= 0
 
-SHELL	= /bin/bash
-SPINNER	= /-\|/
-IDX		= 0
-
-NAME	= replace
-
-CC			= clang++
-CXXFLAGS	= -Wall -Wextra -Werror -std=c++98
-LDFLAGS		=
-AR			= ar rcs
+NAME		= violence
+CXX			= c++
+CXXFLAGS	= -Wall -Wextra -Werror -I${INCS_DIR} -std=c++98 -MD -O3
+LDFLAGS		= 
 RM			= rm -f
 
-INCS_DIR	= ./incs
-SRCS_DIR	= ./srcs
-OBJS_DIR	= ./objs
+ifdef SANITIZE
+	LDFLAGS += -fsanitize=address
+endif
 
-SRCS =	main.cpp \
-		replace/Replace.cpp \
-		utils/exit_with_error.cpp
-		
+INCS_DIR	= incs
+SRCS_DIR	= srcs
+OBJS_DIR	= objs
+
+SRCS =	main.cpp Replace.cpp
+
 SRCS := ${addprefix ${SRCS_DIR}/, ${SRCS}}
-OBJS = ${SRCS:${SRCS_DIR}/%.cpp=${OBJS_DIR}/%.o}
-DEPS = ${OBJS:.o=.d}
+OBJS := ${SRCS:${SRCS_DIR}/%.cpp=${OBJS_DIR}/%.o}
+DEPS := ${OBJS:.o=.d}
+
+SRCS_LEN	= ${shell echo ${SRCS} | wc -w}
 
 
 all: ${NAME}
 
 
-${OBJS_DIR}:
-	@echo "Build ${NAME}"
-	@mkdir -p objs
-	@mkdir -p objs/replace
-	@mkdir -p objs/utils
-
-
 ${NAME}: ${OBJS}
-	@printf "\bdone\n"
-	@${CC} ${LDFLAGS} -g -o ${NAME} ${OBJS} -I ${INCS_DIR}
+	@if [ ${IDX} -gt 0 ]; then\
+		printf "\b"; echo "done ";\
+	fi
+	@${CXX} ${LDFLAGS} -o ${NAME} ${OBJS}
 	@echo "Build ${NAME}: done"
 
 
-${OBJS_DIR}/%.o: ${SRCS_DIR}/%.cpp | ${OBJS_DIR}
+${OBJS}: ${OBJS_DIR}
+
+
+${OBJS_DIR}/%.o: ${SRCS_DIR}/%.cpp
 	${eval IDX = ${shell expr ${IDX} + 1}}
-	${eval T_IDX = ${shell expr ${IDX} % 32}}
-	${eval T_IDX = ${shell expr ${T_IDX} / 8 + 1}}
-	${eval CHR = ${shell echo ${SPINNER} | cut -c ${T_IDX}}}
 	@if [ ${IDX} = 1 ]; then\
 		echo -n "Build dependencies in ${NAME} ...  ";\
 	fi
-	@printf "\b${CHR}"
-	@${CC} ${CXXFLAGS} -g -c $< -o $@ -I ${INCS_DIR} -MD
+	@printf "%3d%%\b\b\b\b" ${shell expr ${IDX} \* 100 / ${SRCS_LEN}}
+	@${CXX} ${CXXFLAGS} -g -c $< -o $@
+
+
+${OBJS_DIR}:
+	@echo "Build ${NAME}"
+	@mkdir -p ${OBJS_DIR}
 
 
 clean:
 	@echo "Remove dependencies in ${NAME}"
-	@rm -rf ${OBJS_DIR} *.replace
+	@${RM} -r ${OBJS_DIR}
 
 
-fclean: clean
+fclean:
+	@echo "Remove dependencies in ${NAME}"
+	@${RM} -r ${OBJS_DIR}
 	@echo "Remove ${NAME}"
 	@${RM} ${NAME}
 	
 
 re:
-	@make fclean
-	@make all
+	@echo "Rebuild ${NAME}"
+	@${MAKE} fclean
+	@${MAKE} all
 
 
 .PHONY: all clean fclean re
+
+
+.NOTPARALLEL: all clean fclean re
+
 
 -include ${DEPS}

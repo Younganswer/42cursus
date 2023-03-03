@@ -1,21 +1,6 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   Replace.hpp                                        :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/09 23:30:10 by younhwan          #+#    #+#             */
-/*   Updated: 2022/11/25 20:27:28 by younhwan         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #ifndef REPLACE_HPP
 # define REPLACE_HPP
 
-# include <iostream>
-# include <fstream>
-# include <sstream>
 # include <string>
 
 class Replace {
