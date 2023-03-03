@@ -13,19 +13,19 @@
 
 ## Usage
 ### ex00
-	$ ./BraiiiiiiinnnzzzZ
+	$ ./zombie
 <br/>
 
 ### ex01
-	$ ./Moar brainz!
+	$ ./zombie_horde
 <br/>
 
 ### ex02
-	$ ./HI THIS IS BRAIN
+	$ ./brain
 <br/>
 
 ### ex03
-	$ ./Unnecessary violence
+	$ ./violence
 <br/>
 
 ### ex04
@@ -38,7 +38,7 @@
 
 ### ex06
 	$ ./harlFilter <Things to complain>
-<p>Supported(Defined) things to complain<p/>
+#### Supported(Defined) things to complain
 
 * "DEBUG"
 * "INFO"
