@@ -18,12 +18,11 @@ Replace::Replace(const std::string &fileName, const std::string &s1, const std::
 Replace::~Replace(void) {}
 
 bool	Replace::replaceLine(std::string &line) {
-	std::string::size_type	iter = line.find(this->_s1);
-	while (iter != std::string::npos) {
-		line.erase(iter, this->_s1.length());
-		line.insert(iter, this->_s2);
-		iter += this->_s2.length();
-		iter = line.find(this->_s1);
+	std::string::size_type	pos = 0;
+
+	while ((pos = line.find(this->_s1, pos)) != std::string::npos) {
+		line.replace(pos, this->_s1.length(), this->_s2);
+		pos += this->_s2.length();
 	}
 	return (true);
 }
