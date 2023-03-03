@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   Point.hpp                                          :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/19 10:57:33 by younhwan          #+#    #+#             */
-/*   Updated: 2022/11/26 11:55:05 by younhwan         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #ifndef POINT_HPP
 # define POINT_HPP
 
@@ -22,8 +10,8 @@ class Point {
 
 	public:
 		Point(void);
-		Point(float x, float y);
-		Point(Fixed x, Fixed y);
+		Point(const float x, const float y);
+		Point(const Fixed &x, const Fixed &y);
 		Point(const Point &point);
 		~Point(void);
 		Point	&operator=(const Point &point);
@@ -31,11 +19,11 @@ class Point {
 		// Getter
 		Fixed		getX(void);
 		Fixed		getY(void);
-		const Fixed	getX(void) const;
-		const Fixed	getY(void) const;
+		const Fixed	&getX(void) const;
+		const Fixed	&getY(void) const;
 
 		// Operator Overload
-		const Point	operator-(const Point point) const;
+		const Point	operator-(const Point &point) const;
 };
 
 bool	bsp(const Point a, const Point b, const Point c, const Point point);

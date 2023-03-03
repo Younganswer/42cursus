@@ -1,16 +1,6 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   Fixed.cpp                                          :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/10 14:25:08 by younhwan          #+#    #+#             */
-/*   Updated: 2022/11/26 11:54:19 by younhwan         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "../incs/Fixed.hpp"
+#include <iostream>
+#include <cmath>
 
 Fixed::Fixed(void): _raw_bits(0) {}
 Fixed::Fixed(const int raw) { this->_raw_bits = (raw << _fractional_bits); }
