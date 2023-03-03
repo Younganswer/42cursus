@@ -17,6 +17,7 @@ int	main(int argc, char **argv) {
 			harl.complain("WARNING");
 		case ERROR:
 			harl.complain("ERROR");
+			break;
 		default:
 			harl.complain("UNDEFINED");
 			break;
