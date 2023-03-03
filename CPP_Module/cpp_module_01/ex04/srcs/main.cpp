@@ -8,12 +8,7 @@ int	main(int argc, char **argv) {
 	}
 		
 	Replace	replace(argv[1], argv[2], argv[3]);
-	try {
-		if (replace.replace() == false) {
-			return (1);
-		}
-	} catch (std::string err) {
-		std::cerr << "\033[31m" << "Error: " << err << "\033[0m" << '\n';
+	if (replace.replace() == false) {
 		return (1);
 	}
 	return (0);

@@ -31,13 +31,13 @@ bool	Replace::replaceLine(std::string &line) {
 bool	Replace::replace(void) {
 	std::ifstream	fin(this->_fileName.c_str());
 	if (!fin.is_open()) {
-		std::cerr << "Fail to open file " << "'" << this->_fileName << "'" << '\n'; 
+		std::cerr << "\033[31m" << "Error: Fail to open file " << "'" << this->_fileName << "'" << "\033[0m" << '\n'; 
 		return (false);
 	}
 
 	std::ofstream	fout(std::string(this->_fileName + ".replace").c_str());
 	if (!fout.is_open()) {
-		std::cerr << "Fail to open file " << "'" << this->_fileName << ".replace" << "'" << '\n';
+		std::cerr << "\033[31m" << "Error: Fail to open file " << "'" << this->_fileName << ".replace" << "'" << "\033[0m" << '\n';
 		return (false);
 	}
 	
@@ -46,6 +46,7 @@ bool	Replace::replace(void) {
 		replaceLine(line);
 		stream.append(line);
 	}
+	
 	fout << stream;
 	fin.close();
 	fout.close();
