@@ -27,4 +27,9 @@ class Harl {
 
 size_t	hash(const std::string &level);
 
+# define DEBUG 7417
+# define INFO 2524
+# define WARNING 7946
+# define ERROR 182
+
 #endif

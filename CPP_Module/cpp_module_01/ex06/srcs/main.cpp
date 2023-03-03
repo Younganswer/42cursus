@@ -7,13 +7,19 @@ int	main(int argc, char **argv) {
 	}
 	
 	Harl	harl;
-	switch (harl.hash(argv[1]))
-	{
-	case harl.hash("debug"):
-		harl.complain("debug");
-	
-	default:
-		break;
+
+	switch (hash(argv[1])) {
+		case DEBUG:
+			harl.complain("DEBUG");
+		case INFO:
+			harl.complain("INFO");
+		case WARNING:
+			harl.complain("WARNING");
+		case ERROR:
+			harl.complain("ERROR");
+		default:
+			harl.complain("UNDEFINED");
+			break;
 	}
 	return (0);
 }
