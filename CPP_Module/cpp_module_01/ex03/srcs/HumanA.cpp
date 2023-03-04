@@ -19,6 +19,9 @@ HumanA	&HumanA::operator=(const HumanA &humanA) {
 
 // Utils
 bool	HumanA::attack(void) {
+	if (this->_weapon == NULL) {
+		return (true);
+	}
 	std::cout << this->_name << " attacks with their " << this->_weapon->getType() << '\n';
 	return (true);
 }

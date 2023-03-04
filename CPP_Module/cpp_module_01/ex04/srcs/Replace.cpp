@@ -11,6 +11,9 @@ Replace::Replace(void) {
 
 Replace::Replace(const std::string &fileName, const std::string &s1, const std::string &s2) {
 	this->_fileName = std::string(fileName.c_str());
+	if (s1.compare("") == 0) {
+		throw std::invalid_argument("Error: s1 is empty");
+	}
 	this->_s1 = std::string(s1.c_str());
 	this->_s2 = std::string(s2.c_str());
 }
