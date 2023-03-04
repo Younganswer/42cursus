@@ -5,7 +5,7 @@ ClapTrap::ClapTrap(void): _name(std::string()), _hit_points(10), _energy_points(
 	std::cout << "Default constructor of CL4P-TP is called" << '\n';
 }
 ClapTrap::ClapTrap(const std::string &name): _name(name.c_str()), _hit_points(10), _energy_points(10), _attack_damage(0) {
-	std::cout << "const std::string reference constructor of CL4P-TP is called" << '\n';
+	std::cout << "Const std::string reference constructor of CL4P-TP is called" << '\n';
 }
 ClapTrap::ClapTrap(const ClapTrap &clap_trap) {
 	std::cout << "Copy constructor of CL4P-TP is called" << '\n';
@@ -24,57 +24,47 @@ ClapTrap	&ClapTrap::operator=(const ClapTrap &clap_trap) {
 	return (*this);
 }
 
-
-// Getter
-std::string			ClapTrap::getName(void) { return (this->_name); }
-const std::string	&ClapTrap::getName(void) const { return (this->_name); }
-unsigned int		ClapTrap::getHitPoints(void) const { return (this->_hit_points); }
-unsigned int		ClapTrap::getEnergePoints(void) const { return (this->_energy_points); }
-unsigned int		ClapTrap::getAttackDamage(void) const { return (this->_attack_damage); }
-
-// Setter
-bool	ClapTrap::setHitPoints(unsigned int amount) {
-	this->_hit_points = amount;
-	return (true);	
-}
-bool	ClapTrap::setName(const std::string &name) {
-	this->_name = name.c_str();
-	return (true);
-}
-bool	ClapTrap::setEnergePoints(unsigned int amount) {
-	this->_energy_points = amount;
-	return (true);
-}
-bool	ClapTrap::setAttackDamage(unsigned int amount) {
-	this->_attack_damage = amount;
-	return (true);
-}
-
 // Utils
 void	ClapTrap::attack(const std::string &target) {
-	if (this->_energy_points == 0 || this->_hit_points == 0)
-		return;
-	this->_energy_points--;
-	std::cout << "CL4P-TP [" << this->_name << "] attacks [" << target << "], causing [" << this->_attack_damage << "] points of damage!" << '\n';
+	if (this->_hit_points == 0) {
+		std::cout << "CL4P-TP [" << this->_name << "] is run out of its hit points" << '\n';
+	} else if (this->_energy_points == 0) {
+		std::cout << "CL4P-TP [" << this->_name << "] is run out of its energy points" << '\n';
+	} else {
+		std::cout << "CL4P-TP [" << this->_name << "] attacks [" << target << "], causing [" << this->_attack_damage << "] points of damage!" << '\n';
+		this->_energy_points--;
+	}
 	return;
 }
 
 void	ClapTrap::takeDamage(unsigned int amount) {
-	if (this->_hit_points <= amount) {
+	if (this->_hit_points == 0) {
 		std::cout << "CL4P-TP [" << this->_name << "] is run out of its hit points" << '\n';
+	} else if (this->_hit_points <= amount) {
+		std::cout << "CL4P-TP [" << this->_name << "] took [" <<  this->_hit_points << "] damage!" << '\n';
 		this->_hit_points = 0;
-		return;
+		std::cout << "CL4P-TP [" << this->_name << "] is run out of its hit points" << '\n';
+	} else {
+		std::cout << "CL4P-TP [" << this->_name << "] took [" <<  amount << "] damage!" << '\n';
+		this->_hit_points -= amount;
+		std::cout << "CL4P-TP [" << this->_name << "] left [" <<  this->_hit_points << "] hit points" << '\n';
 	}
-	std::cout << "CL4P-TP [" << this->_name << "] took [" <<  amount << "] damage!" << '\n';
-	this->_hit_points -= amount;
 	return;
 }
 
 void	ClapTrap::beRepaired(unsigned int amount) {
-	if (this->_energy_points == 0 || this->_hit_points == 0)
-		return;
-	this->_energy_points--;
-	std::cout << "CL4P-TP [" << this->_name << "] is repaired: Restore [" << amount << "] hit points" << '\n';
-	this->_hit_points += amount;
+	if (this->_hit_points == 0) {
+		std::cout << "CL4P-TP [" << this->_name << "] is run out of its hit points" << '\n';
+	} else if (this->_energy_points == 0) {
+		std::cout << "CL4P-TP [" << this->_name << "] is run out of its energy points" << '\n';
+	} else if (10 < this->_hit_points + amount) {
+		std::cout << "CL4P-TP [" << this->_name << "] is repaired: Restore [" << 10 - this->_hit_points << "] hit points" << '\n';
+		this->_hit_points = 10;
+		this->_energy_points--;
+	} else {
+		std::cout << "CL4P-TP [" << this->_name << "] is repaired: Restore [" << amount << "] hit points" << '\n';
+		this->_hit_points += amount;
+		this->_energy_points--;
+	}
 	return;
 }
