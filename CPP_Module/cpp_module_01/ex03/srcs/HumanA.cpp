@@ -20,9 +20,10 @@ HumanA	&HumanA::operator=(const HumanA &humanA) {
 // Utils
 bool	HumanA::attack(void) {
 	if (this->_weapon == NULL) {
-		return (true);
+		std::cerr << "Error: HumanA [" << this->_name << "] has no weapon\n";
+	} else {
+		std::cout << this->_name << " attacks with their " << this->_weapon->getType() << '\n';
 	}
-	std::cout << this->_name << " attacks with their " << this->_weapon->getType() << '\n';
 	return (true);
 }
 
