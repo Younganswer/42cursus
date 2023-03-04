@@ -47,7 +47,7 @@ void	ClapTrap::takeDamage(unsigned int amount) {
 	} else {
 		std::cout << "CL4P-TP [" << this->_name << "] took [" <<  amount << "] damage!" << '\n';
 		this->_hit_points -= amount;
-		std::cout << "CL4P-TP [" << this->_name << "] left [" <<  this->_hit_points << "] hit points" << '\n';
+		std::cout << "CL4P-TP [" << this->_name << "] has [" << this->_hit_points << "] hit points left" << '\n';
 	}
 	return;
 }
@@ -57,13 +57,10 @@ void	ClapTrap::beRepaired(unsigned int amount) {
 		std::cout << "CL4P-TP [" << this->_name << "] is run out of its hit points" << '\n';
 	} else if (this->_energy_points == 0) {
 		std::cout << "CL4P-TP [" << this->_name << "] is run out of its energy points" << '\n';
-	} else if (10 < this->_hit_points + amount) {
-		std::cout << "CL4P-TP [" << this->_name << "] is repaired: Restore [" << 10 - this->_hit_points << "] hit points" << '\n';
-		this->_hit_points = 10;
-		this->_energy_points--;
 	} else {
 		std::cout << "CL4P-TP [" << this->_name << "] is repaired: Restore [" << amount << "] hit points" << '\n';
 		this->_hit_points += amount;
+		std::cout << "CL4P-TP [" << this->_name << "] has [" << this->_hit_points << "] hit points" << '\n';
 		this->_energy_points--;
 	}
 	return;
