@@ -1,19 +1,6 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ClapTrap.hpp                                       :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/22 15:01:16 by younhwan          #+#    #+#             */
-/*   Updated: 2022/11/26 12:11:28 by younhwan         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #ifndef CLAPTRAP_HPP
 # define CLAPTRAP_HPP
 
-# include <iostream>
 # include <string>
 
 class ClapTrap {
@@ -32,10 +19,10 @@ class ClapTrap {
 		unsigned int		getAttackDamage(void) const;
 	
 		// Setter
-		void			setName(const std::string &name);
-		void			setHitPoints(unsigned int amount);
-		void			setEnergePoints(unsigned int amount);
-		void			setAttackDamage(unsigned int amount);
+		bool	setName(const std::string &name);
+		bool	setHitPoints(unsigned int amount);
+		bool	setEnergePoints(unsigned int amount);
+		bool	setAttackDamage(unsigned int amount);
 		
 	public:
 		ClapTrap(void);
