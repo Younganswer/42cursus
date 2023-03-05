@@ -23,10 +23,10 @@ void	Fixed::setRawBits(const int raw) { this->_raw_bits = raw; }
 // Utils
 int			Fixed::toInt(void) const { return (this->_raw_bits >> _fractional_bits); }
 float		Fixed::toFloat(void) const { return ((float)this->_raw_bits / (1 << _fractional_bits)); }
-Fixed		&Fixed::min(Fixed &fixed1, Fixed &fixed2) { return ((fixed1._raw_bits < fixed2._raw_bits) ? fixed1 : fixed2); }
-Fixed		&Fixed::max(Fixed &fixed1, Fixed &fixed2) { return ((fixed1._raw_bits > fixed2._raw_bits) ? fixed1 : fixed2); }
-const Fixed	&Fixed::min(const Fixed &fixed1, const Fixed &fixed2) { return ((fixed1._raw_bits < fixed2._raw_bits) ? fixed1 : fixed2); }
-const Fixed	&Fixed::max(const Fixed &fixed1, const Fixed &fixed2) { return ((fixed1._raw_bits > fixed2._raw_bits) ? fixed1 : fixed2); }
+Fixed		&Fixed::min(Fixed &fixed1, Fixed &fixed2) { return ((fixed1 <= fixed2) ? fixed1 : fixed2); }
+Fixed		&Fixed::max(Fixed &fixed1, Fixed &fixed2) { return ((fixed1 <= fixed2) ? fixed2 : fixed1); }
+const Fixed	&Fixed::min(const Fixed &fixed1, const Fixed &fixed2) { return ((fixed1 <= fixed2) ? fixed1 : fixed2); }
+const Fixed	&Fixed::max(const Fixed &fixed1, const Fixed &fixed2) { return ((fixed1 <= fixed2) ? fixed2 : fixed1); }
 
 // Operator Overload
 bool	Fixed::operator<(const Fixed &rhs) const { return (this->_raw_bits < rhs._raw_bits); }

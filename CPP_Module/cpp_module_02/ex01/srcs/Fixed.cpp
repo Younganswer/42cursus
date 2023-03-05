@@ -5,12 +5,12 @@
 Fixed::Fixed(void): _raw_bits(0) { std::cout << "Default constructor called" << '\n'; }
 
 Fixed::Fixed(const int raw) {
-	std::cout << "Int constructor called" << '\n';
+	std::cout << "Const int constructor called" << '\n';
 	this->_raw_bits = raw << this->_fractional_bits;
 }
 
 Fixed::Fixed(const float raw) {
-	std::cout << "Float constructor called" << '\n';
+	std::cout << "Const float constructor called" << '\n';
 	this->_raw_bits = roundf(raw * (1 << this->_fractional_bits));
 }
 
