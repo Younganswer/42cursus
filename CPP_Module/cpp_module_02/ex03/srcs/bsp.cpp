@@ -14,5 +14,5 @@ bool	bsp(const Point a, const Point b, const Point c, const Point point) {
 }
 
 static float	cross_product(const Point &vec1, const Point &vec2) {
-	return (Fixed(vec1.getX()*vec2.getY()-vec1.getY()*vec2.getX()).toFloat());
+	return (Fixed(vec1.getX()*vec2.getY() - vec1.getY()*vec2.getX()).toFloat());
 }

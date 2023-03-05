@@ -44,13 +44,26 @@ Fixed	Fixed::operator/(const Fixed &rhs) const {
 	}
 	return (Fixed(this->toFloat() / rhs.toFloat()));
 }
+
 Fixed	Fixed::operator++(int) {
 	Fixed	fixed(*this);
 	this->_raw_bits++;
 	return (fixed);
 }
+
 Fixed	&Fixed::operator++(void) {
 	++(this->_raw_bits);
+	return (*this);
+}
+
+Fixed	Fixed::operator--(int) {
+	Fixed	fixed(*this);
+	this->_raw_bits--;
+	return (fixed);
+}
+
+Fixed	&Fixed::operator--(void) {
+	--(this->_raw_bits);
 	return (*this);
 }
 
