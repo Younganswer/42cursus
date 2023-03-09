@@ -16,7 +16,6 @@ SRCS_DIR	= srcs
 OBJS_DIR	= objs
 
 SRCS =	main.cpp \
-		bsp.cpp \
 		Fixed.cpp \
 		Point.cpp
 
