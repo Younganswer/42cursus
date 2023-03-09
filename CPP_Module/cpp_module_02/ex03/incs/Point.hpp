@@ -7,6 +7,8 @@ class Point {
 	private:
 		const Fixed	_x;
 		const Fixed	_y;
+		
+		static float	cross_product(const Point &p1, const Point &p2);
 
 	public:
 		Point(void);
@@ -22,9 +24,8 @@ class Point {
 		const Fixed	&getX(void) const;
 		const Fixed	&getY(void) const;
 
-		// Utils
+		// Util
 		static bool		bsp(const Point a, const Point b, const Point c, const Point point);
-		static float	cross_product(const Point &p1, const Point &p2);
 
 		// Operator Overload
 		const Point	operator-(const Point &point) const;

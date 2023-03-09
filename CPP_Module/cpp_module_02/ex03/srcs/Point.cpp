@@ -20,11 +20,8 @@ Fixed		Point::getY(void) { return (this->_y); }
 const Fixed	&Point::getX(void) const { return (this->_x); }
 const Fixed	&Point::getY(void) const { return (this->_y); }
 
-bool			bsp(const Point a, const Point b, const Point c, const Point point);
-static float	cross_product(const Point &p1, const Point &p2);
-
-// Utils
-bool	bsp(const Point a, const Point b, const Point c, const Point point) {
+// Util
+bool	Point::bsp(const Point a, const Point b, const Point c, const Point point) {
 	float	direction;
 
 	return (
@@ -34,11 +31,11 @@ bool	bsp(const Point a, const Point b, const Point c, const Point point) {
 	);
 }
 
-static float	cross_product(const Point &p1, const Point &p2) {
-	return (Fixed(p1.getX()*p2.getY() - p1.getY()*p2.getX()).toFloat());
-}
-
 // Operator Overload
 const Point	Point::operator-(const Point &point) const {
 	return (Point(this->_x-point._x, this->_y-point._y));
+}
+
+float	Point::cross_product(const Point &p1, const Point &p2) {
+	return (Fixed(p1.getX()*p2.getY() - p1.getY()*p2.getX()).toFloat());
 }
