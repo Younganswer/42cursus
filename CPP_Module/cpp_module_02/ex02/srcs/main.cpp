@@ -19,5 +19,12 @@ int	main(void) {
 			std::cerr << "\033[31m" << "Error: " << e.what() << "\033[0m" << '\n';
 		}
 	}
+	{
+		Fixed	a, b;
+
+		a = 10.0f;
+		b.setRawBits(-1);
+		std::cout << a / b << '\n';
+	}
 	return (0);
 }

@@ -44,6 +44,8 @@ class Fixed {
 		Fixed	operator/(const Fixed &rhs) const;
 		Fixed	operator++(int);
 		Fixed	&operator++(void);
+		Fixed	operator--(int);
+		Fixed	&operator--(void);
 };
 
 // toString

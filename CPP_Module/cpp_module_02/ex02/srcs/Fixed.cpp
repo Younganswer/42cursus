@@ -39,7 +39,7 @@ Fixed	Fixed::operator+(const Fixed &rhs) const { return (Fixed(this->toFloat() +
 Fixed	Fixed::operator-(const Fixed &rhs) const { return (Fixed(this->toFloat() - rhs.toFloat())); }
 Fixed	Fixed::operator*(const Fixed &rhs) const { return (Fixed(this->toFloat() * rhs.toFloat())); }
 Fixed	Fixed::operator/(const Fixed &rhs) const {
-	if (rhs.toInt() == 0) {
+	if (abs(rhs.getRawBits()) == 0) {
 		throw std::runtime_error("zero division error");
 	}
 	return (Fixed(this->toFloat() / rhs.toFloat()));

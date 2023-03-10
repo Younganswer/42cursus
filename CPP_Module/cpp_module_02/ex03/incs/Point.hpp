@@ -31,6 +31,4 @@ class Point {
 		const Point	operator-(const Point &point) const;
 };
 
-bool	bsp(const Point a, const Point b, const Point c, const Point point);
-
 #endif
