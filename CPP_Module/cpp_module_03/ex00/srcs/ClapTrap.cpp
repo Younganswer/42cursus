@@ -60,6 +60,7 @@ void	ClapTrap::beRepaired(unsigned int amount) {
 	} else {
 		std::cout << "CL4P-TP [" << this->_name << "] is repaired: Restore [" << amount << "] hit points" << '\n';
 		this->_hit_points += amount;
+		std::cout << "CL4P-TP [" << this->_name << "] has [" << this->_hit_points << "] hit points now" << '\n';
 		this->_energy_points--;
 	}
 	return;
