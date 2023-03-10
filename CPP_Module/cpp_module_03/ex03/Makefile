@@ -39,10 +39,7 @@ ${NAME}: ${OBJS}
 	@echo "Build ${NAME}: done"
 
 
-${OBJS}: ${OBJS_DIR}
-
-
-${OBJS_DIR}/%.o: ${SRCS_DIR}/%.cpp
+${OBJS_DIR}/%.o: ${SRCS_DIR}/%.cpp | ${OBJS_DIR}
 	${eval IDX = ${shell expr ${IDX} + 1}}
 	@if [ ${IDX} = 1 ]; then\
 		echo -n "Build dependencies in ${NAME} ...  ";\
