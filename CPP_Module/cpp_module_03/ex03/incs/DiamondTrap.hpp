@@ -9,10 +9,6 @@ class DiamondTrap: public ScavTrap, public FragTrap {
 	private:
 		std::string	_name;
 
-	protected:
-		// Getter
-		unsigned int	getAttackDamage(void) const;
-
 	public:
 		DiamondTrap(void);
 		DiamondTrap(const std::string &name);

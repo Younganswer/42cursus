@@ -4,6 +4,11 @@
 # include "ClapTrap.hpp"
 
 class ScavTrap: virtual public ClapTrap {
+	protected:
+		unsigned int	_hit_points;
+		unsigned int	_energy_points;
+		unsigned int	_attack_damage;
+
 	public:
 		ScavTrap(void);
 		ScavTrap(const std::string &name);
