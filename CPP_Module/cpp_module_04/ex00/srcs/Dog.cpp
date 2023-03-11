@@ -1,16 +1,5 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   Dog.cpp                                            :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/27 11:23:54 by younhwan          #+#    #+#             */
-/*   Updated: 2022/11/26 12:22:49 by younhwan         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "../incs/Dog.hpp"
+#include <iostream>
 
 Dog::Dog(void): Animal("Dog") { std::cout << "Dog default constructor called" << '\n'; }
 Dog::Dog(const Dog &ref) { std::cout << "Dog copy constructor called" << '\n'; (*this) = ref; }
