@@ -1,16 +1,5 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   Brain.cpp                                          :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/27 11:41:13 by younhwan          #+#    #+#             */
-/*   Updated: 2022/11/26 12:31:50 by younhwan         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "../incs/Brain.hpp"
+#include <iostream>
 
 Brain::Brain(void) { std::cout << "Brain default constructor called" << '\n'; }
 Brain::Brain(const Brain &ref) { std::cout << "Brain copy constructor called" << '\n'; (*this) = ref; }

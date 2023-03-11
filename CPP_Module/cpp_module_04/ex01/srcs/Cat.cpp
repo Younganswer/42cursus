@@ -1,33 +1,15 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   Cat.cpp                                            :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/27 11:25:40 by younhwan          #+#    #+#             */
-/*   Updated: 2022/11/26 12:29:04 by younhwan         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "../incs/Cat.hpp"
+#include <iostream>
 
-Cat::Cat(void): Animal("Cat") { std::cout << "Cat default constructor called" << '\n'; this->_brain = new Brain(); }
+Cat::Cat(void): Animal("Cat") { std::cout << "Cat default constructor called" << '\n'; }
 Cat::Cat(const Cat &ref) { std::cout << "Cat copy constructor called" << '\n'; (*this) = ref; }
-Cat::~Cat(void) {
-	std::cout << "Cat destructor called" << '\n';
-	if (this->_brain) {
-		delete this->_brain;
-	}
-}
+Cat::~Cat(void) { std::cout << "Cat destructor called" << '\n'; }
 
 Cat	&Cat::operator=(const Cat &ref) {
 	std::cout << "Cat copy assignation operator called" << '\n';
-	this->_type = ref._type.c_str();
-	if (this->_brain) {
-		delete this->_brain;
+	if (this != &ref) {
+		this->_type = ref._type;
 	}
-	this->_brain = new Brain(*ref._brain);
 	return (*this);
 }
 
