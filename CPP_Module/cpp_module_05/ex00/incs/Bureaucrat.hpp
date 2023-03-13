@@ -1,19 +1,6 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   Bureaucrat.hpp                                     :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/01 10:58:37 by younhwan          #+#    #+#             */
-/*   Updated: 2022/11/29 15:39:15 by younhwan         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #ifndef BUREAUCRAT_HPP
 # define BUREAUCRAT_HPP
 
-# include <iostream>
 # include <string>
 
 class Bureaucrat {
@@ -34,12 +21,13 @@ class Bureaucrat {
 		int					getGrade(void) const;
 
 		// Utils
-		void				incGrade(void) throw(std::exception);
-		void				decGrade(void) throw(std::exception);
+		void	incGrade(void) throw(std::exception);
+		void	decGrade(void) throw(std::exception);
 
 		class GradeTooHighException: public std::exception {
 			private:
 				std::string	_msg;
+
 			public:
 				GradeTooHighException(void);
 				GradeTooHighException(const std::string &name);
