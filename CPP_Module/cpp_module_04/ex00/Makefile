@@ -17,8 +17,11 @@ OBJS_DIR	= objs
 
 SRCS =	main.cpp \
 		Animal.cpp \
+		Cat.cpp \
 		Dog.cpp \
-		Cat.cpp
+		WrongAnimal.cpp \
+		WrongCat.cpp \
+		WrongDog.cpp
 
 SRCS := ${addprefix ${SRCS_DIR}/, ${SRCS}}
 OBJS := ${SRCS:${SRCS_DIR}/%.cpp=${OBJS_DIR}/%.o}

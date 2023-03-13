@@ -1,6 +1,9 @@
 #include "../incs/Animal.hpp"
 #include "../incs/Dog.hpp"
 #include "../incs/Cat.hpp"
+#include "../incs/WrongAnimal.hpp"
+#include "../incs/WrongDog.hpp"
+#include "../incs/WrongCat.hpp"
 #include <iostream>
 
 int	main(void) {
@@ -13,6 +16,14 @@ int	main(void) {
 	}
 	std::cout << '\n';
 	{
+		const Animal	*cat = new Cat();
+
+		std::cout << "Type: " << cat->getType() << '\n';
+		cat->makeSound();
+		delete cat;
+	}
+	std::cout << '\n';
+	{
 		const Animal	*dog = new Dog();
 
 		std::cout << "Type: " << dog->getType() << '\n';
@@ -21,11 +32,27 @@ int	main(void) {
 	}
 	std::cout << '\n';
 	{
-		const Animal	*cat = new Cat();
+		const WrongAnimal	*meta = new WrongAnimal();
+
+		std::cout << "Type: " << meta->getType() << '\n';
+		meta->makeSound();
+		delete meta;
+	}
+	std::cout << '\n';
+	{
+		const WrongAnimal	*cat = new WrongCat();
 
 		std::cout << "Type: " << cat->getType() << '\n';
 		cat->makeSound();
 		delete cat;
+	}
+	std::cout << '\n';
+	{
+		const WrongAnimal	*dog = new WrongDog();
+
+		std::cout << "Type: " << dog->getType() << '\n';
+		dog->makeSound();
+		delete dog;
 	}
 	return (0);
 }
