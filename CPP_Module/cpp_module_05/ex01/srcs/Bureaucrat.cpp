@@ -40,13 +40,13 @@ void Bureaucrat::decGrade(void) throw(std::exception) {
 
 void	Bureaucrat::signForm(Form &ref) throw(std::exception) {
 	if (ref.getGradeToSign() < this->_grade) {
-		throw Bureaucrat::GradeTooLowException(this->_name);	
+		throw Bureaucrat::CannotSignException(_name, Bureaucrat::GradeTooLowException(_name));
 	}
 	try {
 		ref.beSigned(*this);
 		std::cout << this->_name << " signs " << ref.getName() << '\n';
 	} catch (Form::FormAlreadySignedException &e) {
-		throw e;
+		throw Bureaucrat::CannotSignException(_name, e);
 	} catch (...) {
 		throw Bureaucrat::UnknownException();
 	}
@@ -63,6 +63,15 @@ Bureaucrat::GradeTooLowException::GradeTooLowException(void): _msg("Grade is too
 Bureaucrat::GradeTooLowException::GradeTooLowException(const std::string &name) { this->_msg = std::string(name.c_str()) + "\'s grade is too low"; }
 Bureaucrat::GradeTooLowException::~GradeTooLowException(void) throw() {}
 const char	*Bureaucrat::GradeTooLowException::what() const throw() { return (this->_msg.c_str()); }
+
+// Exception: CannotSignException
+Bureaucrat::CannotSignException::CannotSignException(void): _msg("Cannot sign form") {}
+Bureaucrat::CannotSignException::CannotSignException(const std::string &name, const std::exception &ref) {
+	this->_msg = std::string(name.c_str()) + " cannot sign form because " + ref.what();
+}
+Bureaucrat::CannotSignException::~CannotSignException(void) throw() {}
+const char	*Bureaucrat::CannotSignException::what() const throw() { return (this->_msg.c_str()); }
+
 
 // Exception: UnknownException
 Bureaucrat::UnknownException::UnknownException(void): _msg("Unknown exception") {}

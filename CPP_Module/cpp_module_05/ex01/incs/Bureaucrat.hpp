@@ -27,6 +27,7 @@ class Bureaucrat {
 		void	decGrade(void) throw(std::exception);
 		void	signForm(Form &ref) throw(std::exception);
 
+		// Exception: GradeTooHighException
 		class GradeTooHighException: public std::exception {
 			private:
 				std::string	_msg;
@@ -38,6 +39,7 @@ class Bureaucrat {
 				virtual const char	*what(void) const throw();
 		};
 
+		// Exception: GradeTooLowException
 		class GradeTooLowException: public std::exception {
 			private:
 				std::string	_msg;
@@ -49,6 +51,19 @@ class Bureaucrat {
 				virtual const char	*what(void) const throw();
 		};
 
+		// Exception: CannotSignException
+		class CannotSignException: public std::exception {
+			private:
+				std::string	_msg;
+
+			public:
+				CannotSignException(void);
+				CannotSignException(const std::string &name, const std::exception &exception);
+				~CannotSignException(void) throw();
+				virtual const char	*what(void) const throw();
+		};
+
+		// UnknownException
 		class UnknownException: public std::exception {
 			private:
 				std::string	_msg;
