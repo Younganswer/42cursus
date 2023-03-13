@@ -48,6 +48,16 @@ class Bureaucrat {
 				~GradeTooLowException(void) throw();
 				virtual const char	*what(void) const throw();
 		};
+
+		class UnknownException: public std::exception {
+			private:
+				std::string	_msg;
+
+			public:
+				UnknownException(void);
+				~UnknownException(void) throw();
+				virtual const char	*what(void) const throw();
+		};
 };
 
 std::ostream& operator<<(std::ostream &os, const Bureaucrat &ref);

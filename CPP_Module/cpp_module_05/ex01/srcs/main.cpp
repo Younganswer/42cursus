@@ -11,9 +11,9 @@ int	main(void) {
 		younhwan.signForm(f10);
 		std::cout << "Test: It will be printed when exception does not occur" << '\n';
 	} catch (std::exception &e) {
-		std::cout << "\033[31m" << "Error: " << e.what() << "\033[0m" << '\n';
+		std::cerr << "\033[31m" << "Error: " << e.what() << "\033[0m" << '\n';
 	} catch (...) {
-		std::cout << "\033[31m" << "Error: Unknown Error" << "\033[0m" << '\n';
+		std::cerr << "\033[31m" << "Error: Unknown Error" << "\033[0m" << '\n';
 	}
 	try {
 		Bureaucrat	jeolim("jeolim", 1);
@@ -22,11 +22,12 @@ int	main(void) {
 		std::cout << f1 << '\n';
 		jeolim.signForm(f1);
 		std::cout << f1 << '\n';
+		jeolim.signForm(f1);
 		std::cout << "Test: It will be printed when exception does not occur" << '\n';
 	} catch (std::exception &e) {
-		std::cout << "\033[31m" << "Error: " << e.what() << "\033[0m" << '\n';
+		std::cerr << "\033[31m" << "Error: " << e.what() << "\033[0m" << '\n';
 	} catch (...) {
-		std::cout << "\033[31m" << "Error: Unknown Error" << "\033[0m" << '\n';
+		std::cerr << "\033[31m" << "Error: Unknown Error" << "\033[0m" << '\n';
 	}
 	return (0);
 }

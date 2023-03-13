@@ -39,13 +39,16 @@ void Bureaucrat::decGrade(void) throw(std::exception) {
 }
 
 void	Bureaucrat::signForm(Form &ref) throw(std::exception) {
+	if (ref.getGradeToSign() < this->_grade) {
+		throw Bureaucrat::GradeTooLowException(this->_name);	
+	}
 	try {
 		ref.beSigned(*this);
 		std::cout << this->_name << " signs " << ref.getName() << '\n';
-	} catch (std::exception &e) {
-		throw Bureaucrat::GradeTooLowException(this->_name + " cannot sign " + ref.getName() + " because " + this->_name);
+	} catch (Form::FormAlreadySignedException &e) {
+		throw e;
 	} catch (...) {
-		throw "Error: Unknown Error";
+		throw Bureaucrat::UnknownException();
 	}
 }
 
@@ -60,6 +63,11 @@ Bureaucrat::GradeTooLowException::GradeTooLowException(void): _msg("Grade is too
 Bureaucrat::GradeTooLowException::GradeTooLowException(const std::string &name) { this->_msg = std::string(name.c_str()) + "\'s grade is too low"; }
 Bureaucrat::GradeTooLowException::~GradeTooLowException(void) throw() {}
 const char	*Bureaucrat::GradeTooLowException::what() const throw() { return (this->_msg.c_str()); }
+
+// Exception: UnknownException
+Bureaucrat::UnknownException::UnknownException(void): _msg("Unknown exception") {}
+Bureaucrat::UnknownException::~UnknownException(void) throw() {}
+const char	*Bureaucrat::UnknownException::what() const throw() { return (this->_msg.c_str()); }
 
 // operator overload
 std::ostream& operator<<(std::ostream &os, const Bureaucrat &ref) {
