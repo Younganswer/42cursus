@@ -1,37 +1,25 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   Form.hpp                                           :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/02 10:47:16 by younhwan          #+#    #+#             */
-/*   Updated: 2022/11/29 16:36:35 by younhwan         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
+#ifndef AForm_HPP
+# define AForm_HPP
 
-#ifndef FORM_HPP
-# define FORM_HPP
-
-# include <iostream>
 # include <string>
 
 class Bureaucrat;
 
-class Form {
+class AForm {
 	private:
 		const std::string	_name;
 		bool				_is_signed;
 		const int			_grade_to_sign;
 		const int			_grade_to_execute;
 
-	public:
-		Form(void);
-		Form(const std::string &name, const int grade_to_sign, const int grade_to_execute) throw(std::exception);
-		Form(const Form &ref);
-		~Form(void);
-		Form	&operator=(const Form &ref);
+	protected:
+		AForm(void);
+		AForm(const std::string &name, const int grade_to_sign, const int grade_to_execute) throw(std::exception);
+		AForm(const AForm &ref);
+		virtual	~AForm(void);
+		virtual AForm	&operator=(const AForm &ref);
 
+	public:
 		// Getter
 		std::string			getName(void);
 		const std::string	&getName(void) const;
@@ -54,7 +42,7 @@ class Form {
 				~GradeTooHighException(void) throw();
 				virtual const char* what() const throw();
 		};
-
+		
 		// Exception: GradeTooLowException
 		class GradeTooLowException: public std::exception {
 			private:
@@ -62,8 +50,20 @@ class Form {
 
 			public:
 				GradeTooLowException(void);
-				GradeTooLowException(const std::string &name);
+				GradeTooLowException(const std::string &AForm);
 				~GradeTooLowException(void) throw();
+				virtual const char* what() const throw();
+		};
+
+		// Exception: FormAlreadySignedException
+		class FormAlreadySignedException: public std::exception {
+			private:
+				std::string _msg;
+
+			public:
+				FormAlreadySignedException(void);
+				FormAlreadySignedException(const std::string &name);
+				~FormAlreadySignedException(void) throw();
 				virtual const char* what() const throw();
 		};
 
@@ -81,6 +81,6 @@ class Form {
 };
 
 // operator overload
-std::ostream	&operator<<(std::ostream &os, const Form &ref);
+std::ostream	&operator<<(std::ostream &os, const AForm &ref);
 
 #endif

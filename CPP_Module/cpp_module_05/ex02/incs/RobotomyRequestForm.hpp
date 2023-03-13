@@ -1,23 +1,10 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   RobotomyRequestForm.hpp                            :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/03 12:38:06 by younhwan          #+#    #+#             */
-/*   Updated: 2022/11/03 12:38:20 by younhwan         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #ifndef ROBOTOMYREQUESTFORM_HPP
 # define ROBOTOMYREQUESTFORM_HPP
 
-# include <iostream>
 # include <string>
-# include "Form.hpp"
+# include "AForm.hpp"
 
-class RobotomyRequestForm: public Form {
+class RobotomyRequestForm: public AForm {
 	private:
 		std::string _target;
 
@@ -25,14 +12,15 @@ class RobotomyRequestForm: public Form {
 		RobotomyRequestForm(void);
 		RobotomyRequestForm(const std::string &target);
 		RobotomyRequestForm(const RobotomyRequestForm &ref);
-		RobotomyRequestForm	&operator=(const RobotomyRequestForm &rhs);
-		~RobotomyRequestForm(void);
+		virtual	~RobotomyRequestForm(void);
+		virtual RobotomyRequestForm	&operator=(const RobotomyRequestForm &rhs);
 
 		// Getter
+		std::string			getTarget(void);
 		const std::string	&getTarget(void) const;
 
 		// Utils
-		void				execute(const Bureaucrat &ref) const throw(std::exception);
+		void	execute(const Bureaucrat &ref) const throw(std::exception);
 };
 
 #endif

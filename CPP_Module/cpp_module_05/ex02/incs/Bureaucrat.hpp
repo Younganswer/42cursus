@@ -1,22 +1,9 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   Bureaucrat.hpp                                     :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/01 10:58:37 by younhwan          #+#    #+#             */
-/*   Updated: 2022/11/29 16:34:51 by younhwan         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #ifndef BUREAUCRAT_HPP
 # define BUREAUCRAT_HPP
 
-# include <iostream>
 # include <string>
 
-class Form;
+class AForm;
 
 class Bureaucrat {
 	private:
@@ -36,14 +23,16 @@ class Bureaucrat {
 		int					getGrade(void) const;
 
 		// Utils
-		void				incGrade(void) throw(std::exception);
-		void				decGrade(void) throw(std::exception);
-		void				signForm(Form &ref) throw(std::exception);
-		void				executeForm(const Form &form) throw(std::exception); 
+		void	incGrade(void) throw(std::exception);
+		void	decGrade(void) throw(std::exception);
+		void	signForm(AForm &ref) throw(std::exception);
+		void	executeForm(const AForm &AForm) throw(std::exception);
 
+		// Exception: GradeTooHighException
 		class GradeTooHighException: public std::exception {
 			private:
 				std::string	_msg;
+
 			public:
 				GradeTooHighException(void);
 				GradeTooHighException(const std::string &name);
@@ -51,6 +40,7 @@ class Bureaucrat {
 				virtual const char	*what(void) const throw();
 		};
 
+		// Exception: GradeTooLowException
 		class GradeTooLowException: public std::exception {
 			private:
 				std::string	_msg;
@@ -59,6 +49,41 @@ class Bureaucrat {
 				GradeTooLowException(void);
 				GradeTooLowException(const std::string &name);
 				~GradeTooLowException(void) throw();
+				virtual const char	*what(void) const throw();
+		};
+
+		// Exception: CannotSignException
+		class CannotSignException: public std::exception {
+			private:
+				std::string	_msg;
+
+			public:
+				CannotSignException(void);
+				CannotSignException(const std::string &name, const std::exception &exception);
+				~CannotSignException(void) throw();
+				virtual const char	*what(void) const throw();
+		};
+
+		// Exception: CannotExecuteException
+		class CannotExecuteException: public std::exception {
+			private:
+				std::string	_msg;
+
+			public:
+				CannotExecuteException(void);
+				CannotExecuteException(const std::string &name, const std::exception &exception);
+				~CannotExecuteException(void) throw();
+				virtual const char	*what(void) const throw();
+		};
+
+		// UnknownException
+		class UnknownException: public std::exception {
+			private:
+				std::string	_msg;
+
+			public:
+				UnknownException(void);
+				~UnknownException(void) throw();
 				virtual const char	*what(void) const throw();
 		};
 };

@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 11:13:33 by younhwan          #+#    #+#             */
-/*   Updated: 2022/11/09 17:30:38 by younhwan         ###   ########.fr       */
+/*   Updated: 2023/03/13 19:01:25 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	main(int argc, char **argv) {
 		ShrubberyCreationForm	*shrubbery = (ShrubberyCreationForm *) intern.makeForm("shrubbery creation", "home");
 		if (shrubbery) {
 			if (argc == 2)
-				shrubbery->setTarget(argv[1]);
+				shrubbery->(argv[1]);
 			std::cout << *shrubbery;
 			younhwan.signForm(*shrubbery);
 			younhwan.executeForm(*shrubbery);

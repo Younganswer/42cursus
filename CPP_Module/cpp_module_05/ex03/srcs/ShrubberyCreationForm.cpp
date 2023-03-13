@@ -6,7 +6,7 @@
 /*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 12:43:34 by younhwan          #+#    #+#             */
-/*   Updated: 2022/11/05 17:52:19 by younhwan         ###   ########.fr       */
+/*   Updated: 2023/03/13 19:01:35 by younhwan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ const std::string	&ShrubberyCreationForm::getTarget(void) const {
 }
 
 // Setter
-void				ShrubberyCreationForm::setTarget(const std::string &target) {
+bool				ShrubberyCreationForm::setTarget(const std::string &target) {
 	this->_target = std::string(target.c_str());
 }
 

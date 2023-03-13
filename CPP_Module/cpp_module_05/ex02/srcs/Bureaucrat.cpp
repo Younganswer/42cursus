@@ -1,32 +1,22 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   Bureaucrat.cpp                                     :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/01 11:05:30 by younhwan          #+#    #+#             */
-/*   Updated: 2022/11/29 16:39:03 by younhwan         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "../incs/Bureaucrat.hpp"
-#include "../incs/Form.hpp"
+#include "../incs/AForm.hpp"
 #include "../incs/ShrubberyCreationForm.hpp"
+#include <iostream>
 
-Bureaucrat::Bureaucrat(void): _name("younhwan"), _grade(150) {}
-Bureaucrat::Bureaucrat(const std::string &name, int grade) throw(std::exception): _name(std::string(name.c_str())), _grade(grade) {
+Bureaucrat::Bureaucrat(void): _name("Default"), _grade(150) {}
+Bureaucrat::Bureaucrat(const std::string &name, int grade) throw(std::exception): _name(name), _grade(grade) {
 	if (grade < 1)
 		throw Bureaucrat::GradeTooHighException(_name);
-	else if (grade > 150)
+	if (grade > 150)
 		throw Bureaucrat::GradeTooLowException(_name);
 }
-Bureaucrat::Bureaucrat(const Bureaucrat &ref): _name(std::string(ref.getName().c_str())), _grade(ref.getGrade()) {}
+Bureaucrat::Bureaucrat(const Bureaucrat &ref): _name(ref._name), _grade(ref._grade) {}
 Bureaucrat::~Bureaucrat(void) {}
 
 Bureaucrat& Bureaucrat::operator=(const Bureaucrat &ref) {
 	if (this != &ref) {
-		this->_grade = ref._grade;
+		this->~Bureaucrat();
+		new (this) Bureaucrat(ref);
 	}
 	return (*this);
 }
@@ -34,45 +24,48 @@ Bureaucrat& Bureaucrat::operator=(const Bureaucrat &ref) {
 // Getter
 std::string			Bureaucrat::getName(void) { return (this->_name); }
 const std::string	&Bureaucrat::getName(void) const { return (this->_name); }
-int Bureaucrat::getGrade(void) const { return (this->_grade); }
+int 				Bureaucrat::getGrade(void) const { return (this->_grade); }
 
 // Utils
 void Bureaucrat::incGrade(void) throw(std::exception) {
 	if (this->_grade == 1)
 		throw Bureaucrat::GradeTooHighException(_name);
-	else
-		this->_grade--;
+	this->_grade--;
 }
+
 void Bureaucrat::decGrade(void) throw(std::exception) {
 	if (this->_grade == 150)
 		throw Bureaucrat::GradeTooLowException(_name);
-	else
-		this->_grade++;
+	this->_grade++;
 }
 
-void	Bureaucrat::signForm(Form &ref) throw(std::exception) {
+void	Bureaucrat::signForm(AForm &ref) throw(std::exception) {
+	if (ref.getGradeToSign() < this->_grade) {
+		throw Bureaucrat::CannotSignException(_name, Bureaucrat::GradeTooLowException(_name));
+	}
 	try {
-		ref.beSigned(*this);
 		std::cout << this->_name << " signs " << ref.getName() << '\n';
-	} catch (std::exception &e) {
-		throw Bureaucrat::GradeTooLowException(this->_name + " cannot sign " + ref.getName() + " because " + this->_name);
+		ref.beSigned(*this);
+	} catch (AForm::FormAlreadySignedException &e) {
+		throw Bureaucrat::CannotSignException(_name, e);
 	} catch (...) {
-		throw "Error: Unknown Error";
+		throw Bureaucrat::UnknownException();
 	}
 }
 
-void	Bureaucrat::executeForm(Form const &form) throw(std::exception) {
+void	Bureaucrat::executeForm(AForm const &form) throw(std::exception) {
+	if (form.getGradeToExecute() < this->_grade) {
+		throw Bureaucrat::CannotExecuteException(_name, Bureaucrat::GradeTooLowException(_name));
+	}
 	try {
 		std::cout << this->_name << " executes " << form.getName() << '\n';
 		form.execute(*this);
-	} catch (Form::FormNotSignedException &e) {
-		throw e;
-	} catch (ShrubberyCreationForm::FileOpenException &e) {
-		throw e;
-	} catch (std::exception &e) {
-		throw Bureaucrat::GradeTooLowException(this->_name + " cannot execute " + form.getName() + " because " + this->_name);
+	} catch (AForm::FormNotSignedException &e) {
+		throw Bureaucrat::CannotExecuteException(_name, e);
+	} catch (ShrubberyCreationForm::FileOpenFailedException &e) {
+		throw Bureaucrat::CannotExecuteException(_name, e);
 	} catch (...) {
-		std::cout << "\033[31m" << "Error: Unknown Error" << "\033[0m" << '\n';
+		throw Bureaucrat::UnknownException();
 	}
 }
 
@@ -88,7 +81,29 @@ Bureaucrat::GradeTooLowException::GradeTooLowException(const std::string &name) 
 Bureaucrat::GradeTooLowException::~GradeTooLowException(void) throw() {}
 const char	*Bureaucrat::GradeTooLowException::what() const throw() { return (this->_msg.c_str()); }
 
-std::ostream	&operator<<(std::ostream &os, const Bureaucrat &ref) {
-	os << ref.getName() << ", bureaucrat grade " << ref.getGrade() << '\n';
+// Exception: CannotSignException
+Bureaucrat::CannotSignException::CannotSignException(void): _msg("Cannot sign form") {}
+Bureaucrat::CannotSignException::CannotSignException(const std::string &name, const std::exception &ref) {
+	this->_msg = std::string(name.c_str()) + " cannot sign form because " + ref.what();
+}
+Bureaucrat::CannotSignException::~CannotSignException(void) throw() {}
+const char	*Bureaucrat::CannotSignException::what() const throw() { return (this->_msg.c_str()); }
+
+// Exception: CannotExecuteException
+Bureaucrat::CannotExecuteException::CannotExecuteException(void): _msg("Cannot execute form") {}
+Bureaucrat::CannotExecuteException::CannotExecuteException(const std::string &name, const std::exception &ref) {
+	this->_msg = std::string(name.c_str()) + " cannot execute form because " + ref.what();
+}
+Bureaucrat::CannotExecuteException::~CannotExecuteException(void) throw() {}
+const char	*Bureaucrat::CannotExecuteException::what() const throw() { return (this->_msg.c_str()); }
+
+// Exception: UnknownException
+Bureaucrat::UnknownException::UnknownException(void): _msg("Unknown exception") {}
+Bureaucrat::UnknownException::~UnknownException(void) throw() {}
+const char	*Bureaucrat::UnknownException::what() const throw() { return (this->_msg.c_str()); }
+
+// operator overload
+std::ostream& operator<<(std::ostream &os, const Bureaucrat &ref) {
+	os << ref.getName() << ", bureaucrat grade " << ref.getGrade();
 	return (os);
 }
