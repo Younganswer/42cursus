@@ -34,9 +34,9 @@ int	main(void) {
 		hyunkyle.decGrade();
 		std::cout << hyunkyle << '\n';
 	} catch (std::exception &e) {
-		std::cout << "\033[31m" << "Error: " << e.what() << "\033[0m" << '\n';
+		std::cerr << "\033[31m" << "Error: " << e.what() << "\033[0m" << '\n';
 	} catch (...) {
-		std::cout << "\033[31m" << "Error: Unknown Error" << "\033[0m" << '\n';
+		std::cerr << "\033[31m" << "Error: Unknown Error" << "\033[0m" << '\n';
 	}
 	try {
 		Bureaucrat	daegulee("daegulee", 151);
@@ -46,9 +46,9 @@ int	main(void) {
 		daegulee.decGrade();
 		std::cout << daegulee << '\n';
 	} catch (std::exception &e) {
-		std::cout << "\033[31m" << "Error: " << e.what() << "\033[0m" << '\n';
+		std::cerr << "\033[31m" << "Error: " << e.what() << "\033[0m" << '\n';
 	} catch (...) {
-		std::cout << "\033[31m" << "Error: Unknown Error" << "\033[0m" << '\n';
+		std::cerr << "\033[31m" << "Error: Unknown Error" << "\033[0m" << '\n';
 	}
 	return (0);
 }
