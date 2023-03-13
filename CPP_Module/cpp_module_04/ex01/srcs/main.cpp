@@ -5,7 +5,7 @@
 
 int	main(void) {
 	{
-		Animal** const	meta = new Animal*[100];
+		Animal **const	meta = new Animal*[100];
 		for (int i=0; i<50; i++) {
 			meta[i] = new Dog();
 		}
@@ -17,5 +17,6 @@ int	main(void) {
 		}
 		delete[] meta;
 	}
+	system("leaks $PPID > leaks_result && cat leaks_result | grep leaked && rm -rf leaks_result");
 	return (0);
 }

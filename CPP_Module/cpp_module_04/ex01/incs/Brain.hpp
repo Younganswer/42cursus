@@ -16,6 +16,9 @@ class Brain {
 		// Getter
 		std::string			getIdea(int idx);
 		const std::string	&getIdea(int idx) const;
+
+		// Setter
+		bool	setIdea(int idx, const std::string &idea);
 };
 
 #endif

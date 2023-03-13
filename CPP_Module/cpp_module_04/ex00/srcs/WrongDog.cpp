@@ -7,7 +7,9 @@ WrongDog::~WrongDog(void) { std::cout << "WrongDog destructor called" << '\n'; }
 
 WrongDog	&WrongDog::operator=(const WrongDog &ref) {
 	std::cout << "WrongDog copy assignation operator called" << '\n';
-	this->_type = ref._type.c_str();
+	if (this != &ref) {
+		this->_type = ref._type;
+	}
 	return (*this);
 }
 

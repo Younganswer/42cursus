@@ -16,3 +16,11 @@ Brain	&Brain::operator=(const Brain& ref) {
 // Getter
 std::string			Brain::getIdea(int index) { return (this->_ideas[index]); }
 const std::string	&Brain::getIdea(int index) const { return (this->_ideas[index]); }
+
+// Setter
+bool	Brain::setIdea(int idx, const std::string &idea) {
+	if (0 <= idx && idx < 100) {
+		this->_ideas[idx] = idea;
+	}
+	return (true);
+}

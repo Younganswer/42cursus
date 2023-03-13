@@ -7,7 +7,9 @@ Dog::~Dog(void) { std::cout << "Dog destructor called" << '\n'; }
 
 Dog	&Dog::operator=(const Dog &ref) {
 	std::cout << "Dog copy assignation operator called" << '\n';
-	this->_type = ref._type.c_str();
+	if (this != &ref) {
+		this->_type = ref._type;
+	}
 	return (*this);
 }
 
