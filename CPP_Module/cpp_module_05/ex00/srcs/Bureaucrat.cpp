@@ -30,6 +30,7 @@ void Bureaucrat::incGrade(void) throw(std::exception) {
 		throw Bureaucrat::GradeTooHighException(_name);
 	this->_grade--;
 }
+
 void Bureaucrat::decGrade(void) throw(std::exception) {
 	if (this->_grade == 150)
 		throw Bureaucrat::GradeTooLowException(_name);
