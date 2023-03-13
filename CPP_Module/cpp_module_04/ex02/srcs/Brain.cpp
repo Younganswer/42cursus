@@ -1,16 +1,5 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   Brain.cpp                                          :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/27 11:41:13 by younhwan          #+#    #+#             */
-/*   Updated: 2022/11/26 12:39:24 by younhwan         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "../incs/Brain.hpp"
+#include <iostream>
 
 Brain::Brain(void) { std::cout << "Brain default constructor called" << '\n'; }
 Brain::Brain(const Brain &ref) { std::cout << "Brain copy constructor called" << '\n'; (*this) = ref; }
@@ -27,3 +16,11 @@ Brain	&Brain::operator=(const Brain& ref) {
 // Getter
 std::string			Brain::getIdea(int index) { return (this->_ideas[index]); }
 const std::string	&Brain::getIdea(int index) const { return (this->_ideas[index]); }
+
+// Setter
+bool	Brain::setIdea(int idx, const std::string &idea) {
+	if (0 <= idx && idx < 100) {
+		this->_ideas[idx] = idea;
+	}
+	return (true);
+}

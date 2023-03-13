@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   Dog.hpp                                            :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/27 11:22:28 by younhwan          #+#    #+#             */
-/*   Updated: 2022/11/26 12:43:59 by younhwan         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #ifndef DOG_HPP
 # define DOG_HPP
 
@@ -27,7 +15,7 @@ class Dog: public Animal {
 		Dog		&operator=(const Dog &ref);
 
 		// Util
-		virtual void makeSound(void) const;
+		virtual void	makeSound(void) const;
 };
 
 #endif
