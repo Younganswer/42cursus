@@ -1,19 +1,6 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   MateriaSource.hpp                                  :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/31 10:49:48 by younhwan          #+#    #+#             */
-/*   Updated: 2022/11/26 12:56:04 by younhwan         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #ifndef MATERIASOURCE_HPP
 # define MATERIASOURCE_HPP
 
-# include <iostream>
 # include <string>
 # include "IMateriaSource.hpp"
 

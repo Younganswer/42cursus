@@ -1,19 +1,6 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   AMateria.hpp                                       :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/27 12:06:03 by younhwan          #+#    #+#             */
-/*   Updated: 2022/11/26 12:45:07 by younhwan         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #ifndef AMATERIA_HPP
 # define AMATERIA_HPP
 
-# include <iostream>
 # include <string>
 class ICharacter;
 
@@ -33,7 +20,7 @@ class AMateria {
 		// Getter
 		std::string			getType(void);
 		const std::string	&getType(void) const;
-		unsigned int		getXP(void) const;
+		unsigned int		getXp(void) const;
 		bool				getEquipped(void) const;
 
 		// Setter

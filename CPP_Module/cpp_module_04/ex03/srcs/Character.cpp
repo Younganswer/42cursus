@@ -1,25 +1,11 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   Character.cpp                                      :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/31 10:42:36 by younhwan          #+#    #+#             */
-/*   Updated: 2022/11/26 12:50:11 by younhwan         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "../incs/Character.hpp"
 
-Character::Character(void) {
-	this->_name = "default";
+Character::Character(void): _name("Default") {
 	for (int i = 0; i < 4; i++) {
 		this->_inventory[i] = NULL;
 	}
 }
-Character::Character(const std::string &name) {
-	this->_name = name.c_str();
+Character::Character(const std::string &name): _name(name) {
 	for (int i=0; i<4; i++) {
 		this->_inventory[i] = NULL;
 	}
@@ -35,9 +21,12 @@ Character::~Character(void) {
 
 Character	&Character::operator=(const Character &ref) {
 	if (this != &ref) {
-		this->_name = ref._name.c_str();
+		this->_name = ref._name;
 		for (int i=0; i<4; i++) {
-			this->_inventory[i] = ref._inventory[i];
+			if (this->_inventory[i]) {
+				delete this->_inventory[i];
+			}
+			this->_inventory[i] = ref._inventory[i]->clone();
 		}
 	}
 	return (*this);
