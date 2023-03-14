@@ -1,9 +1,12 @@
 #include "../incs/Intern.hpp"
 #include <iostream>
 
-AForm *(*Intern::_form[Intern::_FUNC_ARR_SIZE])(const std::string &target) = {&Intern::cannotMakeForm, };
+AForm *(*Intern::_form[Intern::_FUNC_ARR_SIZE])(const std::string &target) = {NULL};
 
 Intern::Intern(void) {
+	for (size_t i=0; i<Intern::_FUNC_ARR_SIZE; i++) {
+		Intern::_form[i] = &Intern::cannotMakeForm;
+	}
 	Intern::_form[Intern::hash("presidential pardon")] = &Intern::makePresidentialPardonForm;
 	Intern::_form[Intern::hash("robotomy request")] = &Intern::makeRobotomyRequestForm;
 	Intern::_form[Intern::hash("shrubbery creation")] = &Intern::makeShrubberyCreationForm;

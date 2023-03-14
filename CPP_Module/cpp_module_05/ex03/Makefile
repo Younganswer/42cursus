@@ -54,6 +54,10 @@ ${OBJS_DIR}:
 	@echo "Build ${NAME}"
 	@mkdir -p ${OBJS_DIR}
 
+sanitize:
+	@${RM} ${NAME}
+	@${MAKE} SANITIZE=1 all
+
 
 clean:
 	@echo "Remove dependencies in ${NAME}"
