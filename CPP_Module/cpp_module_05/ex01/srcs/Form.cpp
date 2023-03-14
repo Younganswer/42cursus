@@ -56,7 +56,7 @@ const char	*Form::FormAlreadySignedException::what(void) const throw() { return 
 
 // operator overload
 std::ostream	&operator<<(std::ostream &os, const Form &ref) {
-	os << ref.getName() << "\'s form is " << (ref.getIsSigned() ? "signed" : "unsigned");
+	os << ref.getName() << " is " << (ref.getIsSigned() ? "signed" : "unsigned");
 	os << ", grade to sign is " << ref.getGradeToSign();
 	os << " and grade to execute is " << ref.getGradeToExecute();
 	return (os);

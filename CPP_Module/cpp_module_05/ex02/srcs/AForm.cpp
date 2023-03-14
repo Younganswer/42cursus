@@ -61,7 +61,7 @@ const char	*AForm::FormNotSignedException::what(void) const throw() { return (th
 
 // operator overload
 std::ostream	&operator<<(std::ostream &os, const AForm &ref) {
-	os << ref.getName() << "\'s AForm is " << (ref.getIsSigned() ? "signed" : "unsigned");
+	os << ref.getName() << " is " << (ref.getIsSigned() ? "signed" : "unsigned");
 	os << ", grade to sign is " << ref.getGradeToSign();
 	os << " and grade to execute is " << ref.getGradeToExecute();
 	return (os);
