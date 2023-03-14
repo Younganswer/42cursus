@@ -1,42 +1,33 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   Intern.hpp                                         :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/04 19:32:51 by younhwan          #+#    #+#             */
-/*   Updated: 2022/11/04 22:07:15 by younhwan         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #ifndef INTERN_HPP
 # define INTERN_HPP
 
-# include <iostream>
-# include <string>
-# include "Form.hpp"
+# include "AForm.hpp"
 # include "PresidentialPardonForm.hpp"
 # include "RobotomyRequestForm.hpp"
 # include "ShrubberyCreationForm.hpp"
+# include <string>
 
 class Intern {
 	private:
-		static Form	*makePresidentialPardonForm(const std::string &target);
-		static Form	*makeRobotomyRequestForm(const std::string &target);
-		static Form	*makeShrubberyCreationForm(const std::string &target);
+		static const size_t	_FUNC_ARR_SIZE = 10003;
+		static AForm		*(* _form[Intern::_FUNC_ARR_SIZE])(const std::string &target);
+
+		static AForm		*makePresidentialPardonForm(const std::string &target);
+		static AForm		*makeRobotomyRequestForm(const std::string &target);
+		static AForm		*makeShrubberyCreationForm(const std::string &target);
+		static AForm		*cannotMakeForm(const std::string &target);
+
+		static size_t		hash(const std::string &str);
+		static size_t		ft_pow(int base, int exp);
 		
-		static Form	*(*const _form[3])(const std::string &target);
-		
-		static const std::string	_form_name[3];
-		
-	public:
-		Intern(void);
 		Intern(const Intern &ref);
 		Intern	&operator=(const Intern &rhs);
+
+	public:
+		Intern(void);
 		~Intern(void);
 
-		Form	*makeForm(const std::string &name, const std::string &target);
+		AForm	*makeForm(const std::string &name, const std::string &target);
 };
 
 #endif
