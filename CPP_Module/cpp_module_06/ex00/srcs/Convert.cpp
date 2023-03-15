@@ -114,10 +114,12 @@ bool	Convert::printDouble(const std::string &str) {
 	f = static_cast<float>(d);
 
 	std::cout << "char: ";
-	if (std::isprint(ch)) {
-		std::cout << "'" << ch << "'" << '\n';
-	} else {
+	if (d < 0 || 256 <= d) {
+		std::cout << "impossible" << '\n';
+	} else if (std::isprint(ch) == false) {
 		std::cout << "Non displayable" << '\n';
+	} else {
+		std::cout << "'" << ch << "'" << '\n';
 	}
 	std::cout << "int: " << i << '\n';
 	std::cout << "float: " << f << 'f' << '\n';
@@ -153,10 +155,12 @@ bool	Convert::printFloat(const std::string &str) {
 	d = static_cast<double>(f);
 
 	std::cout << "char: ";
-	if (std::isprint(ch)) {
-		std::cout << "'" << ch << "'" << '\n';
-	} else {
+	if (f < 0 || 256 <= f) {
+		std::cout << "impossible" << '\n';
+	} else if (std::isprint(ch) == false) {
 		std::cout << "Non displayable" << '\n';
+	} else {
+		std::cout << "'" << ch << "'" << '\n';
 	}
 	std::cout << "int: " << i << '\n';
 	std::cout << "float: " << f << 'f' << '\n';
@@ -184,10 +188,12 @@ bool	Convert::printInt(const std::string &str) {
 	d = static_cast<double>(i);
 
 	std::cout << "char: ";
-	if (std::isprint(ch)) {
-		std::cout << "'" << ch << "'" << '\n';
-	} else {
+	if (i < 0 || 256 <= i) {
+		std::cout << "impossible" << '\n';
+	} else if (std::isprint(ch) == false) {
 		std::cout << "Non displayable" << '\n';
+	} else {
+		std::cout << "'" << ch << "'" << '\n';
 	}
 	std::cout << "int: " << i << '\n';
 	std::cout << "float: " << f << 'f' << '\n';
