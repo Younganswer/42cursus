@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   iter.hpp                                           :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/18 15:20:57 by younhwan          #+#    #+#             */
-/*   Updated: 2022/11/18 15:50:48 by younhwan         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #ifndef ITER_HPP
 # define ITER_HPP
 
@@ -26,7 +14,7 @@ namespace ft {
 	
 	template <typename T>
 	void	print(const T &ref) {
-		std::cout << ref << '\n';
+		std::cout << ref;
 	}
 }
 

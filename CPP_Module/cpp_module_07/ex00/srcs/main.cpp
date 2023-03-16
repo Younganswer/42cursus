@@ -1,18 +1,6 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/12 19:34:49 by younhwan          #+#    #+#             */
-/*   Updated: 2022/11/18 15:50:31 by younhwan         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
+#include "../incs/whatever.hpp"
 #include <iostream>
 #include <string>
-#include "../incs/whatever.hpp"
 
 int	main(void) {
 	{
