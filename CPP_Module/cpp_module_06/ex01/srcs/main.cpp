@@ -66,20 +66,20 @@ int	main(void) {
 		}
 		std::cout << '\n';
 		{
-			std::cout << "Bits of integer value of each pointer points to" << '\n';
+			std::cout << "Bits of integer value of each pointer points to in big-endian order" << '\n';
 			std::cout << "Integer 1:";
 			for (int i=0; i<4; i++) {
-				std::cout << ' ' << std::bitset<8>(i1 >> (4 - i) * 8);
+				std::cout << ' ' << std::bitset<8>((i1 / (1 << i * 8)) & 0xFF);
 			}
 			std::cout << '\n';
 			std::cout << "Integer 2:";
 			for (int i=0; i<4; i++) {
-				std::cout << ' ' << std::bitset<8>(i2 >> (4 - i) * 8);
+				std::cout << ' ' << std::bitset<8>((i2 / (1 << i * 8)) & 0xFF);
 			}
 			std::cout << '\n';
 			std::cout << "Integer 3:";
 			for (int i=0; i<4; i++) {
-				std::cout << ' ' << std::bitset<8>(i3 >> (4 - i) * 8);
+				std::cout << ' ' << std::bitset<8>((i3 / (1 << i * 8)) & 0xFF);
 			}
 			std::cout << '\n';
 		}
