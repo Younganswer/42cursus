@@ -13,14 +13,14 @@ int	main(void) {
 			try {
 				std::cout << arr[i] << ' ';
 			} catch (std::exception &e) {
-				std::cout << e.what() << '\n';
+				std::cout << "\033[31m" << "Error: " << e.what() << "\033[0m" << '\n';
 			}
 		}
 		std::cout << '\n';
 		try {
 			std::cout << arr[-1] << '\n';
 		} catch (std::exception &e) {
-			std::cout << e.what() << '\n';
+			std::cout << "\033[31m" << "Error: " << e.what() << "\033[0m" << '\n';
 		}
 	}
 	std::cout << '\n';
@@ -29,11 +29,11 @@ int	main(void) {
 		std::string			str[9] = {"Hello", " ", "World", "!", "\n", "I'm", " ", "younhwan", "\n"};
 		for (int i=0; i<9; i++)
 			arr[i] = str[i];
-		for (int i=0; i<=9; i++) {
+		for (int i=0; i<9; i++) {
 			try {
 				std::cout << arr[i];
 			} catch (std::exception &e) {
-				std::cout << e.what() << '\n';
+				std::cout << "\033[31m" << "Error: " << e.what() << "\033[0m" << '\n';
 			}
 		}
 	}
