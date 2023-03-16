@@ -1,18 +1,6 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/12 19:34:49 by younhwan          #+#    #+#             */
-/*   Updated: 2022/11/18 18:08:17 by younhwan         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
+#include "../incs/MutantStack.hpp"
 #include <iostream>
 #include <string>
-#include "../incs/MutantStack.hpp"
 
 int	main(void) {
 	{
@@ -21,11 +9,13 @@ int	main(void) {
 		mstack.push(5);
 		mstack.push(17);
 		
-		std::cout << "stack.top(): " << mstack.top() << '\n';
+		std::cout << "Current size of mstack: " << mstack.size() << '\n';
+		std::cout << "Top of mstack: " << mstack.top() << '\n';
 
 		mstack.pop();
 
-		std::cout << "stack.size(): " << mstack.size() << '\n';
+		std::cout << "Current size of mstack after popping: " << mstack.size() << '\n';
+		std::cout << "Top of mstack after popping: " << mstack.top() << '\n';
 
 		mstack.push(3);
 		mstack.push(5);
@@ -33,12 +23,12 @@ int	main(void) {
 		mstack.push(0);
 		
 		MutantStack<int>::iterator	it = mstack.begin();
-		MutantStack<int>::iterator	ite = mstack.end();
 
 		++it;
 		--it;
 
-		while (it != ite) {
+		std::cout << "mstack: ";
+		while (it != mstack.end()) {
 			std::cout << *it << ' ';
 			++it;
 		}
@@ -46,17 +36,20 @@ int	main(void) {
 		
 		std::stack<int>	s(mstack);
 	}
+	std::cout << '\n';
 	{
 		MutantStack<std::string>	mstack;
 
 		mstack.push("Hello");
 		mstack.push("World");
 
-		std::cout << "stack.top(): " << mstack.top() << '\n';
+		std::cout << "Current size of mstack: " << mstack.size() << '\n';
+		std::cout << "Top of mstack: " << mstack.top() << '\n';
 
 		mstack.pop();
 
-		std::cout << "stack.size(): " << mstack.size() << '\n';
+		std::cout << "Current size of mstack after popping: " << mstack.size() << '\n';
+		std::cout << "Top of mstack after popping: " << mstack.top() << '\n';
 
 		mstack.push("World");
 		mstack.push("Hello");
@@ -64,12 +57,12 @@ int	main(void) {
 		mstack.push("!");
 		
 		MutantStack<std::string>::iterator	it = mstack.begin();
-		MutantStack<std::string>::iterator	ite = mstack.end();
 
 		++it;
 		--it;
 
-		while (it != ite) {
+		std::cout << "mstack: ";
+		while (it != mstack.end()) {
 			std::cout << *it << ' ';
 			++it;
 		}
