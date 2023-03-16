@@ -1,38 +1,38 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/12 19:34:49 by younhwan          #+#    #+#             */
-/*   Updated: 2022/11/18 16:46:43 by younhwan         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
+#include "../incs/easyfind.hpp"
 #include <iostream>
 #include <string>
 #include <vector>
-#include "../incs/easyfind.hpp"
 
 int	main(void) {
 	{
 		std::vector<int>	v;
+
 		for (size_t i=0; i<10; i++) {
 			v.push_back(i);
 		}
-		
-		try {
-			std::vector<int>::iterator it = easyfind(v, 5);
-			std::cout << "Found: " << *it << '\n';
-		} catch (std::exception &e) {
-			std::cout << "Not Found" << '\n';
+
+		{
+			int	toFind = 5;
+
+			std::cout << "Searching for " << toFind << " in vector" << '\n';
+			try {
+				std::vector<int>::iterator it = easyfind(v, 5);
+				std::cout << "Found: " << *it << " at index " << it - v.begin() << '\n';
+			} catch (std::exception &e) {
+				std::cout << "\033[31m" << "Error: " << e.what() << ": " << toFind << " is not in vector" << "\033[0m" << '\n';
+			}
 		}
-		try {
-			std::vector<int>::iterator it = easyfind(v, 10);
-			std::cout << "Found: " << *it << '\n';
-		} catch (std::exception &e) {
-			std::cout << "Not Found" << '\n';
+		std::cout << '\n';
+		{
+			int	toFind = 10;
+
+			std::cout << "Searching for " << toFind << " in vector" << '\n';
+			try {
+				std::vector<int>::iterator it = easyfind(v, 10);
+				std::cout << "Found: " << *it << " at index " << it - v.begin() << '\n';
+			} catch (std::exception &e) {
+				std::cout << "\033[31m" << "Error: " << e.what() << ": " << toFind << " is not in vector" << "\033[0m" << '\n';
+			}
 		}
 	}
 	return (0);
