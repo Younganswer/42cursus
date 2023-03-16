@@ -13,12 +13,12 @@
 
 ## Usage
 ### ex00
-	$ ./Start\ with\ a\ few\ functions
+	$ ./whatever
 <br/>
 
 ### ex01
-	$ ./Iter
+	$ ./iter
 <br/>
 
 ### ex02
-	$ ./Array
+	$ ./array

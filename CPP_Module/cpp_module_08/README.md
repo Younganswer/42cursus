@@ -13,12 +13,12 @@
 
 ## Usage
 ### ex00
-	$ ./Easy\ find
+	$ ./easyfind
 <br/>
 
 ### ex01
-	$ ./Span
+	$ ./span
 <br/>
 
 ### ex02
-	$ ./Mutated\ abomination
+	$ ./mstack

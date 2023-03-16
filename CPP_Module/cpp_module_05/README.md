@@ -13,23 +13,21 @@
 
 ## Usage
 ### ex00
-	$ ./Mommy,\ when\ I\ grow\ up,\ I\ want\ to\ be\ a\ bureaucrat!
+	$ ./bureaucrat
 <br/>
 
 ### ex01
-	$ ./Form\ up,\ maggots!
+	$ ./bureaucrat
 <br/>
 
 ### ex02
-	$ ./No,\ you\ need\ form\ 28B,\ not\ 28C...
+	$ ./bureaucrat
 <br/>
 
 ### ex03
 * target will be used for file name
 	* ex) target_shrubbery
 #### In manual
-	$ ./At\ least\ this\ beats\ coffee-making [target]
-#### You can also use 'make run' command
-	$ make run [TARGET=your_target]
+	$ ./intern <form> <target>
 
 <br/>

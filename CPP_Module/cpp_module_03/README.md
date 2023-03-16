@@ -13,17 +13,17 @@
 
 ## Usage
 ### ex00
-	$ ./Aaaaand...\ OPEN!
+	$ ./CL4P-TP
 <br/>
 
 ### ex01
-	$ ./Serena,\ my\ love!
+	$ ./SC4V-TP
 <br/>
 
 ### ex02
-	$ ./Repetitive\ work
+	$ ./FR4G-TP
 <br/>
 
 ### ex03
-	$ ./Now\ it's\ weird!
+	$ ./DI4MOND-TP
 <br/>

@@ -11,3 +11,4 @@
 | [cpp_module_06](./cpp_module_06) |                             |       |                  |
 | [cpp_module_07](./cpp_module_07) |                             |       |                  |
 | [cpp_module_08](./cpp_module_08) |                             |       |                  |
+| [cpp_module_09](./cpp_module_09) |                             |       |                  |

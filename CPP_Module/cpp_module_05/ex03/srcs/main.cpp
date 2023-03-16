@@ -8,7 +8,7 @@
 
 int	main(int argc, char **argv) {
 	if (argc != 3) {
-		std::cerr << "\033[31mUsage: ./intern form target\033[0m" << '\n';
+		std::cerr << "\033[31mUsage: ./intern <form> <target>\033[0m" << '\n';
 		return (1);
 	}
 

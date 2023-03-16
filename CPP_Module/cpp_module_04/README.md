@@ -13,17 +13,17 @@
 
 ## Usage
 ### ex00
-	$ ./Polymorphism
+	$ ./animal
 <br/>
 
 ### ex01
-	$ ./I\ don\'t\ want\ to\ set\ the\ world\ on\ fire
+	$ ./animal
 <br/>
 
 ### ex02
-	$ ./Abstract\ class
+	$ ./animal
 <br/>
 
 ### ex03
-	$ ./Interface\ \&\ Recap
+	$ ./interface
 <br/>
