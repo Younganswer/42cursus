@@ -1,94 +1,88 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/12 19:34:49 by younhwan          #+#    #+#             */
-/*   Updated: 2022/11/18 17:04:55 by younhwan         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
-#include <iostream>
 #include "../incs/Span.hpp"
+#include <iostream>
+
+bool	testSpan(Span &span);
 
 int	main(void) {
 	{
-		Span	sp = Span(5);
+		Span	span = Span(5);
 
 		try {
-			sp.addNumber(5);
-			sp.addNumber(3);
-			sp.addNumber(17);
-			sp.addNumber(9);
-			sp.addNumber(11);
-			sp.printVec();
+			span.addNumber(5);
+			span.addNumber(3);
+			span.addNumber(17);
+			span.addNumber(9);
+			span.addNumber(11);
+			testSpan(span);
 		} catch (std::exception &e) {
-			std::cout << e.what() << std::endl;
-		}
-		try {
-			std::cout << "Shortest Span: " << sp.shortestSpan() << '\n';
-			std::cout << "Longest Span: " << sp.longestSpan() << '\n';
-		} catch (std::exception &e) {
-			std::cout << e.what() << std::endl;
+			std::cout << "\033[31m" << "Error: " << e.what() << "\033[0m" << '\n';
 		}
 	}
+	std::cout << '\n';
 	{
-		Span	sp = Span(5);
+		Span	span = Span(5);
 
 		try {
-			sp.addNumber(5);
-			sp.addNumber(3);
-			sp.addNumber(17);
-			sp.addNumber(11);
-			sp.addNumber(11);
-			sp.printVec();
+			span.addNumber(5);
+			span.addNumber(3);
+			span.addNumber(17);
+			span.addNumber(11);
+			span.addNumber(11);
+			testSpan(span);
 		} catch (std::exception &e) {
-			std::cout << e.what() << std::endl;
-		}
-		try {
-			std::cout << "Shortest Span: " << sp.shortestSpan() << '\n';
-			std::cout << "Longest Span: " << sp.longestSpan() << '\n';
-		} catch (std::exception &e) {
-			std::cout << e.what() << std::endl;
+			std::cout << "\033[31m" << "Error: " << e.what() << "\033[0m" << '\n';
 		}
 	}
+	std::cout << '\n';
 	{
-		Span	sp = Span(5);
+		Span	span = Span(5);
 
 		try {
-			sp.addNumber(5);
-			sp.addNumber(3);
-			sp.addNumber(17);
-			sp.addNumber(9);
-			sp.addNumber(11);
-			sp.addNumber(15);
-			sp.printVec();
+			span.addNumber(5);
+			span.addNumber(3);
+			span.addNumber(17);
+			span.addNumber(9);
+			span.addNumber(11);
+			span.addNumber(15);
+			testSpan(span);
 		} catch (std::exception &e) {
-			std::cout << e.what() << std::endl;
-		}
-		try {
-			std::cout << "Shortest Span: " << sp.shortestSpan() << '\n';
-			std::cout << "Longest Span: " << sp.longestSpan() << '\n';
-		} catch (std::exception &e) {
-			std::cout << e.what() << std::endl;
+			std::cout << "\033[31m" << "Error: " << e.what() << "\033[0m" << '\n';
 		}
 	}
+	std::cout << '\n';
 	{
-		Span	sp = Span(5);
+		Span	span = Span(5);
 
 		try {
-			sp.addNumber(5);
+			span.addNumber(5);
+			testSpan(span);
 		} catch (std::exception &e) {
-			std::cout << e.what() << std::endl;
-		}
-		try {
-			std::cout << "Shortest Span: " << sp.shortestSpan() << '\n';
-			std::cout << "Longest Span: " << sp.longestSpan() << '\n';
-		} catch (std::exception &e) {
-			std::cout << e.what() << std::endl;
+			std::cout << "\033[31m" << "Error: " << e.what() << "\033[0m" << '\n';
 		}
 	}
 	return (0);
+}
+
+bool	testSpan(Span &span) {
+	std::cout << "Max size of span: " << span.maxSize() << '\n';
+	std::cout << "Current size of span: " << span.size() << '\n';
+	std::cout << "Span: ";
+	span.print();
+	try {
+		int	shortest = span.shortestSpan();
+
+		std::cout << "Shortest Span: " << shortest << '\n';
+	} catch (std::exception &e) {
+		std::cout << "\033[31m" << "Error: " << e.what() << "\033[0m" << '\n';
+		return (false);
+	}
+	try {
+		int	longest = span.longestSpan();
+
+		std::cout << "Longest Span: " << longest << '\n';
+	} catch (std::exception &e) {
+		std::cout << "\033[31m" << "Error: " << e.what() << "\033[0m" << '\n';
+		return (false);
+	}
+	return (true);
 }

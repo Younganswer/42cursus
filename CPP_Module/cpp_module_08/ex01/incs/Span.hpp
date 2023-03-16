@@ -1,19 +1,6 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   Span.hpp                                           :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: younhwan <younhwan@student.42seoul.kr>     +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/18 16:48:05 by younhwan          #+#    #+#             */
-/*   Updated: 2022/11/18 17:03:08 by younhwan         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #ifndef SPAN_HPP
 # define SPAN_HPP
 
-# include <iostream>
 # include <vector>
 
 class Span {
@@ -28,11 +15,34 @@ class Span {
 		Span	&operator=(const Span &rhs);
 		~Span(void);
 
+		// Utils
 		void	addNumber(int num);
 		int		shortestSpan(void);
 		int		longestSpan(void);
 		
-		void	printVec(void);
+		bool			print(void);
+		unsigned int	size(void);
+		unsigned int	maxSize(void);
+
+		// Exception: Duplicated
+		class DuplicatedException: public std::exception {
+			public:
+				DuplicatedException(void);
+				DuplicatedException(const DuplicatedException &ref);
+				virtual ~DuplicatedException(void) throw();
+				DuplicatedException	&operator=(const DuplicatedException &rhs);
+				virtual const char* what() const throw();
+		};
+
+		// Exception: Not enough numbers
+		class NotEnoughException: public std::exception {
+			public:
+				NotEnoughException(void);
+				NotEnoughException(const NotEnoughException &ref);
+				virtual ~NotEnoughException(void) throw();
+				NotEnoughException	&operator=(const NotEnoughException &rhs);
+				virtual const char* what() const throw();
+		};
 };
 
 #endif
