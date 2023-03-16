@@ -7,15 +7,14 @@ int	main(int argc, char **argv) {
 		return (1);
 	}
 
-	BitcoinExchange	*exchange = NULL;
+	BitcoinExchange	exchange(argv[1]);
 
 	try {
-		exchange = new BitcoinExchange(argv[1]);
+		exchange.print();
 	} catch (std::exception &e) {
 		std::cerr << "\033[31m" << "Error: " << e.what() << "\033[0m" << '\n';
 		return (1);
 	}
-	exchange->print();
 	
 	return (0);
 }

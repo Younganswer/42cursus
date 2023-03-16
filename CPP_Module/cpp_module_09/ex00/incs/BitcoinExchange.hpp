@@ -7,7 +7,6 @@
 class BitcoinExchange {
 	private:
 		std::string		_filename;
-		std::ifstream	_file;
 
 		BitcoinExchange(void);
 
