@@ -39,7 +39,7 @@ class AForm {
 			public:
 				GradeTooHighException(void);
 				GradeTooHighException(const std::string &name);
-				~GradeTooHighException(void) throw();
+				virtual	~GradeTooHighException(void) throw();
 				virtual const char* what() const throw();
 		};
 		
@@ -51,7 +51,7 @@ class AForm {
 			public:
 				GradeTooLowException(void);
 				GradeTooLowException(const std::string &AForm);
-				~GradeTooLowException(void) throw();
+				virtual	~GradeTooLowException(void) throw();
 				virtual const char* what() const throw();
 		};
 
@@ -63,7 +63,7 @@ class AForm {
 			public:
 				FormAlreadySignedException(void);
 				FormAlreadySignedException(const std::string &name);
-				~FormAlreadySignedException(void) throw();
+				virtual	~FormAlreadySignedException(void) throw();
 				virtual const char* what() const throw();
 		};
 
@@ -75,7 +75,7 @@ class AForm {
 			public:
 				FormNotSignedException(void);
 				FormNotSignedException(const std::string &name);
-				~FormNotSignedException(void) throw();
+				virtual	~FormNotSignedException(void) throw();
 				virtual const char* what() const throw();
 		};
 };

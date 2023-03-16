@@ -35,7 +35,7 @@ class Bureaucrat {
 			public:
 				GradeTooHighException(void);
 				GradeTooHighException(const std::string &name);
-				~GradeTooHighException(void) throw();
+				virtual	~GradeTooHighException(void) throw();
 				virtual const char	*what(void) const throw();
 		};
 
@@ -47,7 +47,7 @@ class Bureaucrat {
 			public:
 				GradeTooLowException(void);
 				GradeTooLowException(const std::string &name);
-				~GradeTooLowException(void) throw();
+				virtual	~GradeTooLowException(void) throw();
 				virtual const char	*what(void) const throw();
 		};
 
@@ -59,7 +59,7 @@ class Bureaucrat {
 			public:
 				CannotSignException(void);
 				CannotSignException(const std::string &name, const std::exception &exception);
-				~CannotSignException(void) throw();
+				virtual	~CannotSignException(void) throw();
 				virtual const char	*what(void) const throw();
 		};
 
@@ -70,7 +70,7 @@ class Bureaucrat {
 
 			public:
 				UnknownException(void);
-				~UnknownException(void) throw();
+				virtual	~UnknownException(void) throw();
 				virtual const char	*what(void) const throw();
 		};
 };

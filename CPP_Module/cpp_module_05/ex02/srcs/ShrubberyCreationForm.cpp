@@ -5,16 +5,7 @@
 
 ShrubberyCreationForm::ShrubberyCreationForm(void): AForm("ShrubberyCreationForm", 145, 137), _target(std::string()) {}
 ShrubberyCreationForm::ShrubberyCreationForm(const std::string &target): AForm("ShrubberyCreationForm", 145, 137), _target(std::string(target.c_str())) {}
-ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &ref): AForm("ShrubberyCreationForm", 145, 137), _target(std::string(ref.getTarget().c_str())) {}
 ShrubberyCreationForm::~ShrubberyCreationForm(void) {}
-
-ShrubberyCreationForm	&ShrubberyCreationForm::operator=(const ShrubberyCreationForm &rhs) {
-	if (this != &rhs) {
-		this->~ShrubberyCreationForm();
-		new (this) ShrubberyCreationForm(rhs);
-	}
-	return (*this);
-}
 
 // Getter
 std::string			ShrubberyCreationForm::getTarget(void) { return (this->_target); }

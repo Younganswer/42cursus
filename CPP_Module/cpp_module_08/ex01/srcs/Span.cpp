@@ -80,24 +80,14 @@ unsigned int	Span::maxSize(void) {
 
 // Exception: Duplicated
 Span::DuplicatedException::DuplicatedException(void) {}
-Span::DuplicatedException::DuplicatedException(const DuplicatedException &ref) { *this = ref; }
 Span::DuplicatedException::~DuplicatedException(void) throw() {}
-Span::DuplicatedException	&Span::DuplicatedException::operator=(const DuplicatedException &rhs) {
-	(void) rhs;
-	return (*this);
-}
 const char	*Span::DuplicatedException::what() const throw() {
 	return ("Duplicated number");
 }
 
 // Exception: Not enough numbers
 Span::NotEnoughException::NotEnoughException(void) {}
-Span::NotEnoughException::NotEnoughException(const NotEnoughException &ref) { *this = ref; }
 Span::NotEnoughException::~NotEnoughException(void) throw() {}
-Span::NotEnoughException	&Span::NotEnoughException::operator=(const NotEnoughException &rhs) {
-	(void) rhs;
-	return (*this);
-}
 const char	*Span::NotEnoughException::what() const throw() {
 	return ("Not enough numbers");
 }

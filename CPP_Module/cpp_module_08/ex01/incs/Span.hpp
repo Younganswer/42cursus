@@ -28,9 +28,7 @@ class Span {
 		class DuplicatedException: public std::exception {
 			public:
 				DuplicatedException(void);
-				DuplicatedException(const DuplicatedException &ref);
 				virtual ~DuplicatedException(void) throw();
-				DuplicatedException	&operator=(const DuplicatedException &rhs);
 				virtual const char* what() const throw();
 		};
 
@@ -38,9 +36,7 @@ class Span {
 		class NotEnoughException: public std::exception {
 			public:
 				NotEnoughException(void);
-				NotEnoughException(const NotEnoughException &ref);
 				virtual ~NotEnoughException(void) throw();
-				NotEnoughException	&operator=(const NotEnoughException &rhs);
 				virtual const char* what() const throw();
 		};
 };

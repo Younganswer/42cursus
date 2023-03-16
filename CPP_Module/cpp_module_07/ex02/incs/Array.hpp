@@ -29,8 +29,6 @@ class Array {
 
 			public:
 				OutOfRangeException(void);
-				OutOfRangeException(const OutOfRangeException &ref);
-				OutOfRangeException	&operator=(const OutOfRangeException &rhs);
 				virtual ~OutOfRangeException(void) throw();
 				virtual const char *what(void) const throw();
 		};
@@ -93,15 +91,6 @@ unsigned int	Array<T>::size(void) const {
 // Exception: Out of range
 template <typename T>
 Array<T>::OutOfRangeException::OutOfRangeException(void) {}
-
-template <typename T>
-Array<T>::OutOfRangeException::OutOfRangeException(const OutOfRangeException &ref) { *this = ref; }
-
-template <typename T>
-typename Array<T>::OutOfRangeException	&Array<T>::OutOfRangeException::operator=(const OutOfRangeException &rhs) {
-	(void) rhs;
-	return (*this);
-}
 
 template <typename T>
 Array<T>::OutOfRangeException::~OutOfRangeException(void) throw() {}
