@@ -4,6 +4,7 @@
 int	main(void) {
 	try {
 		Bureaucrat	younhwan("younhwan", 1);
+
 		std::cout << younhwan << '\n';
 		younhwan.decGrade();
 		std::cout << younhwan << '\n';
@@ -16,6 +17,7 @@ int	main(void) {
 	}
 	try {
 		Bureaucrat	jeolim("jeolim", 150);
+
 		std::cout << jeolim << '\n';
 		jeolim.incGrade();
 		std::cout << jeolim << '\n';
