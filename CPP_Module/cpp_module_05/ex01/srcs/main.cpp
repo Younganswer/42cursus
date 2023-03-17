@@ -6,6 +6,7 @@ int	main(void) {
 	try {
 		Bureaucrat	younhwan("younhwan", 11);
 		Form 		f10("F10", 10, 10);
+
 		std::cout << younhwan << '\n';
 		std::cout << f10 << '\n';
 		younhwan.signForm(f10);
@@ -18,6 +19,7 @@ int	main(void) {
 	try {
 		Bureaucrat	jeolim("jeolim", 1);
 		Form 		f1("F1", 1, 1);
+
 		std::cout << jeolim << '\n';
 		std::cout << f1 << '\n';
 		jeolim.signForm(f1);
