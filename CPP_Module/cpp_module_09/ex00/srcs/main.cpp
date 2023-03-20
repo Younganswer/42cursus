@@ -7,10 +7,10 @@ int	main(int argc, char **argv) {
 		return (1);
 	}
 
-	BitcoinExchange	exchanger;
-
 	try {
-		exchanger.exchange(argv[1]);
+		BitcoinExchange::initializeDB();
+		BitcoinExchange::showDB();
+		BitcoinExchange::exchange(argv[1]);
 	} catch (std::exception &e) {
 		std::cerr << "\033[31m" << "Error: " << e.what() << "\033[0m" << '\n';
 		return (1);

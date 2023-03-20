@@ -15,7 +15,7 @@ INCS_DIR	= incs
 SRCS_DIR	= srcs
 OBJS_DIR	= objs
 
-SRCS =	main.cpp BitcoinExchange.cpp
+SRCS =	main.cpp BitcoinExchange.cpp Data.cpp
 
 
 SRCS := ${addprefix ${SRCS_DIR}/, ${SRCS}}
