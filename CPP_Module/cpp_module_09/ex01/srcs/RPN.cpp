@@ -48,6 +48,10 @@ bool	RPN::operate(const std::string &arg) {
 	std::stack<int>		st;
 
 	for (size_t i=0; i<arg.length(); i++) {
+		if (std::isspace(arg[i])) {
+			continue;
+		}
+		
 		if (std::isdigit(arg[i]) == false) {
 			try {
 				handleOperator(st, arg[i]);
