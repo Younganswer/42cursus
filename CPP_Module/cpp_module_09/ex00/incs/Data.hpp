@@ -11,13 +11,13 @@ class Data {
 		int		_day;
 		float	_value;
 
-
 		bool	parseDate(const std::string &date);
 
 	public:
 		Data(void);
-		Data(const Data &ref);
+		Data(const std::string &line) throw(std::exception);
 		Data(const std::string &line, int delim) throw(std::exception);
+		Data(const Data &ref);
 		~Data(void);
 		Data	&operator=(const Data &rhs);
 
@@ -26,6 +26,9 @@ class Data {
 		int		getMonth(void) const;
 		int		getDay(void) const;
 		float	getValue(void) const;
+
+		// overload
+		bool	operator<(const Data &rhs) const;
 
 		// Exception: InvalidDateError
 		class InvalidDateError: public std::exception {
