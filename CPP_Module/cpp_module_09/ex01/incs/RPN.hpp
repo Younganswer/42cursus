@@ -7,7 +7,7 @@
 
 class RPN {
 	private:
-		static bool	handleOperator(std::stack<int> &stack, const std::string &token);
+		static bool	handleOperator(std::stack<int> &stack, const char token);
 
 	public:
 		RPN(void);
@@ -35,7 +35,7 @@ class RPN {
 
 			public:
 				InvalidOperatorError(void);
-				InvalidOperatorError(const std::string &_operator);
+				InvalidOperatorError(const char _operator);
 				virtual ~InvalidOperatorError(void) throw();
 				virtual const char	*what(void) const throw();
 		};

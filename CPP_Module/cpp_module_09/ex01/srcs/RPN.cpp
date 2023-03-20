@@ -9,7 +9,10 @@ RPN	&RPN::operator=(const RPN &rhs) {
 	return (*this);
 }
 
-bool	RPN::handleOperator(std::stack<int> &st, const std::string &token) {
+bool	RPN::handleOperator(std::stack<int> &st, const char token) {
+	if (token != '+' && token != '-' && token != '*' && token != '/' && token != '%') {
+		throw (RPN::InvalidOperatorError(token));
+	}
 	if (st.size() < 2) {
 		throw (RPN::NotEnoughOperandsError());
 	}
@@ -20,24 +23,22 @@ bool	RPN::handleOperator(std::stack<int> &st, const std::string &token) {
 	st.pop();
 	left = st.top();
 	st.pop();
-	if (token == "+") {
+	if (token == '+') {
 		value = left + right;
-	} else if (token == "-") {
+	} else if (token == '-') {
 		value = left - right;
-	} else if (token == "*") {
+	} else if (token == '*') {
 		value = left * right;
-	} else if (token == "/") {
+	} else if (token == '/') {
 		if (right == 0) {
 			throw (RPN::DivideByZeroError());
 		}
 		value = left / right;
-	} else if (token == "%") {
+	} else if (token == '%') {
 		if (right == 0) {
 			throw (RPN::ModuloByZeroError());
 		}
 		value = left % right;
-	} else {
-		throw (RPN::InvalidOperatorError(token));
 	}
 	st.push(value);
 	return (true);
@@ -45,22 +46,11 @@ bool	RPN::handleOperator(std::stack<int> &st, const std::string &token) {
 
 bool	RPN::operate(const std::string &arg) {
 	std::stack<int>		st;
-	std::stringstream	ss(arg);
-	std::string			token;
 
-	while (ss.eof() == false) {
-		ss >> token;
-		if (token.empty()) {
-			continue;
-		}
-		if (1 < token.length()) {
-			std::cerr << "\033[31m" << "Error: " << "Invalid argument: " << token << "\033[0m" << '\n';
-			return (false);
-		}
-
-		if (std::isdigit(token[0]) == false) {
+	for (size_t i=0; i<arg.length(); i++) {
+		if (std::isdigit(arg[i]) == false) {
 			try {
-				handleOperator(st, token);
+				handleOperator(st, arg[i]);
 			} catch (std::exception &e) {
 				std::cerr << "\033[31m" << "Error: " << e.what() << "\033[0m" << '\n';
 				return (false);
@@ -70,7 +60,7 @@ bool	RPN::operate(const std::string &arg) {
 			}
 		} else {
 			try {
-				st.push(std::stoi(token));
+				st.push(arg[i] - '0');
 			} catch (std::exception &e) {
 				std::cerr << "\033[31m" << "Error: " << e.what() << "\033[0m" << '\n';
 				return (false);
@@ -97,7 +87,7 @@ const char	*RPN::NotEnoughOperandsError::what(void) const throw() {
 
 // Exception: InvalidOperatorError
 RPN::InvalidOperatorError::InvalidOperatorError(void): _msg("Invalid operator") {}
-RPN::InvalidOperatorError::InvalidOperatorError(const std::string &_operator): _msg("Invalid operator: " + _operator) {}
+RPN::InvalidOperatorError::InvalidOperatorError(const char _operator): _msg(std::string("Invalid operator: ") + _operator) {}
 RPN::InvalidOperatorError::~InvalidOperatorError(void) throw() {}
 const char	*RPN::InvalidOperatorError::what(void) const throw() {
 	return (_msg.c_str());
