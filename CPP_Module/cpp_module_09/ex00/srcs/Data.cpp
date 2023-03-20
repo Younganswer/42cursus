@@ -78,18 +78,12 @@ int		Data::getDay(void) const { return (this->_day); }
 float	Data::getValue(void) const { return (this->_value); }
 
 bool	Data::operator<(const Data &rhs) const {
-	if (this->_year < rhs._year) {
-		return (true);
-	} else if (this->_year == rhs._year) {
-		if (this->_month < rhs._month) {
-			return (true);
-		} else if (this->_month == rhs._month) {
-			if (this->_day < rhs._day) {
-				return (true);
-			}
-		}
+	if (this->_year != rhs._year) {
+		return (this->_year < rhs._year);
+	} else if (this->_month != rhs._month) {
+		return (this->_month < rhs._month);
 	}
-	return (false);
+	return (this->_day <= rhs._day);
 }
 
 // Exception: InvalidDateError
@@ -127,6 +121,6 @@ std::ostream	&operator<<(std::ostream &os, const Data &rhs) {
 	if (day.length() == 1) {
 		day = "0" + day;
 	}
-	os << std::fixed << std::setprecision(2) << year << "-" << month << "-" << day << " " << rhs.getValue();
+	os << year << "-" << month << "-" << day << " => " << rhs.getValue();
 	return (os);
 }

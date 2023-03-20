@@ -8,6 +8,7 @@ int	main(int argc, char **argv) {
 	}
 
 	try {
+		std::cout << std::fixed << std::setprecision(2);
 		BitcoinExchange::initializeDB();
 		BitcoinExchange::exchange(argv[1]);
 	} catch (std::exception &e) {
