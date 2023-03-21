@@ -35,3 +35,5 @@ else
 endif
 
 .PHONY: all up down stop start status job
+
+.NOTPARALLEL: all up down stop start status job
