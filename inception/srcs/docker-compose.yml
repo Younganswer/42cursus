@@ -1,0 +1,10 @@
+version: '3.9'
+
+volumes:
+
+services:
+    mariadb:
+    nginx:
+    wordpress:
+
+networks:
