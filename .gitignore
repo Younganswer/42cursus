@@ -1,3 +1,4 @@
 push_swap/push_swap_visualizer/
 .vscode/
 .DS_Store
+.env
