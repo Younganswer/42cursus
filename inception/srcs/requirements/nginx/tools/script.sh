@@ -8,6 +8,4 @@ sed -i "5i\ \server_name www.$DOMAIN_NAME $DOMAIN_NAME;" /etc/nginx/sites-availa
 sed -i "7d" /etc/nginx/sites-available/default
 sed -i "7i\ \ssl_certificate $CERTS_;" /etc/nginx/sites-available/default
 
-cat /etc/nginx/sites-available/default
-
 nginx -g "daemon off;"
