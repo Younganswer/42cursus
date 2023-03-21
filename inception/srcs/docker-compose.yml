@@ -1,10 +1,62 @@
 version: '3.9'
 
 volumes:
+    mariadb:
+        name: mariadb
+        driver: local
+        driver_opts:
+            device: $HOME/Desktop/42seoul/42cursus/inception/volumes/mariadb
+            type: none
+            o: bind
+    wordpress:
+        name: wordpress
+        driver: local
+        driver_opts:
+            device: $HOME/Desktop/42seoul/42cursus/inception/volumes/wordpress
+            type: none
+            o: bind
 
 services:
     mariadb:
+        container_name: mariadb
+        build: ./requirements/mariadb
+        image: mariadb
+        volumes:
+            - mariadb:/var/lib/mysql
+        networks:
+            - inception
+        env_file:
+            - .env
+        restart: always
     nginx:
+        container_name: nginx
+        build: ./requirements/nginx
+        image: nginx
+        ports:
+            - 443:443
+        depends_on:
+            - wordpress
+        volumes:
+            - wordpress:/var/www/html
+        networks:
+            - inception
+        env_file:
+            - .env
+        restart: always
     wordpress:
+        container_name: wordpress
+        build: ./requirements/wordpress
+        image: wordpress
+        depends_on:
+            - mariadb
+        volumes:
+            - wordpress:/var/www/html
+        networks:
+            - inception
+        env_file:
+            - .env
+        restart: always
 
 networks:
+    inception:
+        name: inception
