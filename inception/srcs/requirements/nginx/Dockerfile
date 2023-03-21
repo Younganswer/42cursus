@@ -4,6 +4,8 @@ RUN apt-get update && apt-get install -y
 RUN apt-get install -y nginx && apt-get install -y openssl
 
 COPY ./conf/default /etc/nginx/sites-available/default
-COPY ./tools/script.sh /script.sh
+COPY ./tools/setup.sh /setup.sh
 
-CMD [ "/script.sh" ]
+RUN chmod +x /setup.sh
+
+CMD [ "/setup.sh" ]

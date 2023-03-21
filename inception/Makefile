@@ -13,7 +13,7 @@ stop:
 	@${DOCKER_COMPOSE} stop
 
 status:
-	@${DOCKER_COMPOSE} ps
+	@docker ps
 
 .PHONY: up down stop start status job
 
