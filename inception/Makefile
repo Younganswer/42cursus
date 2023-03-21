@@ -34,6 +34,6 @@ else
 	@docker-compose -f ./srcs/docker-compose.yml ${JOB}
 endif
 
-.PHONY: all up down stop start status job
+.PHONY: up down stop start status job
 
-.NOTPARALLEL: all up down stop start status job
+.NOTPARALLEL: up down stop start status job
