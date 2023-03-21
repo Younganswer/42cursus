@@ -8,6 +8,7 @@
 class RPN {
 	private:
 		static bool	handleOperator(std::stack<int> &stack, const char token);
+		static bool	throwErrorOccurredInHandleOperator(std::exception &e);
 
 	public:
 		RPN(void);
@@ -15,7 +16,7 @@ class RPN {
 		~RPN(void);
 		RPN	&operator=(const RPN &rhs);
 
-		static bool	operate(const std::string &arg);
+		static int	operate(const std::string &arg) throw(std::exception);
 
 		// Exception: NotEnoughOperandsError
 		class NotEnoughOperandsError: public std::exception {
@@ -59,6 +60,28 @@ class RPN {
 			public:
 				ModuloByZeroError(void);
 				virtual ~ModuloByZeroError(void) throw();
+				virtual const char	*what(void) const throw();
+		};
+
+		// Exception: InvalidExpressionError
+		class InvalidExpressionError: public std::exception {
+			private:
+				std::string	_msg;
+
+			public:
+				InvalidExpressionError(void);
+				virtual ~InvalidExpressionError(void) throw();
+				virtual const char	*what(void) const throw();
+		};
+
+		// Exception: UnknownError
+		class UnknownError: public std::exception {
+			private:
+				std::string	_msg;
+
+			public:
+				UnknownError(void);
+				virtual ~UnknownError(void) throw();
 				virtual const char	*what(void) const throw();
 		};
 };

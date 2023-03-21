@@ -44,7 +44,22 @@ bool	RPN::handleOperator(std::stack<int> &st, const char token) {
 	return (true);
 }
 
-bool	RPN::operate(const std::string &arg) {
+bool	RPN::throwErrorOccurredInHandleOperator(std::exception &e) {
+	if (const RPN::NotEnoughOperandsError *err_ptr1 = dynamic_cast<const RPN::NotEnoughOperandsError *>(&e)) {
+		throw (*err_ptr1);
+	} else if (const RPN::InvalidOperatorError *err_ptr2 = dynamic_cast<const RPN::InvalidOperatorError *>(&e)) {
+		throw (*err_ptr2);
+	} else if (const RPN::DivideByZeroError *err_ptr3 = dynamic_cast<const RPN::DivideByZeroError *>(&e)) {
+		throw (*err_ptr3);
+	} else if (const RPN::ModuloByZeroError *err_ptr4 = dynamic_cast<const RPN::ModuloByZeroError *>(&e)) {
+		throw (*err_ptr4);
+	} else {
+		throw (RPN::UnknownError());
+	}
+	return (true);
+}
+
+int	RPN::operate(const std::string &arg) throw(std::exception) {
 	std::stack<int>		st;
 
 	for (size_t i=0; i<arg.length(); i++) {
@@ -56,30 +71,24 @@ bool	RPN::operate(const std::string &arg) {
 			try {
 				handleOperator(st, arg[i]);
 			} catch (std::exception &e) {
-				std::cerr << "\033[31m" << "Error: " << e.what() << "\033[0m" << '\n';
-				return (false);
+				throwErrorOccurredInHandleOperator(e);
 			} catch (...) {
-				std::cerr << "\033[31m" << "Error: " << "Unknown error" << "\033[0m" << '\n';
-				return (false);
+				throw (RPN::UnknownError());
 			}
 		} else {
 			try {
 				st.push(arg[i] - '0');
 			} catch (std::exception &e) {
-				std::cerr << "\033[31m" << "Error: " << e.what() << "\033[0m" << '\n';
-				return (false);
+				throw (e);
 			} catch (...) {
-				std::cerr << "\033[31m" << "Error: " << "Unknown error" << "\033[0m" << '\n';
-				return (false);
+				throw (RPN::UnknownError());
 			}
 		}
 	}
 	if (st.size() != 1) {
-		std::cerr << "\033[31m" << "Error: " << "Not enough operands" << "\033[0m" << '\n';
-		return (false);
+		throw (RPN::InvalidExpressionError());
 	}
-	std::cout << st.top() << '\n';
-	return (true);
+	return (st.top());
 }
 
 // Exception: NotEnoughOperandsError
@@ -108,5 +117,19 @@ const char	*RPN::DivideByZeroError::what(void) const throw() {
 RPN::ModuloByZeroError::ModuloByZeroError(void): _msg("Modulo by zero") {}
 RPN::ModuloByZeroError::~ModuloByZeroError(void) throw() {}
 const char	*RPN::ModuloByZeroError::what(void) const throw() {
+	return (_msg.c_str());
+}
+
+// Exception: InvalidExpressionError
+RPN::InvalidExpressionError::InvalidExpressionError(void): _msg("Invalid expression") {}
+RPN::InvalidExpressionError::~InvalidExpressionError(void) throw() {}
+const char	*RPN::InvalidExpressionError::what(void) const throw() {
+	return (_msg.c_str());
+}
+
+// Exception: UnknownError
+RPN::UnknownError::UnknownError(void): _msg("Unknown error") {}
+RPN::UnknownError::~UnknownError(void) throw() {}
+const char	*RPN::UnknownError::what(void) const throw() {
 	return (_msg.c_str());
 }
