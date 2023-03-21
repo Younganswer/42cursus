@@ -1,10 +1,10 @@
 up:
 	@${MAKE} JOB="up --build -d" job
-	@echo "Done: All containers are up and running"
+	@echo "Done: All containers are up and running"; \
 
 down:
 	@${MAKE} JOB="down" job
-	@echo "Done: All containers and images are removed"
+	@echo "Done: All containers are down";
 
 start:
 	@${MAKE} JOB="start" job
@@ -19,21 +19,21 @@ status:
 
 job:
 ifndef JOB
-	@printf "\033[31m >&2"
+	@printf "\033[31m" >&2
 	@echo "Error: Variable 'JOB' to execute is not set" >&2
+	@printf "\033[0m" >&2
 	@exit 1
-	@printf "\033[0m >&2"
 else
 	@if [ "$(JOB)" != "up --build -d" -a "$(JOB)" != "down" -a "$(JOB)" != "start" -a "$(JOB)" != "stop" -a "$(JOB)" != "ps" ]; then \
 		printf "\033[31m" >&2; \
         printf "Error: Invalid 'JOB' specified: " >&2; \
 		echo ${JOB} >&2; \
-        exit 1; \
 		printf "\033[0m" >&2; \
+        exit 1; \
     fi
 	@docker-compose -f ./srcs/docker-compose.yml ${JOB}
 endif
 
-.PHONY: all up down stop start status job
+.PHONY: up down stop start status job
 
-.NOTPARALLEL: all up down stop start status job
+.NOTPARALLEL: up down stop start status job
