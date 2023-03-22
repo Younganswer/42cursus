@@ -23,25 +23,6 @@ Data::Data(const std::string &line) throw(std::exception) {
 		throw (Data::NegativeValueError(value));
 	}
 }
-Data::Data(const std::string &line, int delim) throw(std::exception) {
-	std::stringstream	ss(line);
-	std::string			date;
-	std::string			value;
-
-	std::getline(ss, date, (char)delim);
-	if (this->parseDate(date) == false) {
-		throw (Data::InvalidDateError(date));
-	}
-	std::getline(ss, value, (char)delim);
-	try {
-		this->_value = std::stof(value);
-	} catch (std::exception &e) {
-		throw (e);
-	}
-	if (this->_value < 0) {
-		throw (Data::NegativeValueError(value));
-	}
-}
 Data::Data(const Data &ref): _year(ref._year), _month(ref._month), _day(ref._day), _value(ref._value) {}
 Data::~Data(void) {}
 Data	&Data::operator=(const Data &rhs) {

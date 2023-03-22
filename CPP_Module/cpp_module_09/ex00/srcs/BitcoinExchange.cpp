@@ -14,13 +14,17 @@ BitcoinExchange &BitcoinExchange::operator=(BitcoinExchange const &rhs) {
 }
 
 bool	BitcoinExchange::initializeDB(void) throw(std::exception) {
-	std::ifstream	ifs;
-	std::string		line;
+	std::ifstream			ifs;
+	std::string				line;
+	std::string::size_type	pos;
 
 	BitcoinExchange::openFile(ifs, "./db/data.csv");
 	std::getline(ifs, line);
 	while (std::getline(ifs, line)) {
-		BitcoinExchange::_db.push_back(Data(line, ','));
+		pos = line.find(",");
+		line.erase(pos, 1);
+		line.insert(pos, " | ");
+		BitcoinExchange::_db.push_back(Data(line));
 	}
 	return (true);
 }

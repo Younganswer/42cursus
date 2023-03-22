@@ -16,7 +16,6 @@ class Data {
 	public:
 		Data(void);
 		Data(const std::string &line) throw(std::exception);
-		Data(const std::string &line, int delim) throw(std::exception);
 		Data(const Data &ref);
 		~Data(void);
 		Data	&operator=(const Data &rhs);
