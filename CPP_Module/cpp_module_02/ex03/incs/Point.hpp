@@ -14,9 +14,9 @@ class Point {
 		Point(void);
 		Point(const float x, const float y);
 		Point(const Fixed &x, const Fixed &y);
-		Point(const Point &point);
+		Point(const Point &ref);
 		~Point(void);
-		Point	&operator=(const Point &point);
+		Point	&operator=(const Point &rhs);
 
 		// Getter
 		Fixed		getX(void);

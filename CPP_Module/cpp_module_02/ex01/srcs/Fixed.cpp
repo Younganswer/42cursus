@@ -11,18 +11,18 @@ Fixed::Fixed(const int raw): _raw_bits(raw << this->_fractional_bits) {
 Fixed::Fixed(const float raw): _raw_bits(roundf(raw * (1 << this->_fractional_bits))) {
 	std::cout << "Const float constructor called" << '\n';
 }
-Fixed::Fixed(const Fixed &fixed): _raw_bits(fixed._raw_bits) {
+Fixed::Fixed(const Fixed &ref): _raw_bits(ref._raw_bits) {
 	std::cout << "Copy constructor called" << '\n';
 }
 Fixed::~Fixed(void) {
 	std::cout << "Destructor called" << '\n';
 }
 
-Fixed	&Fixed::operator=(const Fixed &fixed) {
+Fixed	&Fixed::operator=(const Fixed &rhs) {
 	std::cout << "Copy assignment operator called" << '\n';
-	if (this != &fixed) {
+	if (this != &rhs) {
 		this->~Fixed();
-		new (this) Fixed(fixed);
+		new (this) Fixed(rhs);
 	}
 	return (*this);
 }

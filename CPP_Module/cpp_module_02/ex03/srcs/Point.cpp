@@ -3,13 +3,13 @@
 Point::Point(void): _x(0), _y(0) {}
 Point::Point(const float x, const float y): _x(x), _y(y) {}
 Point::Point(const Fixed &x, const Fixed &y): _x(x), _y(y) {}
-Point::Point(const Point &point): _x(point._x), _y(point._y) {}
+Point::Point(const Point &ref): _x(ref._x), _y(ref._y) {}
 Point::~Point(void) {}
 
-Point	&Point::operator=(const Point &point) {
-	if (this != &point) {
+Point	&Point::operator=(const Point &rhs) {
+	if (this != &rhs) {
 		this->~Point();
-		new (this) Point(point);
+		new (this) Point(rhs);
 	}
 	return (*this);
 }

@@ -12,9 +12,9 @@ class Fixed {
 		Fixed(void);
 		Fixed(const int raw);
 		Fixed(const float raw);
-		Fixed(const Fixed &fixed);
+		Fixed(const Fixed &ref);
 		~Fixed(void);
-		Fixed	&operator=(const Fixed &fixed);
+		Fixed	&operator=(const Fixed &rhs);
 	
 		// Getter
 		int		getRawBits(void) const;

@@ -5,13 +5,13 @@
 Fixed::Fixed(void): _raw_bits(0) {}
 Fixed::Fixed(const int raw): _raw_bits(raw << _fractional_bits) {}
 Fixed::Fixed(const float raw): _raw_bits(roundf(raw * (1 << _fractional_bits))) {}
-Fixed::Fixed(const Fixed &fixed): _raw_bits(fixed._raw_bits) {}
+Fixed::Fixed(const Fixed &ref): _raw_bits(ref._raw_bits) {}
 Fixed::~Fixed(void) {}
 
-Fixed	&Fixed::operator=(const Fixed &fixed) {
-	if (this != &fixed) {
+Fixed	&Fixed::operator=(const Fixed &rhs) {
+	if (this != &rhs) {
 		this->~Fixed();
-		new (this) Fixed(fixed);
+		new (this) Fixed(rhs);
 	}
 	return (*this);
 }

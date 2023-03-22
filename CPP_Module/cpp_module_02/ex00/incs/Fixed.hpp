@@ -8,9 +8,9 @@ class Fixed {
 
 	public:
 		Fixed(void);
-		Fixed(const Fixed &fixed);
+		Fixed(const Fixed &ref);
 		~Fixed(void);
-		Fixed	&operator=(const Fixed &fixed);
+		Fixed	&operator=(const Fixed &rhs);
 
 		// Getter
 		int		getRawBits(void) const;
