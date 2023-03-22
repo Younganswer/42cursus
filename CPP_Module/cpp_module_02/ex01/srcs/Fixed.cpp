@@ -2,32 +2,27 @@
 #include <iostream>
 #include <cmath>
 
-Fixed::Fixed(void): _raw_bits(0) { std::cout << "Default constructor called" << '\n'; }
-
-Fixed::Fixed(const int raw) {
+Fixed::Fixed(void): _raw_bits(0) {
+	std::cout << "Default constructor called" << '\n';
+}
+Fixed::Fixed(const int raw): _raw_bits(raw << this->_fractional_bits) {
 	std::cout << "Const int constructor called" << '\n';
-	this->_raw_bits = raw << this->_fractional_bits;
 }
-
-Fixed::Fixed(const float raw) {
+Fixed::Fixed(const float raw): _raw_bits(roundf(raw * (1 << this->_fractional_bits))) {
 	std::cout << "Const float constructor called" << '\n';
-	this->_raw_bits = roundf(raw * (1 << this->_fractional_bits));
 }
-
-Fixed::Fixed(const Fixed &fixed) {
+Fixed::Fixed(const Fixed &fixed): _raw_bits(fixed._raw_bits) {
 	std::cout << "Copy constructor called" << '\n';
-	(*this) = fixed;
 }
-
 Fixed::~Fixed(void) {
 	std::cout << "Destructor called" << '\n';
-	return;
 }
 
 Fixed	&Fixed::operator=(const Fixed &fixed) {
 	std::cout << "Copy assignment operator called" << '\n';
 	if (this != &fixed) {
-		this->_raw_bits = fixed._raw_bits;
+		this->~Fixed();
+		new (this) Fixed(fixed);
 	}
 	return (*this);
 }

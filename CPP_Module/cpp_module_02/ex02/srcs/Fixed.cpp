@@ -3,13 +3,15 @@
 #include <cmath>
 
 Fixed::Fixed(void): _raw_bits(0) {}
-Fixed::Fixed(const int raw) { this->_raw_bits = (raw << _fractional_bits); }
-Fixed::Fixed(const float raw) { this->_raw_bits = roundf(raw * (1 << _fractional_bits)); }
-Fixed::Fixed(const Fixed &fixed) { (*this) = fixed; }
+Fixed::Fixed(const int raw): _raw_bits(raw << _fractional_bits) {}
+Fixed::Fixed(const float raw): _raw_bits(roundf(raw * (1 << _fractional_bits))) {}
+Fixed::Fixed(const Fixed &fixed): _raw_bits(fixed._raw_bits) {}
 Fixed::~Fixed(void) {}
+
 Fixed	&Fixed::operator=(const Fixed &fixed) {
 	if (this != &fixed) {
-		this->_raw_bits = fixed._raw_bits;
+		this->~Fixed();
+		new (this) Fixed(fixed);
 	}
 	return (*this);
 }
@@ -44,24 +46,20 @@ Fixed	Fixed::operator/(const Fixed &rhs) const {
 	}
 	return (Fixed(this->toFloat() / rhs.toFloat()));
 }
-
 Fixed	Fixed::operator++(int) {
 	Fixed	fixed(*this);
 	this->_raw_bits++;
 	return (fixed);
 }
-
 Fixed	&Fixed::operator++(void) {
 	++(this->_raw_bits);
 	return (*this);
 }
-
 Fixed	Fixed::operator--(int) {
 	Fixed	fixed(*this);
 	this->_raw_bits--;
 	return (fixed);
 }
-
 Fixed	&Fixed::operator--(void) {
 	--(this->_raw_bits);
 	return (*this);
