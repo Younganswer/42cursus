@@ -1,18 +1,15 @@
 #include "../incs/HumanA.hpp"
 #include <iostream>
 
-HumanA::HumanA(void) { this->_weapon = NULL; this->_name = std::string(); }
-HumanA::HumanA(const std::string &name, Weapon &weapon) {
-	this->_weapon = &weapon;
-	this->_name = std::string(name.c_str());
-}
-HumanA::HumanA(const HumanA &humanA) { (*this) = humanA; }
+HumanA::HumanA(void): _weapon(NULL), _name(std::string()) {}
+HumanA::HumanA(const std::string &name, Weapon &weapon): _weapon(&weapon), _name(name) {}
+HumanA::HumanA(const HumanA &humanA): _weapon(humanA._weapon), _name(humanA._name()) {}
 HumanA::~HumanA(void) {}
 
 HumanA	&HumanA::operator=(const HumanA &humanA) {
 	if (this != &humanA) {
-		this->_weapon = humanA._weapon;
-		this->_name = std::string(humanA._name.c_str());
+		this->~HumanA();
+		new (this) HumanA(humanA);
 	}
 	return (*this);
 }

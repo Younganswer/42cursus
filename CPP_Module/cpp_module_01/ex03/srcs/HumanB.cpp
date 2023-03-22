@@ -1,22 +1,16 @@
 #include "../incs/HumanB.hpp"
 #include <iostream>
 
-HumanB::HumanB(void) { this->_weapon = NULL; this->_name = std::string(); }
-HumanB::HumanB(const std::string &name) {
-	this->_weapon = NULL;
-	this->_name = std::string(name.c_str());
-}
-HumanB::HumanB(const std::string &name, Weapon &weapon) {
-	this->_weapon = &weapon;
-	this->_name = std::string(name.c_str());
-}
-HumanB::HumanB(const HumanB &humanB) { (*this) = humanB; }
+HumanB::HumanB(void): _weapon(NULL), _name(std::string()) {}
+HumanB::HumanB(const std::string &name): _weapon(NULL), _name(name.c_str()) {}
+HumanB::HumanB(const std::string &name, Weapon &weapon): _weapon(&weapon), _name(name.c_str()) {}
+HumanB::HumanB(const HumanB &humanB): _weapon(humanB._weapon), _name(humanB._name) {}
 HumanB::~HumanB(void) {}
 
 HumanB	&HumanB::operator=(const HumanB &humanB) {
 	if (this != &humanB) {
-		this->_weapon = humanB._weapon;
-		this->_name = std::string(humanB._name.c_str());
+		this->~HumanB();
+		new (this) HumanB(humanB);
 	}
 	return (*this);
 }

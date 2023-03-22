@@ -11,8 +11,8 @@ class Zombie {
 		Zombie(void);
 		Zombie(const std::string &name);
 		Zombie(const Zombie &zombie);
-		Zombie	&operator=(const Zombie &zombie);
 		~Zombie(void);
+		Zombie	&operator=(const Zombie &zombie);
 	
 		// Setter
 		bool	setName(std::string name);

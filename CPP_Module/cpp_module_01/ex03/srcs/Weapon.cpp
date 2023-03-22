@@ -1,13 +1,14 @@
 #include "../incs/Weapon.hpp"
 
-Weapon::Weapon(void) { this->_type = std::string(); }
-Weapon::Weapon(const std::string &type) { this->_type = std::string(type.c_str()); }
-Weapon::Weapon(const Weapon &weapon) { *this = weapon; }
+Weapon::Weapon(void): _type(std::string()) {}
+Weapon::Weapon(const std::string &type): _type(type) {}
+Weapon::Weapon(const Weapon &weapon): _type(weapon._type) {}
 Weapon::~Weapon(void) {}
 
 Weapon	&Weapon::operator=(const Weapon &weapon) {
 	if (this != &weapon) {
-		this->_type = std::string(weapon._type.c_str());
+		this->~Weapon();
+		new (this) Weapon(weapon);
 	}
 	return (*this);
 }

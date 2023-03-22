@@ -8,11 +8,12 @@ class HumanA {
 		Weapon		*_weapon;
 		std::string	_name;
 
-	public:
 		HumanA(void);
-		HumanA(const std::string &name, Weapon &weapon);
 		HumanA(const HumanA &humanA);
 		HumanA	&operator=(const HumanA &humanA);
+
+	public:
+		HumanA(const std::string &name, Weapon &weapon);
 		~HumanA(void);
 
 		// Utils
