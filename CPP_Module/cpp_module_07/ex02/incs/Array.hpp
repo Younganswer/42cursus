@@ -14,8 +14,8 @@ class Array {
 		Array(void);
 		Array(unsigned int n);
 		Array(const Array<T> &ref);
-		Array<T>	&operator=(const Array<T> &rhs);
 		~Array(void);
+		Array<T>	&operator=(const Array<T> &rhs);
 		
 		// Overload
 		T	&operator[](unsigned int idx) throw(std::exception);
@@ -48,21 +48,18 @@ Array<T>::Array(unsigned int n) {
 }
 
 template <typename T>
-Array<T>::Array(const Array<T> &ref) { *this = ref; }
+Array<T>::Array(const Array<T> &ref): _arr(new T[ref.size()]), _size(ref.size()) {
+	for (unsigned int i = 0; i < this->_size; i++) {
+		this->_arr[i] = ref[i];
+	}
+}
 
 template <typename T>
 Array<T>	&Array<T>::operator=(const Array<T> &rhs) {
 	if (this != &rhs) {
-		if (this->_arr) {
-			delete [] this->_arr;
-		}
-		this->_arr = new T[rhs._size];
-		this->_size = rhs._size;
-		for (int i=0; i<this->_size; i++) {
-			this->_arr[i] = rhs._arr[i];
-		}
+		this->~Array();
+		new (this) Array<T>(rhs);
 	}
-		
 	return (*this);
 }
 
@@ -84,9 +81,7 @@ T	&Array<T>::operator[](unsigned int idx) throw(std::exception) {
 
 // Util
 template <typename T>
-unsigned int	Array<T>::size(void) const {
-	return (this->_size);
-}
+unsigned int	Array<T>::size(void) const { return (this->_size); }
 
 // Exception: Out of range
 template <typename T>

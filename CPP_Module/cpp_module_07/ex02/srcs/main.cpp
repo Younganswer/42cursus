@@ -27,8 +27,9 @@ int	main(void) {
 	{
 		Array<std::string>	arr(9);
 		std::string			str[9] = {"Hello", " ", "World", "!", "\n", "I'm", " ", "younhwan", "\n"};
-		for (int i=0; i<9; i++)
+		for (int i=0; i<9; i++) {
 			arr[i] = str[i];
+		}
 		for (int i=0; i<9; i++) {
 			try {
 				std::cout << arr[i];
