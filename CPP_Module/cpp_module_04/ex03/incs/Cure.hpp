@@ -10,7 +10,7 @@ class Cure: public AMateria {
 		Cure(void);
 		Cure(const Cure &ref);
 		virtual	~Cure(void);
-		Cure	&operator=(const Cure &ref);
+		Cure	&operator=(const Cure &rhs);
 
 		// Utils
 		virtual AMateria	*clone(void) const;

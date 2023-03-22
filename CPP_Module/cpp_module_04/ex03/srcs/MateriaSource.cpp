@@ -1,12 +1,17 @@
 #include "../incs/MateriaSource.hpp"
 
-MateriaSource::MateriaSource(void) {
-	this->_count = 0;
+MateriaSource::MateriaSource(void): _count(0) {
 	for (int i = 0; i < 4; i++) {
 		this->_materia[i] = NULL;
 	}
 }
-MateriaSource::MateriaSource(const MateriaSource &ref) { (*this) = ref; }
+MateriaSource::MateriaSource(const MateriaSource &ref): _count(ref._count) {
+	for (int i=0; i<4; i++) {
+		if (ref._materia[i]) {
+			this->_materia[i] = ref._materia[i]->clone();
+		}
+	}
+}
 MateriaSource::~MateriaSource(void) {
 	for (int i=0; i<4; i++) {
 		if (this->_materia[i] != NULL) {
@@ -15,15 +20,10 @@ MateriaSource::~MateriaSource(void) {
 	}
 }
 
-MateriaSource	&MateriaSource::operator=(const MateriaSource &ref) {
-	if (this != &ref) {
-		this->_count = ref._count;
-		for (int i=0; i<4; i++) {
-			if (this->_materia[i]) {
-				delete this->_materia[i];
-			}
-			this->_materia[i] = ref._materia[i]->clone();
-		}
+MateriaSource	&MateriaSource::operator=(const MateriaSource &rhs) {
+	if (this != &rhs) {
+		this->~MateriaSource();
+		new (this) MateriaSource(rhs);
 	}
 	return (*this);
 }

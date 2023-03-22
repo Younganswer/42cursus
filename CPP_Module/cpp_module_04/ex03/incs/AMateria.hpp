@@ -15,7 +15,7 @@ class AMateria {
 		AMateria(const std::string &type);
 		AMateria(const AMateria &ref);
 		virtual		~AMateria(void);
-		AMateria	&operator=(const AMateria &ref);
+		AMateria	&operator=(const AMateria &rhs);
 		
 		// Getter
 		std::string			getType(void);

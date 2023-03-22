@@ -3,13 +3,13 @@
 
 Ice::Ice(void): AMateria("ice") {}
 Ice::Ice(const std::string &type): AMateria(type) {}
-Ice::Ice(const Ice &ref) { (*this) = ref; }
+Ice::Ice(const Ice &ref): AMateria(ref) {}
 Ice::~Ice(void) {}
 
-Ice	&Ice::operator=(const Ice &ref) {
-	if (this != &ref) {
-		this->_type = ref._type;
-		this->_xp = ref._xp;
+Ice	&Ice::operator=(const Ice &rhs) {
+	if (this != &rhs) {
+		this->~Ice();
+		new (this) Ice(rhs);
 	}
 	return (*this);
 }

@@ -1,28 +1,22 @@
 #include "../incs/Cat.hpp"
 #include <iostream>
 
-Cat::Cat(void): Animal("Cat") {
+Cat::Cat(void): Animal("Cat"), _brain(new Brain) {
 	std::cout << "Cat default constructor called" << '\n';
-	this->_brain = new Brain();
 }
-Cat::Cat(const Cat &ref) {
+Cat::Cat(const Cat &ref): Animal(ref), _brain(new Brain(*ref._brain)) {
 	std::cout << "Cat copy constructor called" << '\n';
-	this->_brain = NULL;
-	(*this) = ref;
 }
 Cat::~Cat(void) {
 	std::cout << "Cat destructor called" << '\n';
 	delete this->_brain;
 }
 
-Cat	&Cat::operator=(const Cat &ref) {
+Cat	&Cat::operator=(const Cat &rhs) {
 	std::cout << "Cat copy assignation operator called" << '\n';
-	if (this != &ref) {
-		this->_type = ref._type;
-		if (this->_brain != NULL) {
-			delete this->_brain;
-		}
-		this->_brain = new Brain(*ref._brain);
+	if (this != &rhs) {
+		this->~Cat();
+		new (this) Cat(rhs);
 	}
 	return (*this);
 }

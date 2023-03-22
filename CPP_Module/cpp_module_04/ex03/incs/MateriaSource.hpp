@@ -13,7 +13,7 @@ class MateriaSource: public IMateriaSource {
 		MateriaSource(void);
 		MateriaSource(const MateriaSource &ref);
 		virtual			~MateriaSource(void);
-		MateriaSource	&operator=(const MateriaSource &ref);
+		MateriaSource	&operator=(const MateriaSource &rhs);
 
 		// Utils
 		virtual void		learnMateria(AMateria *mat);

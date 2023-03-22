@@ -10,7 +10,7 @@ class Floor {
 		size_t		_count;
 
 		Floor(const Floor &ref);
-		Floor& operator=(const Floor &ref);
+		Floor& operator=(const Floor &rhs);
 
 	public:
 		Floor(void);

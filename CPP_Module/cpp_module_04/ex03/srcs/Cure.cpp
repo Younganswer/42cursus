@@ -2,13 +2,13 @@
 #include <iostream>
 
 Cure::Cure(void): AMateria("cure") {}
-Cure::Cure(const Cure &ref) { (*this) = ref; }
+Cure::Cure(const Cure &ref): AMateria(ref) {}
 Cure::~Cure(void) {}
 
-Cure	&Cure::operator=(const Cure &ref) {
-	if (this != &ref) {
-		this->_type = ref._type;
-		this->_xp = ref._xp;
+Cure	&Cure::operator=(const Cure &rhs) {
+	if (this != &rhs) {
+		this->~Cure();
+		new (this) Cure(rhs);
 	}
 	return (*this);
 }

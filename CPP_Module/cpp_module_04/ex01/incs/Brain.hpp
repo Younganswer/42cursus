@@ -11,7 +11,7 @@ class Brain {
 		Brain(void);
 		Brain(const Brain &ref);
 		~Brain(void);
-		Brain	&operator=(const Brain& ref);
+		Brain	&operator=(const Brain &rhs);
 		
 		// Getter
 		std::string			getIdea(int idx);

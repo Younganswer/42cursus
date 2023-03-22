@@ -27,6 +27,7 @@ int	main(void) {
 		dog->makeSound();
 		delete dog;
 	}
+	std::cout << '\n';
 	system("leaks $PPID 1> leaks_result 2>/dev/null && cat leaks_result | grep leaked && rm -rf leaks_result");
 	return (0);
 }

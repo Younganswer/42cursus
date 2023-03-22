@@ -2,15 +2,11 @@
 
 AMateria::AMateria(void): _type(std::string()), _xp(0), _equipped(false) {}
 AMateria::AMateria(const std::string &type): _type(type), _xp(0), _equipped(false) {}
-AMateria::AMateria(const AMateria &ref) { (*this) = ref; }
+AMateria::AMateria(const AMateria &ref): _type(ref._type), _xp(ref._xp), _equipped(ref._equipped) {}
 AMateria::~AMateria(void) {}
 
-AMateria	&AMateria::operator=(const AMateria &ref) {
-	if (this != &ref) {
-		this->_type = ref._type;
-		this->_xp = ref._xp;
-		this->_equipped = ref._equipped;
-	}
+AMateria	&AMateria::operator=(const AMateria &rhs) {
+	(void) rhs;
 	return (*this);
 }
 

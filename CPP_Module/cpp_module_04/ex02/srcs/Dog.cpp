@@ -1,25 +1,22 @@
 #include "../incs/Dog.hpp"
 #include <iostream>
 
-Dog::Dog(void): Animal("Dog") {
+Dog::Dog(void): Animal("Dog"), _brain(new Brain) {
 	std::cout << "Dog default constructor called" << '\n';
-	this->_brain = new Brain();
 }
-Dog::Dog(const Dog &ref) {
+Dog::Dog(const Dog &ref): Animal(ref), _brain(new Brain(*ref._brain)) {
 	std::cout << "Dog copy constructor called" << '\n';
-	(*this) = ref;
 }
 Dog::~Dog(void) {
 	std::cout << "Dog destructor called" << '\n';
 	delete this->_brain;
 }
 
-Dog	&Dog::operator=(const Dog &ref) {
+Dog	&Dog::operator=(const Dog &rhs) {
 	std::cout << "Dog copy assignation operator called" << '\n';
-	if (this != &ref) {
-		this->_type = ref._type;
-		delete this->_brain;
-		this->_brain = new Brain(*ref._brain);
+	if (this != &rhs) {
+		this->~Dog();
+		new (this) Dog(rhs);
 	}
 	return (*this);
 }

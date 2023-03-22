@@ -12,7 +12,7 @@ class WrongDog: public WrongAnimal {
 		WrongDog(void);
 		WrongDog(const WrongDog &ref);
 		~WrongDog(void);
-		WrongDog	&operator=(const WrongDog &ref);
+		WrongDog	&operator=(const WrongDog &rhs);
 
 		// Util
 		void	makeSound(void) const;

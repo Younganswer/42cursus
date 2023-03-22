@@ -11,7 +11,7 @@ class Ice: public AMateria {
 		Ice(const std::string &type);
 		Ice(const Ice &ref);
 		virtual	~Ice(void);
-		Ice		&operator=(const Ice &ref);
+		Ice		&operator=(const Ice &rhs);
 		
 		// Utils
 		virtual AMateria	*clone(void) const;

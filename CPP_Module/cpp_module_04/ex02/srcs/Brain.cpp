@@ -1,14 +1,27 @@
 #include "../incs/Brain.hpp"
 #include <iostream>
 
-Brain::Brain(void) { std::cout << "Brain default constructor called" << '\n'; }
-Brain::Brain(const Brain &ref) { std::cout << "Brain copy constructor called" << '\n'; (*this) = ref; }
-Brain::~Brain(void) { std::cout << "Brain destructor called" << '\n'; }
-
-Brain	&Brain::operator=(const Brain& ref) {
-	std::cout << "Brain copy assignation operator called" << '\n';
+Brain::Brain(void) {
+	std::cout << "Brain default constructor called" << '\n';
+	for (int i=0; i<100; i++) {
+		this->_ideas[i] = "";
+	}
+}
+Brain::Brain(const Brain &ref) {
+	std::cout << "Brain copy constructor called" << '\n';
 	for (int i=0; i<100; i++) {
 		this->_ideas[i] = ref._ideas[i];
+	}
+}
+Brain::~Brain(void) {
+	std::cout << "Brain destructor called" << '\n';
+}
+
+Brain	&Brain::operator=(const Brain &rhs) {
+	std::cout << "Brain copy assignation operator called" << '\n';
+	if (this != &rhs) {
+		this->~Brain();
+		new (this) Brain(rhs);
 	}
 	return (*this);
 }

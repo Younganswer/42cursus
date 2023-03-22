@@ -12,7 +12,7 @@ class WrongAnimal {
 		WrongAnimal(void);
 		WrongAnimal(const WrongAnimal &ref);
 		~WrongAnimal(void);
-		WrongAnimal	&operator=(const WrongAnimal& ref);
+		WrongAnimal	&operator=(const WrongAnimal &rhs);
 		
 		// Getter
 		std::string			getType(void);
