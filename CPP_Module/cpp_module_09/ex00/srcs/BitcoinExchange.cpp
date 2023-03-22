@@ -7,7 +7,7 @@ std::vector<Data>	BitcoinExchange::_db;
 
 BitcoinExchange::BitcoinExchange(void) {}
 BitcoinExchange::~BitcoinExchange(void) {}
-BitcoinExchange::BitcoinExchange(const BitcoinExchange &ref) { *this = ref; }
+BitcoinExchange::BitcoinExchange(const BitcoinExchange &ref) { (void) ref; }
 BitcoinExchange &BitcoinExchange::operator=(BitcoinExchange const &rhs) {
 	(void) rhs;
 	return (*this);

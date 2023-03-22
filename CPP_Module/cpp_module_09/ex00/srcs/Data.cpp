@@ -26,10 +26,10 @@ Data::Data(const std::string &line) throw(std::exception) {
 Data::Data(const Data &ref): _year(ref._year), _month(ref._month), _day(ref._day), _value(ref._value) {}
 Data::~Data(void) {}
 Data	&Data::operator=(const Data &rhs) {
-	this->_year = rhs._year;
-	this->_month = rhs._month;
-	this->_day = rhs._day;
-	this->_value = rhs._value;
+	if (this != &rhs) {
+		this->~Data();
+		new (this) Data(rhs);
+	}
 	return (*this);
 }
 
