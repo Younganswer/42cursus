@@ -9,8 +9,6 @@ class HumanA {
 		std::string	_name;
 
 		HumanA(void);
-		HumanA(const HumanA &humanA);
-		HumanA	&operator=(const HumanA &humanA);
 
 	public:
 		HumanA(const std::string &name, Weapon &weapon);

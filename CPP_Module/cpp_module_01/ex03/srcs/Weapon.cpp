@@ -2,13 +2,13 @@
 
 Weapon::Weapon(void): _type(std::string()) {}
 Weapon::Weapon(const std::string &type): _type(type) {}
-Weapon::Weapon(const Weapon &weapon): _type(weapon._type) {}
+Weapon::Weapon(const Weapon &ref): _type(ref._type) {}
 Weapon::~Weapon(void) {}
 
-Weapon	&Weapon::operator=(const Weapon &weapon) {
-	if (this != &weapon) {
+Weapon	&Weapon::operator=(const Weapon &rhs) {
+	if (this != &rhs) {
 		this->~Weapon();
-		new (this) Weapon(weapon);
+		new (this) Weapon(rhs);
 	}
 	return (*this);
 }

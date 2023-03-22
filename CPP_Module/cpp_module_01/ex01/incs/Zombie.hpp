@@ -10,9 +10,9 @@ class Zombie {
 	public:
 		Zombie(void);
 		Zombie(const std::string &name);
-		Zombie(const Zombie &zombie);
+		Zombie(const Zombie &ref);
 		~Zombie(void);
-		Zombie	&operator=(const Zombie &zombie);
+		Zombie	&operator=(const Zombie &rhs);
 	
 		// Setter
 		bool	setName(std::string name);

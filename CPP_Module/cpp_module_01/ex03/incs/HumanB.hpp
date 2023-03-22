@@ -9,8 +9,6 @@ class HumanB {
 		std::string	_name;
 	
 		HumanB(void);
-		HumanB(const HumanB &humanB);
-		HumanB	&operator=(const HumanB &humanB);
 
 	public:
 		HumanB(const std::string &name);

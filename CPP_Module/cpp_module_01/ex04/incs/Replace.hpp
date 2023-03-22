@@ -5,20 +5,27 @@
 
 class Replace {
 	private:
-		std::string	_fileName;
-		std::string	_s1;
-		std::string	_s2;
-
 		// Util
-		bool	replaceLine(std::string &line);
+		static bool	replaceLine(std::string &line, const std::string &s1, const std::string &s2);
 
 	public:
 		Replace(void);
-		Replace(const std::string &fileName, const std::string &s1, const std::string &s2);
 		~Replace(void);
 
 		// Util	
-		bool	replace(void);
+		static bool	replace(const std::string &fileName, const std::string &s1, const std::string &s2);
+
+		// Exception: FileOpenError
+		class FileOpenError: public std::exception {
+			private:
+				std::string	_msg;
+
+			public:
+				FileOpenError(void);
+				FileOpenError(const std::string &fileName);
+				virtual ~FileOpenError(void) throw();
+				virtual const char *what(void) const throw();
+		};
 };
 
 #endif

@@ -3,16 +3,7 @@
 
 HumanA::HumanA(void): _weapon(NULL), _name(std::string()) {}
 HumanA::HumanA(const std::string &name, Weapon &weapon): _weapon(&weapon), _name(name) {}
-HumanA::HumanA(const HumanA &humanA): _weapon(humanA._weapon), _name(humanA._name()) {}
 HumanA::~HumanA(void) {}
-
-HumanA	&HumanA::operator=(const HumanA &humanA) {
-	if (this != &humanA) {
-		this->~HumanA();
-		new (this) HumanA(humanA);
-	}
-	return (*this);
-}
 
 // Utils
 bool	HumanA::attack(void) {

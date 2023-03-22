@@ -7,14 +7,13 @@ int	main(int argc, char **argv) {
 		return (1);
 	}
 		
-	Replace	replace;
 	try {
-		replace = Replace(argv[1], argv[2], argv[3]);
+		Replace::replace(argv[1], argv[2], argv[3]);
 	} catch (std::exception &e) {
 		std::cerr << "\033[31m" << e.what() << "\033[0m" << '\n';
 		return (1);
-	}
-	if (replace.replace() == false) {
+	} catch (...) {
+		std::cerr << "\033[31m" << "Error: Unknown error" << "\033[0m" << '\n';
 		return (1);
 	}
 	return (0);
