@@ -6,25 +6,39 @@
 template <typename T>
 class MutantStack: public std::stack<T> {
 	public:
-		MutantStack(void): std::stack<T>() {}
-		MutantStack(const MutantStack &ref): std::stack<T>(ref) {}
-		MutantStack	&operator=(const MutantStack &rhs) {
-			if (this != &rhs) {
-				std::stack<T>::operator=(rhs);
-			}
-			return (*this);
-		}
-		~MutantStack(void) {}
+		MutantStack(void);
+		MutantStack(const MutantStack &ref);
+		virtual ~MutantStack(void);
+		virtual MutantStack	&operator=(const MutantStack &rhs);
 
-		typedef typename std::stack<T>::container_type::iterator iterator;
-
-		iterator	begin(void) {
-			return (std::stack<T>::c.begin());
-		}
-		
-		iterator	end(void) {
-			return (std::stack<T>::c.end());
-		}
+		// Utils
+		virtual typename MutantStack<T>::iterator	begin(void) const;
+		virtual typename MutantStack<T>::iterator	end(void) const;
 };
+
+template <typename T>
+MutantStack<T>::MutantStack(void) {}
+
+template <typename T>
+MutantStack<T>::MutantStack(const MutantStack &ref): std::stack<T>(ref) {}
+
+template <typename T>
+MutantStack<T>::~MutantStack(void) {}
+
+template <typename T>
+MutantStack<T>	&MutantStack<T>::operator=(const MutantStack &rhs) {
+	if (this != &rhs) {
+		this->~MutantStack();
+		new (this) MutantStack(rhs);
+	}
+	return (*this);
+}
+
+// Utils
+template <typename T>
+typename MutantStack<T>::iterator	MutantStack<T>::begin(void) const { return (this->c.begin()); }
+
+template <typename T>
+typename MutantStack<T>::iterator	MutantStack<T>::end(void) const { return (this->c.end()); }
 
 #endif

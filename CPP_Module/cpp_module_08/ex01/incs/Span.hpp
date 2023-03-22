@@ -7,22 +7,23 @@ class Span {
 	private:
 		std::vector<int>	_vec;
 		unsigned int		_size;
+
 		Span(void);
 
 	public:
 		Span(unsigned int n);
 		Span(const Span &ref);
-		Span	&operator=(const Span &rhs);
 		~Span(void);
+		Span	&operator=(const Span &rhs);
 
 		// Utils
 		void	addNumber(int num);
-		int		shortestSpan(void);
-		int		longestSpan(void);
+		int		shortestSpan(void) const;
+		int		longestSpan(void) const;
 		
-		bool			print(void);
-		unsigned int	size(void);
-		unsigned int	maxSize(void);
+		bool			print(void) const;
+		unsigned int	size(void) const;
+		unsigned int	maxSize(void) const;
 
 		// Exception: Duplicated
 		class DuplicatedException: public std::exception {

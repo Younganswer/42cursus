@@ -3,15 +3,17 @@
 
 Span::Span(void) {}
 Span::Span(unsigned int n): _size(n) {}
-Span::Span(const Span &ref) { *this = ref; }
+Span::Span(const Span &ref): _size(ref._size) {
+	for (size_t i=0; i<ref._vec.size(); i++) {
+		this->_vec.push_back(ref._vec[i]);
+	}
+}
 Span::~Span(void) {}
+
 Span	&Span::operator=(const Span &rhs) {
 	if (this != &rhs) {
-		this->_vec.clear();
-		this->_size = rhs._size;
-		for (size_t i=0; i<rhs._vec.size(); i++) {
-			this->_vec.push_back(rhs._vec[i]);
-		}
+		this->~Span();
+		new (this) Span(rhs);
 	}
 	return (*this);
 }
@@ -39,7 +41,7 @@ void	Span::addNumber(int num) {
 	this->_vec.insert(it, num);
 }
 
-int		Span::shortestSpan(void) {
+int		Span::shortestSpan(void) const {
 	if (this->_vec.size() <= 1) {
 		throw NotEnoughException();
 	}
@@ -54,7 +56,7 @@ int		Span::shortestSpan(void) {
 	return (ret);
 }
 
-int		Span::longestSpan(void) {
+int		Span::longestSpan(void) const {
 	if (this->_vec.size() <= 1) {
 		throw NotEnoughException();
 	}
@@ -62,7 +64,7 @@ int		Span::longestSpan(void) {
 	return (this->_vec[this->_vec.size()-1] - this->_vec[0]);
 }
 
-bool	Span::print(void) {
+bool	Span::print(void) const {
 	for (size_t i=0; i<this->_vec.size(); i++) {
 		std::cout << this->_vec[i] << ' ';
 	}
@@ -70,11 +72,11 @@ bool	Span::print(void) {
 	return (true);
 }
 
-unsigned int	Span::size(void) {
+unsigned int	Span::size(void) const {
 	return (this->_vec.size());
 }
 
-unsigned int	Span::maxSize(void) {
+unsigned int	Span::maxSize(void) const {
 	return (this->_size);
 }
 
