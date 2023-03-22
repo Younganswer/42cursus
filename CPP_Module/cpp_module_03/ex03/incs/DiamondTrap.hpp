@@ -12,9 +12,9 @@ class DiamondTrap: public ScavTrap, public FragTrap {
 	public:
 		DiamondTrap(void);
 		DiamondTrap(const std::string &name);
-		DiamondTrap(const DiamondTrap &diamond_trap);
+		DiamondTrap(const DiamondTrap &ref);
 		~DiamondTrap(void);
-		DiamondTrap	&operator=(const DiamondTrap &diamond_trap);
+		DiamondTrap	&operator=(const DiamondTrap &rhs);
 
 		// Utils
 		void	attack(const std::string &target);

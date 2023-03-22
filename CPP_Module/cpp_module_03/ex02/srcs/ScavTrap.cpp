@@ -15,15 +15,15 @@ ScavTrap::ScavTrap(const std::string &name): ClapTrap(name) {
 	this->_attack_damage = 20;
 }
 
-ScavTrap::ScavTrap(const ScavTrap &scav_trap): ClapTrap(scav_trap) {
+ScavTrap::ScavTrap(const ScavTrap &ref): ClapTrap(ref) {
 	std::cout << "Copy constructor of SC4V-TP is called" << '\n';
 }
 
-ScavTrap	&ScavTrap::operator=(const ScavTrap &scav_trap) {
+ScavTrap	&ScavTrap::operator=(const ScavTrap &rhs) {
 	std::cout << "Copy assign operator of SC4V-TP is called" << '\n';
-	if (this != &scav_trap) {
+	if (this != &rhs) {
 		this->~ScavTrap();
-		new (this) ScavTrap(scav_trap);
+		new (this) ScavTrap(rhs);
 	}
 	return (*this);
 }

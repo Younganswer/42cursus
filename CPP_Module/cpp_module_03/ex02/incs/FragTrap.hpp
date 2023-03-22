@@ -7,9 +7,9 @@ class FragTrap: public ClapTrap {
 	public:
 		FragTrap(void);
 		FragTrap(const std::string &name);
-		FragTrap(const FragTrap &Frag_trap);
+		FragTrap(const FragTrap &ref);
 		~FragTrap(void);
-		FragTrap	&operator=(const FragTrap &Frag_trap);
+		FragTrap	&operator=(const FragTrap &rhs);
 
 		// Util
 		void	highFivesGuys(void);

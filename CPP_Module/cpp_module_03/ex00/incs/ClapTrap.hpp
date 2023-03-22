@@ -13,9 +13,9 @@ class ClapTrap {
 	public:
 		ClapTrap(void);
 		ClapTrap(const std::string &name);
-		ClapTrap(const ClapTrap &clap_trap);
+		ClapTrap(const ClapTrap &ref);
 		~ClapTrap(void);
-		ClapTrap	&operator=(const ClapTrap &clap_trap);
+		ClapTrap	&operator=(const ClapTrap &rhs);
 	
 		// Utils
 		void	attack(const std::string &target);

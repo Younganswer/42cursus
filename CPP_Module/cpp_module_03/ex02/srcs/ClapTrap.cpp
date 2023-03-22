@@ -7,18 +7,18 @@ ClapTrap::ClapTrap(void): _name(std::string()), _hit_points(10), _energy_points(
 ClapTrap::ClapTrap(const std::string &name): _name(name), _hit_points(10), _energy_points(10), _attack_damage(0) {
 	std::cout << "Const std::string reference constructor of CL4P-TP is called" << '\n';
 }
-ClapTrap::ClapTrap(const ClapTrap &clap_trap): _name(clap_trap._name), _hit_points(clap_trap._hit_points), _energy_points(clap_trap._energy_points), _attack_damage(clap_trap._attack_damage) {
+ClapTrap::ClapTrap(const ClapTrap &ref): _name(ref._name), _hit_points(ref._hit_points), _energy_points(ref._energy_points), _attack_damage(ref._attack_damage) {
 	std::cout << "Copy constructor of CL4P-TP is called" << '\n';
 }
 ClapTrap::~ClapTrap(void) {
 	std::cout << "Destructor of CL4P-TP is called" << '\n';
 }
 
-ClapTrap	&ClapTrap::operator=(const ClapTrap &clap_trap) {
+ClapTrap	&ClapTrap::operator=(const ClapTrap &rhs) {
 	std::cout << "Copy assignment operator of CL4P-TP is called" << '\n';
-	if (this != &clap_trap) {
+	if (this != &rhs) {
 		this->~ClapTrap();
-		new (this) ClapTrap(clap_trap);
+		new (this) ClapTrap(rhs);
 	}
 	return (*this);
 }

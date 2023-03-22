@@ -9,15 +9,15 @@ DiamondTrap::DiamondTrap(const std::string &name): ClapTrap(name + "_clap_trap")
 	std::cout << "const std::string constructor of DiamonTrap is called" << '\n';
 }
 
-DiamondTrap::DiamondTrap(const DiamondTrap &diamond_trap): ClapTrap(diamond_trap._name + "_clap_trap"), ScavTrap(diamond_trap._name + "_clap_trap"), FragTrap(diamond_trap._name + "_clap_trap"), _name(diamond_trap._name) {
+DiamondTrap::DiamondTrap(const DiamondTrap &ref): ClapTrap(ref._name + "_clap_trap"), ScavTrap(ref._name + "_clap_trap"), FragTrap(ref._name + "_clap_trap"), _name(ref._name) {
 	std::cout << "Copy constructor of DiamonTrap is called" << '\n';
 }
 
-DiamondTrap	&DiamondTrap::operator=(const DiamondTrap &diamond_trap) {
+DiamondTrap	&DiamondTrap::operator=(const DiamondTrap &rhs) {
 	std::cout << "Copy assign operator of DiamonTrap is called" << '\n';
-	if (this != &diamond_trap) {
+	if (this != &rhs) {
 		this->~DiamondTrap();
-		new (this) DiamondTrap(diamond_trap);
+		new (this) DiamondTrap(rhs);
 	}
 	return (*this);
 }
