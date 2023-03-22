@@ -15,15 +15,15 @@ FragTrap::FragTrap(const std::string &name): ClapTrap(name) {
 	this->_attack_damage = 30;
 }
 
-FragTrap::FragTrap(const FragTrap &Frag_trap) {
+FragTrap::FragTrap(const FragTrap &Frag_trap): ClapTrap(Frag_trap), _hit_points(Frag_trap._hit_points), _energy_points(Frag_trap._energy_points), _attack_damage(Frag_trap._attack_damage) {
 	std::cout << "Copy constructor of FR4G-TP is called" << '\n';
-	(*this) = Frag_trap;
 }
 
 FragTrap	&FragTrap::operator=(const FragTrap &Frag_trap) {
 	std::cout << "Copy assign operator of FR4G-TP is called" << '\n';
 	if (this != &Frag_trap) {
-		ClapTrap::operator=(Frag_trap);
+		this->~FragTrap();
+		new (this) FragTrap(Frag_trap);
 	}
 	return (*this);
 }
