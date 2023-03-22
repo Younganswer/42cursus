@@ -17,7 +17,7 @@ class AForm {
 		AForm(const std::string &name, const int grade_to_sign, const int grade_to_execute) throw(std::exception);
 		AForm(const AForm &ref);
 		virtual	~AForm(void);
-		virtual AForm	&operator=(const AForm &ref);
+		virtual AForm	&operator=(const AForm &rhs);
 
 	public:
 		// Getter

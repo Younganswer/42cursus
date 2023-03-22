@@ -12,9 +12,9 @@ AForm::AForm(const std::string &name, int grade_to_sign, int grade_to_execute) t
 AForm::AForm(const AForm &ref): _name(ref._name), _is_signed(ref.getIsSigned()), _grade_to_sign(ref._grade_to_sign), _grade_to_execute(ref._grade_to_execute) {}
 AForm::~AForm(void) {}
 
-AForm	&AForm::operator=(const AForm &ref) {
-	if (this != &ref) {
-		this->_is_signed = ref.getIsSigned();
+AForm	&AForm::operator=(const AForm &rhs) {
+	if (this != &rhs) {
+		this->_is_signed = rhs.getIsSigned();
 	}
 	return (*this);
 }

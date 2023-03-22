@@ -11,9 +11,9 @@ std::string			PresidentialPardonForm::getTarget(void) { return (this->_target); 
 const std::string	&PresidentialPardonForm::getTarget(void) const { return (this->_target); }
 
 // Utils
-void	PresidentialPardonForm::execute(const Bureaucrat &ref) const throw(std::exception) {
+void	PresidentialPardonForm::execute(const Bureaucrat &bureaucrat) const throw(std::exception) {
 	if (this->getIsSigned() == false) {
 		throw AForm::FormNotSignedException(this->getName());
 	}
-	std::cout << this->getTarget() << " has been pardoned by " << ref.getName() << '\n';
+	std::cout << this->getTarget() << " has been pardoned by " << bureaucrat.getName() << '\n';
 }

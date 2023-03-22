@@ -20,7 +20,7 @@ class ShrubberyCreationForm: public AForm {
 		bool	setTarget(const std::string &target);
 
 		// Utils
-		void	execute(const Bureaucrat &ref) const throw(std::exception);
+		void	execute(const Bureaucrat &bureaucrat) const throw(std::exception);
 
 		// Exception: FileOpenFailedException
 		class FileOpenFailedException: public std::exception {

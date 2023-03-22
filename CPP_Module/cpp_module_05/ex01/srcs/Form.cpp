@@ -12,10 +12,10 @@ Form::Form(const std::string &name, int grade_to_sign, int grade_to_execute) thr
 Form::Form(const Form &ref): _name(ref._name), _is_signed(ref.getIsSigned()), _grade_to_sign(ref._grade_to_sign), _grade_to_execute(ref._grade_to_execute) {}
 Form::~Form(void) {}
 
-Form	&Form::operator=(const Form &ref) {
-	if (this != &ref) {
+Form	&Form::operator=(const Form &rhs) {
+	if (this != &rhs) {
 		this->~Form();
-		new (this) Form(ref);
+		new (this) Form(rhs);
 	}
 	return (*this);
 }

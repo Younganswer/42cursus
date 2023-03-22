@@ -18,7 +18,7 @@ class PresidentialPardonForm: public AForm {
 		const std::string	&getTarget(void) const;
 
 		// Utils
-		void	execute(const Bureaucrat &ref) const throw(std::exception);
+		void	execute(const Bureaucrat &bureaucrat) const throw(std::exception);
 };
 
 #endif

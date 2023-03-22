@@ -13,10 +13,10 @@ Bureaucrat::Bureaucrat(const std::string &name, int grade) throw(std::exception)
 Bureaucrat::Bureaucrat(const Bureaucrat &ref): _name(ref._name), _grade(ref._grade) {}
 Bureaucrat::~Bureaucrat(void) {}
 
-Bureaucrat& Bureaucrat::operator=(const Bureaucrat &ref) {
-	if (this != &ref) {
+Bureaucrat& Bureaucrat::operator=(const Bureaucrat &rhs) {
+	if (this != &rhs) {
 		this->~Bureaucrat();
-		new (this) Bureaucrat(ref);
+		new (this) Bureaucrat(rhs);
 	}
 	return (*this);
 }

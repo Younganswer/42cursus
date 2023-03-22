@@ -17,7 +17,7 @@ class Form {
 		Form(const std::string &name, const int grade_to_sign, const int grade_to_execute) throw(std::exception);
 		Form(const Form &ref);
 		~Form(void);
-		Form	&operator=(const Form &ref);
+		Form	&operator=(const Form &rhs);
 
 		// Getter
 		std::string			getName(void);

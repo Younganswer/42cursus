@@ -11,11 +11,11 @@ std::string			RobotomyRequestForm::getTarget(void) { return (this->_target); }
 const std::string	&RobotomyRequestForm::getTarget(void) const { return (this->_target); }
 
 // Utils
-void				RobotomyRequestForm::execute(const Bureaucrat &ref) const throw(std::exception) {
+void				RobotomyRequestForm::execute(const Bureaucrat &bureaucrat) const throw(std::exception) {
 	if (this->getIsSigned() == false) {
 		throw AForm::FormNotSignedException();
 	}
-	std::cout << ref.getName() << " robotomizes " << this->getTarget() << '\n';
+	std::cout << bureaucrat.getName() << " robotomizes " << this->getTarget() << '\n';
 	std::cout << "Drilling noises" << '\n';
 	srand(time(NULL));
 	if (rand() % 2 == 0) {

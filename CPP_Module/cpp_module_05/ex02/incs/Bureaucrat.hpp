@@ -14,8 +14,8 @@ class Bureaucrat {
 		Bureaucrat(void);
 		Bureaucrat(const std::string &name, int grade) throw(std::exception);
 		Bureaucrat(const Bureaucrat &ref);
-		Bureaucrat	&operator=(const Bureaucrat &ref);
 		~Bureaucrat(void);
+		Bureaucrat	&operator=(const Bureaucrat &rhs);
 
 		// Getter
 		std::string			getName(void);

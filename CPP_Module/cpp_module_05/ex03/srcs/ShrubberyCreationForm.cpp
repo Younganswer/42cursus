@@ -18,7 +18,7 @@ bool	ShrubberyCreationForm::setTarget(const std::string &target) {
 }
 
 // Utils
-void	ShrubberyCreationForm::execute(const Bureaucrat &ref) const throw(std::exception) {
+void	ShrubberyCreationForm::execute(const Bureaucrat &bureaucrat) const throw(std::exception) {
 	if (this->getIsSigned() == false) {
 		throw AForm::FormNotSignedException();
 	}
@@ -26,7 +26,7 @@ void	ShrubberyCreationForm::execute(const Bureaucrat &ref) const throw(std::exce
 	if (!fout.is_open()) {
 		throw ShrubberyCreationForm::FileOpenFailedException(this->_target + "_shruberry");
 	}
-	std::cout << ref.getName() << " trimmed a tree and created a shrubbery at " << this->_target << '\n';
+	std::cout << bureaucrat.getName() << " trimmed a tree and created a shrubbery at " << this->_target << '\n';
 	fout << "               .@@@@@@@." << '\n';
 	fout << "       ,,,.  .@@@@@/@@@@@..o8888888o." << '\n';
 	fout << "    ,&%%&%&%o@@@@@/@@@@@@@88\\88/8o8o." << '\n';
