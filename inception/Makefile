@@ -15,6 +15,6 @@ stop:
 status:
 	@docker ps
 
-.PHONY: up down stop start status job
+.PHONY: up down stop start status
 
-.NOTPARALLEL: up down stop start status job
+.NOTPARALLEL: up down stop start status

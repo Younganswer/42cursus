@@ -2,13 +2,13 @@
 
 service mysql start 
 
-echo "CREATE DATABASE IF NOT EXISTS $db1_name ;" > db1.sql
-echo "CREATE USER IF NOT EXISTS '$db1_user'@'%' IDENTIFIED BY '$db1_pwd' ;" >> db1.sql
-echo "GRANT ALL PRIVILEGES ON $db1_name.* TO '$db1_user'@'%' ;" >> db1.sql
-echo "ALTER USER 'root'@'localhost' IDENTIFIED BY '12345' ;" >> db1.sql
-echo "FLUSH PRIVILEGES;" >> db1.sql
+echo "CREATE DATABASE IF NOT EXISTS $mariadb_name ;" > mariadb.sql
+echo "CREATE USER IF NOT EXISTS '$mariadb_user'@'%' IDENTIFIED BY '$mariadb_pwd' ;" >> mariadb.sql
+echo "GRANT ALL PRIVILEGES ON $mariadb_name.* TO '$mariadb_user'@'%' ;" >> mariadb.sql
+echo "ALTER USER 'root'@'localhost' IDENTIFIED BY '12345' ;" >> mariadb.sql
+echo "FLUSH PRIVILEGES;" >> mariadb.sql
 
-mysql < db1.sql
+mysql < mariadb.sql
 
 kill $(cat /var/run/mysqld/mysqld.pid)
 
