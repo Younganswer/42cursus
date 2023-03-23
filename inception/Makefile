@@ -12,9 +12,17 @@ start:
 stop:
 	@${DOCKER_COMPOSE} stop
 
-status:
-	@docker ps
+clean:
+	@rm -rf ./srcs/requirements/mariadb/data/*
+	@rm -rf ./srcs/requirements/nginx/logs/*
+	@rm -rf ./srcs/requirements/wordpress/html/*
 
-.PHONY: up down stop start status
+fclean: down clean
+	@docker rmi -f $$(docker images -a -q)
+	@docker volume rm $$(docker volume ls -q)
 
-.NOTPARALLEL: up down stop start status
+.IGNORE: fclean
+
+.PHONY: up down stop start clean fclean
+
+.NOTPARALLEL: up down stop start clean fclean
