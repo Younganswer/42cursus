@@ -8,6 +8,13 @@ volumes:
             device: $HOME/Desktop/42seoul/42cursus/inception/volumes/mariadb
             type: none
             o: bind
+    nginx:
+        name: nginx
+        driver: local
+        driver_opts:
+            device: $HOME/Desktop/42seoul/42cursus/inception/volumes/nginx
+            type: none
+            o: bind
     wordpress:
         name: wordpress
         driver: local
@@ -37,6 +44,7 @@ services:
         depends_on:
             - wordpress
         volumes:
+            - nginx:/var/log/nginx
             - wordpress:/var/www/html
         networks:
             - inception
