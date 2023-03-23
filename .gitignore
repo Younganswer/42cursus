@@ -6,6 +6,6 @@ push_swap/push_swap_visualizer/
 
 # inception
 .env
-./inception/srcs/requirements/mariadb/data
-./inception/srcs/requirements/wordpress/html
-./inception/srcs/requirements/nginx/logs
+inception/srcs/requirements/mariadb/data
+inception/srcs/requirements/wordpress/html
+inception/srcs/requirements/nginx/logs
