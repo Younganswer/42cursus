@@ -15,6 +15,10 @@ stop:
 status:
 	@docker ps
 
+clean:
+	@rm -rf volumes/mariadb/*
+	@rm -rf volumes/wordpress/*
+
 .PHONY: up down stop start status
 
 .NOTPARALLEL: up down stop start status
