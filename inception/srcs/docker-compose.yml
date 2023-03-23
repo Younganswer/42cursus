@@ -5,21 +5,21 @@ volumes:
         name: mariadb
         driver: local
         driver_opts:
-            device: $HOME/Desktop/42seoul/42cursus/inception/volumes/mariadb
+            device: ./requirements/mariadb/data
             type: none
             o: bind
     nginx:
         name: nginx
         driver: local
         driver_opts:
-            device: $HOME/Desktop/42seoul/42cursus/inception/volumes/nginx
+            device: ./requirements/nginx/logs
             type: none
             o: bind
     wordpress:
         name: wordpress
         driver: local
         driver_opts:
-            device: $HOME/Desktop/42seoul/42cursus/inception/volumes/wordpress
+            device: ./requirements/wordpress/html
             type: none
             o: bind
 
