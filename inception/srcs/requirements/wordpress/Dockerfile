@@ -7,7 +7,7 @@ LABEL	name="wordpress" \
 EXPOSE 9000
 
 RUN apt update -y
-RUN apt install php-fpm php-mysql curl -y
+RUN apt install php7.3 php-fpm php-mysql curl -y
 
 COPY ./tools/setup.sh /
 
