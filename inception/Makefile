@@ -1,6 +1,8 @@
 DOCKER_COMPOSE = docker-compose -f ./srcs/docker-compose.yml
 
 up:
+	@mkdir -p ./srcs/requirements/mariadb/data
+	@mkdir -p ./srcs/requirements/nginx/logs
 	@${DOCKER_COMPOSE} up --build -d
 
 down:
@@ -13,16 +15,9 @@ stop:
 	@${DOCKER_COMPOSE} stop
 
 clean:
-	@rm -rf ./srcs/requirements/mariadb/data/*
-	@rm -rf ./srcs/requirements/nginx/logs/*
-	@rm -rf ./srcs/requirements/wordpress/html/*
+	@rm -rf ./srcs/requires/mariadb/data/*
+	@rm -rf ./srcs/requires/nginx/logs/*
 
-fclean: down clean
-	@docker rmi -f $$(docker images -a -q)
-	@docker volume rm $$(docker volume ls -q)
+.PHONY: up down stop start
 
-.IGNORE: fclean
-
-.PHONY: up down stop start clean fclean
-
-.NOTPARALLEL: up down stop start clean fclean
+.NOTPARALLEL: up down stop start
