@@ -35,16 +35,19 @@ void	identify_from_pointer(Base *p) {
 void	identify_from_reference(Base &p) {
 	try {
 		A &a = dynamic_cast<A &>(p);
+
 		(void) a;
 		std::cout << "This is A class" << '\n';
 	} catch (std::exception &e) {
 		try {
 			B &b = dynamic_cast<B &>(p);
+
 			(void) b;
 			std::cout << "This is B class" << '\n';
 		} catch (std::exception &e) {
 			try {
 				C &c = dynamic_cast<C &>(p);
+
 				(void) c;
 				std::cout << "This is C class" << '\n';
 			} catch (std::exception &e) {

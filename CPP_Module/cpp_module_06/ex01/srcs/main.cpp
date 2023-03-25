@@ -1,5 +1,6 @@
 #include "../incs/Serialize.hpp"
 #include <iostream>
+#include <iomanip>
 
 int	main(void) {
 	{
@@ -16,7 +17,9 @@ int	main(void) {
 		{
 			std::cout << "Address of variables" << '\n';
 			std::cout << "Data: " << data << '\n';
-			std::cout << "Serialized: " << serialized << '\n';
+			std::cout << std::hex;
+			std::cout << "Serialized: 0x" << serialized << '\n';
+			std::cout << std::dec;
 			std::cout << "Deserialized: " << deserialized << '\n';
 		}
 		std::cout << '\n';
