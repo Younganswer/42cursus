@@ -15,5 +15,13 @@ int	main(void) {
 		identify_from_reference(*base);
 		delete base;
 	}
+	std::cout << '\n';
+	{
+		Base	*base = new Base();
+
+		identify_from_pointer(base);
+		identify_from_reference(*base);
+		delete base;
+	}
 	return (0);
 }

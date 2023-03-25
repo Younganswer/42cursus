@@ -22,13 +22,12 @@ class Convert {
 		static bool	printFloat(const std::string &str);
 		static bool	printDouble(const std::string &str);
 		
+		Convert(void);
+		~Convert(void);
 		Convert(const Convert &ref);
 		Convert	&operator=(const Convert &rhs);
 
 	public:
-		Convert(void);
-		~Convert(void);
-
 		// Util
 		static bool	convert(const std::string &str);
 };

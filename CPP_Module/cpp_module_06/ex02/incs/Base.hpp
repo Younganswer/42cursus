@@ -8,6 +8,6 @@ class Base {
 
 Base	*generate(void);
 void	identify_from_pointer(Base *p);
-void	identify_from_reference(Base &p);
+void	identify_from_reference(Base &ref);
 
 #endif

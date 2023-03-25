@@ -7,12 +7,12 @@ int	main(void) {
 		Data 		*data = new Data("Hello", "World", 42);
 		uintptr_t 	serialized = Serialize::serialize(data);
 		Data 		*deserialized = Serialize::deserialize(serialized);
-		char		*str1 = (char *)data;
-		char		*str2 = (char *)serialized;
-		char		*str3 = (char *)deserialized;
-		int			i1 = *(int *)data;
-		int			i2 = *(int *)serialized;
-		int			i3 = *(int *)deserialized;
+		char		*str1 = reinterpret_cast<char *>(data);
+		char		*str2 = reinterpret_cast<char *>(serialized);
+		char		*str3 = reinterpret_cast<char *>(deserialized);
+		int			i1 = *reinterpret_cast<int *>(data);
+		int			i2 = *reinterpret_cast<int *>(serialized);
+		int			i3 = *reinterpret_cast<int *>(deserialized);
 
 		{
 			std::cout << "Address of variables" << '\n';
@@ -25,14 +25,12 @@ int	main(void) {
 		std::cout << '\n';
 		{
 			std::cout << "Values of Data" << '\n';
-			std::cout << data->s1 << ' ' << data->s2 << '\n';
-			std::cout << data->n << '\n';
+			std::cout << data->s1 << ' ' << data->s2 << ' ' << data->n << '\n';
 		}
 		std::cout << '\n';
 		{
 			std::cout << "Values of Deserialized" << '\n';
-			std::cout << deserialized->s1 << ' ' << deserialized->s2 << '\n';
-			std::cout << deserialized->n << '\n';
+			std::cout << deserialized->s1 << ' ' << deserialized->s2 << ' ' << deserialized->n << '\n';
 		}
 		std::cout << '\n';
 		{
@@ -62,10 +60,12 @@ int	main(void) {
 		}
 		std::cout << '\n';
 		{
+			std::cout << std::hex;
 			std::cout << "Integer value of each pointer points to" << '\n';
-			std::cout << "Integer 1: " << i1 << '\n';
-			std::cout << "Integer 2: " << i2 << '\n';
-			std::cout << "Integer 3: " << i3 << '\n';
+			std::cout << "Integer 1: 0x" << i1 << '\n';
+			std::cout << "Integer 2: 0x" << i2 << '\n';
+			std::cout << "Integer 3: 0x" << i3 << '\n';
+			std::cout << std::dec;
 		}
 		std::cout << '\n';
 		{

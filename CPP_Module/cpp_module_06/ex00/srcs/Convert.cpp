@@ -113,53 +113,15 @@ bool	Convert::parameterIsDouble(const std::string &str) {
 }
 
 bool	Convert::printChar(const std::string &str) {
-	char	ch;
-	int		i;
-	float	f;
-	double	d;
+	char	ch = str[0];
+	int		i = static_cast<int>(ch);
+	float	f = static_cast<float>(ch);
+	double	d = static_cast<double>(ch);
 
-	if (possibleToConvertStringToDouble(str)) {
-		if (possibleToConvertStringToFloat(str)) {
-			if (possibleToConvertStringToInt(str)) {
-				if (possibleToConvertStringToChar(str)) {
-					ch = str[0];
-					i = static_cast<int>(ch);
-					f = static_cast<float>(ch);
-					d = static_cast<double>(ch);
-
-					std::cout << "char: ";
-					if (32 <= i && i <= 126) {
-						std::cout << "'" << ch << "'" << '\n';
-					} else {
-						std::cout << "Non displayable" << '\n';
-					}
-					std::cout << "int: " << i << '\n';
-					std::cout << "float: " << f << "f" << '\n';
-					std::cout << "double: " << d << '\n';
-				} else {
-					std::cout << "char: impossible" << '\n';
-					std::cout << "int: " << std::stoi(str) << '\n';
-					std::cout << "float: " << std::stof(str) << "f" << '\n';
-					std::cout << "double: " << std::stod(str) << '\n';	
-				}
-			} else {
-				std::cout << "char: impossible" << '\n';
-				std::cout << "int: impossible" << '\n';
-				std::cout << "float: " << std::stof(str) << "f" << '\n';
-				std::cout << "double: " << std::stod(str) << '\n';
-			}
-		} else {
-			std::cout << "char: impossible" << '\n';
-			std::cout << "int: impossible" << '\n';
-			std::cout << "float: impossible" << '\n';
-			std::cout << "double: " << std::stod(str) << '\n';
-		}
-	} else {
-		std::cout << "char: impossible" << '\n';
-		std::cout << "int: impossible" << '\n';
-		std::cout << "float: impossible" << '\n';
-		std::cout << "double: impossible" << '\n';
-	}
+	std::cout << "char: " << "'" << ch << "'" << '\n';
+	std::cout << "int: " << i << '\n';
+	std::cout << "float: " << f << "f" << '\n';
+	std::cout << "double: " << d << '\n';
 	return (true);
 }
 

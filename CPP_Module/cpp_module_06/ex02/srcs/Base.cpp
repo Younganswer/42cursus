@@ -28,30 +28,30 @@ void	identify_from_pointer(Base *p) {
 	} else if (dynamic_cast<C *>(p)) {
 		std::cout << "This is C class" << '\n';
 	} else {
-		std::cerr << "\033[31m" << "Error: Unexpected error" << "\033[0m" << '\n';
+		std::cerr << "\033[31m" << "Error: Base *p is not created by its derived class" << "\033[0m" << '\n';
 	}
 }
 
-void	identify_from_reference(Base &p) {
+void	identify_from_reference(Base &ref) {
 	try {
-		A &a = dynamic_cast<A &>(p);
+		A &a = dynamic_cast<A &>(ref);
 
 		(void) a;
 		std::cout << "This is A class" << '\n';
 	} catch (std::exception &e) {
 		try {
-			B &b = dynamic_cast<B &>(p);
+			B &b = dynamic_cast<B &>(ref);
 
 			(void) b;
 			std::cout << "This is B class" << '\n';
 		} catch (std::exception &e) {
 			try {
-				C &c = dynamic_cast<C &>(p);
+				C &c = dynamic_cast<C &>(ref);
 
 				(void) c;
 				std::cout << "This is C class" << '\n';
 			} catch (std::exception &e) {
-				std::cerr << "\033[31m" << "Error: Unexpected error" << "\033[0m" << '\n';
+				std::cerr << "\033[31m" << "Error: Base &ref is not created by its derived class" << "\033[0m" << '\n';
 			}
 		}
 	}

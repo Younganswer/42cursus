@@ -15,13 +15,12 @@ typedef struct _Data {
 
 class Serialize {
 	private:
+		Serialize(void);
+		~Serialize(void);
 		Serialize(const Serialize &src);
 		Serialize	&operator=(const Serialize &rhs);
 
 	public:
-		Serialize(void);
-		~Serialize(void);
-
 		static uintptr_t	serialize(Data *ptr);
 		static Data			*deserialize(uintptr_t raw);
 };
