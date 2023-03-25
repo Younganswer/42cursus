@@ -2,8 +2,16 @@
 # define CONVERT_HPP
 
 # include <string>
+# define FLT_MIN -3.40282347e+38
+# define FLT_MAX 3.40282347e+38
 
 class Convert {
+	private:
+		static bool	possibleToConvertStringToChar(const std::string &str);
+		static bool	possibleToConvertStringToInt(const std::string &str);
+		static bool	possibleToConvertStringToFloat(const std::string &str);
+		static bool	possibleToConvertStringToDouble(const std::string &str);
+	
 		static bool	parameterIsChar(const std::string &str);
 		static bool	parameterIsInt(const std::string &str);
 		static bool	parameterIsFloat(const std::string &str);
