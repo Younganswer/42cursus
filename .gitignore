@@ -1,10 +1,6 @@
 .vscode/
 .DS_Store
+.env
 
 # push_swap
 push_swap/push_swap_visualizer/
-
-# inception
-.env
-inception/srcs/requirements/mariadb/data
-inception/srcs/requirements/nginx/logs
