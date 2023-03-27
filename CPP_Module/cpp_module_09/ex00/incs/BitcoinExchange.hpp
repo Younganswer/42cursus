@@ -10,15 +10,14 @@ class BitcoinExchange {
 	private:
 		static std::vector<Data>	_db;
 
+		BitcoinExchange(void);
+		~BitcoinExchange(void);
 		BitcoinExchange(const BitcoinExchange &ref);
 		BitcoinExchange	&operator=(const BitcoinExchange &rhs);
 		
 		static bool	openFile(std::ifstream &ifs, const std::string &filename);
 
 	public:
-		BitcoinExchange(void);
-		~BitcoinExchange(void);
-
 		// Util
 		static bool	initializeDB(void) throw(std::exception);
 		static bool	showDB(void);

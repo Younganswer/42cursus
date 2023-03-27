@@ -4,9 +4,9 @@
 #include <cmath>
 
 Convert::Convert(void) {}
+Convert::~Convert(void) {}
 Convert::Convert(const Convert &ref) { (void) ref; }
 Convert	&Convert::operator=(const Convert &rhs) { (void) rhs; return (*this); }
-Convert::~Convert(void) {}
 
 bool	Convert::possibleToConvertStringToChar(const std::string &str) {
 	double	d = std::stod(str);

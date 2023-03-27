@@ -12,9 +12,9 @@ class Array {
 
 	public:
 		Array(void);
+		~Array(void);
 		Array(unsigned int n);
 		Array(const Array<T> &ref);
-		~Array(void);
 		Array<T>	&operator=(const Array<T> &rhs);
 		
 		// Overload
@@ -36,6 +36,13 @@ class Array {
 
 template <typename T>
 Array<T>::Array(void): _arr(NULL), _size(0) {}
+
+template <typename T>
+Array<T>::~Array(void) {
+	if (this->_arr) {
+		delete[] this->_arr;
+	}
+}
 
 template <typename T>
 Array<T>::Array(unsigned int n) {
@@ -61,13 +68,6 @@ Array<T>	&Array<T>::operator=(const Array<T> &rhs) {
 		new (this) Array<T>(rhs);
 	}
 	return (*this);
-}
-
-template <typename T>
-Array<T>::~Array(void) {
-	if (this->_arr) {
-		delete[] this->_arr;
-	}
 }
 
 // Overload

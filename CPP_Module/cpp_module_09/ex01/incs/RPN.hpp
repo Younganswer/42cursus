@@ -10,13 +10,12 @@ class RPN {
 		static bool	handleOperator(std::stack<int> &stack, const char token);
 		static bool	throwErrorOccurredInHandleOperator(std::exception &e);
 
+		RPN(void);
+		~RPN(void);
 		RPN(const RPN &ref);
 		RPN	&operator=(const RPN &rhs);
 
 	public:
-		RPN(void);
-		~RPN(void);
-
 		static int	operate(const std::string &arg) throw(std::exception);
 
 		// Exception: NotEnoughOperandsError

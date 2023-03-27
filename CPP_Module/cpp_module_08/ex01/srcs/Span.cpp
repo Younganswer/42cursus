@@ -2,13 +2,13 @@
 #include <iostream>
 
 Span::Span(void) {}
+Span::~Span(void) {}
 Span::Span(unsigned int n): _size(n) {}
 Span::Span(const Span &ref): _size(ref._size) {
 	for (size_t i=0; i<ref._vec.size(); i++) {
 		this->_vec.push_back(ref._vec[i]);
 	}
 }
-Span::~Span(void) {}
 
 Span	&Span::operator=(const Span &rhs) {
 	if (this != &rhs) {

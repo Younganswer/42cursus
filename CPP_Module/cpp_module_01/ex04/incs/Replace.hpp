@@ -5,13 +5,13 @@
 
 class Replace {
 	private:
+		Replace(void);
+		~Replace(void);
+
 		// Util
 		static bool	replaceLine(std::string &line, const std::string &s1, const std::string &s2);
 
 	public:
-		Replace(void);
-		~Replace(void);
-
 		// Util	
 		static bool	replace(const std::string &fileName, const std::string &s1, const std::string &s2);
 

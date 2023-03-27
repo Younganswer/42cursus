@@ -2,8 +2,8 @@
 #include <sstream>
 
 RPN::RPN(void) {}
-RPN::RPN(const RPN &ref) { (void) ref; }
 RPN::~RPN(void) {}
+RPN::RPN(const RPN &ref) { (void) ref; }
 RPN	&RPN::operator=(const RPN &rhs) {
 	(void) rhs;
 	return (*this);

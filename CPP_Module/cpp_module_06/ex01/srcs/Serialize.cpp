@@ -2,12 +2,12 @@
 #include <iostream>
 
 _Data::_Data(void) {}
-_Data::_Data(const std::string &s1, const std::string &s2, int n): s1(s1), s2(s2), n(n) {}
 _Data::~_Data(void) {}
+_Data::_Data(const std::string &s1, const std::string &s2, int n): s1(s1), s2(s2), n(n) {}
 
 Serialize::Serialize(void) {}
-Serialize::Serialize(const Serialize &src) { (void) src; }
 Serialize::~Serialize(void) {}
+Serialize::Serialize(const Serialize &src) { (void) src; }
 Serialize	&Serialize::operator=(const Serialize &rhs) {
 	(void) rhs;
 	return (*this);

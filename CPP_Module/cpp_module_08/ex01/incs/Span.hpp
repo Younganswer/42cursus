@@ -11,9 +11,9 @@ class Span {
 		Span(void);
 
 	public:
+		~Span(void);
 		Span(unsigned int n);
 		Span(const Span &ref);
-		~Span(void);
 		Span	&operator=(const Span &rhs);
 
 		// Utils
