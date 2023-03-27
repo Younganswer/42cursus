@@ -25,9 +25,13 @@
 <br/>
 
 ### ex03
-* target will be used for file name
-	* ex) target_shrubbery
 #### In manual
 	$ ./intern <form> <target>
-
+* form:
+	* robotomy request
+		* robotomize target
+	* shrubbery creation
+		* create a shrubbery in file "target_shrubbery"
+	* presidential pardon
+		* presidential pardon target
 <br/>
