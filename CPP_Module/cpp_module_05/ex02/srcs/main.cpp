@@ -15,7 +15,7 @@ int	main(int argc, char **argv) {
 		if (argc == 2) {
 			berry.setTarget(argv[1]);
 		} else if (2 <= argc) {
-			std::cerr << "\033[31m" << "Usage: ./bureaucrat [target]" << "\033[0m" << '\n';
+			std::cerr << "\033[31m" << "Usage: ./" << argv[0] << " [target]" << "\033[0m" << '\n';
 			return (1);
 		}
 
@@ -43,7 +43,7 @@ int	main(int argc, char **argv) {
 		if (argc == 2) {
 			berry.setTarget(argv[1]);
 		} else if (2 <= argc) {
-			std::cerr << "\033[31m" << "Usage: ./bureaucrat [target]" << "\033[0m" << '\n';
+			std::cerr << "\033[31m" << "Usage: ./" << argv[0] << " [target]" << "\033[0m" << '\n';
 			return (1);
 		}
 
