@@ -3,6 +3,7 @@
 #include <iomanip>
 
 Data::Data(void): _year(0), _month(0), _day(0), _value(0) {}
+Data::~Data(void) {}
 Data::Data(const std::string &line) throw(std::exception) {
 	std::stringstream	ss(line);
 	std::string			date;
@@ -24,7 +25,6 @@ Data::Data(const std::string &line) throw(std::exception) {
 	}
 }
 Data::Data(const Data &ref): _year(ref._year), _month(ref._month), _day(ref._day), _value(ref._value) {}
-Data::~Data(void) {}
 Data	&Data::operator=(const Data &rhs) {
 	if (this != &rhs) {
 		this->~Data();
