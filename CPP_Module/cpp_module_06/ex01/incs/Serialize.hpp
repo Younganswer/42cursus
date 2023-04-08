@@ -17,7 +17,7 @@ class Serialize {
 	private:
 		Serialize(void);
 		~Serialize(void);
-		Serialize(const Serialize &src);
+		Serialize(const Serialize &ref);
 		Serialize	&operator=(const Serialize &rhs);
 
 	public:

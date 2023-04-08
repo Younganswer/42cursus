@@ -7,7 +7,7 @@ _Data::_Data(const std::string &s1, const std::string &s2, int n): s1(s1), s2(s2
 
 Serialize::Serialize(void) {}
 Serialize::~Serialize(void) {}
-Serialize::Serialize(const Serialize &src) { (void) src; }
+Serialize::Serialize(const Serialize &ref) { (void) ref; }
 Serialize	&Serialize::operator=(const Serialize &rhs) {
 	(void) rhs;
 	return (*this);
