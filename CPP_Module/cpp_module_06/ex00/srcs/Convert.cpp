@@ -175,6 +175,14 @@ bool	Convert::printInt(const std::string &str) {
 }
 
 bool	Convert::printFloat(const std::string &str) {
+	if (str == "nanf" || str == "inff" || str == "+inff" || str == "-inff") {
+		std::cout << "char: impossible" << '\n';
+		std::cout << "int: impossible" << '\n';
+		std::cout << "float: " << str << '\n';
+		std::cout << "double: " << str[0] << str.substr(1, str.length() - 2) << '\n';
+		return (true);
+	}
+
 	char	ch;
 	int		i;
 	float	f;
@@ -223,6 +231,14 @@ bool	Convert::printFloat(const std::string &str) {
 }
 
 bool	Convert::printDouble(const std::string &str) {
+	if (str == "nan" || str == "inf" || str == "+inf" || str == "-inf") {
+		std::cout << "char: impossible" << '\n';
+		std::cout << "int: impossible" << '\n';
+		std::cout << "float: " << str << "f" << '\n';
+		std::cout << "double: " << str << '\n';
+		return (true);
+	}
+	
 	char	ch;
 	int		i;
 	float	f;
