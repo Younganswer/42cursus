@@ -82,7 +82,7 @@ bool	Convert::parameterIsFloat(const std::string &str) {
 			return (false);
 		}
 	}
-	return ((0 < j - i) && has_dot && (str[j] == 'f'));
+	return ((0 < j - i) && has_dot && (str[j - 1] != '.') && (str[j] == 'f'));
 }
 
 bool	Convert::parameterIsDouble(const std::string &str) {
