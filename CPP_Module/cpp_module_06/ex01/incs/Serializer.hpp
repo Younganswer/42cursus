@@ -13,16 +13,16 @@ typedef struct _Data {
 	~_Data(void);
 }	Data;
 
-class Serialize {
+class Serializer {
 	private:
-		Serialize(void);
-		~Serialize(void);
-		Serialize(const Serialize &ref);
-		Serialize	&operator=(const Serialize &rhs);
+		Serializer(void);
+		~Serializer(void);
+		Serializer(const Serializer &ref);
+		Serializer	&operator=(const Serializer &rhs);
 
 	public:
-		static uintptr_t	serialize(Data *ptr);
-		static Data			*deserialize(uintptr_t raw);
+		static uintptr_t	Serializer(Data *ptr);
+		static Data			*deSerializer(uintptr_t raw);
 };
 
 #endif

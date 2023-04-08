@@ -1,7 +1,7 @@
 SHELL		= /bin/bash
 IDX			= 0
 
-NAME		= serialize
+NAME		= serializer
 CXX			= c++
 CXXFLAGS	= -Wall -Wextra -Werror -I${INCS_DIR} -std=c++98 -MD -O3
 LDFLAGS		= 
@@ -15,7 +15,7 @@ INCS_DIR	= incs
 SRCS_DIR	= srcs
 OBJS_DIR	= objs
 
-SRCS =	main.cpp Serialize.cpp
+SRCS =	main.cpp Serializer.cpp
 
 
 SRCS := ${addprefix ${SRCS_DIR}/, ${SRCS}}
