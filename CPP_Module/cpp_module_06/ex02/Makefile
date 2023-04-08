@@ -8,6 +8,7 @@ LDFLAGS		=
 RM			= rm -f
 
 ifdef SANITIZE
+	CXXFLAGS += -fsanitize=address -g3
 	LDFLAGS += -fsanitize=address
 endif
 

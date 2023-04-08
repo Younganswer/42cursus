@@ -1,26 +1,26 @@
-#include "../incs/Serialize.hpp"
+#include "../incs/Serializer.hpp"
 #include <iostream>
 #include <iomanip>
 
 int	main(void) {
 	{
 		Data 		*data = new Data("Hello", "World", 42);
-		uintptr_t 	serialized = Serialize::serialize(data);
-		Data 		*deserialized = Serialize::deserialize(serialized);
+		uintptr_t 	Serialized = Serializer::serialize(data);
+		Data 		*deSerialized = Serializer::deSerialize(Serialized);
 		char		*str1 = reinterpret_cast<char *>(data);
-		char		*str2 = reinterpret_cast<char *>(serialized);
-		char		*str3 = reinterpret_cast<char *>(deserialized);
+		char		*str2 = reinterpret_cast<char *>(Serialized);
+		char		*str3 = reinterpret_cast<char *>(deSerialized);
 		int			i1 = *reinterpret_cast<int *>(data);
-		int			i2 = *reinterpret_cast<int *>(serialized);
-		int			i3 = *reinterpret_cast<int *>(deserialized);
+		int			i2 = *reinterpret_cast<int *>(Serialized);
+		int			i3 = *reinterpret_cast<int *>(deSerialized);
 
 		{
 			std::cout << "Address of variables" << '\n';
 			std::cout << "Data: " << data << '\n';
 			std::cout << std::hex;
-			std::cout << "Serialized: 0x" << serialized << '\n';
+			std::cout << "Serialized: 0x" << Serialized << '\n';
 			std::cout << std::dec;
-			std::cout << "Deserialized: " << deserialized << '\n';
+			std::cout << "DeSerializerd: " << deSerialized << '\n';
 		}
 		std::cout << '\n';
 		{
@@ -29,8 +29,8 @@ int	main(void) {
 		}
 		std::cout << '\n';
 		{
-			std::cout << "Values of Deserialized" << '\n';
-			std::cout << deserialized->s1 << ' ' << deserialized->s2 << ' ' << deserialized->n << '\n';
+			std::cout << "Values of DeSerializerd" << '\n';
+			std::cout << deSerialized->s1 << ' ' << deSerialized->s2 << ' ' << deSerialized->n << '\n';
 		}
 		std::cout << '\n';
 		{
