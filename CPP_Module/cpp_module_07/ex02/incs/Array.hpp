@@ -6,7 +6,6 @@
 template <typename T>
 class Array {
 	private:
-		const static unsigned int	_max_size = 100000;
 		unsigned int	_size;
 		T				*_arr;
 
@@ -33,7 +32,7 @@ class Array {
 };
 
 template <typename T>
-Array<T>::Array(void): _arr(NULL), _size(0) {}
+Array<T>::Array(void): _size(0), _arr(NULL) {}
 
 template <typename T>
 Array<T>::~Array(void) {
@@ -43,14 +42,7 @@ Array<T>::~Array(void) {
 }
 
 template <typename T>
-Array<T>::Array(unsigned int n) {
-	if (Array::_max_size < n) {
-		std::cout << "Array size is too big: Set to " << Array::_max_size << "\n";
-		n = Array::_max_size;
-	}
-	this->_arr = new T[n];
-	this->_size = n;
-}
+Array<T>::Array(unsigned int n): _size(n), _arr(new T[n]) {}
 
 template <typename T>
 Array<T>::Array(const Array<T> &ref): _arr(new T[ref.size()]), _size(ref.size()) {
@@ -77,7 +69,7 @@ Array<T>	&Array<T>::operator=(const Array<T> &rhs) {
 // Overload
 template <typename T>
 T	&Array<T>::operator[](unsigned int idx) throw(std::exception) {
-	if (this->_size <= idx) {
+	if (0 < idx && this->_size <= idx) {
 		throw typename Array<T>::OutOfRangeException();
 	}
 	return (this->_arr[idx]);
