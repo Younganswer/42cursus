@@ -18,6 +18,7 @@ class Array {
 		
 		// Overload
 		T	&operator[](unsigned int idx) throw(std::exception);
+		T	&operator[](unsigned int idx) const throw(std::exception);
 
 		// Util
 		unsigned int	size(void) const;
@@ -69,6 +70,14 @@ Array<T>	&Array<T>::operator=(const Array<T> &rhs) {
 // Overload
 template <typename T>
 T	&Array<T>::operator[](unsigned int idx) throw(std::exception) {
+	if (0 < idx && this->_size <= idx) {
+		throw typename Array<T>::OutOfRangeException();
+	}
+	return (this->_arr[idx]);
+}
+
+template <typename T>
+T	&Array<T>::operator[](unsigned int idx) const throw(std::exception) {
 	if (0 < idx && this->_size <= idx) {
 		throw typename Array<T>::OutOfRangeException();
 	}
