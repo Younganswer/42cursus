@@ -25,8 +25,6 @@ class Array {
 
 		// Exception: Out of range
 		class OutOfRangeException: public std::exception {
-			private:
-
 			public:
 				OutOfRangeException(void);
 				virtual ~OutOfRangeException(void) throw();
@@ -47,7 +45,7 @@ Array<T>::~Array(void) {
 template <typename T>
 Array<T>::Array(unsigned int n) {
 	if (Array::_max_size < n) {
-		std::cout << "Array size is too big. Set to 100000.\n";
+		std::cout << "Array size is too big: Set to " << Array::_max_size << "\n";
 		n = Array::_max_size;
 	}
 	this->_arr = new T[n];
@@ -64,8 +62,14 @@ Array<T>::Array(const Array<T> &ref): _arr(new T[ref.size()]), _size(ref.size())
 template <typename T>
 Array<T>	&Array<T>::operator=(const Array<T> &rhs) {
 	if (this != &rhs) {
-		this->~Array();
-		new (this) Array<T>(rhs);
+		this->_size = rhs->_size;
+		if (this->_arr) {
+			delete[] this->_arr;
+		}
+		this->_arr = new T[this->_size];
+		for (unsigned int i = 0; i < this->_size; i++) {
+			this->_arr[i] = rhs[i];
+		}
 	}
 	return (*this);
 }
