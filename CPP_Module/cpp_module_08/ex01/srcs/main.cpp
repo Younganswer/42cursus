@@ -103,7 +103,7 @@ bool	testSpan(Span &span) {
 	std::cout << "Current size of span: " << span.size() << '\n';
 	std::cout << "Span: " << span << '\n';
 	try {
-		int	shortest = span.shortestSpan();
+		unsigned int	shortest = span.shortestSpan();
 
 		std::cout << "Shortest Span: " << shortest << '\n';
 	} catch (std::exception &e) {
@@ -111,7 +111,7 @@ bool	testSpan(Span &span) {
 		return (false);
 	}
 	try {
-		int	longest = span.longestSpan();
+		unsigned int	longest = span.longestSpan();
 
 		std::cout << "Longest Span: " << longest << '\n';
 	} catch (std::exception &e) {

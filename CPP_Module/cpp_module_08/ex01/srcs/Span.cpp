@@ -12,11 +12,8 @@ Span::Span(const Span &ref): _size(ref._size) {
 
 Span	&Span::operator=(const Span &rhs) {
 	if (this != &rhs) {
-		this->_size = rhs._size;
-		this->_vec.clear();
-		for (size_t i=0; i<rhs._vec.size(); i++) {
-			this->_vec.push_back(rhs._vec[i]);
-		}
+		this->~Span();
+		new (this) Span(rhs);
 	}
 	return (*this);
 }
@@ -53,7 +50,7 @@ unsigned int	Span::shortestSpan(void) const {
 
 	for (size_t i=0; i<this->_vec.size()-1; i++) {
 		for (size_t j=i+1; j<this->_vec.size(); j++) {
-			diff = this->_vec[j] - this->_vec[i];
+			diff = std::abs(this->_vec[j] - this->_vec[i]);
 			if (diff < min) {
 				min = diff;
 			}
@@ -71,7 +68,7 @@ unsigned int	Span::longestSpan(void) const {
 
 	for (size_t i=0; i<this->_vec.size()-1; i++) {
 		for (size_t j=i+1; j<this->_vec.size(); j++) {
-			diff = this->_vec[j] - this->_vec[i];
+			diff = std::abs(this->_vec[j] - this->_vec[i]);
 			if (diff > max) {
 				max = diff;
 			}
