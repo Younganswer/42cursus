@@ -13,7 +13,6 @@ class ShrubberyCreationForm: public AForm {
 		virtual	~ShrubberyCreationForm(void);
 
 		// Getter
-		std::string			getTarget(void);
 		const std::string	&getTarget(void) const;
 
 		// Setter

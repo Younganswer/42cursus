@@ -21,7 +21,6 @@ Form	&Form::operator=(const Form &rhs) {
 }
 
 // Getter
-std::string			Form::getName(void) { return (this->_name); }
 const std::string	&Form::getName(void) const { return (this->_name); }
 bool 				Form::getIsSigned(void) const { return (this->_is_signed); }
 int 				Form::getGradeToSign(void) const { return (this->_grade_to_sign); }

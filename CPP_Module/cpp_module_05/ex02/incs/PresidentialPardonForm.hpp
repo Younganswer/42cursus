@@ -14,7 +14,6 @@ class PresidentialPardonForm: public AForm {
 		virtual	~PresidentialPardonForm(void);
 
 		// Getter
-		std::string			getTarget(void);
 		const std::string	&getTarget(void) const;
 
 		// Utils

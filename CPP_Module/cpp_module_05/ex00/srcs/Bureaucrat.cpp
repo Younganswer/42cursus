@@ -20,7 +20,6 @@ Bureaucrat& Bureaucrat::operator=(const Bureaucrat &rhs) {
 }
 
 // Getter
-std::string			Bureaucrat::getName(void) { return (this->_name); }
 const std::string	&Bureaucrat::getName(void) const { return (this->_name); }
 int 				Bureaucrat::getGrade(void) const { return (this->_grade); }
 

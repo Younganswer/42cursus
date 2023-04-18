@@ -20,7 +20,6 @@ AForm	&AForm::operator=(const AForm &rhs) {
 }
 
 // Getter
-std::string			AForm::getName(void) { return (this->_name); }
 const std::string	&AForm::getName(void) const { return (this->_name); }
 bool 				AForm::getIsSigned(void) const { return (this->_is_signed); }
 int 				AForm::getGradeToSign(void) const { return (this->_grade_to_sign); }

@@ -7,7 +7,6 @@ PresidentialPardonForm::PresidentialPardonForm(const std::string &target): AForm
 PresidentialPardonForm::~PresidentialPardonForm(void) {}
 
 // Getter
-std::string			PresidentialPardonForm::getTarget(void) { return (this->_target); }
 const std::string	&PresidentialPardonForm::getTarget(void) const { return (this->_target); }
 
 // Utils

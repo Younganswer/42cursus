@@ -7,7 +7,6 @@ RobotomyRequestForm::RobotomyRequestForm(const std::string &target): AForm("Robo
 RobotomyRequestForm::~RobotomyRequestForm(void) {}
 
 // Getter
-std::string			RobotomyRequestForm::getTarget(void) { return (this->_target); }
 const std::string	&RobotomyRequestForm::getTarget(void) const { return (this->_target); }
 
 // Utils

@@ -8,7 +8,6 @@ ShrubberyCreationForm::ShrubberyCreationForm(const std::string &target): AForm("
 ShrubberyCreationForm::~ShrubberyCreationForm(void) {}
 
 // Getter
-std::string			ShrubberyCreationForm::getTarget(void) { return (this->_target); }
 const std::string	&ShrubberyCreationForm::getTarget(void) const { return (this->_target); }
 
 // Setter

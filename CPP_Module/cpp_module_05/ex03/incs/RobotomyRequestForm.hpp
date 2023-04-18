@@ -14,7 +14,6 @@ class RobotomyRequestForm: public AForm {
 		virtual	~RobotomyRequestForm(void);
 
 		// Getter
-		std::string			getTarget(void);
 		const std::string	&getTarget(void) const;
 
 		// Utils

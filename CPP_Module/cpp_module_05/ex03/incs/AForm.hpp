@@ -22,7 +22,6 @@ class AForm {
 		virtual	~AForm(void);
 		
 		// Getter
-		std::string			getName(void);
 		const std::string	&getName(void) const;
 		bool				getIsSigned(void) const;
 		int					getGradeToSign(void) const;
