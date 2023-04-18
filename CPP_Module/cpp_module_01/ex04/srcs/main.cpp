@@ -3,7 +3,7 @@
 
 int	main(int argc, char **argv) {
 	if (argc != 4) {
-		std::cout << "\033[31m" << "Usage: ./" << argv[0] << "<filename> <string1> <string2>\n" << "\033[0m";
+		std::cout << "\033[31m" << "Usage: " << argv[0] << "<filename> <string1> <string2>\n" << "\033[0m";
 		return (1);
 	}
 		
