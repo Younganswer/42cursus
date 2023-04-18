@@ -15,8 +15,6 @@ Point	&Point::operator=(const Point &rhs) {
 }
 
 // Getter
-Fixed		Point::getX(void) { return (this->_x); }
-Fixed		Point::getY(void) { return (this->_y); }
 const Fixed	&Point::getX(void) const { return (this->_x); }
 const Fixed	&Point::getY(void) const { return (this->_y); }
 
