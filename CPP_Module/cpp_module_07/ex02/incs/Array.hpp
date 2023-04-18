@@ -55,14 +55,8 @@ Array<T>::Array(const Array<T> &ref): _arr(new T[ref.size()]), _size(ref.size())
 template <typename T>
 Array<T>	&Array<T>::operator=(const Array<T> &rhs) {
 	if (this != &rhs) {
-		this->_size = rhs->_size;
-		if (this->_arr) {
-			delete[] this->_arr;
-		}
-		this->_arr = new T[this->_size];
-		for (unsigned int i = 0; i < this->_size; i++) {
-			this->_arr[i] = rhs[i];
-		}
+		this->~Array();
+		new (this) Array<T>(rhs);
 	}
 	return (*this);
 }
