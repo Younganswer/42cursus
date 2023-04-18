@@ -91,37 +91,6 @@ void	Span::addNumber(int num) throw(std::exception) {
 	this->_vec.push_back(num);
 }
 
-template < class InputIterator >
-Span::iterator	Span::insert(const_iterator pos, InputIterator first, InputIterator last) throw(std::exception) {
-	if (this->_size < this->_vec.size() + (last - first)) {
-		throw std::length_error("Span size exceed maximum allowed size");
-	}
-
-	for (InputIterator it=first; it!=last; it++) {
-		if (this->hasDuplicated(*it)) {
-			throw DuplicatedException();
-		}
-	}
-
-	iterator	it = this->_vec.begin() + (pos - this->_vec.begin());
-	iterator	it2 = this->_vec.end() - 1;
-	iterator	it3 = it2 + (last - first);
-
-	for (int i=0; i<(int)(last - first); i++) {
-		this->_vec.push_back(0);
-	}
-
-	for (int i=0; i<(int)(it2 - it + 1); i++) {
-		*(it3 - i) = *(it2 - i);
-	}
-
-	for (int i=0; i<(int)(last - first); i++) {
-		*(it + i) = *(first + i);
-	}
-
-	return (it);
-}
-
 // Operator overloads
 int	&Span::operator[](int idx) {
 	if (idx < 0 || idx >= (int)this->_vec.size()) {

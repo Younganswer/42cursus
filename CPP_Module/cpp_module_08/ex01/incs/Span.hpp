@@ -66,4 +66,37 @@ class Span {
 
 std::ostream	&operator<<(std::ostream &os, const Span &rhs);
 
+
+
+template < class InputIterator >
+Span::iterator	Span::insert(const_iterator pos, InputIterator first, InputIterator last) throw(std::exception) {
+	if (this->_size < this->_vec.size() + (last - first)) {
+		throw std::length_error("Span size exceed maximum allowed size");
+	}
+
+	for (InputIterator it=first; it!=last; it++) {
+		if (this->hasDuplicated(*it)) {
+			throw DuplicatedException();
+		}
+	}
+
+	iterator	it = this->_vec.begin() + (pos - this->_vec.begin());
+	iterator	it2 = this->_vec.end();
+	iterator	it3 = this->_vec.end();
+
+	while (it2 != it) {
+		it2--;
+		it3--;
+		*it3 = *it2;
+	}
+
+	while (first != last) {
+		*it = *first;
+		it++;
+		first++;
+	}
+
+	return (it);
+}
+
 #endif
