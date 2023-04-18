@@ -11,7 +11,6 @@ AMateria	&AMateria::operator=(const AMateria &rhs) {
 }
 
 // Getter
-std::string			AMateria::getType(void) { return (this->_type); }
 const std::string	&AMateria::getType(void) const { return (this->_type); }
 unsigned int		AMateria::getXp(void) const { return (this->_xp); }
 bool				AMateria::getEquipped(void) const { return (this->_equipped); }

@@ -21,5 +21,4 @@ Animal	&Animal::operator=(const Animal& ref) {
 }
 
 // Getter
-std::string			Animal::getType(void) { return (this->_type); }
 const std::string	&Animal::getType(void) const { return (this->_type); }

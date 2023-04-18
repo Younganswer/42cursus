@@ -14,7 +14,6 @@ class Brain {
 		Brain	&operator=(const Brain& ref);
 		
 		// Getter
-		std::string			getIdea(int idx);
 		const std::string	&getIdea(int idx) const;
 
 		// Setter

@@ -18,7 +18,6 @@ class AMateria {
 		AMateria	&operator=(const AMateria &rhs);
 		
 		// Getter
-		std::string			getType(void);
 		const std::string	&getType(void) const;
 		unsigned int		getXp(void) const;
 		bool				getEquipped(void) const;

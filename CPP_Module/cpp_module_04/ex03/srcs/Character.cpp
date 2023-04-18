@@ -34,7 +34,6 @@ Character	&Character::operator=(const Character &rhs) {
 }
 
 // Getter
-std::string			Character::getName(void) { return (this->_name); }
 const std::string	&Character::getName(void) const { return (this->_name); }
 
 // Utils

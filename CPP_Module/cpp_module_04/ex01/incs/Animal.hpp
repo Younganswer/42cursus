@@ -15,7 +15,6 @@ class Animal {
 		Animal	&operator=(const Animal &rhs);
 		
 		// Getter
-		std::string			getType(void);
 		const std::string	&getType(void) const;
 
 		// Util

@@ -15,7 +15,6 @@ class WrongAnimal {
 		WrongAnimal	&operator=(const WrongAnimal& ref);
 		
 		// Getter
-		std::string			getType(void);
 		const std::string	&getType(void) const;
 
 		// Util

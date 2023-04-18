@@ -24,7 +24,6 @@ WrongAnimal	&WrongAnimal::operator=(const WrongAnimal &rhs) {
 }
 
 // Getter
-std::string			WrongAnimal::getType(void) { return (this->_type); }
 const std::string	&WrongAnimal::getType(void) const { return (this->_type); }
 
 // Util

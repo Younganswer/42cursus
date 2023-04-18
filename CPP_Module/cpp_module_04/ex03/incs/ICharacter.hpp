@@ -9,7 +9,6 @@ class ICharacter {
 		virtual ~ICharacter(void);
 
 		// Getter
-		virtual std::string			getName(void) = 0;
 		virtual const std::string	&getName(void) const = 0;
 
 		// Utils

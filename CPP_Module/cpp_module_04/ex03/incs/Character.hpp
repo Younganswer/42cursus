@@ -17,7 +17,6 @@ class Character: public ICharacter {
 		Character	&operator=(const Character &rhs);
 
 		// Getter
-		virtual std::string			getName(void);
 		virtual const std::string	&getName(void) const;
 
 		// Utils

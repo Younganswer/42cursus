@@ -27,7 +27,6 @@ Brain	&Brain::operator=(const Brain &rhs) {
 }
 
 // Getter
-std::string			Brain::getIdea(int index) { return (this->_ideas[index]); }
 const std::string	&Brain::getIdea(int index) const { return (this->_ideas[index]); }
 
 // Setter
