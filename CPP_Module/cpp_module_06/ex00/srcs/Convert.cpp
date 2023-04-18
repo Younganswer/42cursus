@@ -1,6 +1,6 @@
 #include "../incs/Convert.hpp"
 #include <iostream>
-#include <ctype.h>
+#include <cfloat>
 #include <cmath>
 
 Convert::Convert(void) {}

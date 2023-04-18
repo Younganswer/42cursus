@@ -2,8 +2,6 @@
 # define CONVERT_HPP
 
 # include <string>
-# define FLT_MIN -3.40282347e+38
-# define FLT_MAX 3.40282347e+38
 
 class Convert {
 	private:
