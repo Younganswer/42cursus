@@ -49,7 +49,7 @@ int	main(void) {
 		mstack.push("Hello");
 		mstack.push("42");
 		mstack.push("!");
-		
+
 		printMutantStack(mstack);
 
 		std::stack<std::string>	s(mstack);
