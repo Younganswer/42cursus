@@ -12,8 +12,8 @@ class MutantStack: public std::stack<T> {
 		virtual MutantStack	&operator=(const MutantStack &rhs);
 
 		// Utils
-		virtual typename MutantStack<T>::iterator	begin(void) const;
-		virtual typename MutantStack<T>::iterator	end(void) const;
+		virtual typename std::stack<T>::iterator	begin(void) const;
+		virtual typename std::stack<T>::iterator	end(void) const;
 };
 
 template <typename T>
@@ -36,9 +36,9 @@ MutantStack<T>	&MutantStack<T>::operator=(const MutantStack &rhs) {
 
 // Utils
 template <typename T>
-typename MutantStack<T>::iterator	MutantStack<T>::begin(void) const { return (this->c.begin()); }
+typename std::stack<T>::iterator	MutantStack<T>::begin(void) const { return (this->c.begin()); }
 
 template <typename T>
-typename MutantStack<T>::iterator	MutantStack<T>::end(void) const { return (this->c.end()); }
+typename std::stack<T>::iterator	MutantStack<T>::end(void) const { return (this->c.end()); }
 
 #endif
