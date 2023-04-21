@@ -16,6 +16,7 @@ class Span {
 
 		Span(void);
 
+		// Iterator
 		iterator	begin(void);
 		iterator	end(void);
 
