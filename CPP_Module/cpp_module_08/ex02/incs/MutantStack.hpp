@@ -15,11 +15,17 @@ class MutantStack: public std::stack<T> {
 		virtual ~MutantStack(void);
 		virtual MutantStack	&operator=(const MutantStack &rhs);
 
+<<<<<<< HEAD
 		// Iterators
 		iterator		begin(void);
 		iterator		end(void);
 		const_iterator	begin(void) const;
 		const_iterator	end(void) const;
+=======
+		// Utils
+		virtual typename std::stack<T>::iterator	begin(void) const;
+		virtual typename std::stack<T>::iterator	end(void) const;
+>>>>>>> refs/remotes/origin/main
 };
 
 template <typename T>
