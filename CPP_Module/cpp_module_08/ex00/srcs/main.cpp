@@ -12,9 +12,14 @@ int	main(void) {
 		for (size_t i=0; i<10; i++) {
 			v.push_back(i);
 		}
-		easyfind_with_print(v, 5);
+		
+		{
+			easyfind_with_print(v, 5);
+		}
 		std::cout << '\n';
-		easyfind_with_print(v, 10);
+		{
+			easyfind_with_print(v, 10);
+		}
 	}
 	return (0);
 }

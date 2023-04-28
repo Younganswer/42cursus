@@ -2,18 +2,11 @@
 # define EASYFIND_HPP
 
 # include <iostream>
+# include <algorithm>
 
 template <typename T>
 typename T::iterator easyfind(T &container, int n) {
-	typename T::iterator it = container.begin();
-
-	while (it != container.end()) {
-		if (*it == n) {
-			break;
-		}
-		it++;
-	}
-	return (it);
+	return (std::find(container.begin(), container.end(), n));
 }
 
 #endif

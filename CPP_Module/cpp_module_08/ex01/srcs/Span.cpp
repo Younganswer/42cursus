@@ -1,5 +1,6 @@
 #include "../incs/Span.hpp"
 #include <iostream>
+#include <algorithm>
 
 Span::Span(void) {}
 Span::~Span(void) {}
@@ -43,17 +44,17 @@ unsigned int	Span::maxSize(void) const {
 
 unsigned int	Span::shortestSpan(void) const {
 	if (this->_vec.size() <= 1) {
-		throw NotEnoughException();
+		throw (NotEnoughElementException());
 	}
 
-	unsigned int	min=UINT_MAX, diff=0;
+	std::vector<int>	tmp(this->_vec);
+	unsigned int		min;
 
-	for (size_t i=0; i<this->_vec.size()-1; i++) {
-		for (size_t j=i+1; j<this->_vec.size(); j++) {
-			diff = std::abs(this->_vec[j] - this->_vec[i]);
-			if (diff < min) {
-				min = diff;
-			}
+	std::sort(tmp.begin(), tmp.end());
+	min = tmp[1] - tmp[0];
+	for (size_t i=1; i<tmp.size()-1; i++) {
+		if ((unsigned int) tmp[i+1] - tmp[i] < min) {
+			min = tmp[i+1] - tmp[i];
 		}
 	}
 	return (min);
@@ -61,20 +62,13 @@ unsigned int	Span::shortestSpan(void) const {
 
 unsigned int	Span::longestSpan(void) const {
 	if (this->_vec.size() <= 1) {
-		throw NotEnoughException();
+		throw (NotEnoughElementException());
 	}
 
-	unsigned int	max=0, diff=0;
+	std::vector<int>	tmp(this->_vec);
 
-	for (size_t i=0; i<this->_vec.size()-1; i++) {
-		for (size_t j=i+1; j<this->_vec.size(); j++) {
-			diff = std::abs(this->_vec[j] - this->_vec[i]);
-			if (diff > max) {
-				max = diff;
-			}
-		}
-	}
-	return (max);
+	std::sort(tmp.begin(), tmp.end());
+	return (tmp.back() - tmp.front());
 }
 
 void	Span::addNumber(int num) throw(std::exception) {
@@ -83,7 +77,7 @@ void	Span::addNumber(int num) throw(std::exception) {
 	}
 
 	if (this->hasDuplicated(num)) {
-		throw DuplicatedException();
+		throw (DuplicatedElementException());
 	}
 	this->_vec.push_back(num);
 }
@@ -103,19 +97,9 @@ int	Span::operator[](int idx) const {
 	return (this->_vec[idx]);
 }
 
-// Exception: Duplicated
-Span::DuplicatedException::DuplicatedException(void) {}
-Span::DuplicatedException::~DuplicatedException(void) throw() {}
-const char	*Span::DuplicatedException::what() const throw() {
-	return ("Duplicated number");
-}
-
-// Exception: Not enough numbers
-Span::NotEnoughException::NotEnoughException(void) {}
-Span::NotEnoughException::~NotEnoughException(void) throw() {}
-const char	*Span::NotEnoughException::what() const throw() {
-	return ("Not enough numbers");
-}
+// Exception
+const char	*Span::DuplicatedElementException::what() const throw() { return ("Duplicated element"); }
+const char	*Span::NotEnoughElementException::what() const throw() { return ("Not enough element"); }
 
 std::ostream	&operator<<(std::ostream &os, const Span &rhs) {
 	for (size_t i=0; i<rhs.size(); i++) {

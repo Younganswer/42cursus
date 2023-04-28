@@ -21,8 +21,9 @@ class Span {
 		iterator	end(void);
 
 		// Operator overloads
-		int	&operator[](int idx);
+		int		&operator[](int idx);
 
+		// Util
 		bool	hasDuplicated(int num) const;
 
 	public:
@@ -49,18 +50,14 @@ class Span {
 		int	operator[](int idx) const;
 
 		// Exception: Duplicated
-		class DuplicatedException: public std::exception {
+		class DuplicatedElementException: public std::exception {
 			public:
-				DuplicatedException(void);
-				virtual ~DuplicatedException(void) throw();
 				virtual const char* what() const throw();
 		};
 
 		// Exception: Not enough numbers
-		class NotEnoughException: public std::exception {
+		class NotEnoughElementException: public std::exception {
 			public:
-				NotEnoughException(void);
-				virtual ~NotEnoughException(void) throw();
 				virtual const char* what() const throw();
 		};
 };
@@ -75,7 +72,7 @@ Span::iterator	Span::insert(const_iterator pos, InputIterator first, InputIterat
 
 	for (InputIterator it=first; it!=last; it++) {
 		if (this->hasDuplicated(*it)) {
-			throw DuplicatedException();
+			throw DuplicatedElementException();
 		}
 	}
 
