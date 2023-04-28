@@ -90,14 +90,14 @@ void	Span::addNumber(int num) throw(std::exception) {
 
 // Operator overloads
 int	&Span::operator[](int idx) {
-	if (idx < 0 || idx >= (int)this->_vec.size()) {
+	if (idx < 0 || (int)this->_vec.size() <= idx) {
 		throw std::out_of_range("Index out of range");
 	}
 	return (this->_vec[idx]);
 }
 
 int	Span::operator[](int idx) const {
-	if (idx < 0 || idx >= (int)this->_vec.size()) {
+	if (idx < 0 || (int)this->_vec.size() <= idx) {
 		throw std::out_of_range("Index out of range");
 	}
 	return (this->_vec[idx]);
