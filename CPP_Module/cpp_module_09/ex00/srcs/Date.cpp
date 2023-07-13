@@ -7,7 +7,7 @@ Date::Date(const std::string &date) {
 	try {
 		this->_parse(date);
 	} catch (const std::exception &e) {
-		std::cerr << "Error: " << e.what() << std::endl;
+		std::cout << "Error: " << e.what() << std::endl;
 		throw (FailToParseException());
 	}
 }

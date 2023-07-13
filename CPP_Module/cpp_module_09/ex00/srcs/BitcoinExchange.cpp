@@ -22,14 +22,14 @@ bool	BitcoinExchange::exchange(const std::string &filename) throw(std::exception
 	try {
 		BitcoinExchange::_parseHeader(ifs);
 	} catch (const std::exception &e) {
-		std::cerr << "Error: " << e.what() << std::endl;
+		std::cout << "Error: " << e.what() << std::endl;
 		throw (FailToParseHeaderException());
 	}
 	while (std::getline(ifs, line)) {
 		try {
 			BitcoinExchange::_exchange(line);
 		} catch (const std::exception &e) {
-			std::cerr << "Error: " << e.what() << std::endl;
+			std::cout << "Error: " << e.what() << std::endl;
 		}
 	}
 	return (true);
@@ -44,7 +44,7 @@ bool	BitcoinExchange::_parseHeader(std::ifstream &ifs) throw(std::exception) {
 	try {
 		BitcoinExchange::_header = Header(line);
 	} catch (const std::exception &e) {
-		std::cerr << "Error: " << e.what() << std::endl;
+		std::cout << "Error: " << e.what() << std::endl;
 		throw (FailToConstructHeaderException());
 	}
 	return (true);
@@ -86,7 +86,7 @@ bool	BitcoinExchange::_exchange(const std::string &line) throw(std::exception) {
 		}
 		std::cout << date << " => " << value << " = " << value * exchange_rate.getRate() << std::endl;
 	} catch (const std::exception &e) {
-		std::cerr << "Error: " << e.what() << std::endl;
+		std::cout << "Error: " << e.what() << std::endl;
 	}
 	return (true);
 }

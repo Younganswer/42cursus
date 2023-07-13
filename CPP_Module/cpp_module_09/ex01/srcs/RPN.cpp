@@ -54,7 +54,7 @@ int	RPN::operate(const std::string &arg) throw(std::exception) {
 			try {
 				handleOperator(st, arg[i]);
 			} catch (const std::exception &e) {
-				std::cerr << "Error: " << e.what() << std::endl;
+				std::cout << "Error: " << e.what() << std::endl;
 				throw (FailToHandleOperatorException());
 			}
 		} else {

@@ -9,7 +9,7 @@ Header::Header(const std::string &line) throw(std::exception): _delimeter(), _he
 	try {
 		this->_parse(line);
 	} catch (const std::exception &e) {
-		std::cerr << "Error: " << e.what() << std::endl;
+		std::cout << "Error: " << e.what() << std::endl;
 		throw (FailToParseException());
 	}
 }
@@ -27,13 +27,13 @@ bool	Header::_parse(const std::string &line) throw(std::exception) {
 	try {
 		this->_parseDelimeter(line);
 	} catch (const std::exception &e) {
-		std::cerr << "Error: " << e.what() << std::endl;
+		std::cout << "Error: " << e.what() << std::endl;
 		throw (FailToParseDelimeterException());
 	}
 	try {
 		this->_parseHeaderMap(line);
 	} catch (const std::exception &e) {
-		std::cerr << "Error: " << e.what() << std::endl;
+		std::cout << "Error: " << e.what() << std::endl;
 		throw (FailToParseHeaderMapException());
 	}
 	return (true);

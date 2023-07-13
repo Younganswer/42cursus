@@ -5,7 +5,7 @@ DataBase::DataBase(void): _header(), _exchange_rate_map() {
 	try {
 		this->_parse();
 	} catch (const std::exception &e) {
-		std::cerr << "Error: " << e.what() << std::endl;
+		std::cout << "Error: " << e.what() << std::endl;
 		throw (FailToParseException());
 	}
 }
@@ -29,13 +29,13 @@ bool	DataBase::_parse(void) throw(std::exception) {
 	try {
 		this->_parseHeader(ifs);
 	} catch (const std::exception &e) {
-		std::cerr << "Error: " << e.what() << std::endl;
+		std::cout << "Error: " << e.what() << std::endl;
 		throw (FailToParseHeaderException());
 	}
 	try {
 		this->_parseValueMap(ifs);
 	} catch (const std::exception &e) {
-		std::cerr << "Error: " << e.what() << std::endl;
+		std::cout << "Error: " << e.what() << std::endl;
 		throw (FailToParseValueMapException());
 	}
 	return (true);
@@ -51,7 +51,7 @@ bool	DataBase::_parseHeader(std::ifstream &ifs) throw(std::exception) {
 	try {
 		this->_header = Header(line);
 	} catch (const std::exception &e) {
-		std::cerr << "Error: " << e.what() << std::endl;
+		std::cout << "Error: " << e.what() << std::endl;
 		throw (FailToConstructHeaderException());
 	}
 	return (true);

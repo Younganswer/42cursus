@@ -5,7 +5,7 @@ ExchangeRate::ExchangeRate(const std::string &rate) {
 	try {
 		this->_parse(rate);
 	} catch (const std::exception &e) {
-		std::cerr << "Error: " << e.what() << std::endl;
+		std::cout << "Error: " << e.what() << std::endl;
 		throw (FailToParseException());
 	}
 }
