@@ -1,38 +1,62 @@
 #ifndef BITCOINEXCHANGE_HPP
 # define BITCOINEXCHANGE_HPP
 
-# include "Data.hpp"
+# include "Header.hpp"
 # include <fstream>
 # include <string>
-# include <vector>
 
 class BitcoinExchange {
 	private:
-		static std::vector<Data>	_db;
-
 		BitcoinExchange(void);
 		~BitcoinExchange(void);
 		BitcoinExchange(const BitcoinExchange &ref);
 		BitcoinExchange	&operator=(const BitcoinExchange &rhs);
+
+	private:
+		static Header	_header;
 		
-		static bool	openFile(std::ifstream &ifs, const std::string &filename);
+	public:
+		static bool	exchange(const std::string &filename) throw(std::exception);
+	
+	private:
+		static bool	_parseHeader(std::ifstream &ifs) throw(std::exception);
+		static bool	_exchange(const std::string &line) throw(std::exception);
+
+	private:
+		static bool	_isInvalidValue(const std::string &value);
 
 	public:
-		// Util
-		static bool	initializeDB(void) throw(std::exception);
-		static bool	showDB(void);
-		static bool	exchange(const std::string &filename);
-
-		// Exception: FileOpenError
-		class FileOpenError : public std::exception {
-			private:
-				std::string	_msg;
-
+		class FailToOpenFileException: public std::exception {
 			public:
-				FileOpenError(void);
-				FileOpenError(const std::string &filename);
-				virtual ~FileOpenError(void) throw();
-				virtual const char *what(void) const throw();
+				virtual const char	*what(void) const throw();
+		};
+		class FailToParseHeaderException: public std::exception {
+			public:
+				virtual const char	*what(void) const throw();
+		};
+		class FailToConstructHeaderException: public std::exception {
+			public:
+				virtual const char	*what(void) const throw();
+		};
+		class InvalidSyntaxException: public std::exception {
+			public:
+				virtual const char	*what(void) const throw();
+		};
+		class InvalidArgumentException: public std::exception {
+			public:
+				virtual const char	*what(void) const throw();
+		};
+		class FailToExchangeException: public std::exception {
+			public:
+				virtual const char	*what(void) const throw();
+		};
+		class NotAPositiveNumberException: public std::exception {
+			public:
+				virtual const char	*what(void) const throw();
+		};
+		class TooLargeNumberException: public std::exception {
+			public:
+				virtual const char	*what(void) const throw();
 		};
 };
 

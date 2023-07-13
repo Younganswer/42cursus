@@ -8,14 +8,21 @@ LDFLAGS		=
 RM			= rm -f
 
 ifdef SANITIZE
-	LDFLAGS += -fsanitize=address
+	CXXFLAGS += -g
+	LDFLAGS += -fsanitize=address -g
 endif
 
 INCS_DIR	= incs
 SRCS_DIR	= srcs
 OBJS_DIR	= objs
 
-SRCS =	main.cpp BitcoinExchange.cpp Data.cpp
+SRCS =	main.cpp \
+		BitcoinExchange.cpp \
+		DataBase.cpp \
+		Date.cpp \
+		ExchangeRate.cpp \
+		Header.cpp \
+		istringstream.cpp
 
 
 SRCS := ${addprefix ${SRCS_DIR}/, ${SRCS}}
