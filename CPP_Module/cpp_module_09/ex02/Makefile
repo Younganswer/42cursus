@@ -15,7 +15,9 @@ INCS_DIR	= incs
 SRCS_DIR	= srcs
 OBJS_DIR	= objs
 
-SRCS =	main.cpp
+SRCS =	main.cpp \
+		Converter.cpp \
+		PmergeMe.cpp
 
 
 SRCS := ${addprefix ${SRCS_DIR}/, ${SRCS}}
