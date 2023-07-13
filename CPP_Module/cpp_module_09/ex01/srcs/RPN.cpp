@@ -10,15 +10,14 @@ RPN	&RPN::operator=(const RPN &rhs) {
 }
 
 bool	RPN::handleOperator(std::stack<int> &st, const char token) {
+	int	left, right, value;
+	
 	if (token != '+' && token != '-' && token != '*' && token != '/' && token != '%') {
-		throw (RPN::InvalidOperatorError(token));
+		throw (RPN::InvalidOperatorException(token));
 	}
 	if (st.size() < 2) {
-		throw (RPN::NotEnoughOperandsError());
+		throw (RPN::NotEnoughOperandsException());
 	}
-	
-	int	left, right, value;
-
 	right = st.top();
 	st.pop();
 	left = st.top();
@@ -31,31 +30,16 @@ bool	RPN::handleOperator(std::stack<int> &st, const char token) {
 		value = left * right;
 	} else if (token == '/') {
 		if (right == 0) {
-			throw (RPN::DivideByZeroError());
+			throw (RPN::DivideByZeroException());
 		}
 		value = left / right;
 	} else if (token == '%') {
 		if (right == 0) {
-			throw (RPN::ModuloByZeroError());
+			throw (RPN::ModuloByZeroException());
 		}
 		value = left % right;
 	}
 	st.push(value);
-	return (true);
-}
-
-bool	RPN::throwErrorOccurredInHandleOperator(std::exception &e) {
-	if (const RPN::NotEnoughOperandsError *err_ptr1 = dynamic_cast<const RPN::NotEnoughOperandsError *>(&e)) {
-		throw (*err_ptr1);
-	} else if (const RPN::InvalidOperatorError *err_ptr2 = dynamic_cast<const RPN::InvalidOperatorError *>(&e)) {
-		throw (*err_ptr2);
-	} else if (const RPN::DivideByZeroError *err_ptr3 = dynamic_cast<const RPN::DivideByZeroError *>(&e)) {
-		throw (*err_ptr3);
-	} else if (const RPN::ModuloByZeroError *err_ptr4 = dynamic_cast<const RPN::ModuloByZeroError *>(&e)) {
-		throw (*err_ptr4);
-	} else {
-		throw (RPN::UnknownError());
-	}
 	return (true);
 }
 
@@ -66,70 +50,28 @@ int	RPN::operate(const std::string &arg) throw(std::exception) {
 		if (std::isspace(arg[i])) {
 			continue;
 		}
-		
 		if (std::isdigit(arg[i]) == false) {
 			try {
 				handleOperator(st, arg[i]);
-			} catch (std::exception &e) {
-				throwErrorOccurredInHandleOperator(e);
-			} catch (...) {
-				throw (RPN::UnknownError());
+			} catch (const std::exception &e) {
+				std::cerr << "Error: " << e.what() << std::endl;
+				throw (FailToHandleOperatorException());
 			}
 		} else {
-			try {
-				st.push(arg[i] - '0');
-			} catch (std::exception &e) {
-				throw (e);
-			} catch (...) {
-				throw (RPN::UnknownError());
-			}
+			st.push(arg[i] - '0');
 		}
 	}
 	if (st.size() != 1) {
-		throw (RPN::InvalidExpressionError());
+		throw (RPN::InvalidExpressionException());
 	}
 	return (st.top());
 }
 
-// Exception: NotEnoughOperandsError
-RPN::NotEnoughOperandsError::NotEnoughOperandsError(void): _msg("Not enough operands") {}
-RPN::NotEnoughOperandsError::~NotEnoughOperandsError(void) throw() {}
-const char	*RPN::NotEnoughOperandsError::what(void) const throw() {
-	return (_msg.c_str());
-}
-
-// Exception: InvalidOperatorError
-RPN::InvalidOperatorError::InvalidOperatorError(void): _msg("Invalid operator") {}
-RPN::InvalidOperatorError::InvalidOperatorError(const char _operator): _msg(std::string("Invalid operator: ") + _operator) {}
-RPN::InvalidOperatorError::~InvalidOperatorError(void) throw() {}
-const char	*RPN::InvalidOperatorError::what(void) const throw() {
-	return (_msg.c_str());
-}
-
-// Exception: DivideByZeroError
-RPN::DivideByZeroError::DivideByZeroError(void): _msg("Divide by zero") {}
-RPN::DivideByZeroError::~DivideByZeroError(void) throw() {}
-const char	*RPN::DivideByZeroError::what(void) const throw() {
-	return (_msg.c_str());
-}
-
-// Exception: ModuloByZeroError
-RPN::ModuloByZeroError::ModuloByZeroError(void): _msg("Modulo by zero") {}
-RPN::ModuloByZeroError::~ModuloByZeroError(void) throw() {}
-const char	*RPN::ModuloByZeroError::what(void) const throw() {
-	return (_msg.c_str());
-}
-
-// Exception: InvalidExpressionError
-RPN::InvalidExpressionError::InvalidExpressionError(void): _msg("Invalid expression") {}
-RPN::InvalidExpressionError::~InvalidExpressionError(void) throw() {}
-const char	*RPN::InvalidExpressionError::what(void) const throw() {
-	return (_msg.c_str());
-}
-
-// Exception: UnknownError
-RPN::UnknownError::UnknownError(void): _msg("Unknown error") {}
-RPN::UnknownError::~UnknownError(void) throw() {}
-const char	*RPN::UnknownError::what(void) const throw() {
-	return (_msg.c_str());
-}
+const char	*RPN::NotEnoughOperandsException::what(void) const throw() { return ("RPN: Not enough operands"); }
+RPN::InvalidOperatorException::InvalidOperatorException(const char _operator): _msg(std::string("RPN: Invalid operator: ") + _operator) {}
+RPN::InvalidOperatorException::~InvalidOperatorException(void) throw() {}
+const char	*RPN::InvalidOperatorException::what(void) const throw() { return (_msg.c_str()); }
+const char	*RPN::DivideByZeroException::what(void) const throw() {return ("RPN: Divide by zero"); }
+const char	*RPN::ModuloByZeroException::what(void) const throw() { return ("RPN: Modulo by zero"); }
+const char	*RPN::InvalidExpressionException::what(void) const throw() { return ("RPN: Invalid expression"); }
+const char	*RPN::FailToHandleOperatorException::what(void) const throw() { return ("RPN: Fail to handle operator"); }

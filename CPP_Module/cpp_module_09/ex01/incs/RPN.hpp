@@ -7,81 +7,44 @@
 
 class RPN {
 	private:
-		static bool	handleOperator(std::stack<int> &stack, const char token);
-		static bool	throwErrorOccurredInHandleOperator(std::exception &e);
-
 		RPN(void);
 		~RPN(void);
 		RPN(const RPN &ref);
 		RPN	&operator=(const RPN &rhs);
 
+	private:
+		static bool	handleOperator(std::stack<int> &stack, const char token);
+
 	public:
 		static int	operate(const std::string &arg) throw(std::exception);
 
-		// Exception: NotEnoughOperandsError
-		class NotEnoughOperandsError: public std::exception {
-			private:
-				std::string	_msg;
-
+	public:
+		class NotEnoughOperandsException: public std::exception {
 			public:
-				NotEnoughOperandsError(void);
-				virtual ~NotEnoughOperandsError(void) throw();
 				virtual const char	*what(void) const throw();
 		};
-
-		// Exception: InvalidOperatorError
-		class InvalidOperatorError: public std::exception {
+		class InvalidOperatorException: public std::exception {
 			private:
 				std::string	_msg;
-
 			public:
-				InvalidOperatorError(void);
-				InvalidOperatorError(const char _operator);
-				virtual ~InvalidOperatorError(void) throw();
+				InvalidOperatorException(const char _operator);
+				virtual	~InvalidOperatorException(void) throw();
 				virtual const char	*what(void) const throw();
 		};
-
-		// Exception: DivideByZeroError
-		class DivideByZeroError: public std::exception {
-			private:
-				std::string	_msg;
-
+		class DivideByZeroException: public std::exception {
 			public:
-				DivideByZeroError(void);
-				virtual ~DivideByZeroError(void) throw();
 				virtual const char	*what(void) const throw();
 		};
-		
-		// Exception: ModuloByZeroError
-		class ModuloByZeroError: public std::exception {
-			private:
-				std::string	_msg;
-
+		class ModuloByZeroException: public std::exception {
 			public:
-				ModuloByZeroError(void);
-				virtual ~ModuloByZeroError(void) throw();
 				virtual const char	*what(void) const throw();
 		};
-
-		// Exception: InvalidExpressionError
-		class InvalidExpressionError: public std::exception {
-			private:
-				std::string	_msg;
-
+		class InvalidExpressionException: public std::exception {
 			public:
-				InvalidExpressionError(void);
-				virtual ~InvalidExpressionError(void) throw();
 				virtual const char	*what(void) const throw();
 		};
-
-		// Exception: UnknownError
-		class UnknownError: public std::exception {
-			private:
-				std::string	_msg;
-
+		class FailToHandleOperatorException: public std::exception {
 			public:
-				UnknownError(void);
-				virtual ~UnknownError(void) throw();
 				virtual const char	*what(void) const throw();
 		};
 };
