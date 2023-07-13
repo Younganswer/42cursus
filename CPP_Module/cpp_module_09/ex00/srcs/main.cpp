@@ -11,8 +11,6 @@ int	main(int argc, char **argv) {
 
 	try {
 		std::cout << std::fixed << std::setprecision(2);
-		DataBase::getInstance();
-		std::cout << DataBase::getInstance() << std::endl;
 		BitcoinExchange::exchange(argv[1]);
 	} catch (const std::exception &e) {
 		std::cout << "Error: " << e.what() << std::endl;

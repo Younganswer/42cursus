@@ -75,7 +75,7 @@ bool	BitcoinExchange::_exchange(const std::string &line) throw(std::exception) {
 	}
 	try {
 		date = Date(date_token);
-		exchange_rate = DataBase::getInstance().at(date);
+		exchange_rate = (--DataBase::getInstance().lower_bound(date))->second;
 		value = std::atof(value_token.c_str());
 		if (value < 0) {
 			throw (NotAPositiveNumberException());

@@ -40,15 +40,14 @@ class DataBase {
 		iterator		begin(void);
 		iterator		end(void);
 		iterator		find(const Date &date);
+		iterator		lower_bound(const Date &date);
 	
 	public:
 		const_iterator	begin(void) const;
 		const_iterator	end(void) const;
 		const_iterator	find(const Date &date) const;
+		const_iterator	lower_bound(const Date &date) const;
 	
-	public:
-		const ExchangeRate	&at(const Date &date) const throw(std::exception);
-
 	public:
 		class FailToOpenFileException: public std::exception {
 			public:

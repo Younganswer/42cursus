@@ -92,18 +92,11 @@ DataBase	&DataBase::getInstance(void) {
 DataBase::iterator			DataBase::begin(void) { return (this->_exchange_rate_map.begin()); }
 DataBase::iterator			DataBase::end(void) { return (this->_exchange_rate_map.end()); }
 DataBase::iterator			DataBase::find(const Date &date) { return (this->_exchange_rate_map.find(date)); }
+DataBase::iterator			DataBase::lower_bound(const Date &date) { return (this->_exchange_rate_map.lower_bound(date)); }
 DataBase::const_iterator	DataBase::begin(void) const { return (this->_exchange_rate_map.begin()); }
 DataBase::const_iterator	DataBase::end(void) const { return (this->_exchange_rate_map.end()); }
 DataBase::const_iterator	DataBase::find(const Date &date) const { return (this->_exchange_rate_map.find(date)); }
-
-const ExchangeRate	&DataBase::at(const Date &date) const throw(std::exception) {
-	DataBase::const_iterator	it;
-
-	if ((it = this->find(date)) == this->end()) {
-		throw (std::out_of_range("DataBase: Out of range"));
-	}
-	return (it->second);
-}
+DataBase::const_iterator	DataBase::lower_bound(const Date &date) const { return (this->_exchange_rate_map.lower_bound(date)); }
 
 const char	*DataBase::FailToOpenFileException::what(void) const throw() { return ("DataBase: Fail to open file"); }
 const char	*DataBase::FailToParseException::what(void) const throw() { return ("DataBase: Fail to parse"); }
