@@ -53,7 +53,6 @@ ${OBJS_DIR}:
 
 
 sanitize:
-	@${RM} ${NAME}
 	@${MAKE} SANITIZE=1 all
 
 
