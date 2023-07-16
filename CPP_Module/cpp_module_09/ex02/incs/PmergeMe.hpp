@@ -80,14 +80,14 @@ void	PmergeMe::__insertion_sort(_RandomAccessIterator __first, _RandomAccessIter
 
 template <typename _RandomAccessIterator>
 void	PmergeMe::__insertion_sort_j(_RandomAccessIterator __first, _RandomAccessIterator __middle, _RandomAccessIterator __last) {
+	_RandomAccessIterator	__t;
+
 	while (__middle != __last) {
-		for (_RandomAccessIterator __it=__last-1; __middle!=__it; --__it) {
+		for (_RandomAccessIterator __it=__last-1; __it!=__middle; --__it) {
 			std::iter_swap(__it - 1, __it);
 		}
-		for (_RandomAccessIterator __it=__middle; __first!=__it; --__it) {
-			if (*(__it - 1) < *__it) {
-				break ;
-			}
+		__t = std::lower_bound(__first, __middle, *__middle);
+		for (_RandomAccessIterator __it=__middle; __it!=__t; --__it) {
 			std::iter_swap(__it - 1, __it);
 		}
 		++__middle;
