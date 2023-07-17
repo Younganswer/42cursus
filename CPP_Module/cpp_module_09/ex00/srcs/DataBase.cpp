@@ -20,9 +20,8 @@ DataBase &DataBase::operator=(const DataBase &rhs) {
 }
 
 bool	DataBase::_parse(void) throw(std::exception) {
-	std::ifstream	ifs;
+	std::ifstream	ifs("./data/data.csv");
 
-	ifs = std::ifstream("./data/data.csv");
 	if (!ifs.is_open()) {
 		throw (FailToOpenFileException());
 	}

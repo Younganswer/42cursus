@@ -12,10 +12,9 @@ BitcoinExchange::BitcoinExchange(const BitcoinExchange &ref) { (void) ref; }
 BitcoinExchange &BitcoinExchange::operator=(BitcoinExchange const &rhs) { (void) rhs; return (*this); }
 
 bool	BitcoinExchange::exchange(const std::string &filename) throw(std::exception) {
-	std::ifstream	ifs;
+	std::ifstream	ifs(filename);
 	std::string		line;
 
-	ifs = std::ifstream(filename);
 	if (!ifs.is_open()) {
 		throw (FailToOpenFileException());
 	}
