@@ -91,11 +91,25 @@ DataBase	&DataBase::getInstance(void) {
 DataBase::iterator			DataBase::begin(void) { return (this->_exchange_rate_map.begin()); }
 DataBase::iterator			DataBase::end(void) { return (this->_exchange_rate_map.end()); }
 DataBase::iterator			DataBase::find(const Date &date) { return (this->_exchange_rate_map.find(date)); }
-DataBase::iterator			DataBase::lower_bound(const Date &date) { return (this->_exchange_rate_map.lower_bound(date)); }
+DataBase::iterator			DataBase::findData(const Date &date) {
+	iterator	it = this->_exchange_rate_map.lower_bound(date);
+
+	if (it == this->_exchange_rate_map.begin()) {
+		throw (DataNotFoundException());
+	}
+	return (--it);
+}
 DataBase::const_iterator	DataBase::begin(void) const { return (this->_exchange_rate_map.begin()); }
 DataBase::const_iterator	DataBase::end(void) const { return (this->_exchange_rate_map.end()); }
 DataBase::const_iterator	DataBase::find(const Date &date) const { return (this->_exchange_rate_map.find(date)); }
-DataBase::const_iterator	DataBase::lower_bound(const Date &date) const { return (this->_exchange_rate_map.lower_bound(date)); }
+DataBase::const_iterator	DataBase::findData(const Date &date) const {
+	const_iterator	it = this->_exchange_rate_map.lower_bound(date);
+
+	if (it == this->_exchange_rate_map.begin()) {
+		throw (DataNotFoundException());
+	}
+	return (--it);
+}
 
 const char	*DataBase::FailToOpenFileException::what(void) const throw() { return ("DataBase: Fail to open file"); }
 const char	*DataBase::FailToParseException::what(void) const throw() { return ("DataBase: Fail to parse"); }
@@ -105,6 +119,7 @@ const char	*DataBase::FailToParseValueMapException::what(void) const throw() { r
 const char	*DataBase::InvalidArgumentException::what(void) const throw() { return ("DataBase: Invalid argument"); }
 const char	*DataBase::DuplicatedArgumentException::what(void) const throw() { return ("DataBase: Duplicated argument"); }
 const char	*DataBase::InvalidSyntaxException::what(void) const throw() { return ("DataBase: Invalid syntax"); }
+const char	*DataBase::DataNotFoundException::what(void) const throw() { return ("DataBase: Data not found"); }
 
 std::ostream	&operator<<(std::ostream &os, const DataBase &rhs) {
 	const Header	&header = rhs.getHeader();

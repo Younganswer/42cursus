@@ -40,13 +40,13 @@ class DataBase {
 		iterator		begin(void);
 		iterator		end(void);
 		iterator		find(const Date &date);
-		iterator		lower_bound(const Date &date);
+		iterator		findData(const Date &date);
 	
 	public:
 		const_iterator	begin(void) const;
 		const_iterator	end(void) const;
 		const_iterator	find(const Date &date) const;
-		const_iterator	lower_bound(const Date &date) const;
+		const_iterator	findData(const Date &date) const;
 	
 	public:
 		class FailToOpenFileException: public std::exception {
@@ -78,6 +78,10 @@ class DataBase {
 				virtual const char *what(void) const throw();
 		};
 		class InvalidSyntaxException: public std::exception {
+			public:
+				virtual const char *what(void) const throw();
+		};
+		class DataNotFoundException: public std::exception {
 			public:
 				virtual const char *what(void) const throw();
 		};
