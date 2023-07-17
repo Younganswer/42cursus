@@ -31,10 +31,10 @@ class Tester {
 
 	private:
 		template <class _Container>
-		static std::stringstream	__header(void);
+		static std::string	__header(void);
 
 		template <class _Container>
-		static std::stringstream	__container(const _Container &container);
+		static std::string	__container(const _Container &container);
 
 		template <class _RandomAccessIterator>
 		static long	__timeToProcess(void (*__ps)(_RandomAccessIterator, _RandomAccessIterator), _RandomAccessIterator __first, _RandomAccessIterator __last) throw(std::exception);
@@ -43,7 +43,7 @@ class Tester {
 		static std::string	__getTypeName(void);
 
 		template <class _Container>
-		static std::stringstream	__footer(size_t __sz, long	__elapsed);
+		static std::string	__footer(size_t __sz, long	__elapsed);
 	
 	public:
 		class InvalidTypeException: public std::exception {
@@ -60,43 +60,43 @@ bool	Tester::run(int argc, char **argv) throw(std::exception) {
 	container_type	container;
 	long			elapsed;
 
-	std::cout << Tester::__header<container_type>().str() << std::endl << std::endl;
+	std::cout << Tester::__header<container_type>() << std::endl << std::endl;
 	for (int i=1; i<argc; i++) {
 		container.push_back(Converter::convert(argv[i]));
 	}
 	std::cout << Tester::__getTypeName<container_type>() << " before sorted" << std::endl;
-	std::cout << Tester::__container<container_type>(container).str() << std::endl << std::endl;
+	std::cout << Tester::__container<container_type>(container) << std::endl << std::endl;
 	elapsed = Tester::__timeToProcess<iterator>(&PmergeMe::sort<iterator>, container.begin(), container.end());
 	std::cout << Tester::__getTypeName<container_type>() << " after sorted" << std::endl;
-	std::cout << Tester::__container<container_type>(container).str() << std::endl << std::endl;
-	std::cout << Tester::__footer<container_type>(container.size(), elapsed).str() << std::endl;
+	std::cout << Tester::__container<container_type>(container) << std::endl << std::endl;
+	std::cout << Tester::__footer<container_type>(container.size(), elapsed) << std::endl;
 	return (true);
 }
 
 template <class _Container>
-std::stringstream	Tester::__header(void) {
+std::string	Tester::__header(void) {
 	typedef _Container	container_type;
 
+	std::stringstream	ss;
 	std::string			content = "Test with " + Tester::__getTypeName<container_type>();
 	size_t				padding = (Tester::MAX_WIDTH - content.length()) / 2;
-	std::stringstream	ret;
 
-	ret << "\033[34m";
-	ret << std::setw(Tester::MAX_WIDTH) << std::setfill('-') << "" << std::endl;
-	ret << "|" << std::setw(padding) << std::setfill(' ') << "" << content;
-	ret << ((padding % 2) ? std::setw(padding) : std::setw(padding - 1));
-	ret << std::setfill(' ') << "|" << std::endl;
-	ret << std::setw(Tester::MAX_WIDTH) << std::setfill('-') << "";
-	ret << "\033[0m";
-	return (ret);
+	ss << "\033[34m";
+	ss << std::setw(Tester::MAX_WIDTH) << std::setfill('-') << "" << std::endl;
+	ss << "|" << std::setw(padding) << std::setfill(' ') << "" << content;
+	ss << ((padding % 2) ? std::setw(padding) : std::setw(padding - 1));
+	ss << std::setfill(' ') << "|" << std::endl;
+	ss << std::setw(Tester::MAX_WIDTH) << std::setfill('-') << "";
+	ss << "\033[0m";
+	return (ss.str());
 }
 
 template <class _Container>
-std::stringstream Tester::__container(const _Container& container) {
+std::string Tester::__container(const _Container& container) {
     typedef _Container 								container_type;
     typedef typename container_type::const_iterator	const_iterator;
 
-    std::stringstream	ret, tmp;
+    std::stringstream	ss, tmp;
 	std::string			str;
 
     for (const_iterator it = container.begin(); it != container.end(); it++) {
@@ -105,11 +105,11 @@ std::stringstream Tester::__container(const _Container& container) {
 	str = tmp.str();
 	for (size_t i=1; i<str.length(); i++) {
 		if (i % Tester::MAX_WIDTH == 0) {
-			ret << std::endl;
+			ss << std::endl;
 		}
-		ret << str[i];
+		ss << str[i];
 	}
-	return (ret);
+	return (ss.str());
 }
 
 template <class _RandomAccessIterator>
@@ -150,13 +150,13 @@ std::string	Tester::__getTypeName(void) {
 }
 
 template <class _Container>
-std::stringstream	Tester::__footer(size_t __sz, long	__elapsed) {
+std::string	Tester::__footer(size_t __sz, long	__elapsed) {
 	typedef _Container	container_type;
 
-	std::stringstream	ret;
+	std::stringstream	ss;
 
-	ret << "Time to process a range of " << __sz << " elements with " << Tester::__getTypeName<container_type>() << ": " << __elapsed << "us";
-	return (ret);
+	ss << "Time to process a range of " << __sz << " elements with " << Tester::__getTypeName<container_type>() << ": " << __elapsed << "us";
+	return (ss.str());
 }
 
 #endif
