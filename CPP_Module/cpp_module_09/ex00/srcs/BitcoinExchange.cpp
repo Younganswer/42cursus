@@ -52,9 +52,6 @@ bool	BitcoinExchange::_parseHeader(std::ifstream &ifs) throw(std::exception) {
 bool	BitcoinExchange::_exchange(const std::string &line) throw(std::exception) {
 	ft::istringstream	iss(line);
 	std::string			token, date_token, value_token;
-	Date				date;
-	ExchangeRate		exchange_rate;
-	double				value;
 
 	for (size_t i=0; i<BitcoinExchange::_header.size(); ++i) {
 		iss >> token;
@@ -73,15 +70,22 @@ bool	BitcoinExchange::_exchange(const std::string &line) throw(std::exception) {
 		throw (InvalidSyntaxException());
 	}
 	try {
-		date = Date(date_token);
-		exchange_rate = (--DataBase::getInstance().lower_bound(date))->second;
+		Date						date = Date(date_token);
+		DataBase::const_iterator	it = DataBase::getInstance().lower_bound(date);
+		ExchangeRate				exchange_rate;
+		double						value;
+
+		if (it == DataBase::getInstance().begin()) {
+			throw (FailToExchangeException());
+		}
+		exchange_rate = (--it)->second;
 		value = std::atof(value_token.c_str());
 		if (value < 0) {
 			throw (NotAPositiveNumberException());
 		} else if (value == 0) {
 			throw (InvalidArgumentException());
-		} else if (1000 <= value) {
-			throw  (TooLargeNumberException());
+		} else if (1000 < value) {
+			throw (TooLargeNumberException());
 		}
 		std::cout << date << " => " << value << " = " << value * exchange_rate.getRate() << std::endl;
 	} catch (const std::exception &e) {
