@@ -91,28 +91,35 @@ DataBase	&DataBase::getInstance(void) {
 DataBase::iterator			DataBase::begin(void) { return (this->_exchange_rate_map.begin()); }
 DataBase::iterator			DataBase::end(void) { return (this->_exchange_rate_map.end()); }
 DataBase::iterator			DataBase::find(const Date &date) { return (this->_exchange_rate_map.find(date)); }
-DataBase::iterator			DataBase::findData(const Date &date) {
-	iterator	it = this->_exchange_rate_map.lower_bound(date);
 
-	if (it == this->_exchange_rate_map.begin()) {
-		throw (DataNotFoundException());
-	}
-	return (--it);
-}
 DataBase::const_iterator	DataBase::begin(void) const { return (this->_exchange_rate_map.begin()); }
 DataBase::const_iterator	DataBase::end(void) const { return (this->_exchange_rate_map.end()); }
 DataBase::const_iterator	DataBase::find(const Date &date) const { return (this->_exchange_rate_map.find(date)); }
-DataBase::const_iterator	DataBase::findData(const Date &date) const {
-	const_iterator	ret = this->_exchange_rate_map.find(date);
 
-	if (ret == this->_exchange_rate_map.end()) {
-		ret = this->_exchange_rate_map.lower_bound(date);
-		if (ret == this->_exchange_rate_map.begin()) {
+ExchangeRate		&DataBase::at(const Date &date) {
+	iterator	it = this->find(date);
+
+	if (it == this->end()) {
+		it = this->_exchange_rate_map.lower_bound(date);
+		if (it == this->begin()) {
 			throw (DataNotFoundException());
 		}
-		ret = --ret;
+		it--;
 	}
-	return (ret);
+	return (it->second);
+}
+
+const ExchangeRate	&DataBase::at(const Date &date) const {
+	const_iterator	it = this->find(date);
+
+	if (it == this->end()) {
+		it = this->_exchange_rate_map.lower_bound(date);
+		if (it == this->begin()) {
+			throw (DataNotFoundException());
+		}
+		it--;
+	}
+	return (it->second);
 }
 
 const char	*DataBase::FailToOpenFileException::what(void) const throw() { return ("DataBase: Fail to open file"); }
