@@ -9,10 +9,11 @@
 # include <sstream>
 # include <vector>
 # include <deque>
-# include <list>
 # include <stack>
 # include <queue>
+# include <list>
 # include <set>
+# include <ctime>
 
 
 class Tester {
@@ -37,13 +38,13 @@ class Tester {
 		static std::string	__container(const _Container &container);
 
 		template <class _RandomAccessIterator>
-		static long	__timeToProcess(void (*__ps)(_RandomAccessIterator, _RandomAccessIterator), _RandomAccessIterator __first, _RandomAccessIterator __last) throw(std::exception);
+		static double	__timeToProcess(void (*__ps)(_RandomAccessIterator, _RandomAccessIterator), _RandomAccessIterator __first, _RandomAccessIterator __last) throw(std::exception);
 
 		template <class _Container>
 		static std::string	__getTypeName(void);
 
 		template <class _Container>
-		static std::string	__footer(size_t __sz, long	__elapsed);
+		static std::string	__footer(size_t __sz, double __elapsed);
 	
 	public:
 		class InvalidTypeException: public std::exception {
@@ -58,7 +59,7 @@ bool	Tester::run(int argc, char **argv) throw(std::exception) {
 	typedef typename container_type::iterator	iterator;
 
 	container_type	container;
-	long			elapsed;
+	double			elapsed;
 
 	std::cout << Tester::__header<container_type>() << std::endl << std::endl;
 	for (int i=1; i<argc; i++) {
@@ -113,14 +114,14 @@ std::string Tester::__container(const _Container& container) {
 }
 
 template <class _RandomAccessIterator>
-long	Tester::__timeToProcess(void (*__ps)(_RandomAccessIterator, _RandomAccessIterator), _RandomAccessIterator __first, _RandomAccessIterator __last) throw(std::exception) {
-	struct timeval	start, end;
-	long			elapsed;
+double	Tester::__timeToProcess(void (*__ps)(_RandomAccessIterator, _RandomAccessIterator), _RandomAccessIterator __first, _RandomAccessIterator __last) throw(std::exception) {
+	struct timespec	start, end;
+	double			elapsed;
 
-	gettimeofday(&start, NULL);
+	clock_gettime(CLOCK_MONOTONIC, &start);
 	__ps(__first, __last);
-	gettimeofday(&end, NULL);
-	elapsed = (end.tv_sec - start.tv_sec) * 1000000 + end.tv_usec - start.tv_usec;
+	clock_gettime(CLOCK_MONOTONIC, &end);
+	elapsed = (end.tv_sec - start.tv_sec) * 1000000 + (end.tv_nsec - start.tv_nsec) / 1000;
 	return (elapsed);
 }
 
@@ -150,7 +151,7 @@ std::string	Tester::__getTypeName(void) {
 }
 
 template <class _Container>
-std::string	Tester::__footer(size_t __sz, long	__elapsed) {
+std::string	Tester::__footer(size_t __sz, double __elapsed) {
 	typedef _Container	container_type;
 
 	std::stringstream	ss;

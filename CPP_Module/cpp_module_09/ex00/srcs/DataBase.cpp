@@ -103,12 +103,16 @@ DataBase::const_iterator	DataBase::begin(void) const { return (this->_exchange_r
 DataBase::const_iterator	DataBase::end(void) const { return (this->_exchange_rate_map.end()); }
 DataBase::const_iterator	DataBase::find(const Date &date) const { return (this->_exchange_rate_map.find(date)); }
 DataBase::const_iterator	DataBase::findData(const Date &date) const {
-	const_iterator	it = this->_exchange_rate_map.lower_bound(date);
+	const_iterator	ret = this->_exchange_rate_map.find(date);
 
-	if (it == this->_exchange_rate_map.begin()) {
-		throw (DataNotFoundException());
+	if (ret == this->_exchange_rate_map.end()) {
+		ret = this->_exchange_rate_map.lower_bound(date);
+		if (ret == this->_exchange_rate_map.begin()) {
+			throw (DataNotFoundException());
+		}
+		ret = --ret;
 	}
-	return (--it);
+	return (ret);
 }
 
 const char	*DataBase::FailToOpenFileException::what(void) const throw() { return ("DataBase: Fail to open file"); }
