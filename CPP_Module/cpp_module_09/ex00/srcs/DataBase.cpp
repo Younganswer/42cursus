@@ -97,28 +97,22 @@ DataBase::const_iterator	DataBase::end(void) const { return (this->_exchange_rat
 DataBase::const_iterator	DataBase::find(const Date &date) const { return (this->_exchange_rate_map.find(date)); }
 
 ExchangeRate		&DataBase::at(const Date &date) {
-	iterator	it = this->find(date);
+	iterator	it = this->_exchange_rate_map.upper_bound(date);
 
-	if (it == this->end()) {
-		it = this->_exchange_rate_map.lower_bound(date);
-		if (it == this->begin()) {
-			throw (DataNotFoundException());
-		}
-		it--;
+	if (it == this->begin()) {
+		throw (DataNotFoundException());
 	}
+	it--;
 	return (it->second);
 }
 
 const ExchangeRate	&DataBase::at(const Date &date) const {
-	const_iterator	it = this->find(date);
+	const_iterator	it = this->_exchange_rate_map.upper_bound(date);
 
-	if (it == this->end()) {
-		it = this->_exchange_rate_map.lower_bound(date);
-		if (it == this->begin()) {
-			throw (DataNotFoundException());
-		}
-		it--;
+	if (it == this->begin()) {
+		throw (DataNotFoundException());
 	}
+	it--;
 	return (it->second);
 }
 
